@@ -2,13 +2,14 @@
 
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import Earth from '@/components/ui/globe';
-import { SparklesCore } from '@/components/ui/sparkles';
-import { Label } from '@/components/ui/label';
+
+import { Textarea } from '../../components/ui/textarea';
+import { Button } from '../../components/ui/button';
+// import Earth from '@/components/ui/globe';
+// import { SparklesCore } from '@/components/ui/sparkles';
+import { Label } from '../../components/ui/label';
 import { Check, Loader2 } from 'lucide-react';
+import { Input } from '../../components/ui/input';
 
 export default function ContactUs1() {
   const [name, setName] = useState(''); 
@@ -75,7 +76,7 @@ export default function ContactUs1() {
                 <span className="relative z-10 w-full text-4xl font-bold italic tracking-tight text-primary md:text-5xl">
                   Us
                 </span>
-                <SparklesCore
+                {/* <SparklesCore
                   id="tsparticles"
                   background="transparent"
                   minSize={0.6}
@@ -83,7 +84,7 @@ export default function ContactUs1() {
                   particleDensity={500}
                   className="absolute inset-0 top-0 h-24 w-full"
                   particleColor="#e60a64"
-                />
+                /> */}
               </motion.div>
 
               <motion.form
@@ -184,14 +185,14 @@ export default function ContactUs1() {
               <div className="flex flex-col items-center justify-center overflow-hidden">
                 <article className="relative mx-auto h-[350px] min-h-60 max-w-[450px] overflow-hidden rounded-3xl border bg-gradient-to-b from-[#e60a64] to-[#e60a64]/5 p-6 text-3xl tracking-tight text-white md:h-[450px] md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl">
                   Presenting you with the best UI possible.
-                  <div className="absolute -bottom-20 -right-20 z-10 mx-auto flex h-full w-full max-w-[300px] items-center justify-center transition-all duration-700 hover:scale-105 md:-bottom-28 md:-right-28 md:max-w-[550px]">
+                  {/* <div className="absolute -bottom-20 -right-20 z-10 mx-auto flex h-full w-full max-w-[300px] items-center justify-center transition-all duration-700 hover:scale-105 md:-bottom-28 md:-right-28 md:max-w-[550px]">
                     <Earth
                       scale={1.1}
                       baseColor={[1, 0, 0.3]}
                       markerColor={[0, 0, 0]}
                       glowColor={[1, 0.3, 0.4]}
                     />
-                  </div>
+                  </div> */}
                 </article>
               </div>
             </motion.div>

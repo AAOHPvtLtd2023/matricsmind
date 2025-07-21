@@ -8,8 +8,8 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion"
+import { cn } from "../../lib/utils"
 
-import { cn } from "/lib/utils"
 
 interface TextScrollProps {
   text: string
