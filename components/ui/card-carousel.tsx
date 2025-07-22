@@ -18,7 +18,7 @@ import {
 import { Badge } from "./badge";
 
 interface CarouselProps {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; href: string }[]; 
   autoplayDelay?: number;
   showPagination?: boolean;
   showNavigation?: boolean;
