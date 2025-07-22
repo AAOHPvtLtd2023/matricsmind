@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Geist } from 'next/font/google';
+import Image from "next/image";
 import { cn } from '../../lib/utils';
 
 const space = Geist({
@@ -101,7 +102,7 @@ const TestimonialsColumn = (props: {
                 <div className="absolute -left-5 -top-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b from-primary/10 to-card blur-md" />
                 <div>{text}</div>
                 <div className="mt-5 flex items-center gap-2">
-                  <img
+                  <Image
                     src={imageSrc}
                     alt={name}
                     height={40}
