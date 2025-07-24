@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import AboutUs1 from "../components/aboutus";
+import ComparisionTable from "../components/ComparisionTable";
 
 export default function AboutPage() {
   return (
@@ -16,6 +17,7 @@ export default function AboutPage() {
       </Link>
 
       <AboutUs1 />
+      <ComparisionTable />
     </div>
   );
 }

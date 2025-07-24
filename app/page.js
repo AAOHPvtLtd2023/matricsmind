@@ -11,6 +11,54 @@ import FooterGlow from "./components/Footer";
 import ContactUs1 from "./components/ContactUs";
 import AboutUs1 from "./components/aboutus";
 import Testimonials from "./components/testimonials";
+import { ContainerTextFlip } from "../components/ui/container-text-flip";
+import FeaturesSection from "./components/FeaturesSection";
+import CompanyPartner from "./components/CompanyPartner";
+import Gallery from "./components/Gallery";
+import FaqSection from "./components/FaqSection";
+import HighlightHeading from "./components/HighlightHeading";
+import DualMarquee from "./components/DualMarquee";
+import { TextScroll } from "../components/ui/text-scroll";
+import { TextScrollBox } from "./components/TextScrollBox";
+import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
+import GetInTouchForm from "./getinTouchForm/page";
+import HeroSectionWithGirl from "./HeroSection/page.jsx";
+
+export default function HomePage() {
+  return (
+    <>
+      <FloatingBackground />
+      <Header />
+      <main className="pt-24 px-4">
+        {/* Hero Text Block */}
+        <section className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+            Make your websites look <br />
+            <span className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] font-extrabold">
+              10x{" "}
+              {/* <span className="inline-block px-4 py-1 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white shadow-md">
+                modern
+              </span> */}
+              <ContainerTextFlip />
+            </span>
+          </h1>
+        </section>
+
+        <FeaturesSection />
+        <CompanyPartner />
+        <HeroSectionWithGirl />
+        <Gallery />
+        <FaqSection />
+        <SectionHighlightScroll />
+
+        <GetInTouchForm />
+       
+      </main>
+
+      <FooterGlow />
+    </>
+  );
+}
 
 // import { TextScroll } from "../ui/text-scroll"
 
@@ -23,23 +71,12 @@ import Testimonials from "./components/testimonials";
 //     />
 //   );
 // }
-
-export default function HomePage() {
-  return (
-    <>
-      <FloatingBackground />
-      <Header />
-      <main className="pt-24 px-4">
-        <ElasticCarousel />
-        <BrandMarquee />
-        <CardTest />
-        {/* <TextScrollDemo /> */}
-
-        {/* <ContactUs1/>
-        <AboutUs1/> */}
-        <Testimonials />
-      </main>
-      <FooterGlow />
-    </>
-  );
+{
+  /* <ElasticCarousel />
+<BrandMarquee />
+<CardTest />
+<Testimonials /> */
+}
+{
+  /* <TextScrollDemo /> */
 }
