@@ -1,14 +1,12 @@
 "use client";
-import React from "react";
 
-import { UnderlineHighlight } from "../components/underline";
+import { AuroraBackground } from "../../../components/ui/aurora-background";
+import { UnderlineHighlight } from "../../components/underline";
 import { motion } from "framer-motion";
-import { AuroraBackground } from "../../components/ui/aurora-background";
-import {MinimalCardDemo} from "./components/cardContainer";
 
-export default function BlogPage() {
+export default function websitePage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+    <section>
       <AuroraBackground className="h-[50vh] w-full border rounded-lg shadow-lg">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
@@ -29,7 +27,6 @@ export default function BlogPage() {
           </div>
         </motion.div>
       </AuroraBackground>
-      <MinimalCardDemo />
-    </div>
+    </section>
   );
 }

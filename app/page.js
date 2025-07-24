@@ -23,12 +23,14 @@ import { TextScrollBox } from "./components/TextScrollBox";
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
 import GetInTouchForm from "./getinTouchForm/page";
 import HeroSectionWithGirl from "./HeroSection/page.jsx";
+import Header1 from "../components/mvpblocks/header-1.jsx";
 
 export default function HomePage() {
   return (
     <>
       <FloatingBackground />
-      <Header />
+      {/* <Header /> */}
+      <Header1 />
       <main className="pt-24 px-4">
         {/* Hero Text Block */}
         <section className="flex flex-col items-center justify-center gap-4 py-16 text-center">

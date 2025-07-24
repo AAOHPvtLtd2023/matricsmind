@@ -1,4 +1,7 @@
-const UnderlineHighlight = ({ children }) => {
+"use client";
+import React from "react";
+
+export const UnderlineHighlight = ({ children }) => {
   return (
     <span className="relative inline-block">
       <span className="relative z-10">{children}</span>
@@ -18,4 +21,3 @@ const UnderlineHighlight = ({ children }) => {
     </span>
   );
 };
-export default UnderlineHighlight;

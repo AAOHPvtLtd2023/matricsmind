@@ -55,12 +55,12 @@ export default function Header() {
             About
           </Link>
           <Link
-            href="/courses"
+            href="/blog"
             className={`transition hover:text-blue-600 ${
               scrolled ? "text-gray-700" : "text-white"
             }`}
           >
-            Courses
+            Blog
           </Link>
           <Link
             href="/contact"
