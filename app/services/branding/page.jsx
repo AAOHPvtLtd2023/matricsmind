@@ -7,8 +7,9 @@ import { InfiniteMovingCards } from "../../../components/ui/infinite-moving-card
 import Gallery from "../../components/Gallery";
 import CompanyPartner from "../../components/CompanyPartner";
 import Testimonials from "../../components/testimonials";
+import FeaturesSection from "../../components/FeaturesSection";
 
-export default function websitePage() {
+export default function brandingPage() {
   return (
     <section>
       <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center">
@@ -50,6 +51,7 @@ export default function websitePage() {
         itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
       />
       <Gallery/>
+      <FeaturesSection/>
       <Testimonials/>
       <CompanyPartner />
     </section>

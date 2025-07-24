@@ -19,8 +19,8 @@ const navItems = [
         description: 'Track your metrics',
       },
       {
-        name: 'Dashboard',
-        href: '/dashboard',
+        name: 'Branding',
+        href: '/services/branding',
         description: 'Manage your data',
       },
       { name: 'Reports', href: '/reports', description: 'Generate insights' },
