@@ -23,7 +23,7 @@ const navItems = [
         href: '/services/branding',
         description: 'Manage your data',
       },
-      { name: 'Reports', href: '/reports', description: 'Generate insights' },
+      { name: 'Video Production', href: '/services/videoproduction', description: 'Generate insights' },
     ],
   },
   { name: 'Blog', href: '/blog' },

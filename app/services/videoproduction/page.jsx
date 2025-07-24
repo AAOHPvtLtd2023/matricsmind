@@ -1,16 +1,16 @@
 "use client";
 
+import React from "react";
+import ExpertLedComponent from "./components/ExpertLedComponent";
 import { AuroraBackground } from "../../../components/ui/aurora-background";
 import { UnderlineHighlight } from "../../components/underline";
 import { motion } from "framer-motion";
-import { InfiniteMovingCards } from "../../../components/ui/infinite-moving-cards";
-import Gallery from "../../components/Gallery";
-import CompanyPartner from "../../components/CompanyPartner";
 import Testimonials from "../../components/testimonials";
-import FeaturesSection from "../../components/FeaturesSection";
-import MasonryGallery from "../../../components/mvpblocks/masonry-grid-1";
+import CompanyPartner from "../../components/CompanyPartner";
+import { TextScroll } from "../../../components/ui/text-scroll";
+import VideoPlayerComponent from "./components/videoPlayer";
 
-export default function brandingPage() {
+export default function videoProductionPage() {
   return (
     <section>
       <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center">
@@ -33,28 +33,10 @@ export default function brandingPage() {
           </div>
         </motion.div>
       </AuroraBackground>
-      <InfiniteMovingCards
-        className="mt-8 cursor-pointer flex self-center justify-self-center"
-        items={[
-          {
-            image: "/team/alex.jpg", // path to image in public folder
-            quote: "This platform changed how we work!",
-            name: "Alex Johnson",
-            title: "CEO, FutureCorp",
-          },
-          {
-            image: "/team/sarah.jpg",
-            quote: "Intuitive, powerful, and scalable.",
-            name: "Sarah Lee",
-            title: "Product Manager, InnovateX",
-          },
-        ]}
-        itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-      />
-      <MasonryGallery/>
-      <FeaturesSection/>
+      <ExpertLedComponent/>
+      <VideoPlayerComponent />
       <Testimonials/>
-      <CompanyPartner />
+      <CompanyPartner/>
     </section>
   );
 }
