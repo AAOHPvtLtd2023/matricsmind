@@ -94,7 +94,7 @@ export default function Header1() {
               </div>
               <span
                 className="bg-gradient-to-r from-rose-500 to-rose-700 bg-clip-text text-xl font-bold text-transparent">
-                Acme Inc.
+                MatricsMind
               </span>
             </Link>
           </motion.div>
@@ -151,17 +151,13 @@ export default function Header1() {
           </nav>
 
           <div className="hidden items-center space-x-4 lg:flex">
-            <Link
-              href="/login"
-              className="text-foreground font-medium transition-colors duration-200 hover:text-rose-500">
-              Sign In
-            </Link>
+            
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/signup"
                 className="inline-flex items-center space-x-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg">
-                <span>Get Started</span>
-                <ArrowRight className="h-4 w-4" />
+                <span>Get A Free Qoute</span>
+                {/* <ArrowRight className="h-4 w-4" /> */}
               </Link>
             </motion.div>
           </div>
@@ -209,7 +205,7 @@ export default function Header1() {
                     href="/signup"
                     className="block w-full rounded-lg bg-gradient-to-r from-rose-500 to-rose-700 py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}>
-                    Get Started
+                    Get A Free Qoute
                   </Link>
                 </div>
               </div>
