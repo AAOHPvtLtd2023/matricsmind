@@ -63,7 +63,7 @@ export default function FaqSection() {
             className="border border-white/10 bg-white/5 backdrop-blur-md rounded-xl overflow-hidden"
           >
             <AccordionTrigger className="px-6 py-5 text-left text-base font-semibold hover:bg-white/10 transition">
-              <Typewriter text={faq.question} speed={10} />
+             {faq.question} 
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-5 text-sm text-gray-300">
                <Typewriter text={faq.answer} speed={10} />

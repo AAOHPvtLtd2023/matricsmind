@@ -73,7 +73,7 @@ export default function CompanyMilestones() {
   }, [isVisible]);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-gray-50 py-16 px-4">
+    <div ref={sectionRef} className="min-h-screen bg-gray-50 py-16 px-4 w-[90vw] sm:w-[80vw] md:w-[90vw] lg:w-[90vw] mx-auto justify-self-center border rounded">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16">

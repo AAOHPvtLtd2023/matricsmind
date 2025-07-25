@@ -28,19 +28,11 @@ import ComparisonTable from "./components/ComparisionTable";
 export default function HomePage() {
   return (
     <>
-      <FloatingBackground />
-      {/* <Header /> */}
-      <Header1 />
+      
       <main className="pt-24 px-4">
-        {/* Hero Text Block */}
         <section className="flex flex-col items-center justify-center gap-4 py-16 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
             Make your websites look <ContainerTextFlip /> <br />
-            {/* <span className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] font-extrabold">
-              10x{" "}
-             
-              
-            </span> */}
           </h1>
         </section>
         <ElasticCarousel />
@@ -49,38 +41,10 @@ export default function HomePage() {
         <HeroSectionWithGirl />
         <ComparisonTable />
         <SectionHighlightScroll />
-<Testimonials />
+        <Testimonials />
         <CompanyPartner />
-
-        {/* <FeaturesSection />
-        <Gallery />
-        <FaqSection /> */}
-
         <GetInTouchForm />
       </main>
-
-      <FooterGlow />
     </>
   );
-}
-
-// import { TextScroll } from "../ui/text-scroll"
-
-// export function TextScrollDemo() {
-//   return (
-//     <TextScroll
-//       className="font-display text-center text-4xl font-semibold tracking-tighter  text-black dark:text-white md:text-7xl md:leading-[5rem]"
-//       text="Skiper UI  "
-//       default_velocity={5}
-//     />
-//   );
-// }
-{
-  /* <ElasticCarousel />
-<BrandMarquee />
-<CardTest />
-<Testimonials /> */
-}
-{
-  /* <TextScrollDemo /> */
 }

@@ -18,7 +18,7 @@ import {
 import { Badge } from "./badge";
 
 interface CarouselProps {
-  images: { src: string; alt: string; href: string }[]; 
+  images: { src: string; alt: string; slug: string; title: string }[]; // changed from href to slug
   autoplayDelay?: number;
   showPagination?: boolean;
   showNavigation?: boolean;
@@ -74,7 +74,10 @@ export const CardCarousel: React.FC<CarouselProps> = ({
           <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
             <div className="flex gap-2">
               <div>
-                <h3 className="text-4xl opacity-85 font-bold tracking-tight" style={{ color: "#cef133" }}>
+                <h3
+                  className="text-4xl opacity-85 font-bold tracking-tight"
+                  style={{ color: "#cef133" }}
+                >
                   Card Carousel
                 </h3>
                 <p>Seamless Images carousel animation.</p>
@@ -90,10 +93,10 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                   delay: autoplayDelay,
                   disableOnInteraction: false,
                 }}
-                effect={"coverflow"}
+                effect="coverflow"
                 grabCursor={true}
                 centeredSlides={true}
-                loop={true}
+                loop={true} // Enables infinite loop
                 slidesPerView={"auto"}
                 coverflowEffect={{
                   rotate: 0,
@@ -112,36 +115,24 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 }
                 modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
               >
-                {images.map((image, index) => (
-                  <SwiperSlide key={index}>
+                {images.map((image) => (
+                  <SwiperSlide key={image.title}>
                     <div
-                      className="size-full rounded-3xl cursor-pointer hover:opacity-90 transition"
-                      onClick={() => router.push(image.href)}
+                      className="relative size-full rounded-3xl cursor-pointer group"
+                      onClick={() => router.push(`/projects/${image.slug}?title=${encodeURIComponent(image.title)}`)}
                     >
                       <Image
                         src={image.src}
                         width={500}
                         height={500}
-                        className="size-full rounded-xl"
+                        className="size-full rounded-xl object-cover"
                         alt={image.alt}
                       />
-                    </div>
-                  </SwiperSlide>
-                ))}
-
-                {images.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <div
-                      className="size-full rounded-3xl cursor-pointer hover:opacity-90 transition"
-                      onClick={() => router.push(image.href)}
-                    >
-                      <Image
-                        src={image.src}
-                        width={500}
-                        height={500}
-                        className="size-full rounded-xl"
-                        alt={image.alt}
-                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
+                        <p className="text-white text-lg font-semibold px-4 text-center">
+                          {image.title}
+                        </p>
+                      </div>
                     </div>
                   </SwiperSlide>
                 ))}
