@@ -32,6 +32,10 @@ module.exports = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-5px)" },
         },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        }
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -39,6 +43,8 @@ module.exports = {
         wiggle: "wiggle 3s ease-in-out infinite",
         marquee: "marquee 2s linear infinite",
         fadeIn: "fadeIn 0.6s ease-out both",
+        slideUp: 'slideUp 1s ease-out 0.1s both',
+        fadeindelay: 'fadeIn 1s ease-out 0.3s both',
       },
     },
   },
