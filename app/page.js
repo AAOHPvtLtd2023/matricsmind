@@ -3,7 +3,6 @@ import MarqueeSection from "./components/BrandMarquee";
 import BrandMarquee from "./components/BrandMarquee";
 import ElasticCarousel from "./components/ElasticCarousel";
 import FeaturedProjects from "./components/featuredProjects";
-import Header from "./components/Header";
 import FloatingBackground from "./FloatingBackground";
 import CardTest from "./components/cardTest";
 // import { TextScroll } from "@/components/ui/text-scroll";
@@ -24,6 +23,7 @@ import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
 import GetInTouchForm from "./getinTouchForm/page";
 import HeroSectionWithGirl from "./HeroSection/page.jsx";
 import Header1 from "../components/mvpblocks/header-1.jsx";
+import ComparisonTable from "./components/ComparisionTable";
 
 export default function HomePage() {
   return (
@@ -35,26 +35,28 @@ export default function HomePage() {
         {/* Hero Text Block */}
         <section className="flex flex-col items-center justify-center gap-4 py-16 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-            Make your websites look <br />
-            <span className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] font-extrabold">
+            Make your websites look <ContainerTextFlip /> <br />
+            {/* <span className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] font-extrabold">
               10x{" "}
-              {/* <span className="inline-block px-4 py-1 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white shadow-md">
-                modern
-              </span> */}
-              <ContainerTextFlip />
-            </span>
+             
+              
+            </span> */}
           </h1>
         </section>
-
-        <FeaturesSection />
-        <CompanyPartner />
+        <ElasticCarousel />
+        <BrandMarquee />
+        <CardTest />
         <HeroSectionWithGirl />
-        <Gallery />
-        <FaqSection />
+        <ComparisonTable />
         <SectionHighlightScroll />
+<Testimonials />
+        <CompanyPartner />
+
+        {/* <FeaturesSection />
+        <Gallery />
+        <FaqSection /> */}
 
         <GetInTouchForm />
-       
       </main>
 
       <FooterGlow />

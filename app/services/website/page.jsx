@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "../../../components/ui/infinite-moving-cards";
 import Gallery from "../../components/Gallery";
 import CompanyPartner from "../../components/CompanyPartner";
-import Testimonials from "../../components/testimonials";
-
+import WebsiteServiceCards from "./components/WebsiteServiceCards";
+import FancyQuoteButton from "./components/FancyQuoteButton";
 export default function websitePage() {
   return (
     <section>
@@ -31,6 +31,7 @@ export default function websitePage() {
           </div>
         </motion.div>
       </AuroraBackground>
+
       <InfiniteMovingCards
         className="mt-8 cursor-pointer flex self-center justify-self-center"
         items={[
@@ -49,8 +50,9 @@ export default function websitePage() {
         ]}
         itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
       />
-      <Gallery/>
-      <Testimonials/>
+      <FancyQuoteButton />
+      <Gallery />
+      <WebsiteServiceCards />
       <CompanyPartner />
     </section>
   );

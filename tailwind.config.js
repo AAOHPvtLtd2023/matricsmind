@@ -46,6 +46,11 @@ module.exports = {
         slideUp: 'slideUp 1s ease-out 0.1s both',
         fadeindelay: 'fadeIn 1s ease-out 0.3s both',
       },
+      colors: {
+        primary: '#ff9100', 
+        secondary: '#1c3784',
+        main: '#000', 
+      },
     },
   },
   plugins: [],

@@ -36,8 +36,8 @@ export default function ServicePage() {
       <AdvertisementSectionComponent title="Website" />
       <AdvertisementSectionComponent title="Video Production" />
       <HowItWorks />
-      <ComparisonTable/>
-      <Testimonials />
+      {/* <ComparisonTable/>
+      <Testimonials /> */}
       <CompanyPartner />
     </section>
   );

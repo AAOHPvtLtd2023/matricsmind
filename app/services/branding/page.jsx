@@ -53,7 +53,7 @@ export default function brandingPage() {
       />
       <MasonryGallery/>
       <FeaturesSection/>
-      <Testimonials/>
+      {/* <Testimonials/> */}
       <CompanyPartner />
     </section>
   );
