@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Features", href: "/features" },
   {
     name: "Services",
     href: "/services",
@@ -30,8 +29,8 @@ const navItems = [
       },
     ],
   },
-  { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export default function Header1() {

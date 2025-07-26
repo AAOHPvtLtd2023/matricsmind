@@ -24,6 +24,8 @@ import GetInTouchForm from "./getinTouchForm/page";
 import HeroSectionWithGirl from "./HeroSection/page.jsx";
 import Header1 from "../components/mvpblocks/header-1.jsx";
 import ComparisonTable from "./components/ComparisionTable";
+import { motion } from "framer-motion";
+import CardFalling from "./services/components/CardFalling.jsx";
 
 export default function HomePage() {
   return (
@@ -38,6 +40,7 @@ export default function HomePage() {
         <ElasticCarousel />
         <BrandMarquee />
         <CardTest />
+        <CardFalling />
         <HeroSectionWithGirl />
         <ComparisonTable />
         <SectionHighlightScroll />

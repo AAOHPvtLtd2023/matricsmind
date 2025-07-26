@@ -1,6 +1,6 @@
 "use client";
 
-import { CardCarousel } from "../../components/ui/card-carousel";
+import  CardCarousel  from "../../components/ui/card-carousel";
 export default function CardTest() {
 const images = [
   { src: "/images/image1.jpg", alt: "Image 1", slug: "project-one", title: "Project One" },

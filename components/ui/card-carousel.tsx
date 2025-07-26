@@ -1,146 +1,112 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from "next/navigation";
-
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { SparklesIcon } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Autoplay,
   EffectCoverflow,
   Navigation,
   Pagination,
 } from "swiper/modules";
-
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { SparklesIcon } from "lucide-react";
 import { Badge } from "./badge";
 
 interface CarouselProps {
-  images: { src: string; alt: string; slug: string; title: string }[]; // changed from href to slug
+  images: { src: string; alt: string; slug: string; title: string }[];
   autoplayDelay?: number;
   showPagination?: boolean;
   showNavigation?: boolean;
 }
 
-export const CardCarousel: React.FC<CarouselProps> = ({
+const CardCarousel: React.FC<CarouselProps> = ({
   images,
-  autoplayDelay = 1500,
+  autoplayDelay = 2000,
   showPagination = true,
   showNavigation = true,
 }) => {
-  const css = `
-  .swiper {
-    width: 100%;
-    padding-bottom: 50px;
-  }
-  
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    /* height: 300px; */
-    /* margin: 20px; */
-  }
-  
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-  }
-  
-  
-  .swiper-3d .swiper-slide-shadow-left {
-    background-image: none;
-  }
-  .swiper-3d .swiper-slide-shadow-right{
-    background: none;
-  }
-  `;
   const router = useRouter();
 
   return (
-    <section className="w-ace-y-4">
-      <style>{css}</style>
-      <div className="mx-auto w-full max-w-[90rem] ">
-        <div className="relative mx-auto flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/5 p-2 shadow-sm md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
+    <section className="w-full">
+      <div className="mx-auto w-full max-w-[90rem] px-4">
+        <div className="relative flex flex-col rounded-[24px] border border-white/10 bg-neutral-800/10 backdrop-blur-md p-4 shadow-lg">
           <Badge
             variant="outline"
-            className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
+            className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
           >
-            <SparklesIcon className="fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
+            <SparklesIcon className="w-4 h-4 mr-1" />
             Featured Projects
           </Badge>
-          <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
-            <div className="flex gap-2">
-              <div>
-                <h3
-                  className="text-4xl opacity-85 font-bold tracking-tight"
-                  style={{ color: "#cef133" }}
-                >
-                  Card Carousel
-                </h3>
-                <p>Seamless Images carousel animation.</p>
-              </div>
-            </div>
+
+          <div className="mt-16 mb-4 text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-[#cef133]">
+              Project Carousel
+            </h2>
+            <p className="text-white/70 text-sm mt-1">
+              Discover interactive projects with smooth transitions
+            </p>
           </div>
 
-          <div className="flex w-full items-center justify-center gap-4">
-            <div className="w-full">
-              <Swiper
-                spaceBetween={50}
-                autoplay={{
-                  delay: autoplayDelay,
-                  disableOnInteraction: false,
-                }}
-                effect="coverflow"
-                grabCursor={true}
-                centeredSlides={true}
-                loop={true} // Enables infinite loop
-                slidesPerView={"auto"}
-                coverflowEffect={{
-                  rotate: 0,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2.5,
-                }}
-                pagination={showPagination}
-                navigation={
-                  showNavigation
-                    ? {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
-                      }
-                    : undefined
-                }
-                modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
-              >
-                {images.map((image) => (
-                  <SwiperSlide key={image.title}>
-                    <div
-                      className="relative size-full rounded-3xl cursor-pointer group"
-                      onClick={() => router.push(`/projects/${image.slug}?title=${encodeURIComponent(image.title)}`)}
-                    >
-                      <Image
-                        src={image.src}
-                        width={500}
-                        height={500}
-                        className="size-full rounded-xl object-cover"
-                        alt={image.alt}
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
-                        <p className="text-white text-lg font-semibold px-4 text-center">
-                          {image.title}
-                        </p>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </div>
+          <Swiper
+            spaceBetween={40}
+            autoplay={{
+              delay: autoplayDelay,
+              disableOnInteraction: false,
+            }}
+            effect="coverflow"
+            grabCursor
+            centeredSlides
+            loop
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            pagination={showPagination}
+            navigation={showNavigation}
+            modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
+            className="w-full"
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index} className="!w-[300px]">
+                <div
+                  className="relative group rounded-2xl overflow-hidden cursor-pointer"
+                  onClick={() =>
+                    router.push(
+                      `/projects/${image.slug}?title=${encodeURIComponent(
+                        image.title
+                      )}`
+                    )
+                  }
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={500}
+                    height={300}
+                    className="rounded-xl object-cover w-full h-[300px]"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
+                    <p className="text-white text-lg font-semibold px-4 text-center">
+                      {image.title}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
   );
 };
+
+export default CardCarousel;
