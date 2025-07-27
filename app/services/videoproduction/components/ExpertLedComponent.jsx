@@ -1,8 +1,46 @@
 import React from 'react';
+import { Folder, BookOpen, Video, Clock, CheckCircle } from 'lucide-react';
 
 const ExpertLedComponent = () => {
+  const features = [
+    {
+      icon: Folder,
+      title: "Expert-Led",
+      description: "Creative Direction from Experienced Branding Experts"
+    },
+    {
+      icon: BookOpen,
+      title: "Custom Scripts",
+      description: "Custom Storyboarding & Script Assistance"
+    },
+    {
+      icon: Video,
+      title: "Cinematic Gear",
+      description: "High-End Cameras, Lighting & Editing"
+    },
+    {
+      icon: Clock,
+      title: "Fast Delivery",
+      description: "Flexible Scheduling & Quick Turnaround"
+    },
+    {
+      icon: CheckCircle,
+      title: "Trusted Globally",
+      description: "Trusted by Over 300+ Brands Globally"
+    }
+  ];
+
   return (
-    <div className="bg-white py-12">
+    <div className="bg-white py-12 w-[90vw] flex justify-self-center border rounded-2xl">
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-base font-semibold text-indigo-600 tracking-wide">Why Choose Us?</h2>
@@ -11,52 +49,52 @@ const ExpertLedComponent = () => {
             We deliver tailored solutions with seamless execution, ensuring every detail works for you.
           </p>
         </div>
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="bg-indigo-800 p-6 rounded-lg text-center">
-            <div className="mx-auto h-12 w-12 text-white">
-              <svg className="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-              </svg>
-            </div>
-            <h3 className="mt-4 text-lg font-medium text-white">Expert-Led</h3>
-            <p className="mt-2 text-sm text-indigo-200">Creative Direction from Experienced Branding Experts</p>
+        
+        <div className="mt-10 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-6 min-w-max px-4 sm:px-0">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-indigo-800 p-6 rounded-lg text-center flex-shrink-0 w-64 sm:w-72 hover:bg-indigo-700 transition-all duration-300 hover:scale-105 hover:shadow-xl group cursor-pointer"
+                >
+                  <div className="mx-auto h-12 w-12 text-white group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="h-12 w-12" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-medium text-white group-hover:text-indigo-100 transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-indigo-200 group-hover:text-indigo-100 transition-colors duration-300">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-          <div className="bg-indigo-800 p-6 rounded-lg text-center">
-            <div className="mx-auto h-12 w-12 text-white">
-              <svg className="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </div>
-            <h3 className="mt-4 text-lg font-medium text-white">Custom Scripts</h3>
-            <p className="mt-2 text-sm text-indigo-200">Custom Storyboarding & Script Assistance</p>
-          </div>
-          <div className="bg-indigo-800 p-6 rounded-lg text-center">
-            <div className="mx-auto h-12 w-12 text-white">
-              <svg className="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14m-6 0v5m-4-5v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <h3 className="mt-4 text-lg font-medium text-white">Cinematic Gear</h3>
-            <p className="mt-2 text-sm text-indigo-200">High-End Cameras, Lighting & Editing</p>
-          </div>
-          <div className="bg-indigo-800 p-6 rounded-lg text-center">
-            <div className="mx-auto h-12 w-12 text-white">
-              <svg className="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="mt-4 text-lg font-medium text-white">Fast Delivery</h3>
-            <p className="mt-2 text-sm text-indigo-200">Flexible Scheduling & Quick Turnaround</p>
-          </div>
-          <div className="bg-indigo-800 p-6 rounded-lg text-center">
-            <div className="mx-auto h-12 w-12 text-white">
-              <svg className="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.5-3.5a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="mt-4 text-lg font-medium text-white">Trusted Globally</h3>
-            <p className="mt-2 text-sm text-indigo-200">Trusted by Over 300+ Brands Globally</p>
-          </div>
+        </div>
+        
+        {/* Mobile responsive grid fallback for smaller screens */}
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:hidden">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div
+                key={index}
+                className="bg-indigo-800 p-6 rounded-lg text-center hover:bg-indigo-700 transition-all duration-300 hover:scale-105 hover:shadow-xl group cursor-pointer"
+              >
+                <div className="mx-auto h-12 w-12 text-white group-hover:scale-110 transition-transform duration-300">
+                  <IconComponent className="h-12 w-12" />
+                </div>
+                <h3 className="mt-4 text-lg font-medium text-white group-hover:text-indigo-100 transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-indigo-200 group-hover:text-indigo-100 transition-colors duration-300">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

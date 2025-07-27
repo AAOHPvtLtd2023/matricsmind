@@ -31,6 +31,7 @@ const navItems = [
   },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
+  { name: "Course", href: "/course" },
 ];
 
 export default function Header1() {

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <FloatingBackground />
+        {/* <FloatingBackground /> */}
         {!hideHeader && <Header1 />}
         <main className={hideHeader ? "px-4" : "pt-24 px-4"}>
           {children}

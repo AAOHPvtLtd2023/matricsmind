@@ -73,7 +73,7 @@ export default function CompanyMilestones() {
   }, [isVisible]);
 
   return (
-    <div ref={sectionRef} className="min-h-screen bg-gray-50 py-16 px-4 w-[90vw] sm:w-[80vw] md:w-[90vw] lg:w-[90vw] mx-auto justify-self-center border rounded">
+    <div ref={sectionRef} className="min-h-[screen-10vh] bg-gray-50 py-16 px-4 w-[90vw] sm:w-[80vw] md:w-[90vw] lg:w-[90vw] mx-auto justify-self-center border rounded">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16">
@@ -81,12 +81,12 @@ export default function CompanyMilestones() {
             <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">
               Trusted Worldwide
             </p>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#ff9100] leading-tight">
               Design and web solution
             </h1>
           </div>
           
-          <div className="lg:w-1/2 lg:pl-12">
+          <div className="lg:w-1/2 lg:pl-12 self-end text-right ">
             <p className="text-lg text-gray-700 leading-relaxed">
               <span className="font-semibold text-gray-900">Collaborating with Visionaries Across</span>
               <br />
@@ -107,7 +107,7 @@ export default function CompanyMilestones() {
             >
               {/* Large Number */}
               <div className="mb-8">
-                <span className="text-5xl lg:text-6xl font-bold text-gray-900 block leading-none">
+                <span className="text-5xl lg:text-6xl font-bold text-[#1c3784] block leading-none">
                   {counters[index].toLocaleString()}{stat.suffix}
                 </span>
               </div>

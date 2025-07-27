@@ -17,7 +17,7 @@ export default function HeroSectionWithGirl() {
               🤝
             </span>{" "}
             let us take your
-            <FlipLink href="https://x.com/guri_who">business</FlipLink> to the
+            <FlipLink href="https://x.com/guri_who" className="text-[#ff9100]">business</FlipLink> to the
             next level!
           </h1>
 

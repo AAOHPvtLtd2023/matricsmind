@@ -15,7 +15,6 @@ export default function AboutPage() {
   return (
     <section className="animate-fadeIn min-h-screen">
       <AboutUs1 />
-      <CountryCard />
 
       <ComparisionTable />
       <HeroSectionWithGirl />

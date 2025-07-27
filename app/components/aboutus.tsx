@@ -14,6 +14,7 @@ import {
   Rocket,
   Target,
 } from 'lucide-react';
+import CountryCard from '../about/Components/CountryScroll';
 
 interface AboutUsProps {
   title?: string;
@@ -167,6 +168,8 @@ export default function AboutUs1() {
             </motion.div>
           </motion.div>
         </div>
+
+        <CountryCard/>
 
         <div ref={valuesRef} className="mb-24">
           <motion.div
