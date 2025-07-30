@@ -1,24 +1,33 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+"use client";
 
-// Your ContainerTextFlip component (imported)
+import { useState, useEffect, useRef, ReactNode, JSX } from "react";
+import { motion, Variants } from "framer-motion";
 import React, { useId } from "react";
 
-function cn(...classes) {
-  return classes.filter(Boolean).join(' ');
+// Utility function to join classNames
+function cn(...classes: (string | undefined | false | null)[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+interface ContainerTextFlipProps {
+  words?: string[];
+  interval?: number;
+  className?: string;
+  textClassName?: string;
+  animationDuration?: number;
 }
 
 export function ContainerTextFlip({
   words = ["better", "modern", "beautiful", "awesome"],
   interval = 3000,
   className,
-  textClassName="",
+  textClassName = "",
   animationDuration = 700,
-}) {
+}: ContainerTextFlipProps) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [width, setWidth] = useState(100);
-  const textRef = React.useRef(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   const updateWidthForWord = () => {
     if (textRef.current) {
@@ -35,7 +44,6 @@ export function ContainerTextFlip({
     const intervalId = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, interval);
-
     return () => clearInterval(intervalId);
   }, [words, interval]);
 
@@ -49,7 +57,7 @@ export function ContainerTextFlip({
         "relative inline-block rounded-lg pt-2 pb-3 text-center text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white",
         "[background:linear-gradient(to_bottom,rgba(168,85,247,0.8),rgba(236,72,153,0.8))]",
         "shadow-[inset_0_-1px_rgba(168,85,247,0.3),inset_0_0_0_1px_rgba(168,85,247,0.4),_0_4px_8px_rgba(168,85,247,0.2)]",
-        className,
+        className
       )}
       key={words[currentWordIndex]}
     >
@@ -87,18 +95,15 @@ export function ContainerTextFlip({
   );
 }
 
-export default function ResponsiveHeroSection() {
+export default function ResponsiveHeroSection(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
+    const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -109,38 +114,38 @@ export default function ResponsiveHeroSection() {
     },
   };
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
       y: 30,
-      filter: "blur(10px)"
+      filter: "blur(10px)",
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       filter: "blur(0px)",
       transition: {
         duration: 0.8,
-        ease: "easeOut"
-      }
+        ease: [0.42, 0, 1, 1], // Cubic bezier format
+      },
     },
   };
 
-  const flipComponentVariants = {
-    hidden: { 
-      opacity: 0, 
+  const flipComponentVariants: Variants = {
+    hidden: {
+      opacity: 0,
       y: 20,
-      scale: 0.9
+      scale: 0.9,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         duration: 1,
         delay: 0.8,
-        ease: "easeOut"
-      }
+        ease: [0.42, 0, 1, 1],
+      },
     },
   };
 
@@ -155,23 +160,23 @@ export default function ResponsiveHeroSection() {
         <motion.span variants={itemVariants} className="inline-block">
           Make your websites look
         </motion.span>
-        
-        <motion.div 
+
+        <motion.div
           variants={flipComponentVariants}
           className="inline-block mx-2 sm:mx-4"
         >
-          <ContainerTextFlip 
+          <ContainerTextFlip
             words={["stunning", "modern", "beautiful", "amazing", "professional"]}
             interval={2500}
             className="mx-2 sm:mx-4"
             animationDuration={600}
           />
         </motion.div>
-        
+
         <br className="hidden sm:block" />
-        
-        <motion.span 
-          variants={itemVariants} 
+
+        <motion.span
+          variants={itemVariants}
           className="block sm:inline mt-2 sm:mt-0"
         >
           and captivating
