@@ -7,18 +7,20 @@ export const TextScrollBox = ({
   className = "",
   containerClassName = "",
 }) => {
-  // Split text and wrap each word in a pill
-  const wrappedText = text.split(" ").map((word, i) => (
-    <span
-      key={i}
-      className={`inline-block px-4 py-1 mx-1 rounded-full border border-yellow-400 text-yellow-300 text-5xl font-medium whitespace-nowrap ${itemClassName}`}
-    >
-      {word}
-    </span>
-  ));
+  const wrappedText = text
+    .split("\n") // split by line, not space
+    .filter(line => line.trim() !== "") // remove empty lines
+    .map((line, i) => (
+      <span
+        key={i}
+        className={`inline-block px-4 py-1 mx-1 rounded-full border border-yellow-400 text-yellow-300 text-5xl font-medium whitespace-nowrap ${itemClassName}`}
+      >
+        {line.trim()}
+      </span>
+    ));
 
   return (
-    <div>
+    <div className={containerClassName}>
       <TextScroll default_velocity={default_velocity} className={className}>
         {wrappedText}
       </TextScroll>

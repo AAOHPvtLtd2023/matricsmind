@@ -16,9 +16,9 @@ export default function HighlightHeading() {
     <section className="w-full px-6 py-12 bg-[#0B0E1C]">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-light text-white leading-tight relative inline-block">
-          <span>Who Can Join </span>
+          <span>From Strategy to Screens — </span>
           <span className="relative inline-block text-yellow-400 font-medium">
-            Design Like a Pro 2.0
+            We Create What Brands Need
             <svg
               ref={pathRef}
               viewBox="0 0 260 20"
