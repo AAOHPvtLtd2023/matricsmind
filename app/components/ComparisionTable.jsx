@@ -1,219 +1,190 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Check, X, Zap, Users, Palette, Cog, MapPin, Rocket } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Zap,
+  Users,
+  Palette,
+  Cog,
+  MapPin,
+  Rocket,
+  Check,
+  X,
+} from "lucide-react";
 
-const tableItems = [
+const data = [
   {
     feature: "Focus",
-    icon: <Zap className="w-5 h-5" />,
+    icon: <Zap className="w-6 h-6 text-[#1c3784]" />,
     others: "General services",
     we: "Specialized in branding & web design",
   },
   {
     feature: "Client Approach",
-    icon: <Users className="w-5 h-5" />,
+    icon: <Users className="w-6 h-6 text-[#1c3784]" />,
     others: "One-size-fits-all",
     we: "Personalized & aligned with latest industry trends",
   },
   {
     feature: "Design Philosophy",
-    icon: <Palette className="w-5 h-5" />,
+    icon: <Palette className="w-6 h-6 text-[#1c3784]" />,
     others: "Uses generic templates",
     we: "Custom, creative, and brand-first design",
   },
   {
     feature: "Technical Process",
-    icon: <Cog className="w-5 h-5" />,
+    icon: <Cog className="w-6 h-6 text-[#1c3784]" />,
     others: "Limited or surface-level",
     we: "In-depth, collaborative & partnership-oriented",
   },
   {
     feature: "Project Planning",
-    icon: <MapPin className="w-5 h-5" />,
+    icon: <MapPin className="w-6 h-6 text-[#1c3784]" />,
     others: "No clear direction",
     we: "Structured roadmap with milestones",
   },
   {
     feature: "Project Execution",
-    icon: <Rocket className="w-5 h-5" />,
+    icon: <Rocket className="w-6 h-6 text-[#1c3784]" />,
     others: "Reactive, unorganized",
     we: "Efficient, timely, and agile execution",
   },
 ];
 
-// Enhanced animations
-const containerVariant = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const rowVariant = {
-  hidden: { opacity: 0, x: -20 },
+// Animation Variants
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
     opacity: 1,
-    x: 0,
-    transition: { 
+    y: 0,
+    transition: {
       delay: i * 0.1,
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut",
     },
   }),
 };
 
-const headerVariant = {
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-};
+export default function ComparisonSection() {
+  const [isMobile, setIsMobile] = useState(false);
 
-export default function ComparisonTable() {
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 py-20">
-      {/* Header Section */}
+    <section className="max-w-7xl mx-auto px-4 py-20">
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16"
+        className="text-center mb-10"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Why Choose Us?
-          </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#1c3784] mb-4">
+          Why Choose Us?
         </h2>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          See how we stand apart from the competition with our unique approach to design and development
+        <p className="text-lg text-[#1c3784] max-w-3xl mx-auto">
+          See how we stand apart from the competition with our unique approach.
         </p>
       </motion.div>
 
-      {/* Comparison Table */}
-      <motion.div
-        variants={containerVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative"
-      >
-        {/* Background Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-3xl blur-xl" />
-        
-        <div className="relative bg-gradient-to-br from-gray-900/80 via-black/80 to-gray-900/80 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-          {/* Header */}
+      {/* Responsive Layout Switch */}
+      <AnimatePresence mode="wait">
+        {isMobile ? (
           <motion.div
-            variants={headerVariant}
-            className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 border-b border-white/10 backdrop-blur-sm"
+            key="card"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="grid gap-8 sm:grid-cols-2"
           >
-            <div className="grid grid-cols-12 gap-4 p-6">
-              <div className="col-span-12 md:col-span-4 flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white">Features</h3>
-              </div>
-              <div className="col-span-12 md:col-span-4 flex items-center justify-center space-x-2">
-                <X className="w-5 h-5 text-red-400" />
-                <h3 className="text-lg font-bold text-red-400">Others</h3>
-              </div>
-              <div className="col-span-12 md:col-span-4 flex items-center justify-center space-x-2">
-                <Check className="w-5 h-5 text-green-400" />
-                <h3 className="text-lg font-bold text-green-400">We Deliver</h3>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Table Body */}
-          <div className="divide-y divide-white/5">
-            {tableItems.map((item, index) => (
+            {data.map((item, index) => (
               <motion.div
                 key={index}
                 custom={index}
-                variants={rowVariant}
-                whileHover={{ 
-                  scale: 1.01,
-                  backgroundColor: "rgba(255, 255, 255, 0.02)",
-                  transition: { duration: 0.2 }
-                }}
-                className="grid grid-cols-12 gap-4 p-6 group transition-all duration-300"
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className="p-5 border rounded-2xl bg-white shadow-sm hover:shadow-md hover:scale-[1.02] transition duration-300"
               >
-                {/* Feature Column */}
-                <div className="col-span-12 md:col-span-4 flex items-center space-x-4">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300"
-                  >
+                <div className="flex flex-col items-center text-center gap-2 mb-4">
+                  <div className="w-12 h-12 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
                     {item.icon}
-                  </motion.div>
-                  <h4 className="font-semibold text-white text-lg group-hover:text-cyan-300 transition-colors duration-300">
-                    {item.feature}
-                  </h4>
+                  </div>
+                  <h3 className="text-[#1c3784] font-bold text-lg">{item.feature}</h3>
                 </div>
 
-                {/* Others Column */}
-                <div className="col-span-12 md:col-span-4 flex items-center justify-center">
-                  <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-4 w-full text-center group-hover:border-red-500/40 transition-all duration-300">
-                    <div className="flex items-center justify-center space-x-2 mb-2">
-                      <X className="w-4 h-4 text-red-400" />
-                      <span className="text-xs text-red-300 font-medium uppercase tracking-wide">Typical Approach</span>
-                    </div>
-                    <p className="text-red-200 text-sm leading-relaxed">{item.others}</p>
+                <div className="bg-[#f3f4f6] rounded-lg p-4 mb-3">
+                  <div className="flex justify-center items-center gap-2 text-sm text-[#1c3784] font-medium">
+                    <X className="w-4 h-4" />
+                    Others
                   </div>
+                  <p className="text-center text-[#1c3784] text-sm mt-1">{item.others}</p>
                 </div>
 
-                {/* We Column */}
-                <div className="col-span-12 md:col-span-4 flex items-center justify-center">
-                  <div className="bg-green-950/30 border border-green-500/20 rounded-xl p-4 w-full text-center group-hover:border-green-500/40 transition-all duration-300">
-                    <div className="flex items-center justify-center space-x-2 mb-2">
-                      <Check className="w-4 h-4 text-green-400" />
-                      <span className="text-xs text-green-300 font-medium uppercase tracking-wide">Our Way</span>
-                    </div>
-                    <p className="text-green-200 text-sm leading-relaxed font-medium">{item.we}</p>
+                <div className="bg-[#ff9100] rounded-lg p-4 text-white">
+                  <div className="flex justify-center items-center gap-2 text-sm font-medium">
+                    <Check className="w-4 h-4" />
+                    We Deliver
                   </div>
+                  <p className="text-center text-sm font-medium mt-1">{item.we}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-         
-        </div>
-
-        {/* Floating Elements */}
-        <motion.div
-          animate={{
-            y: [-10, 10, -10],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{
-            y: [10, -10, 10],
-            rotate: [0, -5, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-          className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl"
-        />
-      </motion.div>
-    </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="table"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <table className="w-full text-sm border border-[#1c3784]/10 overflow-hidden rounded-lg">
+              <thead className="bg-[#f3f4f6] text-[#1c3784] uppercase text-left">
+                <tr>
+                  <th className="p-4 font-bold">Feature</th>
+                  <th className="p-4 font-bold text-center">Others</th>
+                  <th className="p-4 font-bold text-center">We Deliver</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <motion.tr
+                    key={index}
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.2 }}
+                    className="border-t border-[#1c3784]/10 hover:bg-gray-50 transition"
+                  >
+                    <td className="p-4 flex items-center gap-3 text-[#1c3784] font-medium">
+                      <div className="w-9 h-9 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
+                        {item.icon}
+                      </div>
+                      {item.feature}
+                    </td>
+                    <td className="p-4 text-center text-[#1c3784] bg-[#f9fafb]">
+                      {item.others}
+                    </td>
+                    <td className="p-4 text-center text-white bg-[#ff9100] font-medium">
+                      {item.we}
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 }

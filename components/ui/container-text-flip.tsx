@@ -1,30 +1,20 @@
-"use client";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-import React, { useState, useEffect, useId } from "react";
+// Your ContainerTextFlip component (imported)
+import React, { useId } from "react";
 
-import { motion } from "motion/react";
-import { cn } from "../../lib/utils";
-
-export interface ContainerTextFlipProps {
-  /** Array of words to cycle through in the animation */
-  words?: string[];
-  /** Time in milliseconds between word transitions */
-  interval?: number;
-  /** Additional CSS classes to apply to the container */
-  className?: string;
-  /** Additional CSS classes to apply to the text */
-  textClassName?: string;
-  /** Duration of the transition animation in milliseconds */
-  animationDuration?: number;
+function cn(...classes) {
+  return classes.filter(Boolean).join(' ');
 }
 
 export function ContainerTextFlip({
   words = ["better", "modern", "beautiful", "awesome"],
   interval = 3000,
   className,
-  textClassName,
+  textClassName="",
   animationDuration = 700,
-}: ContainerTextFlipProps) {
+}) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [width, setWidth] = useState(100);
@@ -32,22 +22,18 @@ export function ContainerTextFlip({
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      // Add some padding to the text width (30px on each side)
-      // @ts-ignore
       const textWidth = textRef.current.scrollWidth + 30;
       setWidth(textWidth);
     }
   };
 
   useEffect(() => {
-    // Update width whenever the word changes
     updateWidthForWord();
   }, [currentWordIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-      // Width will be updated in the effect that depends on currentWordIndex
     }, interval);
 
     return () => clearInterval(intervalId);
@@ -60,11 +46,9 @@ export function ContainerTextFlip({
       animate={{ width }}
       transition={{ duration: animationDuration / 2000 }}
       className={cn(
-        "relative inline-block rounded-lg pt-2 pb-3 text-center text-4xl font-bold text-black md:text-7xl dark:text-white",
-        "[background:linear-gradient(to_bottom,#f3f4f6,#e5e7eb)]",
-        "shadow-[inset_0_-1px_#d1d5db,inset_0_0_0_1px_#d1d5db,_0_4px_8px_#d1d5db]",
-        "dark:[background:linear-gradient(to_bottom,#374151,#1f2937)]",
-        "dark:shadow-[inset_0_-1px_#10171e,inset_0_0_0_1px_hsla(205,89%,46%,.24),_0_4px_8px_#00000052]",
+        "relative inline-block rounded-lg pt-2 pb-3 text-center text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white",
+        "[background:linear-gradient(to_bottom,rgba(168,85,247,0.8),rgba(236,72,153,0.8))]",
+        "shadow-[inset_0_-1px_rgba(168,85,247,0.3),inset_0_0_0_1px_rgba(168,85,247,0.4),_0_4px_8px_rgba(168,85,247,0.2)]",
         className,
       )}
       key={words[currentWordIndex]}
@@ -100,5 +84,99 @@ export function ContainerTextFlip({
         </motion.div>
       </motion.div>
     </motion.p>
+  );
+}
+
+export default function ResponsiveHeroSection() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      filter: "blur(10px)"
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    },
+  };
+
+  const flipComponentVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1,
+        delay: 0.8,
+        ease: "easeOut"
+      }
+    },
+  };
+
+  return (
+    <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+        className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl"
+      >
+        <motion.span variants={itemVariants} className="inline-block">
+          Make your websites look
+        </motion.span>
+        
+        <motion.div 
+          variants={flipComponentVariants}
+          className="inline-block mx-2 sm:mx-4"
+        >
+          <ContainerTextFlip 
+            words={["stunning", "modern", "beautiful", "amazing", "professional"]}
+            interval={2500}
+            className="mx-2 sm:mx-4"
+            animationDuration={600}
+          />
+        </motion.div>
+        
+        <br className="hidden sm:block" />
+        
+        <motion.span 
+          variants={itemVariants} 
+          className="block sm:inline mt-2 sm:mt-0"
+        >
+          and captivating
+        </motion.span>
+      </motion.div>
+    </section>
   );
 }

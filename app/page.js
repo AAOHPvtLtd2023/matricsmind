@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from 'react';
 import MarqueeSection from "./components/BrandMarquee";
 import BrandMarquee from "./components/BrandMarquee";
 import ElasticCarousel from "./components/ElasticCarousel";
@@ -28,15 +29,35 @@ import { motion } from "framer-motion";
 import CardFalling from "./services/components/CardFalling.jsx";
 
 export default function HomePage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
-      
       <main className="pt-24 px-4">
-        <section className="flex flex-col items-center justify-center gap-4 py-16 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-            Make your websites look <ContainerTextFlip /> <br />
-          </h1>
-        </section>
+        <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
+      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl">
+        <span className={`inline-block transition-all duration-800 ease-out ${
+          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
+        }`}>
+          Make your websites look
+        </span>{' '}
+        <ContainerTextFlip isVisible={isVisible} />{' '}
+        <br className="hidden sm:block" />
+        <span className={`block sm:inline transition-all duration-800 delay-300 ease-out ${
+          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
+        }`}>
+          and professional
+        </span>
+      </h1>
+    </section>
         <ElasticCarousel />
         <BrandMarquee />
         <CardTest />
