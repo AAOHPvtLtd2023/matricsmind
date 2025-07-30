@@ -11,31 +11,32 @@ import Typewriter from "../../components/ui/typewriter";
 
 const faqs = [
   {
-    question: "How does Raven approach the design process?",
+    question: "What services does your company offer?",
     answer:
-      "Raven follows a comprehensive design process that includes research, ideation, prototyping, testing, and iteration. Each project begins with understanding user needs and business goals, followed by creating innovative solutions that balance functionality with aesthetic appeal.",
+      "We specialize in branding, web development, CGI & VFX, performance marketing, graphic design, and 2D & 3D motion videos. Our tailored solutions are designed to help your business stand out and reach its goals.",
   },
   {
-    question: "What types of products does Raven specialize in designing?",
+    question: "How many clients have you worked with?",
     answer:
-      "Raven specializes in digital products, including websites, mobile apps, and branding systems.",
+      "We have successfully partnered with over 300 clients across the globe, delivering more than 1000 creative projects that are customized to meet each client’s unique needs.",
   },
   {
-    question: "Can Raven help with prototyping and testing product ideas?",
+    question: "What regions do you serve?",
     answer:
-      "Absolutely. Raven can prototype, test, and iterate based on real user feedback to validate your ideas early.",
+      "While we provide services globally, our main focus is on the GCC region. We have delivered branding and web development solutions in 6 different countries.",
   },
   {
-    question: "How does Raven ensure designs are ready for manufacturing?",
+    question: "What is the expertise of your team?",
     answer:
-      "We collaborate with manufacturers to align design specs with real-world constraints, ensuring feasibility and precision.",
+      "Our team consists of professionals with diverse expertise in branding, web development, design, and marketing, all dedicated to enhancing your brand experience.",
   },
   {
-    question: "Is Raven's design process sustainable?",
+    question: "What sets your web design services apart?",
     answer:
-      "Yes, Raven incorporates sustainable practices from ideation to execution, promoting long-lasting and eco-friendly solutions.",
+      "More than just designers, we are problem solvers. We collaborate closely with visionaries across industries to deliver solutions that are uniquely tailored to your brand, ensuring measurable results and global trust.",
   },
 ];
+
 
 export default function FaqSection() {
   return (

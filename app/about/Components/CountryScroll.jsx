@@ -5,12 +5,74 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 
 const cards = [
-  { id: 1, title: "Design Thinking", image: "/images/design.jpg", href: "/course/design" },
-  { id: 2, title: "Frontend Magic", image: "/images/frontend.jpg", href: "/course/frontend" },
-  { id: 3, title: "Backend Power", image: "/images/backend.jpg", href: "/course/backend" },
-  { id: 4, title: "AI Revolution", image: "/images/ai.jpg", href: "/course/ai" },
-  { id: 5, title: "Cloud Systems", image: "/images/cloud.jpg", href: "/course/cloud" },
+  {
+    id: 1,
+    title: "UAE",
+    href: "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_UAE",
+  },
+  {
+    id: 2,
+    title: "Saudi Arabia",
+    href: "https://en.wikipedia.org/wiki/Saudi_Arabia",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_SAUDI",
+  },
+  {
+    id: 3,
+    title: "Qatar",
+    href: "https://en.wikipedia.org/wiki/Qatar",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_QATAR",
+  },
+  {
+    id: 4,
+    title: "Bahrain",
+    href: "https://en.wikipedia.org/wiki/Bahrain",
+    image: "https://drive.google.com/file/d/1ewCowC_vz7lLgBIXs4GSnMgL2IqQo9_2",
+  },
+  {
+    id: 5,
+    title: "Kuwait",
+    href: "https://en.wikipedia.org/wiki/Kuwait",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_KUWAIT",
+  },
+  {
+    id: 6,
+    title: "Oman",
+    href: "https://en.wikipedia.org/wiki/Oman",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_OMAN",
+  },
+  {
+    id: 7,
+    title: "Canada",
+    href: "https://en.wikipedia.org/wiki/Canada",
+    image: "https://drive.google.com/file/d/15dM7u7py_IxSUM6LDPGuUvDg8yNF1uGk/view?usp=drive_link",
+  },
+  {
+    id: 8,
+    title: "India",
+    href: "https://en.wikipedia.org/wiki/India",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_INDIA",
+  },
+  {
+    id: 9,
+    title: "Australia",
+    href: "https://en.wikipedia.org/wiki/Australia",
+    image: "https://drive.google.com/file/d/1tbIqtDb1a9wVzGKjrtrAjNl2S7_Ni4C3/view?usp=drive_link",
+  },
+  {
+    id: 10,
+    title: "UK",
+    href: "https://en.wikipedia.org/wiki/United_Kingdom",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_UK",
+  },
+  {
+    id: 11,
+    title: "USA",
+    href: "https://en.wikipedia.org/wiki/United_States",
+    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_USA",
+  },
 ];
+
 
 export default function CountryCard() {
   const baseX = useMotionValue(0);
@@ -84,7 +146,7 @@ export default function CountryCard() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-base sm:text-lg font-semibold text-center text-gray-800">
+                <h3 className="text-base sm:text-lg font-semibold text-center text-white">
                   {card.title}
                 </h3>
               </div>
