@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function CompanyMilestones() {
@@ -28,7 +30,6 @@ export default function CompanyMilestones() {
     }
   ];
 
-  // Intersection Observer to trigger animation when component is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,11 +47,10 @@ export default function CompanyMilestones() {
     return () => observer.disconnect();
   }, []);
 
-  // Counter animation
   useEffect(() => {
     if (isVisible) {
       stats.forEach((stat, index) => {
-        const duration = 2000; // 2 seconds
+        const duration = 2000;
         const steps = 60;
         const increment = stat.number / steps;
         let current = 0;
@@ -61,11 +61,11 @@ export default function CompanyMilestones() {
             current = stat.number;
             clearInterval(timer);
           }
-          
+
           setCounters(prev => {
-            const newCounters = [...prev];
-            newCounters[index] = Math.floor(current);
-            return newCounters;
+            const updated = [...prev];
+            updated[index] = Math.floor(current);
+            return updated;
           });
         }, duration / steps);
       });
@@ -73,55 +73,56 @@ export default function CompanyMilestones() {
   }, [isVisible]);
 
   return (
-    <div ref={sectionRef} className="min-h-[screen-10vh] bg-gray-50 py-16 px-4 w-[90vw] sm:w-[80vw] md:w-[90vw] lg:w-[90vw] mx-auto justify-self-center border rounded">
+    <section
+      ref={sectionRef}
+      className="min-h-[10vh] bg-gray-50 py-16 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full mx-auto"
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-16">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-6">
+          <div className="lg:w-1/2">
+            <p className="text-sm text-gray-600 mb-3 font-medium tracking-wide">
               Trusted Worldwide
             </p>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#ff9100] leading-tight">
-              Design and web solution
-            </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#ff9100] leading-snug">
+              Design and Web Solution
+            </h2>
           </div>
-          
-          <div className="lg:w-1/2 lg:pl-12 self-end text-right ">
-            <p className="text-lg text-gray-700 leading-relaxed">
+
+          <div className="lg:w-1/2 lg:pl-12 text-left lg:text-right">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
               <span className="font-semibold text-gray-900">Collaborating with Visionaries Across</span>
-              <br />
+              <br className="hidden sm:block" />
               Industries for Innovative Solutions.
             </p>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-500 transform ${
+              className={`bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-500 transform ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Large Number */}
-              <div className="mb-8">
-                <span className="text-5xl lg:text-6xl font-bold text-[#1c3784] block leading-none">
+              {/* Stat Number */}
+              <div className="mb-6 sm:mb-8">
+                <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1c3784] block leading-none">
                   {counters[index].toLocaleString()}{stat.suffix}
                 </span>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                 {stat.description}
               </p>
             </div>
           ))}
         </div>
-
-
       </div>
-    </div>
+    </section>
   );
 }

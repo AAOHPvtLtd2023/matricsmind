@@ -33,23 +33,29 @@ export default function websitePage() {
       </AuroraBackground>
 
       <InfiniteMovingCards
-        className="mt-8 cursor-pointer flex self-center justify-self-center"
-        items={[
-          {
-            image: "/team/alex.jpg", // path to image in public folder
-            quote: "This platform changed how we work!",
-            name: "Alex Johnson",
-            title: "CEO, FutureCorp",
-          },
-          {
-            image: "/team/sarah.jpg",
-            quote: "Intuitive, powerful, and scalable.",
-            name: "Sarah Lee",
-            title: "Product Manager, InnovateX",
-          },
-        ]}
-        itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-      />
+  className="mt-8 mx-auto"
+  items={[
+    {
+      image: "/team/alex.jpg",
+      quote: "This platform changed how we work!",
+      name: "Alex Johnson",
+      title: "CEO, FutureCorp",
+    },
+    {
+      image: "/team/sarah.jpg",
+      quote: "Intuitive, powerful, and scalable.",
+      name: "Sarah Lee",
+      title: "Product Manager, InnovateX",
+    },
+    {
+      image: "/team/michael.jpg",
+      quote: "We saved weeks of development time.",
+      name: "Michael Tan",
+      title: "CTO, DevLoop",
+    },
+  ]}
+/>
+
       <FancyQuoteButton />
       <Gallery />
       <WebsiteServiceCards />

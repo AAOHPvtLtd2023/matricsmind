@@ -1,7 +1,7 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "../../lib/utils";
-import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -10,60 +10,36 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }) => {
-  const containerRef = React.useRef(null);
-  const scrollerRef = React.useRef(null);
+  const containerRef = useRef(null);
+  const scrollerRef = useRef(null);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
-    addAnimation();
-  }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
+    if (!containerRef.current || !scrollerRef.current) return;
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
+    const scrollerContent = Array.from(scrollerRef.current.children);
+    scrollerContent.forEach((item) => {
+      const cloned = item.cloneNode(true);
+      scrollerRef.current.appendChild(cloned);
+    });
 
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
-    }
-  };
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
-      }
-    }
-  };
+    containerRef.current.style.setProperty(
+      "--animation-direction",
+      direction === "left" ? "forwards" : "reverse"
+    );
+
+    const duration = speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
+    containerRef.current.style.setProperty("--animation-duration", duration);
+
+    setStart(true);
+  }, [direction, speed]);
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden",
+        "[mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
         className
       )}
     >
@@ -78,37 +54,27 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="group relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] transition-all duration-300 hover:shadow-lg"
+            className="group relative w-[85vw] sm:w-[250px] md:w-[380px] shrink-0 rounded-xl border border-zinc-200 bg-gradient-to-b from-[#fafafa] to-[#f5f5f5] px-4 py-4 dark:border-zinc-700 dark:from-zinc-800 dark:to-zinc-900 transition-all duration-300 hover:shadow-xl"
           >
             <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              />
-
-              {/* 🖼️ Scalable image */}
               {item.image && (
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-48 object-cover rounded-lg mb-4 transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-36 object-cover rounded-lg mb-3 transition-transform duration-300 group-hover:scale-105"
                 />
               )}
 
-              {/* 💬 Quote */}
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
+              <p className="text-sm text-neutral-800 dark:text-gray-100 mb-3">
                 {item.quote}
-              </span>
+              </p>
 
-              {/* 🧑 Name & Title */}
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400 transition-all duration-300 group-hover:font-semibold">
-                    {item.name}
-                  </span>
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400 transition-all duration-300 group-hover:font-medium">
-                    {item.title}
-                  </span>
+              <div className="flex flex-col gap-0.5 mt-4">
+                <span className="text-sm font-medium text-neutral-700 dark:text-gray-300">
+                  {item.name}
+                </span>
+                <span className="text-xs text-neutral-500 dark:text-gray-500">
+                  {item.title}
                 </span>
               </div>
             </blockquote>
