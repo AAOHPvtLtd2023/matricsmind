@@ -19,11 +19,11 @@ export default function BrandMarquee() {
       {/* Heading */}
       <div className="text-center mb-8">
         <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#333] to-[#111] tracking-tight">
-          Visual Design Made Easy
+         Your Industry, Our Innovation
         </h1>
 
         <p className="text-sm mt-2" style={{ color: "#cef133" }}>
-          Powering innovation for global brands
+          Empowering Every Industry Through Smart Innovation
         </p>
       </div>
 

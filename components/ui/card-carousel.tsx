@@ -41,15 +41,15 @@ const CardCarousel: React.FC<CarouselProps> = ({
             className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
           >
             <SparklesIcon className="w-4 h-4 mr-1" />
-            Featured Projects
+            
           </Badge>
 
           <div className="mt-16 mb-4 text-center">
             <h2 className="text-4xl font-bold tracking-tight text-[#cef133]">
-              Project Carousel
+              A Journey of Possibilities
             </h2>
             <p className="text-white/70 text-sm mt-1">
-              Discover interactive projects with smooth transitions
+             Multi-Industry Marketing Excellence
             </p>
           </div>
 

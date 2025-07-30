@@ -47,14 +47,14 @@ export default function HomePage() {
         <span className={`inline-block transition-all duration-800 ease-out ${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
         }`}>
-          Make your websites look
+          Across Boundaries. Beyond Limits. Built with Matrics Mind
         </span>{' '}
         <ContainerTextFlip isVisible={isVisible} />{' '}
         <br className="hidden sm:block" />
         <span className={`block sm:inline transition-all duration-800 delay-300 ease-out ${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
         }`}>
-          and professional
+          We served over 50+ clients all over the world.
         </span>
       </h1>
     </section>

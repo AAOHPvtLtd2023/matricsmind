@@ -18,7 +18,7 @@ interface ContainerTextFlipProps {
 }
 
 export function ContainerTextFlip({
-  words = ["better", "modern", "beautiful", "awesome"],
+  words = ["UAE", "Saudi","Arabia", "Qatar", "Bahrain" , "Kuwait", "Oman", "CANADA", "INDIA", "Australia", "UK", "USA"],
   interval = 3000,
   className,
   textClassName = "",
