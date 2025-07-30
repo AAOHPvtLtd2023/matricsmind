@@ -51,7 +51,7 @@ export default function HomePage() {
         </span>{' '}
         <ContainerTextFlip isVisible={isVisible} />{' '}
         <br className="hidden sm:block" />
-        <span className={`block sm:inline transition-all duration-800 delay-300 ease-out ${
+        <span className={`block sm:inline transition-all duration-800 delay-300 ease-out text-xl ${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
         }`}>
           We served over 50+ clients all over the world.

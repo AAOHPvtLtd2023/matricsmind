@@ -27,30 +27,33 @@ export default function HeroSectionWithGirl() {
             <Button className="rounded-full px-6 py-3 text-base font-semibold bg-[#001025] text-white hover:bg-[#001025]/90 w-full sm:w-auto">
               About Us
             </Button>
-            <Button
-              variant="outline"
-              className="rounded-full px-6 py-3 text-base font-semibold border-[#001025] text-[#001025] hover:bg-[#001025] hover:text-white flex items-center justify-center gap-2 w-full sm:w-auto"
+            <a
+              href="https://www.linkedin.com/in/priyanka-m-10b844245/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Linkedin className="w-5 h-5" />
-              Connect on LinkedIn
-            </Button>
+              <Button
+                variant="outline"
+                className="rounded-full px-6 py-3 text-base font-semibold border-[#001025] text-[#fff] hover:bg-[#001025] hover:text-white flex items-center justify-center gap-2 w-full sm:w-auto"
+              >
+                <Linkedin className="w-5 h-5" />
+                Connect on LinkedIn
+              </Button>
+            </a>
           </div>
         </div>
 
         {/* Right Image */}
         <div className="flex justify-center md:justify-end">
-          <div
-  className="w-[220px] h-[280px] sm:w-[280px] sm:h-[360px] md:w-[360px] md:h-[460px] overflow-hidden shadow-xl bg-white rounded-t-full"
->
-  <Image
-    src="/your-image.jpg"
-    alt="Team Member"
-    width={500}
-    height={600}
-    className="object-cover w-full h-full"
-  />
-</div>
-
+          <div className="w-[220px] h-[280px] sm:w-[280px] sm:h-[360px] md:w-[360px] md:h-[460px] overflow-hidden shadow-xl bg-white rounded-t-full">
+            <Image
+              src="/girl.jpg"
+              alt="Team Member"
+              width={500}
+              height={600}
+              className="object-cover w-full h-full"
+            />
+          </div>
         </div>
       </div>
     </section>

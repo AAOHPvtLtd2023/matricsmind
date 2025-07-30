@@ -88,7 +88,7 @@ export default function ComparisonSection() {
         transition={{ duration: 0.8 }}
         className="text-center mb-10"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-[#1c3784] mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#ff9100] mb-4">
          Why Clients Choose Matrics Mind
         </h2>
         <p className="text-lg text-[#1c3784] max-w-3xl mx-auto">
@@ -121,7 +121,7 @@ export default function ComparisonSection() {
                   <div className="w-12 h-12 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
                     {item.icon}
                   </div>
-                  <h3 className="text-[#1c3784] font-bold text-lg">{item.feature}</h3>
+                  <h3 className="text-white font-bold text-lg">{item.feature}</h3>
                 </div>
 
                 <div className="bg-[#f3f4f6] rounded-lg p-4 mb-3">
