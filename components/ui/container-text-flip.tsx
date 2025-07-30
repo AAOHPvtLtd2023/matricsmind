@@ -18,7 +18,19 @@ interface ContainerTextFlipProps {
 }
 
 export function ContainerTextFlip({
-  words = ["UAE", "Saudi","Arabia", "Qatar", "Bahrain" , "Kuwait", "Oman", "CANADA", "INDIA", "Australia", "UK", "USA"],
+  words = [
+    "UAE",
+    "Saudi Arabia",
+    "Qatar",
+    "Bahrain",
+    "Kuwait",
+    "Oman",
+    "CANADA",
+    "INDIA",
+    "Australia",
+    "UK",
+    "USA",
+  ],
   interval = 3000,
   className,
   textClassName = "",
@@ -55,8 +67,8 @@ export function ContainerTextFlip({
       transition={{ duration: animationDuration / 2000 }}
       className={cn(
         "relative inline-block rounded-lg pt-2 pb-3 text-center text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white",
-        "[background:linear-gradient(to_bottom,rgba(168,85,247,0.8),rgba(236,72,153,0.8))]",
-        "shadow-[inset_0_-1px_rgba(168,85,247,0.3),inset_0_0_0_1px_rgba(168,85,247,0.4),_0_4px_8px_rgba(168,85,247,0.2)]",
+        "[background:linear-gradient(160deg,rgba(255,145,0,1)_0%,rgba(28,55,132,1)_100%)]",
+        "shadow-[inset_0_-1px_rgba(255,145,0,0.3),inset_0_0_0_1px_rgba(255,145,0,0.4),_0_4px_8px_rgba(255,145,0,0.2)]",
         className
       )}
       key={words[currentWordIndex]}
@@ -166,7 +178,13 @@ export default function ResponsiveHeroSection(): JSX.Element {
           className="inline-block mx-2 sm:mx-4"
         >
           <ContainerTextFlip
-            words={["stunning", "modern", "beautiful", "amazing", "professional"]}
+            words={[
+              "stunning",
+              "modern",
+              "beautiful",
+              "amazing",
+              "professional",
+            ]}
             interval={2500}
             className="mx-2 sm:mx-4"
             animationDuration={600}

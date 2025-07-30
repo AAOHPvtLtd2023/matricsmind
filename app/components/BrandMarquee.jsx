@@ -22,7 +22,7 @@ export default function BrandMarquee() {
          Your Industry, Our Innovation
         </h1>
 
-        <p className="text-sm mt-2" style={{ color: "#cef133" }}>
+        <p className="text-sm mt-2" style={{ color: "#ff9100" }}>
           Empowering Every Industry Through Smart Innovation
         </p>
       </div>
@@ -32,7 +32,7 @@ export default function BrandMarquee() {
         {[...companies, ...companies].map((name, idx) => (
           <span
             key={idx}
-            className="text-gray-400 hover:text-white transition duration-300 text-lg font-semibold cursor-pointer"
+            className="text-[#1c3784] hover:text-white transition duration-300 text-lg font-semibold cursor-pointer"
           >
             {name}
           </span>

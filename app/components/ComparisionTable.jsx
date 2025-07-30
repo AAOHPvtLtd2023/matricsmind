@@ -166,7 +166,7 @@ export default function ComparisonSection() {
                     transition={{ duration: 0.2 }}
                     className="border-t border-[#1c3784]/10 hover:bg-gray-50 transition"
                   >
-                    <td className="p-4 flex items-center gap-3 text-[#1c3784] font-medium">
+                    <td className="p-4 flex items-center gap-3 text-[#fff] font-medium hover:text-[#1c3784]">
                       <div className="w-9 h-9 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
                         {item.icon}
                       </div>

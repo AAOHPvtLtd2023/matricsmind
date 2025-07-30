@@ -26,7 +26,7 @@ GTM integration
 Video Marketing & YouTube Ads
 Video Production
 CGI`}
-  default_velocity={3}
+  default_velocity={1}
   containerClassName="my-10"
   itemClassName="text-base"
 />

@@ -43,11 +43,16 @@ export default function HomePage() {
     <>
       <main className="pt-24 px-4">
         <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
-      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl">
-        <span className={`inline-block transition-all duration-800 ease-out ${
+      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl">
+        <span className={`inline-block transition-all duration-800 ease-out text-2xl${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
         }`}>
-          Across Boundaries. Beyond Limits. Built with Matrics Mind
+          Across Boundaries. Beyond Limits. 
+        </span>{' '}
+        <span className={`inline-block transition-all duration-800 ease-out text-6xl ${
+          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
+        }`}>
+           Built with Matrics Mind
         </span>{' '}
         <ContainerTextFlip isVisible={isVisible} />{' '}
         <br className="hidden sm:block" />

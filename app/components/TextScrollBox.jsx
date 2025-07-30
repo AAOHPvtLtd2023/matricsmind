@@ -13,7 +13,7 @@ export const TextScrollBox = ({
     .map((line, i) => (
       <span
         key={i}
-        className={`inline-block px-4 py-1 mx-1 rounded-full border border-yellow-400 text-yellow-300 text-5xl font-medium whitespace-nowrap ${itemClassName}`}
+        className={`inline-block px-4 py-1 mx-1 rounded-full border border-[#ff9100] text-[#fff] text-5xl font-medium whitespace-nowrap ${itemClassName}`}
       >
         {line.trim()}
       </span>
