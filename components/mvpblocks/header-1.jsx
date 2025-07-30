@@ -8,22 +8,22 @@ import { useTheme } from "next-themes";
 const navItems = [
   { name: "Home", href: "/" },
   {
-    name: "Services",
+    name: "Services ( Solution)",
     href: "/services",
     hasDropdown: true,
     dropdownItems: [
       {
-        name: "Website",
+        name: "Tech Solution",
         href: "/services/website",
         description: "Track your metrics",
       },
       {
-        name: "Branding",
+        name: "Brand Solution",
         href: "/services/branding",
         description: "Manage your data",
       },
       {
-        name: "Video Production",
+        name: "Visual Solution",
         href: "/services/videoproduction",
         description: "Generate insights",
       },

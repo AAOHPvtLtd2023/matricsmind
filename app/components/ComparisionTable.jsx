@@ -89,10 +89,10 @@ export default function ComparisonSection() {
         className="text-center mb-10"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-[#1c3784] mb-4">
-          Why Choose Us?
+         Why Clients Choose Matrics Mind
         </h2>
         <p className="text-lg text-[#1c3784] max-w-3xl mx-auto">
-          See how we stand apart from the competition with our unique approach.
+          "Over 50 clients around the world have chosen us."
         </p>
       </motion.div>
 
