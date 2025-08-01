@@ -9,14 +9,14 @@ const FloatingSocialButtons = () => {
     <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
       {/* WhatsApp */}
       <Link
-        href="https://wa.me/919876543210" // Replace with your number
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-transform hover:scale-110"
-        title="Chat on WhatsApp"
-      >
-        <MessageCircleMore className="w-6 h-6" />
-      </Link>
+  href="https://wa.me/917903471133?text=Hi%20there!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20chat%3F"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-transform hover:scale-110"
+  title="Chat on WhatsApp"
+>
+  <MessageCircleMore className="w-6 h-6" />
+</Link>
 
       {/* Instagram */}
       <Link

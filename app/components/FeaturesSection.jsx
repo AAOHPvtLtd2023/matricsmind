@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "../../lib/utils";
 import {
   IconAdjustmentsBolt,
@@ -9,58 +11,54 @@ import {
   IconRouteAltLeft,
   IconTerminal2,
 } from "@tabler/icons-react";
+import { motion } from "framer-motion";
 
 export default function FeaturesSection() {
   const features = [
     {
-      title: "Built for developers",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+      title: "Built for Developers",
+      description: "Built for engineers, developers, dreamers, thinkers and doers.",
       icon: <IconTerminal2 />,
     },
     {
-      title: "Ease of use",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+      title: "Ease of Use",
+      description: "As intuitive as using an Apple, minus the cost.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Pricing like no other",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+      title: "Transparent Pricing",
+      description: "No hidden fees. No credit card required. No nonsense.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "100% Uptime guarantee",
+      title: "100% Uptime",
       description: "We just cannot be taken down by anyone.",
       icon: <IconCloud />,
     },
     {
       title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
+      description: "Share access. Scale fast. Stay secure.",
       icon: <IconRouteAltLeft />,
     },
     {
       title: "24/7 Customer Support",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+      description: "We’re here for you. Anytime. Anywhere.",
       icon: <IconHelp />,
     },
     {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
+      title: "Money-back Promise",
+      description: "If you don’t love us, we’ll make it right.",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "And Everything Else",
+      description: "We ran out of copy ideas. Please forgive us.",
       icon: <IconHeart />,
     },
   ];
+
   return (
-    <div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-12 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -68,43 +66,46 @@ export default function FeaturesSection() {
   );
 }
 
-const Feature = ({
-  title,
-  description,
-  icon,
-  index
-}) => {
+const Feature = ({ title, description, icon, index }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
-      )}>
-      {index < 4 && (
-        <div
-          className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+        "flex flex-col py-10 relative group/feature border border-[#1C3784]/30 dark:border-white/10",
+        (index === 0 || index === 4) && "lg:border-l",
+        index < 4 && "lg:border-b"
       )}
-      {index >= 4 && (
-        <div
-          className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
+    >
+      {/* Hover Glow */}
       <div
-        className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
+        className={cn(
+          "opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full",
+          index < 4
+            ? "bg-gradient-to-t from-[#FF9100]/10 to-transparent"
+            : "bg-gradient-to-b from-[#FF9100]/10 to-transparent"
+        )}
+      />
+
+      {/* Icon */}
+      <div className="mb-4 relative z-10 px-10 text-[#FF9100] dark:text-orange-400">
         {icon}
       </div>
+
+      {/* Title */}
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div
-          className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
-        <span
-          className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#1C3784]/40 group-hover/feature:bg-[#FF9100] transition-all duration-300 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-300 inline-block text-[#1C3784] dark:text-white">
           {title}
         </span>
       </div>
-      <p
-        className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
+
+      {/* Description */}
+      <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xs relative z-10 px-10">
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 };

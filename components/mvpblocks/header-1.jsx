@@ -161,7 +161,7 @@ export default function Header1() {
           <div className="hidden items-center space-x-4 lg:flex">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="/signup"
+                href="https://docs.google.com/forms/d/1b8X2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/edit"
                 className="inline-flex items-center space-x-2 rounded-full bg-[#ff9100] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>Get A Free Qoute</span>
@@ -213,11 +213,13 @@ export default function Header1() {
                     Sign In
                   </Link>
                   <Link
-                    href="/signup"
-                    className="block w-full rounded-lg bg-gradient-to-r from-rose-500 to-rose-700 py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full rounded-lg bg-gradient-to-r from-bg-[#ff9100] to-bg-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Get A Free Qoute
+                    Get A Free Quote
                   </Link>
                 </div>
               </div>
