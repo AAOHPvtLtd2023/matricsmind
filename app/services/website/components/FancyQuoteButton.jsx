@@ -6,11 +6,21 @@ import { ArrowRight } from "lucide-react";
 export default function FancyQuoteButton({ text = "Get a Free Quote Today" }) {
   return (
     <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      className="group flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#000d29] text-white font-semibold text-lg shadow-md transition-all duration-300 hover:shadow-xl w-[90vw] justify-self-center"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full 
+                 bg-gradient-to-br from-[#ff9100] to-[#1c3784] 
+                 text-white font-semibold text-lg shadow-lg 
+                 transition-all duration-300 hover:shadow-2xl 
+                 w-[90vw] max-w-md mx-auto"
     >
-      {text}
+      {/* Glow Behind */}
+      <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#ff9100]/40 to-[#1c3784]/40 blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300 z-[-1]" />
+
+      {/* Button Text */}
+      <span>{text}</span>
+
+      {/* Animated Arrow */}
       <motion.span
         className="inline-block"
         initial={{ x: 0 }}

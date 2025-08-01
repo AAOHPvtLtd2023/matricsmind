@@ -73,7 +73,7 @@ export default function WebsiteServiceCards() {
         >
           {/* Ribbon */}
           {card.ribbon && (
-            <div className="absolute top-4 right-[-40px] rotate-45 bg-yellow-400 text-black text-xs font-bold px-20 py-1 shadow-lg">
+            <div className="absolute top-4 right-[-40px] rotate-45 bg-[#ff9100] text-black text-xs font-bold px-20 py-1 shadow-lg">
               {card.ribbon}
             </div>
           )}

@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "normal",
   pauseOnHover = true,
   className,
 }) => {
@@ -28,59 +29,63 @@ export const InfiniteMovingCards = ({
       direction === "left" ? "forwards" : "reverse"
     );
 
-    const duration = speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
+    const duration =
+      speed === "fast" ? "20s" : speed === "slow" ? "60s" : "40s";
     containerRef.current.style.setProperty("--animation-duration", duration);
 
     setStart(true);
   }, [direction, speed]);
 
+  const { scrollY } = useScroll();
+  const parallax = useTransform(scrollY, [0, 300], [0, -30]);
+
   return (
-    <div
+    <motion.div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden",
+        "scroller relative max-w-7xl overflow-hidden",
         "[mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
         className
       )}
+      style={{ y: parallax }}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-6 py-6 px-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
-          <li
+          <motion.li
             key={idx}
-            className="group relative w-[85vw] sm:w-[250px] md:w-[380px] shrink-0 rounded-xl border border-zinc-200 bg-gradient-to-b from-[#fafafa] to-[#f5f5f5] px-4 py-4 dark:border-zinc-700 dark:from-zinc-800 dark:to-zinc-900 transition-all duration-300 hover:shadow-xl"
+            className="group relative w-[80vw] sm:w-[260px] md:w-[320px] shrink-0 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-5 shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.015] dark:border-white/10"
+            whileHover={{ y: -8 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <blockquote>
+            <blockquote className="flex flex-col justify-between h-full">
               {item.image && (
-                <img
+                <motion.img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-36 object-cover rounded-lg mb-3 transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-36 object-cover rounded-lg mb-4"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 />
               )}
-
-              <p className="text-sm text-neutral-800 dark:text-gray-100 mb-3">
+              <p className="text-sm text-white/90 dark:text-white leading-relaxed mb-4">
                 {item.quote}
               </p>
 
-              <div className="flex flex-col gap-0.5 mt-4">
-                <span className="text-sm font-medium text-neutral-700 dark:text-gray-300">
-                  {item.name}
-                </span>
-                <span className="text-xs text-neutral-500 dark:text-gray-500">
-                  {item.title}
-                </span>
+              <div className="mt-auto">
+                <h3 className="text-sm font-semibold text-[#ff9100]">{item.name}</h3>
+                <p className="text-xs text-[#1c3784]">{item.title}</p>
               </div>
             </blockquote>
-          </li>
+          </motion.li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 };
