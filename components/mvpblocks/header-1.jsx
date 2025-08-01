@@ -30,7 +30,7 @@ const navItems = [
     ],
   },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/tempBlog" },
+  { name: "Blog", href: "/blog" },
   { name: "Course", href: "/course" },
 ];
 
