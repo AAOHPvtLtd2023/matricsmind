@@ -7,8 +7,8 @@ export default function SectionHighlightScroll() {
   return (
     <>
       <HighlightHeading />
-     <TextScrollBox
-  text={`Digital Marketing Strategy
+      <TextScrollBox
+        text={`Digital Marketing Strategy
 Social Media Marketing (SMM)
 Search Engine Optimization (SEO)
 Pay-Per-Click Advertising (PPC)
@@ -26,11 +26,10 @@ GTM integration
 Video Marketing & YouTube Ads
 Video Production
 CGI`}
-  default_velocity={1}
-  containerClassName="my-10"
-  itemClassName="text-base"
-/>
-
+        default_velocity={3}
+        containerClassName="my-10"
+        itemClassName="text-base"
+      />
     </>
   );
 }

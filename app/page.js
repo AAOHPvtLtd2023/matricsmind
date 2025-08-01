@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import MarqueeSection from "./components/BrandMarquee";
 import BrandMarquee from "./components/BrandMarquee";
 import ElasticCarousel from "./components/ElasticCarousel";
@@ -40,29 +40,53 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <>
-      <main className="pt-24 px-4">
-        <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
-      <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl">
-        <span className={`inline-block transition-all duration-800 ease-out text-2xl${
-          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
-        }`}>
-          Across Boundaries. Beyond Limits. 
-        </span>{' '}
-        <span className={`inline-block transition-all duration-800 ease-out text-6xl ${
-          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
-        }`}>
-           Built with Matrics Mind
-        </span>{' '}
-        <ContainerTextFlip isVisible={isVisible} />{' '}
-        <br className="hidden sm:block" />
-        <span className={`block sm:inline transition-all duration-800 delay-300 ease-out text-xl ${
-          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
-        }`}>
-          We served over 50+ clients all over the world.
-        </span>
-      </h1>
-    </section>
+   <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <section className="flex flex-col items-center justify-center min-h-screen px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8 lg:py-20 gap-4 sm:gap-6">
+          <h1 className="text-white font-bold max-w-5xl leading-tight tracking-tight">
+            {/* Top line */}
+            <span
+              className={`block text-3xl sm:text-4xl md:text-5xl lg:text-6xl transition-all duration-700 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              Across Boundaries. Beyond Limits.
+            </span>
+
+            {/* Second line */}
+            <span
+              className={`block mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl transition-all duration-700 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              Built with Matrics Mind
+            </span>
+
+            {/* Flipping text like CANADA */}
+            <div className="mt-3">
+              <ContainerTextFlip isVisible={isVisible} />
+            </div>
+
+            {/* Subtitle */}
+            <span
+              className={`block mt-6 text-base sm:text-lg md:text-xl text-[#1c3784] transition-all duration-700 ease-out delay-300 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              We served over 50+ clients all over the world.
+            </span>
+          </h1>
+        </section>
+
         <ElasticCarousel />
         <BrandMarquee />
         <CardTest />
@@ -73,7 +97,9 @@ export default function HomePage() {
         <Testimonials />
         <CompanyPartner />
         <GetInTouchForm />
-      </main>
-    </>
+
+    </motion.div>
+
+     
   );
 }

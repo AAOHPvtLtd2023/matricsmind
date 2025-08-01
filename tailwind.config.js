@@ -33,9 +33,13 @@ module.exports = {
           "50%": { transform: "translateY(-5px)" },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' }
-        }
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(2deg)" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -43,13 +47,14 @@ module.exports = {
         wiggle: "wiggle 3s ease-in-out infinite",
         marquee: "marquee 2s linear infinite",
         fadeIn: "fadeIn 0.6s ease-out both",
-        slideUp: 'slideUp 1s ease-out 0.1s both',
-        fadeindelay: 'fadeIn 1s ease-out 0.3s both',
+        slideUp: "slideUp 1s ease-out 0.1s both",
+        fadeindelay: "fadeIn 1s ease-out 0.3s both",
+        'float-slow': 'float-slow 12s ease-in-out infinite',
       },
       colors: {
-        primary: '#ff9100', 
-        secondary: '#1c3784',
-        main: '#000', 
+        primary: "#ff9100",
+        secondary: "#1c3784",
+        main: "#000",
       },
     },
   },

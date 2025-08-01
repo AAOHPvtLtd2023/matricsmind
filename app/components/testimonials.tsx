@@ -1,70 +1,70 @@
-'use client';
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Geist } from 'next/font/google';
+"use client";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Geist } from "next/font/google";
 import Image from "next/image";
-import { cn } from '../../lib/utils';
+import { cn } from "../../lib/utils";
 
 const space = Geist({
-  subsets: ['latin'],
-  variable: '--font-carlito',
-  weight: '400',
+  subsets: ["latin"],
+  variable: "--font-carlito",
+  weight: "400",
 });
 
 const testimonials = [
   {
-    text: 'Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.',
-    imageSrc: '/assets/avatars/avatar-1.webp',
-    name: 'Arjun Mehta',
-    username: '@arjdev',
+    text: "Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.",
+    imageSrc: "/assets/avatars/avatar-1.webp",
+    name: "Arjun Mehta",
+    username: "@arjdev",
   },
   {
-    text: 'Honestly shocked at how smooth the animations and styling are out of the box. Just works.',
-    imageSrc: '/assets/avatars/avatar-2.webp',
-    name: 'Sara Lin',
-    username: '@sara.codes',
+    text: "Honestly shocked at how smooth the animations and styling are out of the box. Just works.",
+    imageSrc: "/assets/avatars/avatar-2.webp",
+    name: "Sara Lin",
+    username: "@sara.codes",
   },
   {
-    text: 'Our team launched a client site in 2 days using Mvpblocks. Saved so much time.',
-    imageSrc: '/assets/avatars/avatar-3.webp',
-    name: 'Devon Carter',
-    username: '@devninja',
+    text: "Our team launched a client site in 2 days using Mvpblocks. Saved so much time.",
+    imageSrc: "/assets/avatars/avatar-3.webp",
+    name: "Devon Carter",
+    username: "@devninja",
   },
   {
-    text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
-    imageSrc: '/assets/avatar-2.webp',
-    name: 'Priya Shah',
-    username: '@priyacodes',
+    text: "Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.",
+    imageSrc: "/assets/avatar-2.webp",
+    name: "Priya Shah",
+    username: "@priyacodes",
   },
   {
-    text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
-    imageSrc: '/assets/avatars/avatar-5.webp',
-    name: 'Leo Martin',
-    username: '@leobuilds',
+    text: "Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.",
+    imageSrc: "/assets/avatars/avatar-5.webp",
+    name: "Leo Martin",
+    username: "@leobuilds",
   },
   {
-    text: 'Mvpblocks helped us prototype multiple landing pages without writing CSS once.',
-    imageSrc: '/assets/avatars/avatar-6.webp',
-    name: 'Chloe Winters',
-    username: '@chloewinters',
+    text: "Mvpblocks helped us prototype multiple landing pages without writing CSS once.",
+    imageSrc: "/assets/avatars/avatar-6.webp",
+    name: "Chloe Winters",
+    username: "@chloewinters",
   },
   {
-    text: 'As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.',
-    imageSrc: '/assets/avatars/avatar-7.webp',
-    name: 'Ayaan Malik',
-    username: '@ayaan_dev',
+    text: "As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.",
+    imageSrc: "/assets/avatars/avatar-7.webp",
+    name: "Ayaan Malik",
+    username: "@ayaan_dev",
   },
   {
-    text: 'Can’t believe how polished the components look. Clients are impressed every time.',
-    imageSrc: '/assets/avatar-5.webp',
-    name: 'Monica Reeves',
-    username: '@monicareeves',
+    text: "Can’t believe how polished the components look. Clients are impressed every time.",
+    imageSrc: "/assets/avatar-5.webp",
+    name: "Monica Reeves",
+    username: "@monicareeves",
   },
   {
-    text: 'This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.',
-    imageSrc: '/assets/avatars/avatar-9.webp',
-    name: 'James Roy',
-    username: '@jamesrdev',
+    text: "This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.",
+    imageSrc: "/assets/avatars/avatar-9.webp",
+    name: "James Roy",
+    username: "@jamesrdev",
   },
 ];
 
@@ -80,13 +80,13 @@ const TestimonialsColumn = (props: {
   <div className={props.className}>
     <motion.div
       animate={{
-        translateY: '-50%',
+        translateY: "-50%",
       }}
       transition={{
         duration: props.duration || 10,
         repeat: Infinity,
-        ease: 'linear',
-        repeatType: 'loop',
+        ease: "linear",
+        repeatType: "loop",
       }}
       className="flex flex-col gap-6"
     >
@@ -130,11 +130,13 @@ const Testimonials = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const handleShareClick = () => {
-    const tweets = require('../../lib/tweet-contents').tweetContents;
+    const tweets = require("../../lib/tweet-contents").tweetContents;
     const randomTweet = tweets[Math.floor(Math.random() * tweets.length)];
     window.open(
-      `https://twitter.com/intent/tweet?text=${encodeURIComponent(randomTweet)}`,
-      '_blank',
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        randomTweet
+      )}`,
+      "_blank"
     );
   };
 
@@ -158,17 +160,33 @@ const Testimonials = () => {
               <span className="relative">Testimonials</span>
             </button>
           </div> */}
-          <h2
-            className={cn(
-              'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[51px] md:leading-[60px]',
-              space.className,
-            )}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative inline-block px-0 py-2 mx-auto mt-6"
           >
-            Words From Our Partners
-          </h2>
-          <p className="mt-5 text-center text-lg text-zinc-500">
-           Client Experiences That Speak Volumes
-          </p>
+            <h2
+              className={cn(
+                "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[51px] md:leading-[60px]",
+                space.className
+              )}
+            >
+              Words From Our Partners
+            </h2>
+
+            {/* Glowing Background Effect */}
+            <div className="absolute inset-0 mx-auto w-full max-w-xs h-[50px] blur-2xl rounded-full bg-[#1c3784]/30 z-0"></div>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-4 text-center text-lg text-white/70 max-w-xl mx-auto"
+          >
+            Client Experiences That Speak Volumes
+          </motion.p>
         </motion.div>
         <div className="my-16 flex max-h-[738px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
@@ -183,7 +201,7 @@ const Testimonials = () => {
             duration={17}
           />
         </div>
-        <div className="-mt-8 flex justify-center">
+        {/* <div className="-mt-8 flex justify-center">
           <button
             onClick={handleShareClick}
             className="group relative inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-primary/60 hover:bg-primary/10 active:scale-95"
@@ -199,7 +217,7 @@ const Testimonials = () => {
             </svg>
             Share your experience
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

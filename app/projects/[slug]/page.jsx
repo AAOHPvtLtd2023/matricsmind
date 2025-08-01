@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { 
   ArrowLeft,
@@ -22,8 +22,8 @@ import {
 } from 'lucide-react';
 
 export default function ImmersiveProjectPage({ params }) {
+   const router = useRouter();
   const { slug } = params || {};
-  const router = useRouter();
   const title = slug?.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) || "Amazing Project";
   
   const [activeTab, setActiveTab] = useState('overview');
@@ -79,12 +79,12 @@ export default function ImmersiveProjectPage({ params }) {
   };
 
   const techStack = [
-    { name: "Next.js", icon: "⚡", color: "from-gray-600 to-gray-800" },
-    { name: "React", icon: "⚛️", color: "from-blue-500 to-cyan-500" },
-    { name: "Tailwind CSS", icon: "🎨", color: "from-cyan-400 to-blue-500" },
-    { name: "Node.js", icon: "🟢", color: "from-green-500 to-emerald-500" },
-    { name: "MongoDB", icon: "🍃", color: "from-green-600 to-green-800" },
-    { name: "TypeScript", icon: "📘", color: "from-blue-600 to-indigo-600" }
+    { name: "Next.js", icon: "⚡", color: "from-orange-500 to-orange-600" },
+    { name: "React", icon: "⚛️", color: "from-blue-800 to-blue-900" },
+    { name: "Tailwind CSS", icon: "🎨", color: "from-orange-400 to-orange-500" },
+    { name: "Node.js", icon: "🟢", color: "from-blue-700 to-blue-800" },
+    { name: "MongoDB", icon: "🍃", color: "from-orange-600 to-orange-700" },
+    { name: "TypeScript", icon: "📘", color: "from-blue-600 to-blue-700" }
   ];
 
   const features = [
@@ -111,12 +111,12 @@ export default function ImmersiveProjectPage({ params }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-black to-blue-950 text-white overflow-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-800/5" />
         <motion.div
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 blur-3xl"
+          className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-orange-500/10 to-blue-800/10 blur-3xl"
           animate={{
             x: mousePosition.x - 200,
             y: mousePosition.y - 200,
@@ -129,7 +129,7 @@ export default function ImmersiveProjectPage({ params }) {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="fixed w-1 h-1 bg-cyan-400/30 rounded-full pointer-events-none"
+          className="fixed w-1 h-1 bg-orange-400/30 rounded-full pointer-events-none"
           initial={{ 
             x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920), 
             y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080),
@@ -158,8 +158,8 @@ export default function ImmersiveProjectPage({ params }) {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
-          className="fixed top-8 left-8 z-50 flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300"
-          onClick={() => router.push('/')}
+          onClick={() => router.back()}
+          className="fixed top-8 left-8 z-50 flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer"
         >
           <ArrowLeft size={20} />
           <span>Back</span>
@@ -171,7 +171,7 @@ export default function ImmersiveProjectPage({ params }) {
           animate="animate" 
           className="absolute top-20 right-20 opacity-20"
         >
-          <Code size={80} className="text-cyan-400" />
+          <Code size={80} className="text-orange-400" />
         </motion.div>
         <motion.div 
           variants={floatingVariants} 
@@ -195,24 +195,24 @@ export default function ImmersiveProjectPage({ params }) {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-4 py-2 rounded-full border border-cyan-500/30"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500/20 to-blue-800/20 px-4 py-2 rounded-full border border-orange-500/30"
               >
-                <Star size={16} className="text-cyan-400" />
-                <span className="text-cyan-300 text-sm font-medium">Featured Project</span>
+                <Star size={16} className="text-orange-400" />
+                <span className="text-orange-300 text-sm font-medium">Featured Project</span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
                 className="text-6xl md:text-8xl font-bold leading-tight"
               >
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-blue-800 bg-clip-text text-transparent">
                   {title}
                 </span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="text-xl text-gray-300 leading-relaxed max-w-2xl"
+                className="text-xl text-white/90 leading-relaxed max-w-2xl"
               >
                 A revolutionary web application that pushes the boundaries of modern development. 
                 Experience cutting-edge technology combined with stunning design and seamless user experience.
@@ -225,7 +225,7 @@ export default function ImmersiveProjectPage({ params }) {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-xl font-semibold shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center space-x-2"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center space-x-2 text-white"
                 >
                   <ExternalLink size={20} />
                   <span>View Live Project</span>
@@ -234,7 +234,7 @@ export default function ImmersiveProjectPage({ params }) {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white/10 backdrop-blur-md px-8 py-4 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center space-x-2"
+                  className="bg-blue-800/20 backdrop-blur-md px-8 py-4 rounded-xl font-semibold border border-blue-800/40 hover:bg-blue-800/30 transition-all duration-300 flex items-center space-x-2"
                 >
                   <Github size={20} />
                   <span>View Code</span>
@@ -256,11 +256,11 @@ export default function ImmersiveProjectPage({ params }) {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 1 + index * 0.1, type: "spring" }}
-                      className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                      className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent"
                     >
                       {stat.value}
                     </motion.div>
-                    <div className="text-gray-400 text-sm">{stat.label}</div>
+                    <div className="text-white/70 text-sm">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>
@@ -277,7 +277,7 @@ export default function ImmersiveProjectPage({ params }) {
               >
                 {/* Project Preview */}
                 <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                  <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center relative">
+                  <div className="aspect-video bg-gradient-to-br from-orange-500/20 to-blue-800/20 flex items-center justify-center relative">
                     {/* Mock Browser UI */}
                     <div className="absolute top-0 left-0 right-0 h-12 bg-gray-800/80 flex items-center px-4 space-x-2">
                       <div className="flex space-x-2">
@@ -311,7 +311,7 @@ export default function ImmersiveProjectPage({ params }) {
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
-                      className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-xl"
+                      className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-blue-800/20 blur-xl"
                     />
                   </div>
                 </div>
@@ -349,12 +349,12 @@ export default function ImmersiveProjectPage({ params }) {
             transition={{ delay: 2 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2"
           >
-            <span className="text-gray-400 text-sm">Scroll to explore</span>
+            <span className="text-white/70 text-sm">Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ChevronDown size={24} className="text-cyan-400" />
+              <ChevronDown size={24} className="text-orange-400" />
             </motion.div>
           </motion.div>
         </div>
@@ -379,8 +379,8 @@ export default function ImmersiveProjectPage({ params }) {
                   onClick={() => setActiveTab(tab)}
                   className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                     activeTab === tab
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1).replace('-', ' ')}
@@ -401,10 +401,10 @@ export default function ImmersiveProjectPage({ params }) {
                 className="space-y-12"
               >
                 <div className="text-center max-w-3xl mx-auto">
-                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                     Project Overview
                   </h2>
-                  <p className="text-xl text-gray-300 leading-relaxed">
+                  <p className="text-xl text-white/90 leading-relaxed">
                     This project represents the pinnacle of modern web development, combining cutting-edge 
                     technologies with intuitive design to create an exceptional user experience. Every aspect 
                     has been carefully crafted to ensure maximum performance, accessibility, and scalability.
@@ -418,8 +418,8 @@ export default function ImmersiveProjectPage({ params }) {
                     transition={{ delay: 0.2 }}
                     className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
                   >
-                    <h3 className="text-2xl font-bold mb-4 text-cyan-400">Challenge</h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <h3 className="text-2xl font-bold mb-4 text-orange-400">Challenge</h3>
+                    <p className="text-white/90 leading-relaxed">
                       Creating a solution that balances complex functionality with simplicity, 
                       ensuring every user interaction feels natural and intuitive while maintaining 
                       enterprise-level performance and security standards.
@@ -433,7 +433,7 @@ export default function ImmersiveProjectPage({ params }) {
                     className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
                   >
                     <h3 className="text-2xl font-bold mb-4 text-blue-400">Solution</h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-white/90 leading-relaxed">
                       Implemented a microservices architecture with modern frontend frameworks, 
                       utilizing advanced caching strategies and progressive enhancement to 
                       deliver a lightning-fast, accessible, and scalable application.
@@ -453,7 +453,7 @@ export default function ImmersiveProjectPage({ params }) {
                 className="space-y-12"
               >
                 <div className="text-center">
-                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                     Key Features
                   </h2>
                 </div>
@@ -466,15 +466,15 @@ export default function ImmersiveProjectPage({ params }) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 group hover:border-cyan-500/30 transition-all duration-300"
+                      className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 group hover:border-orange-500/30 transition-all duration-300"
                     >
                       <div className="flex items-center space-x-4 mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           {feature.icon}
                         </div>
                         <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                       </div>
-                      <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                      <p className="text-white/90 leading-relaxed">{feature.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -491,10 +491,10 @@ export default function ImmersiveProjectPage({ params }) {
                 className="space-y-12"
               >
                 <div className="text-center">
-                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                     Technology Stack
                   </h2>
-                  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                  <p className="text-xl text-white/90 max-w-3xl mx-auto">
                     Built with the most advanced and reliable technologies in the industry
                   </p>
                 </div>
@@ -527,11 +527,11 @@ export default function ImmersiveProjectPage({ params }) {
             transition={{ duration: 0.8 }}
             className="text-center py-20"
           >
-            <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-md rounded-3xl p-12 border border-white/10">
-              <h3 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <div className="bg-gradient-to-r from-orange-500/10 to-blue-800/10 backdrop-blur-md rounded-3xl p-12 border border-white/10">
+              <h3 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                 Ready to Experience This Project?
               </h3>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 Dive into the live experience and see how modern web development can create amazing user experiences.
               </p>
               
@@ -539,7 +539,7 @@ export default function ImmersiveProjectPage({ params }) {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-xl font-semibold shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 rounded-xl font-semibold shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center justify-center space-x-2 text-white"
                 >
                   <ExternalLink size={20} />
                   <span>Visit Live Project</span>
@@ -548,7 +548,7 @@ export default function ImmersiveProjectPage({ params }) {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white/10 backdrop-blur-md px-8 py-4 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="bg-blue-800/20 backdrop-blur-md px-8 py-4 rounded-xl font-semibold border border-blue-800/40 hover:bg-blue-800/30 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <Github size={20} />
                   <span>View Source Code</span>

@@ -20,7 +20,7 @@ const FloatingSocialButtons = () => {
 
       {/* Instagram */}
       <Link
-        href="https://instagram.com/yourusername" // Replace with your IG URL
+        href="https://www.instagram.com/matrics_mind01/?igsh=MWE1ZXo4cWIxdjA0ag%3D%3D#" // Replace with your IG URL
         target="_blank"
         rel="noopener noreferrer"
         className="bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:opacity-90 text-white p-3 rounded-full shadow-lg transition-transform hover:scale-110"

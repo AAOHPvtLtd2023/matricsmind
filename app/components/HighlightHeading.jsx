@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 
 export default function HighlightHeading() {
   const pathRef = useRef(null);
@@ -13,11 +13,11 @@ export default function HighlightHeading() {
   }, [isInView]);
 
   return (
-    <section className="w-full px-6 py-12 bg-[#0B0E1C]">
+    <section className="w-full py-10">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-light text-white leading-tight relative inline-block">
-          <span>From Strategy to Screens — </span>
-          <span className="relative inline-block text-yellow-400 font-medium">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-snug relative inline-block">
+          <span className="block text-[#fff]">From Strategy to Screens —</span>
+          <span className="relative inline-block text-[#ff9100] font-semibold">
             We Create What Brands Need
             <svg
               ref={pathRef}
@@ -28,16 +28,31 @@ export default function HighlightHeading() {
             >
               <path
                 d="M0 15 C50 25, 200 5, 260 15"
-                stroke="white"
+                stroke="#1c3784"
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
-                className={animate ? "stroke-animation" : ""}
+                className={`transition-all duration-[1s] ease-in-out ${
+                  animate ? "path-visible" : "path-hidden"
+                }`}
               />
             </svg>
           </span>
         </h2>
       </div>
+
+      {/* Custom CSS (Scoped or Global) */}
+      <style jsx>{`
+        .path-hidden {
+          stroke-dasharray: 300;
+          stroke-dashoffset: 300;
+        }
+        .path-visible {
+          stroke-dasharray: 300;
+          stroke-dashoffset: 0;
+          transition: stroke-dashoffset 1s ease-out;
+        }
+      `}</style>
     </section>
   );
 }

@@ -52,7 +52,6 @@ const data = [
   },
 ];
 
-// Animation Variants
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
@@ -64,6 +63,17 @@ const cardVariants = {
       ease: "easeOut",
     },
   }),
+};
+
+const shimmerTitle = {
+  animate: {
+    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+    transition: {
+      duration: 6,
+      ease: "linear",
+      repeat: Infinity,
+    },
+  },
 };
 
 export default function ComparisonSection() {
@@ -86,13 +96,17 @@ export default function ComparisonSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-10"
+        className="text-center mb-14"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-[#ff9100] mb-4">
-         Why Clients Choose Matrics Mind
-        </h2>
-        <p className="text-lg text-[#1c3784] max-w-3xl mx-auto">
-          "Over 50 clients around the world have chosen us."
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%]"
+          variants={shimmerTitle}
+          animate="animate"
+        >
+          Why Clients Choose MatricsMind
+        </motion.h2>
+        <p className="text-lg text-[#1c3784] max-w-2xl mx-auto mt-3">
+          Over 50 clients across the globe trust our vision and execution.
         </p>
       </motion.div>
 
@@ -115,7 +129,7 @@ export default function ComparisonSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
-                className="p-5 border rounded-2xl bg-white shadow-sm hover:shadow-md hover:scale-[1.02] transition duration-300"
+                className="p-6 border border-[#ff910030] rounded-2xl bg-white/10 backdrop-blur-md shadow-lg hover:shadow-xl hover:scale-[1.02] transition duration-300"
               >
                 <div className="flex flex-col items-center text-center gap-2 mb-4">
                   <div className="w-12 h-12 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
@@ -132,8 +146,8 @@ export default function ComparisonSection() {
                   <p className="text-center text-[#1c3784] text-sm mt-1">{item.others}</p>
                 </div>
 
-                <div className="bg-[#ff9100] rounded-lg p-4 text-white">
-                  <div className="flex justify-center items-center gap-2 text-sm font-medium">
+                <div className="bg-[#ff9100] rounded-lg p-4 text-white shadow-md">
+                  <div className="flex justify-center items-center gap-2 text-sm font-semibold">
                     <Check className="w-4 h-4" />
                     We Deliver
                   </div>
@@ -150,23 +164,23 @@ export default function ComparisonSection() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <table className="w-full text-sm border border-[#1c3784]/10 overflow-hidden rounded-lg">
-              <thead className="bg-[#f3f4f6] text-[#1c3784] uppercase text-left">
+            <table className="w-full text-sm overflow-hidden rounded-xl border border-[#1c3784]/10">
+              <thead className="bg-[#1c3784] text-white uppercase text-left">
                 <tr>
                   <th className="p-4 font-bold">Feature</th>
                   <th className="p-4 font-bold text-center">Others</th>
                   <th className="p-4 font-bold text-center">We Deliver</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-[#fdfdfd]">
                 {data.map((item, index) => (
                   <motion.tr
                     key={index}
                     whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
-                    className="border-t border-[#1c3784]/10 hover:bg-gray-50 transition"
+                    className="border-t border-[#1c3784]/10 hover:bg-[#f3f4f6]"
                   >
-                    <td className="p-4 flex items-center gap-3 text-[#fff] font-medium hover:text-[#1c3784]">
+                    <td className="p-4 flex items-center gap-3 font-semibold text-[#1c3784]">
                       <div className="w-9 h-9 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
                         {item.icon}
                       </div>
@@ -175,7 +189,7 @@ export default function ComparisonSection() {
                     <td className="p-4 text-center text-[#1c3784] bg-[#f9fafb]">
                       {item.others}
                     </td>
-                    <td className="p-4 text-center text-white bg-[#ff9100] font-medium">
+                    <td className="p-4 text-center font-semibold text-white bg-[#ff9100]">
                       {item.we}
                     </td>
                   </motion.tr>
