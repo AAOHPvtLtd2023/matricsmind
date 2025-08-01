@@ -129,6 +129,8 @@ const getBlogData = (slug) => {
   return blogPosts[slug] || null;
 };
 
+
+
 export default function BlogSlugPage({ params = {} }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [copied, setCopied] = useState(false);
