@@ -124,3 +124,27 @@ body {
 .clip-custom {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
+
+/* tailwind.css or globals.css */
+.underline-animation::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #FF9100, #FF6D00, #1C3784);
+  border-radius: 3px;
+  animation: underlineGrow 1s ease-in-out forwards;
+}
+
+@keyframes underlineGrow {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}

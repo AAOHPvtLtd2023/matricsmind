@@ -40,7 +40,7 @@ const shineVariants = {
 
 export default function CardFalling() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden px-6 bg-[#0e0e0e]">
+    <div className="relative flex flex-col items-center justify-center min-h-[80vh] overflow-hidden px-6">
       {/* Shiny animated title */}
       <motion.h2
         className="text-4xl sm:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%]"

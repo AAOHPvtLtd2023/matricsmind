@@ -40,6 +40,9 @@ module.exports = {
           "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
           "50%": { transform: "translateY(-15px) rotate(2deg)" },
         },
+        boxShadow: {
+          "glow-orange": "0 0 30px rgba(255, 145, 0, 0.3)",
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -49,7 +52,7 @@ module.exports = {
         fadeIn: "fadeIn 0.6s ease-out both",
         slideUp: "slideUp 1s ease-out 0.1s both",
         fadeindelay: "fadeIn 1s ease-out 0.3s both",
-        'float-slow': 'float-slow 12s ease-in-out infinite',
+        "float-slow": "float-slow 12s ease-in-out infinite",
       },
       colors: {
         primary: "#ff9100",

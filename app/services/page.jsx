@@ -13,7 +13,10 @@ export default function ServicePage() {
   return (
     <section className="w-full">
       {/* Hero / Header */}
-      <AuroraBackground className="w-[90vw] sm:w-[95vw] lg:w-[90vw] h-[50vh] sm:h-[60vh] lg:h-[70vh] mx-auto my-10 border rounded-xl shadow-lg flex items-center justify-center px-4 sm:px-8">
+      <AuroraBackground className="relative w-[90vw] sm:w-[95vw] lg:w-[90vw] h-[50vh] sm:h-[60vh] lg:h-[75vh] mx-auto my-10 rounded-2xl shadow-2xl flex items-center justify-center px-4 sm:px-8 overflow-hidden border border-white/10 bg-gradient-to-br from-[#FF9100]/30 via-[#1C3784]/20 to-[#1C3784]/50 backdrop-blur-md">
+        {/* Optional Animated Glow Background */}
+        <div className="absolute inset-0 -z-10 animate-pulse bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FF9100]/20 via-transparent to-transparent opacity-40 blur-3xl"></div>
+
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,8 +27,12 @@ export default function ServicePage() {
           }}
           className="flex flex-col gap-4 items-center text-center w-full"
         >
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug sm:leading-tight">
-            Thoughts worth <UnderlineHighlight>sharing</UnderlineHighlight>,
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-snug sm:leading-tight drop-shadow-md">
+            Thoughts worth{" "}
+            <UnderlineHighlight className="text-[#ff9100]">
+              sharing
+            </UnderlineHighlight>
+            ,
             <br className="hidden sm:block" />
             strategies worth <UnderlineHighlight>trying</UnderlineHighlight>.
           </h2>
@@ -40,14 +47,11 @@ export default function ServicePage() {
       </div>
 
       {/* How it Works */}
-      {/* <div className="px-4 sm:px-6 lg:px-12 mt-24"> */}
-        <HowItWorks />
-      {/* </div> */}
+
+      <HowItWorks />
 
       {/* Company Partners */}
-      {/* <div className="px-4 sm:px-6 lg:px-12 mt-24"> */}
-        <CompanyPartner />
-      {/* </div> */}
+      <CompanyPartner />
     </section>
   );
 }
