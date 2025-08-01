@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'sonner';
 
 import Header1 from "../components/mvpblocks/header-1";
 import FooterGlow from "./components/Footer";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         {!hideHeader && <Header1 />}
         <main className={hideHeader ? "px-4" : "pt-24 px-4"}>
           {children}
+          <Toaster richColors position="top-right" />
         </main>
         <FooterGlow />
         <FloatingSocialButtons />

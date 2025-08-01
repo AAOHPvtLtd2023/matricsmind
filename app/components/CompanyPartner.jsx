@@ -2,10 +2,10 @@ import { SparklesCore } from "../../components/ui/sparkles";
 
 export default function CompanyPartner() {
   return (
-    <div className="min-h-screen w-full overflow-hidden bg-[#121212]">
+    <div className="min-h-screen w-full overflow-hidden">
       <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center text-2xl sm:text-3xl lg:text-4xl text-white">
-          <span className="text-rose-200">Trusted by experts.</span>
+          <span className="text-[#ff910033]">Trusted by experts.</span>
 
           <br />
 
@@ -56,7 +56,7 @@ export default function CompanyPartner() {
         </div>
       </div>
 
-      <div className="relative -mt-16 sm:-mt-24 lg:-mt-32 h-64 sm:h-80 lg:h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#e60a64,transparent_70%)] before:opacity-40 after:absolute after:top-1/2 after:-left-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#c5769066] after:bg-zinc-900">
+      <div className="relative -mt-16 sm:-mt-24 lg:-mt-32 h-64 sm:h-80 lg:h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#ff9100,transparent_70%)] before:opacity-40 after:absolute after:top-1/2 after:-left-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#c5769066] after:bg-zinc-900">
         <SparklesCore
           id="tsparticles"
           background="transparent"
