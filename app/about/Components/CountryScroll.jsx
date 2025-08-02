@@ -113,7 +113,7 @@ export default function CountryCard() {
               }}
             />
             <span className="relative z-10 bg-transparent text-blue-500 font-bold rounded-full px-4 py-1 text-base sm:text-lg shadow-md">
-              300+
+              50+
             </span>
           </span>
           clients over the countries

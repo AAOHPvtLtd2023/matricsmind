@@ -27,8 +27,8 @@ export default function GetInTouchForm() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 items-start">
         {/* Left Heading */}
         <div className="md:col-span-2 space-y-4">
-          <h4 className="text-sm font-semibold text-[#FF9100]">Get in Touch</h4>
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-white">
+          <h4 className="text-xl font-semibold text-[#FF9100]">Get in Touch</h4>
+          <h2 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
             Ready to get started?
           </h2>
           <p className="text-white/80 text-sm">

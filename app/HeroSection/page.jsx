@@ -56,7 +56,7 @@ export default function HeroSectionWithGirl() {
 
           {/* Right Image */}
           <div className="flex justify-center md:justify-end">
-            <div className="w-[220px] h-[280px] sm:w-[280px] sm:h-[360px] md:w-[360px] md:h-[460px] overflow-hidden shadow-2xl bg-white rounded-t-full">
+            <div className="w-[220px] h-[280px] sm:w-[280px] sm:h-[360px] md:w-[380px] md:h-[480px] overflow-hidden shadow-2xl bg-white rounded-t-full">
               <Image
                 src="/girl.jpg"
                 alt="Team Member"

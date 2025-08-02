@@ -75,7 +75,7 @@ export default function CompanyMilestones() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[10vh] bg-gray-50 py-16 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full mx-auto"
+      className="min-h-[10vh] bg-gray-50 py-16 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 w-full mx-auto mt-15"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}

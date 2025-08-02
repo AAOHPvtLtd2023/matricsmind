@@ -55,6 +55,26 @@ export default function FeaturesSection() {
       description: "We ran out of copy ideas. Please forgive us.",
       icon: <IconHeart />,
     },
+    {
+      title: "24/7 Customer Support",
+      description: "We’re here for you. Anytime. Anywhere.",
+      icon: <IconHelp />,
+    },
+    {
+      title: "Money-back Promise",
+      description: "If you don’t love us, we’ll make it right.",
+      icon: <IconAdjustmentsBolt />,
+    },
+    {
+      title: "And Everything Else",
+      description: "We ran out of copy ideas. Please forgive us.",
+      icon: <IconHeart />,
+    },
+    {
+      title: "And Everything Else",
+      description: "We ran out of copy ideas. Please forgive us.",
+      icon: <IconHeart />,
+    }
   ];
 
   return (

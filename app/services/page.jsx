@@ -29,12 +29,12 @@ export default function ServicePage() {
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-snug sm:leading-tight drop-shadow-md">
             Thoughts worth{" "}
-            <UnderlineHighlight className="text-[#ff9100]">
+            {/* <UnderlineHighlight className="text-[#ff9100]"> */}
               sharing
-            </UnderlineHighlight>
+            {/* </UnderlineHighlight> */}
             ,
             <br className="hidden sm:block" />
-            strategies worth <UnderlineHighlight>trying</UnderlineHighlight>.
+            strategies worth trying.
           </h2>
         </motion.div>
       </AuroraBackground>

@@ -141,7 +141,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="reviews" className="mb-24 bg-background">
+    <section id="reviews" className="bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           ref={ref}
@@ -183,7 +183,7 @@ const Testimonials = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-4 text-center text-lg text-white/70 max-w-xl mx-auto"
+            className="text-center text-lg text-white/70 max-w-xl mx-auto"
           >
             Client Experiences That Speak Volumes
           </motion.p>

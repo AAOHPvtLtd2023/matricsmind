@@ -1,4 +1,7 @@
-"use client"
+"use client";
+
+import Image from "next/image";
+import logo from "../../public/MarticMind.png";
 
 export default function FooterGlow() {
   return (
@@ -6,18 +9,20 @@ export default function FooterGlow() {
       <div className="pointer-events-none absolute left-1/2 top-0 z-0 h-full w-full -translate-x-1/2 select-none">
         <div className="absolute -bottom-24 right-1/4 h-80 w-80 rounded-full bg-[#ff910066] blur-3xl"></div>
       </div>
-      
+
       {/* Glass effect container */}
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-8 rounded-2xl px-6 py-10 md:flex-row md:items-start md:justify-between md:gap-12"
-           style={{
-             backdropFilter: 'blur(3px) saturate(180%)',
-             background: 'radial-gradient(circle, rgba(255, 145, 0, 0.1) 0%, rgba(28, 55, 132, 0.1) 60%, rgba(0, 0, 0, 0.2) 100%)',
-             border: '1px solid rgba(255, 255, 255, 0.1)'
-           }}>
-        
+      <div
+        className="relative mx-auto flex max-w-6xl flex-col items-center gap-8 rounded-2xl px-6 py-10 md:flex-row md:items-start md:justify-between md:gap-12"
+        style={{
+          backdropFilter: "blur(3px) saturate(180%)",
+          background:
+            "radial-gradient(circle, rgba(255, 145, 0, 0.1) 0%, rgba(28, 55, 132, 0.1) 60%, rgba(0, 0, 0, 0.2) 100%)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+      >
         <div className="flex flex-col items-center md:items-start">
           <a href="#" className="mb-4 flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff9100] to-[#1c3784] text-2xl font-extrabold text-white shadow-md">
+            {/* <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff9100] to-[#1c3784] text-2xl font-extrabold text-white shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -32,17 +37,20 @@ export default function FooterGlow() {
                   d="M13 10V3L4 14h7v7l9-11h-7z"
                 />
               </svg>
-            </span>
-            <span className="bg-gradient-to-br from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-semibold tracking-tight text-transparent">
+            </span> */}
+            <Image src={logo} height={120} width={120} />
+            {/* <span className="bg-gradient-to-br from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-semibold tracking-tight text-transparent">
               MatricsMind
-            </span>
+            </span> */}
           </a>
-          <p className="mb-6 max-w-xs text-center text-sm text-white md:text-left">
+        </div>
+        <div>
+          <p className="mb-6 max-w-lg text-center text-sm text-white md:text-center mt-6">
             Mvpblocks provides a set of reusable components and utilities to
             help you create beautiful and responsive user interfaces quickly and
             efficiently.
           </p>
-          <div className="mt-2 flex gap-3 text-[#ff9100]">
+          <div className="mt-2 flex gap-5 text-[#ff9100] flex-row items-center justify-center">
             <a
               href="#"
               aria-label="Twitter"
@@ -72,7 +80,7 @@ export default function FooterGlow() {
             </a>
           </div>
         </div>
-        
+
         <nav className="flex w-full flex-col gap-9 text-center md:w-auto md:flex-row md:justify-end md:text-left">
           <div>
             <a href="#" className="flex flex-col items-center">
@@ -97,7 +105,7 @@ export default function FooterGlow() {
           </div>
         </nav>
       </div>
-      
+
       <div className="relative z-10 mt-10 text-center text-xs text-white">
         <span>&copy; 2025 MatricsMind. All rights reserved.</span>
       </div>

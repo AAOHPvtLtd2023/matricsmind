@@ -18,7 +18,7 @@ export default function BrandMarquee() {
     <section className="relative w-full py-10 overflow-hidden">
       {/* Heading */}
       <div className="text-center mb-8">
-        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#333] to-[#111] tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff] to-[#fff8] tracking-tight">
          Your Industry, Our Innovation
         </h1>
 

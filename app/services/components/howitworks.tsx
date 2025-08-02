@@ -64,7 +64,7 @@ export default function HowItWorks() {
 
       {/* Header */}
       <div className="relative z-10 text-center mb-16">
-        <p className="text-[#FF9100] text-xs sm:text-sm font-semibold uppercase tracking-widest mb-3">
+        <p className="text-[#FF9100] text-xs sm:text-lg font-semibold uppercase tracking-widest">
           Simple Steps to Get Started
         </p>
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent mb-5">

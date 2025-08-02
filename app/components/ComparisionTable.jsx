@@ -89,7 +89,7 @@ export default function ComparisonSection() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-20">
+    <section className="max-w-7xl mx-auto mb-15">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -105,7 +105,7 @@ export default function ComparisonSection() {
         >
           Why Clients Choose MatricsMind
         </motion.h2>
-        <p className="text-lg text-[#1c3784] max-w-2xl mx-auto mt-3">
+        <p className="text-lg text-[#ff9100] max-w-2xl mx-auto mt-3">
           Over 50 clients across the globe trust our vision and execution.
         </p>
       </motion.div>

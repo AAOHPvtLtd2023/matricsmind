@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import logo from "../../public/MarticMind.png"; // Adjust the path as necessary
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -82,7 +84,7 @@ export default function Header1() {
           ? theme === "dark"
             ? "rgba(0, 0, 0, 0.8)"
             : "rgba(255, 255, 255, 0.8)"
-          : "transparent",
+          : "rgba(255, 285, 285, 0.8)",
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
@@ -94,12 +96,13 @@ export default function Header1() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#ff9100] to-[#1c3784]">
+              {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#ff9100] to-[#1c3784]">
                 <Sparkles className="h-5 w-5 text-white" />
-              </div>
-              <span className="bg-gradient-to-r from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-bold text-transparent">
+              </div> */}
+              <Image src={logo} height={120} width={120} />
+              {/* <span className="bg-gradient-to-r from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-bold text-transparent">
                 MatricsMind
-              </span>
+              </span> */}
             </Link>
           </motion.div>
 
@@ -115,7 +118,7 @@ export default function Header1() {
               >
                 <Link
                   href={item.href}
-                  className="text-foreground flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                  className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && (

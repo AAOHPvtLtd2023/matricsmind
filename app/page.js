@@ -76,7 +76,7 @@ export default function HomePage() {
 
             {/* Subtitle */}
             <span
-              className={`block mt-6 text-base sm:text-lg md:text-xl text-[#1c3784] transition-all duration-700 ease-out delay-300 ${
+              className={`block mt-6 text-base sm:text-lg md:text-xl text-[#ff9100] transition-all duration-700 ease-out delay-300 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"

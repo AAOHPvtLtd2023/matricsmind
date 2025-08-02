@@ -26,9 +26,9 @@ export default function brandingPage() {
         >
           <div className="w-full flex flex-col items-center justify-center">
             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
-              Thoughts worth <UnderlineHighlight>sharing</UnderlineHighlight>,
+              Thoughts worth sharing,
               <br />
-              strategies worth <UnderlineHighlight>trying</UnderlineHighlight>.
+              strategies worth trying.
             </h2>
           </div>
         </motion.div>
