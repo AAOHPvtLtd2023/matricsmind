@@ -131,7 +131,7 @@ export default function HomePage() {
       </section>
 
       {/* Company Partner Section */}
-      <section className="py-6 md:py-3 bg-red-300">
+      <section className="py-6 md:py-3">
         <CompanyPartner />
       </section>
 
