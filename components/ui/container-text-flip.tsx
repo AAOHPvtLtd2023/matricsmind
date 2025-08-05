@@ -41,12 +41,13 @@ export function ContainerTextFlip({
   const [width, setWidth] = useState(100);
   const textRef = useRef<HTMLDivElement>(null);
 
-  const updateWidthForWord = () => {
-    if (textRef.current) {
-      const textWidth = textRef.current.scrollWidth + 30;
-      setWidth(textWidth);
-    }
-  };
+const updateWidthForWord = () => {
+  if (typeof window !== "undefined" && textRef.current) {
+    const textWidth = textRef.current.scrollWidth + 30;
+    setWidth(textWidth);
+  }
+};
+
 
   useEffect(() => {
     updateWidthForWord();
