@@ -6,11 +6,14 @@ const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), {
   ssr: false,
 });
 
-
 import CardTest from "./components/cardTest";
 
 import Testimonials from "./components/testimonials";
-import { ContainerTextFlip } from "../components/ui/container-text-flip";
+const ContainerTextFlip = dynamic(
+  () => import("../components/ui/container-text-flip"),
+  { ssr: false }
+);
+
 import CompanyPartner from "./components/CompanyPartner";
 
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";

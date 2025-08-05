@@ -49,9 +49,11 @@ const updateWidthForWord = () => {
 };
 
 
-  useEffect(() => {
+ useEffect(() => {
+  if (typeof window !== "undefined") {
     updateWidthForWord();
-  }, [currentWordIndex]);
+  }
+}, [currentWordIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
