@@ -15,14 +15,14 @@ const companies = [
 
 export default function BrandMarquee() {
   return (
-    <section className="relative w-full py-10 overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       {/* Heading */}
       <div className="text-center mb-8">
-        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff] to-[#fff8] tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff] to-[#fff8] tracking-tight leading-none pb-2">
          Your Industry, Our Innovation
         </h1>
 
-        <p className="text-sm mt-2" style={{ color: "#ff9100" }}>
+        <p className="text-lg mt-2" style={{ color: "#ff9100" }}>
           Empowering Every Industry Through Smart Innovation
         </p>
       </div>

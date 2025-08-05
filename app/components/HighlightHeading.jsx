@@ -13,11 +13,11 @@ export default function HighlightHeading() {
   }, [isInView]);
 
   return (
-    <section className="w-full py-10">
+    <section className="w-full py-0">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-light text-white leading-snug relative inline-block">
-          <span className="block text-[#fff]">From Strategy to Screens</span>
-          <span className="relative inline-block text-[#ff9100] font-semibold">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-light text-white leading-sung relative inline-block">
+          <span className="block text-[#fff] leading-none">From Strategy to Screens</span>
+          <span className="relative inline-block text-[#ff9100] font-semibold leading-none">
             We Create What Brands Need
             <svg
               ref={pathRef}

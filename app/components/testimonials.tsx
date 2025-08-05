@@ -168,7 +168,7 @@ const Testimonials = () => {
           >
             <h2
               className={cn(
-                "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[51px] md:leading-[60px]",
+                "bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[51px] md:leading-[60px]",
                 space.className
               )}
             >
@@ -188,7 +188,7 @@ const Testimonials = () => {
             Client Experiences That Speak Volumes
           </motion.p>
         </motion.div>
-        <div className="my-16 flex max-h-[738px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+        <div className="flex max-h-[738px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] mt-10">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn
             testimonials={secondColumn}

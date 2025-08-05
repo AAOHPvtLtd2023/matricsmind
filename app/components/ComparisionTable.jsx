@@ -89,23 +89,23 @@ export default function ComparisonSection() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto mb-15">
+    <section className="max-w-7xl mx-auto">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-14"
+        className="text-center mb-6"
       >
         <motion.h2
-          className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%]"
+          className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-none pb-2"
           variants={shimmerTitle}
           animate="animate"
         >
           Why Clients Choose MatricsMind
         </motion.h2>
-        <p className="text-lg text-[#ff9100] max-w-2xl mx-auto mt-3">
+        <p className="text-lg text-[#ff9100] max-w-2xl mx-auto">
           Over 50 clients across the globe trust our vision and execution.
         </p>
       </motion.div>
@@ -135,7 +135,9 @@ export default function ComparisonSection() {
                   <div className="w-12 h-12 bg-[#1c3784]/10 rounded-full flex items-center justify-center">
                     {item.icon}
                   </div>
-                  <h3 className="text-white font-bold text-lg">{item.feature}</h3>
+                  <h3 className="text-white font-bold text-lg">
+                    {item.feature}
+                  </h3>
                 </div>
 
                 <div className="bg-[#f3f4f6] rounded-lg p-4 mb-3">
@@ -143,7 +145,9 @@ export default function ComparisonSection() {
                     <X className="w-4 h-4" />
                     Others
                   </div>
-                  <p className="text-center text-[#1c3784] text-sm mt-1">{item.others}</p>
+                  <p className="text-center text-[#1c3784] text-sm mt-1">
+                    {item.others}
+                  </p>
                 </div>
 
                 <div className="bg-[#ff9100] rounded-lg p-4 text-white shadow-md">
@@ -151,7 +155,9 @@ export default function ComparisonSection() {
                     <Check className="w-4 h-4" />
                     We Deliver
                   </div>
-                  <p className="text-center text-sm font-medium mt-1">{item.we}</p>
+                  <p className="text-center text-sm font-medium mt-1">
+                    {item.we}
+                  </p>
                 </div>
               </motion.div>
             ))}

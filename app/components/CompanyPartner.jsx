@@ -3,7 +3,7 @@ import { SparklesCore } from "../../components/ui/sparkles";
 export default function CompanyPartner() {
   return (
     <div className="min-h-screen w-full overflow-hidden">
-      <div className="mx-auto mt-16 sm:mt-24 lg:mt-32 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-6xl ">
         <div className="text-center text-2xl sm:text-3xl lg:text-4xl text-white">
           <span className="text-[#ff910033]">Trusted by experts.</span>
 

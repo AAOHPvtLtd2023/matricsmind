@@ -49,7 +49,7 @@ export default function ElasticCarousel() {
   const images = ["/image1.jpg", "/image2.jpg", "/image3.jpg", "/image4.jpg"];
 
   return (
-    <div className="relative max-w-3xl mx-auto my-8 rounded-lg overflow-hidden shadow-lg">
+    <div className="relative max-w-3xl rounded-lg overflow-hidden shadow-lg">
       {/* Carousel */}
       <div ref={sliderRef} className="keen-slider rounded-lg">
         {images.map((src, index) => (
