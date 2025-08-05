@@ -5,16 +5,18 @@ import {
   IconClipboardText,
   IconCreditCard,
   IconSearch,
-  IconPencilRuler,
+  IconPencil,
   IconBrush,
   IconPresentation,
   IconMessageCircle,
   IconRepeat,
-  IconBadgeCheck,
+  IconCheckCircle, // ✅ Replacing IconBadgeCheck
   IconCash,
   IconFileText,
   IconDownload,
 } from "@tabler/icons-react";
+
+
 
 import { motion } from "framer-motion";
 
@@ -40,7 +42,7 @@ export default function FeaturesSection() {
     {
       title: "04. Sketching Ideas",
       description: "Explore and outline rough concepts and directions.",
-      icon: <IconPencilRuler />,
+      icon: <IconPencil />,
     },
     {
       title: "05. Design Creation",
@@ -66,7 +68,7 @@ export default function FeaturesSection() {
     {
       title: "09. Final Presentation",
       description: "Showcase the final design for client approval.",
-      icon: <IconBadgeCheck />,
+      icon: <IconCheckCircle />,
     },
     {
       title: "10. 50% Remaining Payment",
