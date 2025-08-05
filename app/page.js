@@ -1,29 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
-import MarqueeSection from "./components/BrandMarquee";
+import dynamic from "next/dynamic";
 import BrandMarquee from "./components/BrandMarquee";
-import ElasticCarousel from "./components/ElasticCarousel";
-import FeaturedProjects from "./components/featuredProjects";
-import FloatingBackground from "./FloatingBackground";
+const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), {
+  ssr: false,
+});
+
+
 import CardTest from "./components/cardTest";
-// import { TextScroll } from "@/components/ui/text-scroll";
-import FooterGlow from "./components/Footer";
-import ContactUs1 from "./components/ContactUs";
-import AboutUs1 from "./components/aboutus";
+
 import Testimonials from "./components/testimonials";
 import { ContainerTextFlip } from "../components/ui/container-text-flip";
-import FeaturesSection from "./components/FeaturesSection";
 import CompanyPartner from "./components/CompanyPartner";
-import Gallery from "./components/Gallery";
-import FaqSection from "./components/FaqSection";
-import HighlightHeading from "./components/HighlightHeading";
-import DualMarquee from "./components/DualMarquee";
-import { TextScroll } from "../components/ui/text-scroll";
-import { TextScrollBox } from "./components/TextScrollBox";
+
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
 import GetInTouchForm from "./getinTouchForm/page";
-import HeroSectionWithGirl from "./HeroSection/page.jsx";
-import Header1 from "../components/mvpblocks/header-1.jsx";
+const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), {
+  ssr: false,
+});
 import ComparisonTable from "./components/ComparisionTable";
 import { motion } from "framer-motion";
 import CardFalling from "./services/components/CardFalling.jsx";
