@@ -81,10 +81,10 @@ export default function CompanyMilestones() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-6">
           <div className="lg:w-1/2">
-            <p className="text-sm text-gray-600 mb-3 font-medium tracking-wide">
+            <p className="text-md text-gray-600 font-medium tracking-wide">
               Trusted Worldwide
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#ff9100] leading-snug">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#ff9100] leading-none">
               Design and Web Solution
             </h2>
           </div>
