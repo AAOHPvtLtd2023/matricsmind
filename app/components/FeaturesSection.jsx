@@ -10,11 +10,12 @@ import {
   IconPresentation,
   IconMessageCircle,
   IconRepeat,
-  IconCheckCircle, // ✅ Replacing IconBadgeCheck
+  IconCheck,       // ✅ Use this one instead
   IconCash,
   IconFileText,
   IconDownload,
 } from "@tabler/icons-react";
+
 
 
 
@@ -68,7 +69,7 @@ export default function FeaturesSection() {
     {
       title: "09. Final Presentation",
       description: "Showcase the final design for client approval.",
-      icon: <IconCheckCircle />,
+      icon: <IconCheck />,
     },
     {
       title: "10. 50% Remaining Payment",
