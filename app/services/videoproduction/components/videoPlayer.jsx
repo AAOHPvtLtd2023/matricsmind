@@ -47,7 +47,7 @@ const VideoPlayerComponent = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Bring Your Vision to Life
+         Transform your vision into reality
         </motion.h2>
         <motion.p
           className="text-sm sm:text-lg max-w-2xl mb-6 drop-shadow-md"
@@ -55,7 +55,7 @@ const VideoPlayerComponent = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          We craft stunning visuals and immersive video experiences tailored for your brand's identity.
+          From Vision to Visuals — We Make It Happen by Creating What You Imagine.
         </motion.p>
         <motion.button
           whileHover={{ scale: 1.05 }}

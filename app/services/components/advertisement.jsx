@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const AdvertisementSectionComponent = ({ title = "Default" }) => {
+const AdvertisementSectionComponent = ({ title = "Default",description="" }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -75,7 +75,8 @@ const AdvertisementSectionComponent = ({ title = "Default" }) => {
           }`}
         >
           <p className="text-white/90 text-lg sm:text-xl">
-            Create a seamless experience.
+           
+            {description}
           </p>
           <p className="text-white/80 text-base sm:text-lg">
             From <span className="text-[#FF9100] font-medium">{title.toLowerCase()}</span> essence to visual identity.

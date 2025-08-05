@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-export default function FancyQuoteButton({ text = "Get a Free Quote Today" }) {
-  return (
+export default function FancyQuoteButton({ text = "Get a Free Quote Today", link = "#" }) {
+  const isExternal = link.startsWith("http");
+
+  const ButtonContent = (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
@@ -30,5 +33,13 @@ export default function FancyQuoteButton({ text = "Get a Free Quote Today" }) {
         <ArrowRight size={20} />
       </motion.span>
     </motion.button>
+  );
+
+  return isExternal ? (
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      {ButtonContent}
+    </a>
+  ) : (
+    <Link href={link}>{ButtonContent}</Link>
   );
 }

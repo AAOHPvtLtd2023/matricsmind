@@ -19,32 +19,33 @@ interface Step {
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
-  const steps: Step[] = [
-    {
-      number: "01",
-      title: "Share Your Requirements in Detail",
-      description:
-        "Tell us exactly what you need. The more details you provide, the better we can tailor our solution to your specific requirements.",
-      icon: MessageSquare,
-      color: "from-[#1C3784] to-[#FF9100]",
-    },
-    {
-      number: "02",
-      title: "Get Your Personalized Quote",
-      description:
-        "Receive a custom quote based on your requirements within 24 hours. No hidden fees, transparent pricing.",
-      icon: FileText,
-      color: "from-[#4f46e5] to-[#ec4899]",
-    },
-    {
-      number: "03",
-      title: "Get Your Project Delivered",
-      description:
-        "Sit back and relax while we deliver your project on time with the highest quality standards.",
-      icon: CheckCircle2,
-      color: "from-[#10b981] to-[#22d3ee]",
-    },
-  ];
+ const steps: Step[] = [
+  {
+    number: "01",
+    title: "Share a Clear Overview of Your Expectations",
+    description:
+      "Let us know exactly what you're looking for — clarity helps us align our work with your vision.",
+    icon: MessageSquare,
+    color: "from-[#1C3784] to-[#FF9100]",
+  },
+  {
+    number: "02",
+    title: "Get a Quote Specific to Your Needs",
+    description:
+      "Fast. Fair. Transparent. Get your personalized quote in just 24 hours.",
+    icon: FileText,
+    color: "from-[#4f46e5] to-[#ec4899]",
+  },
+  {
+    number: "03",
+    title: "We Deliver What We Promise",
+    description:
+      "Your project. Our priority. Delivered with precision and quality — on time, every time.",
+    icon: CheckCircle2,
+    color: "from-[#10b981] to-[#22d3ee]",
+  },
+];
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,13 +66,13 @@ export default function HowItWorks() {
       {/* Header */}
       <div className="relative z-10 text-center mb-16">
         <p className="text-[#FF9100] text-xs sm:text-lg font-semibold uppercase tracking-widest">
-          Simple Steps to Get Started
+         Start Your Journey
         </p>
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent mb-5">
-          How It Works?
+         How We Work?
         </h1>
         <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          From start to finish, our process is crafted for clarity, speed, and results.
+          We guide you from start to finish with a process that’s clear, fast, and results-driven
         </p>
       </div>
 

@@ -46,9 +46,8 @@ export default function FooterGlow() {
         </div>
         <div>
           <p className="mb-6 max-w-lg text-center text-sm text-white md:text-center mt-6">
-            Mvpblocks provides a set of reusable components and utilities to
-            help you create beautiful and responsive user interfaces quickly and
-            efficiently.
+            At Metrics Mind, we go beyond services — we build lasting
+            partnerships driven by creativity, strategy, and real results.
           </p>
           <div className="mt-2 flex gap-5 text-[#ff9100] flex-row items-center justify-center">
             <a

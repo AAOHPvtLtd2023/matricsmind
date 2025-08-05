@@ -3,40 +3,50 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Folder,
-  BookOpen,
-  Video,
+  Users,
+  FileText,
+  Camera,  // Capital 'C' is required
   Clock,
-  CheckCircle,
+  Globe,
 } from "lucide-react";
+
+
 
 const features = [
   {
-    icon: Folder,
-    title: "Expert-Led",
-    description: "Creative Direction from Experienced Branding Experts",
+    icon: Users,
+    title: "Led by Creative Strategists",
+    description:
+      "Driven by branding professionals with the expertise to bring your ideas to life",
   },
   {
-    icon: BookOpen,
-    title: "Custom Scripts",
-    description: "Custom Storyboarding & Script Assistance",
+    icon: FileText,
+    title: "📝 Creative Scripting & Storyboard Design",
+    description:
+      "Strategic scriptwriting and storyboard design crafted to match your brand identity and vision",
   },
   {
-    icon: Video,
-    title: "Cinematic Gear",
-    description: "High-End Cameras, Lighting & Editing",
+    icon: Camera,  // Capital 'C'
+    title: "📽️ Premium Video Equipment",
+    description:
+      "Equipped with professional-grade visuals, lighting precision, and next-gen editing solutions.",
   },
   {
     icon: Clock,
-    title: "Fast Delivery",
-    description: "Flexible Scheduling & Quick Turnaround",
+    title: "⚡ On-Time & On-Point Delivery",
+    description:
+      "On-time delivery, customized to your project needs.",
   },
   {
-    icon: CheckCircle,
-    title: "Trusted Globally",
-    description: "Trusted by Over 300+ Brands Globally",
+    icon: Globe,
+    title: "🌍 Proven Results with Global Clients",
+    description:
+      "Proven track record with leading global clients.",
   },
 ];
+
+
+
 
 const containerVariants = {
   hidden: {},
@@ -76,10 +86,10 @@ const ExpertLedComponent = () => {
             Why Choose Us?
           </h2>
           <p className="mt-2 text-4xl font-extrabold text-[#1C3784] dark:text-white">
-            Choose Excellence, Choose Us
+            Your Standard is High — So Is Ours.
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 mx-auto">
-            We deliver tailored solutions with seamless execution, ensuring every detail works for you.
+            We deliver customized solutions with smooth execution, making sure every detail works in your favor.
           </p>
         </div>
 

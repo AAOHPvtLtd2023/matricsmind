@@ -2,79 +2,87 @@
 
 import { cn } from "../../lib/utils";
 import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
+  IconClipboardText,
+  IconCreditCard,
+  IconSearch,
+  IconPencilRuler,
+  IconBrush,
+  IconPresentation,
+  IconMessageCircle,
+  IconRepeat,
+  IconBadgeCheck,
+  IconCash,
+  IconFileText,
+  IconDownload,
 } from "@tabler/icons-react";
+
 import { motion } from "framer-motion";
 
 export default function FeaturesSection() {
   const features = [
     {
-      title: "Built for Developers",
-      description: "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+      title: "01. Project Brief",
+      description:
+        "Understand the client's requirements and project objectives.",
+      icon: <IconClipboardText />,
     },
     {
-      title: "Ease of Use",
-      description: "As intuitive as using an Apple, minus the cost.",
-      icon: <IconEaseInOut />,
+      title: "02. 50% Advance Payment",
+      description: "Secure initial payment to commence work.",
+      icon: <IconCreditCard />,
     },
     {
-      title: "Transparent Pricing",
-      description: "No hidden fees. No credit card required. No nonsense.",
-      icon: <IconCurrencyDollar />,
+      title: "03. Research Work",
+      description:
+        "Conduct thorough research on industry, competitors, and audience.",
+      icon: <IconSearch />,
     },
     {
-      title: "100% Uptime",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
+      title: "04. Sketching Ideas",
+      description: "Explore and outline rough concepts and directions.",
+      icon: <IconPencilRuler />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "Share access. Scale fast. Stay secure.",
-      icon: <IconRouteAltLeft />,
+      title: "05. Design Creation",
+      description:
+        "Develop detailed design based on approved concept direction.",
+      icon: <IconBrush />,
     },
     {
-      title: "24/7 Customer Support",
-      description: "We’re here for you. Anytime. Anywhere.",
-      icon: <IconHelp />,
+      title: "06. Initial Presentation",
+      description: "Present first draft of the design to the client.",
+      icon: <IconPresentation />,
     },
     {
-      title: "Money-back Promise",
-      description: "If you don’t love us, we’ll make it right.",
-      icon: <IconAdjustmentsBolt />,
+      title: "07. Client Feedback",
+      description: "Gather input and suggestions for refinement.",
+      icon: <IconMessageCircle />,
     },
     {
-      title: "And Everything Else",
-      description: "We ran out of copy ideas. Please forgive us.",
-      icon: <IconHeart />,
+      title: "08. Two Revisions",
+      description: "Incorporate up to two rounds of revisions.",
+      icon: <IconRepeat />,
     },
     {
-      title: "24/7 Customer Support",
-      description: "We’re here for you. Anytime. Anywhere.",
-      icon: <IconHelp />,
+      title: "09. Final Presentation",
+      description: "Showcase the final design for client approval.",
+      icon: <IconBadgeCheck />,
     },
     {
-      title: "Money-back Promise",
-      description: "If you don’t love us, we’ll make it right.",
-      icon: <IconAdjustmentsBolt />,
+      title: "10. 50% Remaining Payment",
+      description: "Collect final payment before delivery.",
+      icon: <IconCash />,
     },
     {
-      title: "And Everything Else",
-      description: "We ran out of copy ideas. Please forgive us.",
-      icon: <IconHeart />,
+      title: "11. Delivery Guidelines",
+      description: "Outline usage and technical specifications.",
+      icon: <IconFileText />,
     },
     {
-      title: "And Everything Else",
-      description: "We ran out of copy ideas. Please forgive us.",
-      icon: <IconHeart />,
-    }
+      title: "12. File Delivery",
+      description: "Hand over final files in agreed formats.",
+      icon: <IconDownload />,
+    },
   ];
 
   return (

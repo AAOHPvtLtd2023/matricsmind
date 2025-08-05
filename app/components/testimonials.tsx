@@ -13,60 +13,42 @@ const space = Geist({
 
 const testimonials = [
   {
-    text: "Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.",
+    name: "Kaustubh Singh Baghal",
+    username: "@kaustubh",
     imageSrc: "/assets/avatars/avatar-1.webp",
-    name: "Arjun Mehta",
-    username: "@arjdev",
+    text:
+      "The team delivered high-quality, visually stunning motion graphics that really elevated our brand’s storytelling. The animations were not only professional but also perfectly aligned with our vision. Their SEO work on our YouTube channel significantly improved our video rankings and visibility. We've seen noticeable growth in both traffic and subscribers thanks to their strategic approach. They handled our social media campaigns end-to-end, and the results were outstanding. Engagement rates went up, our audience grew steadily, and the brand presence across platforms became much stronger. Highly recommend Matrics Mind to anyone looking for creative and data-driven digital marketing support!",
   },
   {
-    text: "Honestly shocked at how smooth the animations and styling are out of the box. Just works.",
+    name: "Engineer Reveals",
+    username: "@engineerreveals",
     imageSrc: "/assets/avatars/avatar-2.webp",
-    name: "Sara Lin",
-    username: "@sara.codes",
+    text:
+      "They delivered end-to-end website design, impactful YouTube SEO, and high-quality video editing with motion graphics—all of which significantly boosted our online presence, audience engagement, and content performance. Truly a data-driven and creative team! We highly recommend Metrics Mind to anyone seeking creative and results-driven digital marketing solutions!",
   },
   {
-    text: "Our team launched a client site in 2 days using Mvpblocks. Saved so much time.",
+    name: "Saffron Patriot",
+    username: "@saffronpatriot",
     imageSrc: "/assets/avatars/avatar-3.webp",
-    name: "Devon Carter",
-    username: "@devninja",
+    text:
+      "They create high-quality and engaging YouTube videos that truly reflect our brand and keep our audience interested. The visuals and editing are always on point! Highly recommend Metrics Mind for creative and results-driven digital marketing!",
   },
   {
-    text: "Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.",
-    imageSrc: "/assets/avatar-2.webp",
-    name: "Priya Shah",
-    username: "@priyacodes",
+    name: "Vichaarone",
+    username: "@vichaarone",
+    imageSrc: "/assets/avatars/avatar-4.webp",
+    text:
+      "We’re impressed with Metrics Mind’s content creation, motion graphics, video editing, and YouTube SEO – professional work with great outcomes!",
   },
   {
-    text: "Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.",
+    name: "Gourav Kumar Singh",
+    username: "@gouravkumar",
     imageSrc: "/assets/avatars/avatar-5.webp",
-    name: "Leo Martin",
-    username: "@leobuilds",
-  },
-  {
-    text: "Mvpblocks helped us prototype multiple landing pages without writing CSS once.",
-    imageSrc: "/assets/avatars/avatar-6.webp",
-    name: "Chloe Winters",
-    username: "@chloewinters",
-  },
-  {
-    text: "As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.",
-    imageSrc: "/assets/avatars/avatar-7.webp",
-    name: "Ayaan Malik",
-    username: "@ayaan_dev",
-  },
-  {
-    text: "Can’t believe how polished the components look. Clients are impressed every time.",
-    imageSrc: "/assets/avatar-5.webp",
-    name: "Monica Reeves",
-    username: "@monicareeves",
-  },
-  {
-    text: "This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.",
-    imageSrc: "/assets/avatars/avatar-9.webp",
-    name: "James Roy",
-    username: "@jamesrdev",
+    text:
+      "Metrics Mind did a great job with our website creation and SEO audit. The site looks clean and professional, and the SEO insights helped us improve our visibility and performance.",
   },
 ];
+
 
 const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);

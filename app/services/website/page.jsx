@@ -56,7 +56,7 @@ export default function websitePage() {
   ]}
 />
 
-      <FancyQuoteButton />
+      <FancyQuoteButton link="https://docs.google.com/forms/d/1b8X2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/edit" />
       <Gallery />
       <WebsiteServiceCards />
       <CompanyPartner />

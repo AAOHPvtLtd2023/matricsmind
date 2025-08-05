@@ -9,6 +9,7 @@ import CompanyPartner from "../../components/CompanyPartner";
 import Testimonials from "../../components/testimonials";
 import FeaturesSection from "../../components/FeaturesSection";
 import MasonryGallery from "../../../components/mvpblocks/masonry-grid-1";
+import FancyQuoteButton from "../website/components/FancyQuoteButton";
 
 export default function brandingPage() {
   return (
@@ -51,6 +52,7 @@ export default function brandingPage() {
         ]}
         itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
       />
+      <FancyQuoteButton link="https://docs.google.com/forms/d/1HsjudHf81IZC8VaC-eptpGOyFdYkjM7GQAkZjyvf7gU/edit" />
       <MasonryGallery/>
       <FeaturesSection/>
       {/* <Testimonials/> */}

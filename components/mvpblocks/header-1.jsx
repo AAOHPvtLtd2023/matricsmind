@@ -96,13 +96,9 @@ export default function Header1() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-              {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#ff9100] to-[#1c3784]">
-                <Sparkles className="h-5 w-5 text-white" />
-              </div> */}
+             
               <Image src={logo} height={120} width={120} />
-              {/* <span className="bg-gradient-to-r from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-bold text-transparent">
-                MatricsMind
-              </span> */}
+             
             </Link>
           </motion.div>
 
@@ -164,11 +160,10 @@ export default function Header1() {
           <div className="hidden items-center space-x-4 lg:flex">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="https://docs.google.com/forms/d/1b8X2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/edit"
+                href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
                 className="inline-flex items-center space-x-2 rounded-full bg-[#ff9100] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>Get A Free Qoute</span>
-                {/* <ArrowRight className="h-4 w-4" /> */}
               </Link>
             </motion.div>
           </div>
