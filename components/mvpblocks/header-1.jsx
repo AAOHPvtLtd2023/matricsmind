@@ -84,7 +84,7 @@ export default function Header1() {
           ? theme === "dark"
             ? "rgba(0, 0, 0, 0.8)"
             : "rgba(255, 255, 255, 0.8)"
-          : "rgba(255, 285, 285, 0.8)",
+          : "rgba(0, 0, 0, 0",
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
@@ -114,7 +114,7 @@ export default function Header1() {
               >
                 <Link
                   href={item.href}
-                  className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                  className="text-[#fff] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && (

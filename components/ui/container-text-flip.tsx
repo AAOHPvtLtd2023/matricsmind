@@ -17,7 +17,7 @@ interface ContainerTextFlipProps {
   animationDuration?: number;
 }
 
-export function ContainerTextFlip({
+export default function ContainerTextFlip({
   words = [
     "UAE",
     "Saudi Arabia",
@@ -110,99 +110,99 @@ const updateWidthForWord = () => {
   );
 }
 
-export default function ResponsiveHeroSection(): JSX.Element {
-  const [isVisible, setIsVisible] = useState(false);
+// export default function ResponsiveHeroSection(): JSX.Element {
+//   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+//   useEffect(() => {
+//     const timer = setTimeout(() => setIsVisible(true), 100);
+//     return () => clearTimeout(timer);
+//   }, []);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
-  };
+//   const containerVariants: Variants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.3,
+//         delayChildren: 0.2,
+//       },
+//     },
+//   };
 
-  const itemVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      filter: "blur(10px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.42, 0, 1, 1], // Cubic bezier format
-      },
-    },
-  };
+//   const itemVariants: Variants = {
+//     hidden: {
+//       opacity: 0,
+//       y: 30,
+//       filter: "blur(10px)",
+//     },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       filter: "blur(0px)",
+//       transition: {
+//         duration: 0.8,
+//         ease: [0.42, 0, 1, 1], // Cubic bezier format
+//       },
+//     },
+//   };
 
-  const flipComponentVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 1,
-        delay: 0.8,
-        ease: [0.42, 0, 1, 1],
-      },
-    },
-  };
+//   const flipComponentVariants: Variants = {
+//     hidden: {
+//       opacity: 0,
+//       y: 20,
+//       scale: 0.9,
+//     },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         duration: 1,
+//         delay: 0.8,
+//         ease: [0.42, 0, 1, 1],
+//       },
+//     },
+//   };
 
-  return (
-    <section className="flex flex-col items-center justify-center gap-6 sm:gap-8 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl"
-      >
-        <motion.span variants={itemVariants} className="inline-block">
-          Make your websites look
-        </motion.span>
+//   return (
+//     <section className="flex flex-col items-center justify-center text-center">
+//       <motion.div
+//         variants={containerVariants}
+//         initial="hidden"
+//         animate={isVisible ? "visible" : "hidden"}
+//         className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl"
+//       >
+//         <motion.span variants={itemVariants} className="inline-block">
+//           Make your websites look
+//         </motion.span>
 
-        <motion.div
-          variants={flipComponentVariants}
-          className="inline-block mx-2 sm:mx-4"
-        >
-          <ContainerTextFlip
-            words={[
-              "stunning",
-              "modern",
-              "beautiful",
-              "amazing",
-              "professional",
-            ]}
-            interval={2500}
-            className="mx-2 sm:mx-4"
-            animationDuration={600}
-          />
-        </motion.div>
+//         <motion.div
+//           variants={flipComponentVariants}
+//           className="inline-block mx-2 sm:mx-4"
+//         >
+//           <ContainerTextFlip
+//             words={[
+//               "stunning",
+//               "modern",
+//               "beautiful",
+//               "amazing",
+//               "professional",
+//             ]}
+//             interval={2500}
+//             className="mx-2 sm:mx-4"
+//             animationDuration={600}
+//           />
+//         </motion.div>
 
-        <br className="hidden sm:block" />
+//         <br className="hidden sm:block" />
 
-        <motion.span
-          variants={itemVariants}
-          className="block sm:inline mt-2 sm:mt-0"
-        >
-          and captivating
-        </motion.span>
-      </motion.div>
-    </section>
-  );
-}
+//         <motion.span
+//           variants={itemVariants}
+//           className="block sm:inline mt-2 sm:mt-0"
+//         >
+//           and captivating
+//         </motion.span>
+//       </motion.div>
+//     </section>
+//   );
+// }
