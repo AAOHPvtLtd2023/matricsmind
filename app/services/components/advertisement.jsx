@@ -16,15 +16,15 @@ const AdvertisementSectionComponent = ({ title = "Default",description="" }) => 
 const configMap = {
   techsolution: {
     route: "/services/website",
-    backgroundImage: "/images/website-bg.jpg",
+    backgroundImage: "/images/Services/website.jpg",
   },
   brandsolution: {
     route: "/services/branding",
-    backgroundImage: "/images/branding-bg.jpg",
+    backgroundImage: "/images/Services/branding.jpg",
   },
   visualsolution: {
     route: "/services/videoproduction",
-    backgroundImage: "/images/videography-bg.jpg",
+    backgroundImage: "/images/Services/videoproduction.jpg",
   },
 };
 
@@ -37,14 +37,14 @@ const configMap = {
 
   return (
     <motion.div
-      initial={{ opacity: 0.7, scale: 0.98 }}
+      initial={{ opacity: 1, scale: 0.98 }}
       whileHover={{ scale: 1.01, boxShadow: "0 0 30px rgba(255, 145, 0, 0.25)" }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] w-[90vw] mx-auto mb-8 overflow-hidden bg-cover bg-center rounded-2xl shadow-xl"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md z-10" />
+      <div className="absolute inset-0 bg-black/70 z-10" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none z-20">
