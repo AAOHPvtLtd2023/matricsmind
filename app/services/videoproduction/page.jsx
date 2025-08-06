@@ -31,43 +31,16 @@ export default function videoProductionPage() {
           {/* Heading */}
           <div className="w-full flex flex-col items-center justify-center text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
-              Thoughts worth sharing,
+              We Build Tech That Connects People —
               <br />
-              strategies worth trying.
+              and Powers Growth
             </h2>
           </div>
 
-          {/* Fancy Buttons */}
-          <div className="flex gap-4 mt-6 flex-wrap justify-center">
-            {/* Get Started */}
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 20px rgba(255,255,255,0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-6 py-2 rounded-xl backdrop-blur-md bg-white/10 border border-white/30 text-white font-medium shadow-lg transition-all duration-300"
-            >
-              <SparklesCore className="w-5 h-5" />
-              Get Started
-            </motion.button>
-
-            {/* Learn More */}
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 20px rgba(255,255,255,0.2)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-6 py-2 rounded-xl backdrop-blur-md bg-white/10 border border-white/30 text-white font-medium shadow-lg transition-all duration-300"
-            >
-              <Rocket className="w-5 h-5" />
-              Learn More
-            </motion.button>
-          </div>
+         
         </motion.div>
       </AuroraBackground>
-      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" />
+      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-5" />
       {/* <TextScrollTooltip/> */}
       <ExpertLedComponent />
       <VideoPlayerComponent />

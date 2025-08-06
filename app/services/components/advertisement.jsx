@@ -11,23 +11,26 @@ const AdvertisementSectionComponent = ({ title = "Default",description="" }) => 
     setIsVisible(true);
   }, [title]);
 
-  const config = {
-    Branding: {
-      route: "/branding",
-      backgroundImage: "/images/branding-bg.jpg",
-    },
-    Website: {
-      route: "/website",
-      backgroundImage: "/images/website-bg.jpg",
-    },
-    VideoGraphy: {
-      route: "/videography",
-      backgroundImage: "/images/videography-bg.jpg",
-    },
-  };
+  const normalizedTitle = title.trim().toLowerCase().replace(/\s+/g, "");
 
-  const { route, backgroundImage } =
-    config[title] || {
+const configMap = {
+  techsolution: {
+    route: "/services/website",
+    backgroundImage: "/images/website-bg.jpg",
+  },
+  brandsolution: {
+    route: "/services/branding",
+    backgroundImage: "/images/branding-bg.jpg",
+  },
+  visualsolution: {
+    route: "/services/videoproduction",
+    backgroundImage: "/images/videography-bg.jpg",
+  },
+};
+
+
+   const { route, backgroundImage } =
+    configMap[normalizedTitle] || {
       route: "/",
       backgroundImage: "/images/default-bg.jpg",
     };
