@@ -84,7 +84,7 @@ const TestimonialsColumn = ({
             {testimonials.map(({ text, imageSrc, name, username }, idx) => (
               <div
                 key={`${text}-${index}-${idx}`}
-                className="group relative w-full max-w-[300px] sm:max-w-sm overflow-hidden rounded-2xl border-2 p-6 sm:p-8 shadow-[0_8px_30px_rgba(28,55,132,0.25)] hover:shadow-[0_20px_40px_rgba(255,145,0,0.3)] transition-all duration-500 hover:scale-[1.02]"
+                className="group relative w-full max-w-[90vw] sm:max-w-sm overflow-hidden rounded-2xl border-2 p-4 sm:p-8 shadow-[...]"
                 style={{
                   background:
                     "linear-gradient(145deg, #fff 0%, rgba(255,255,255,0.95) 100%)",
@@ -277,9 +277,20 @@ const Testimonials = () => {
 
         .line-clamp-6 {
           display: -webkit-box;
-          -webkit-line-clamp: 6;
           -webkit-box-orient: vertical;
           overflow: hidden;
+        }
+
+        @media (max-width: 640px) {
+          .line-clamp-6 {
+            -webkit-line-clamp: 4;
+          }
+        }
+
+        @media (min-width: 641px) {
+          .line-clamp-6 {
+            -webkit-line-clamp: 6;
+          }
         }
       `}</style>
 
@@ -319,7 +330,7 @@ const Testimonials = () => {
           >
             {/* Enhanced Header */}
             <div className="relative inline-block px-0 py-2 mx-auto mt-6">
-              <h2 className="relative bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-center text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight text-transparent leading-none">
+              <h2 className="relative bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-center text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-transparent leading-none">
                 Words From Our Partners
                 {/* Glowing text effect */}
                 <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-[#ff910090] bg-clip-text text-transparent opacity-30 blur-sm">
@@ -340,7 +351,7 @@ const Testimonials = () => {
           </div>
 
           {/* Enhanced Testimonials Grid with alternating directions */}
-          <div className="flex justify-center gap-3 sm:gap-6 lg:gap-8 overflow-hidden mt-16 sm:mt-20 max-h-[600px] sm:max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-6 lg:gap-8 overflow-hidden mt-12 sm:mt-20 max-h-[750px] sm:max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
             <TestimonialsColumn
               testimonials={firstColumn}
               duration={25}
