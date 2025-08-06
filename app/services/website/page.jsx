@@ -23,7 +23,7 @@ export default function websitePage() {
           className="relative flex flex-col gap-4 items-center justify-center px-4 w-full h-full"
         >
           <div className="w-full flex flex-col items-center justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
              Designs That Capture Eyes — 
               <br />
               and Minds
