@@ -21,7 +21,7 @@ export default function CardTest() {
         autoplayDelay={2000}
         showPagination={true}
         showNavigation={true}
-      />
+      /> 
     </section>
   );
 }
