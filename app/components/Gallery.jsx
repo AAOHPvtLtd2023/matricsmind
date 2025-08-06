@@ -5,32 +5,32 @@ import { motion } from "framer-motion";
 
 const galleryItems = [
   {
-    src: "/gallery/1.jpg",
+    src: "/images/Tech_solution/1.jpg",
     span: "col-span-2 row-span-2",
     alt: "Big tile",
   },
   {
-    src: "/gallery/2.jpg",
+    src: "/images/Tech_solution/2.jpg",
     span: "col-span-1 row-span-1",
     alt: "Small tile 1",
   },
   {
-    src: "/gallery/3.jpg",
+    src: "/images/Tech_solution/3.jpg",
     span: "col-span-1 row-span-1",
     alt: "Small tile 2",
   },
   {
-    src: "/gallery/4.jpg",
+    src: "/images/Tech_solution/4.jpg",
     span: "col-span-2 row-span-1",
     alt: "Wide tile",
   },
   {
-    src: "/gallery/5.jpg",
-    span: "col-span-1 row-span-2",
+    src: "/images/Tech_solution/5.jpg",
+    span: "col-span-3 row-span-1",
     alt: "Tall tile",
   },
   {
-    src: "/gallery/6.jpg",
+    src: "/images/Tech_solution/6.jpg",
     span: "col-span-1 row-span-1",
     alt: "Small tile 3",
   },

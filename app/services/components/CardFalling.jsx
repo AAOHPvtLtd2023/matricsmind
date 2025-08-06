@@ -37,11 +37,9 @@ const shineVariants = {
     },
   },
 };
-
 export default function CardFalling() {
   const [particles, setParticles] = useState([]);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setViewport({
@@ -50,7 +48,6 @@ export default function CardFalling() {
       });
     }
   }, []);
-
   useEffect(() => {
     const newParticles = [];
     for (let i = 0; i < 15; i++) {
@@ -65,7 +62,6 @@ export default function CardFalling() {
     }
     setParticles(newParticles);
   }, []);
-
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[30vh] overflow-hidden">
       {/* Animated Background Stars */}
@@ -90,7 +86,6 @@ export default function CardFalling() {
           }}
         />
       ))}
-
       {/* Rocket SVG */}
       <motion.div
         className="absolute z-10"
@@ -137,7 +132,6 @@ export default function CardFalling() {
           />
         </svg>
       </motion.div>
-
       {/* Dynamic Smoke Trail */}
       <motion.div
         className="absolute z-5"
@@ -175,7 +169,6 @@ export default function CardFalling() {
           />
         ))}
       </motion.div>
-
       {/* Fire/Exhaust Effect */}
       <motion.div
         className="absolute z-5"
@@ -214,7 +207,6 @@ export default function CardFalling() {
           />
         ))}
       </motion.div>
-
       {/* Scattered Ash Particles */}
       <motion.div
         className="absolute z-5"
@@ -257,7 +249,6 @@ export default function CardFalling() {
           />
         ))}
       </motion.div>
-
       {/* Main Content */}
       <motion.h2
         className="relative z-20 text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-none pb-2 mb-3"
@@ -266,7 +257,6 @@ export default function CardFalling() {
       >
         Delivering Digital Solutions That Drive Growth
       </motion.h2>
-
       <div className="relative z-20 flex flex-wrap gap-1 justify-center max-w-5xl">
         {roles.map((role, index) => (
           <motion.div
@@ -281,15 +271,6 @@ export default function CardFalling() {
           </motion.div>
         ))}
       </div>
-
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7, type: "spring", stiffness: 70 }}
-        className="absolute top-10 right-10 text-4xl text-[#ff9100] z-20"
-      >
-        <ThumbsUp className="text-[#ff9100]" size={32} />
-      </motion.div>
     </div>
   );
 }
