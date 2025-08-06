@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, useMotionValue, useAnimationFrame,useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useAnimationFrame,
+  useSpring,
+} from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -82,7 +87,7 @@ export default function CountryCard() {
   // Auto-scrolling logic
   useAnimationFrame((t, delta) => {
     if (!isDragging) {
-      baseX.set(baseX.get() - 0.10 * delta);
+      baseX.set(baseX.get() - 0.1 * delta);
       if (scrollRef.current) {
         const width = scrollRef.current.scrollWidth / 2;
         if (Math.abs(baseX.get()) >= width) {
@@ -141,15 +146,14 @@ export default function CountryCard() {
               className="block w-[200px] sm:w-[240px] md:w-[260px] h-[300px] sm:h-[320px] rounded-xl overflow-hidden shadow-md "
             >
               <motion.div className="w-full h-48 relative">
-  <Image
-    src={card.image}
-    alt={card.title}
-    fill
-    className="object-cover rounded-t-xl"
-    sizes="(max-width: 768px) 50vw, 20vw"
-  />
-</motion.div>
-
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover rounded-t-xl"
+                  sizes="(max-width: 768px) 50vw, 20vw"
+                />
+              </motion.div>
 
               <div className="p-4">
                 <h3 className="text-base sm:text-lg font-semibold text-center text-white">
