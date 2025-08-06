@@ -24,9 +24,9 @@ export default function websitePage() {
         >
           <div className="w-full flex flex-col items-center justify-center">
             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
-              Thoughts worth sharing,
+             Designs That Capture Eyes — 
               <br />
-              strategies worth trying.
+              and Minds
             </h2>
           </div>
         </motion.div>
