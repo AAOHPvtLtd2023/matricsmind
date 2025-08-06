@@ -84,7 +84,7 @@ export default function Header1() {
           ? theme === "dark"
             ? "rgba(0, 0, 0, 0.8)"
             : "rgba(255, 255, 255, 0.8)"
-          : "rgba(0, 0, 0, 0",
+          : "rgba(255, 255, 255, 0.8)",
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
@@ -143,7 +143,7 @@ export default function Header1() {
                               {dropdownItem.name}
                             </div>
                             {dropdownItem.description && (
-                              <div className="text-muted-foreground text-sm">
+                              <div className="text-muted-foreground text-sm text-gray-400">
                                 {dropdownItem.description}
                               </div>
                             )}
