@@ -13,44 +13,46 @@ import {
   X,
 } from "lucide-react";
 
+
 const data = [
   {
-    feature: "Focus",
+    feature: "Target / Support Services",
     icon: <Zap className="w-6 h-6 text-[#1c3784]" />,
-    others: "General services",
-    we: "Specialized in branding & web design",
+    others: "Delivering Exceptional Branding and Tech Solutions",
+    we: "Delivering Exceptional Branding and Tech Solutions",
   },
   {
-    feature: "Client Approach",
+    feature: "Client Engagement Strategy",
     icon: <Users className="w-6 h-6 text-[#1c3784]" />,
-    others: "One-size-fits-all",
-    we: "Personalized & aligned with latest industry trends",
+    others: "Standardized Solution",
+    we: "Strategically personalized to match modern industry practices",
   },
   {
-    feature: "Design Philosophy",
+    feature: "Design Approach",
     icon: <Palette className="w-6 h-6 text-[#1c3784]" />,
-    others: "Uses generic templates",
-    we: "Custom, creative, and brand-first design",
+    others: "Employs standard templates",
+    we: "Creative, on-brand, and made just for you",
   },
   {
-    feature: "Technical Process",
+    feature: "Behind the Build",
     icon: <Cog className="w-6 h-6 text-[#1c3784]" />,
-    others: "Limited or surface-level",
-    we: "In-depth, collaborative & partnership-oriented",
+    others: "Baseline Service",
+    we: "Deep-dive, co-creative, and built for lasting partnerships",
   },
   {
-    feature: "Project Planning",
+    feature: "Project Strategy",
     icon: <MapPin className="w-6 h-6 text-[#1c3784]" />,
-    others: "No clear direction",
-    we: "Structured roadmap with milestones",
+    others: "Unclear objectives",
+    we: "Step-by-step roadmap aligned with key milestones",
   },
   {
-    feature: "Project Execution",
+    feature: "Project Implementation",
     icon: <Rocket className="w-6 h-6 text-[#1c3784]" />,
-    others: "Reactive, unorganized",
-    we: "Efficient, timely, and agile execution",
+    others: "Last-minute and messy",
+    we: "Effective, punctual, and responsive project delivery",
   },
 ];
+
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
