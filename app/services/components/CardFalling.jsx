@@ -40,6 +40,16 @@ const shineVariants = {
 
 export default function CardFalling() {
   const [particles, setParticles] = useState([]);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const newParticles = [];
@@ -58,7 +68,6 @@ export default function CardFalling() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[30vh] overflow-hidden">
-      
       {/* Animated Background Stars */}
       {particles.map((particle) => (
         <motion.div
@@ -87,8 +96,9 @@ export default function CardFalling() {
         className="absolute z-10"
         initial={{ x: "100vw", y: "60vh", rotate: -45 }}
         animate={{
-          x: [window.innerWidth, window.innerWidth * 0.5, -100],
-          y: [window.innerHeight * 0.7, window.innerHeight * 0.4, -100],
+          x: [viewport.width, viewport.width * 0.5, -100],
+          y: [viewport.height * 0.7, viewport.height * 0.4, -100],
+
           rotate: [-45, -80, -120],
         }}
         transition={{
@@ -98,7 +108,12 @@ export default function CardFalling() {
           repeatDelay: 5,
         }}
       >
-        <svg width="60" height="60" viewBox="0 0 100 100" className="drop-shadow-lg">
+        <svg
+          width="60"
+          height="60"
+          viewBox="0 0 100 100"
+          className="drop-shadow-lg"
+        >
           {/* Rocket Body */}
           <path
             d="M50 10 L35 70 L50 60 L65 70 Z"
@@ -112,7 +127,14 @@ export default function CardFalling() {
           <path d="M35 50 L25 65 L35 70 Z" fill="#1c3784" />
           <path d="M65 50 L75 65 L65 70 Z" fill="#1c3784" />
           {/* Window */}
-          <circle cx="50" cy="35" r="6" fill="#87ceeb" stroke="#4682b4" strokeWidth="1" />
+          <circle
+            cx="50"
+            cy="35"
+            r="6"
+            fill="#87ceeb"
+            stroke="#4682b4"
+            strokeWidth="1"
+          />
         </svg>
       </motion.div>
 
@@ -121,8 +143,8 @@ export default function CardFalling() {
         className="absolute z-5"
         initial={{ x: "100vw", y: "60vh" }}
         animate={{
-          x: [window.innerWidth + 50, window.innerWidth * 0.5 + 50, -50],
-          y: [window.innerHeight * 0.7 + 20, window.innerHeight * 0.4 + 20, -80],
+          x: [viewport.width + 50, viewport.width * 0.5 + 50, -50],
+          y: [viewport.height * 0.7 + 20, viewport.height * 0.4 + 20, -80],
         }}
         transition={{
           duration: 12,
@@ -159,8 +181,8 @@ export default function CardFalling() {
         className="absolute z-5"
         initial={{ x: "100vw", y: "60vh" }}
         animate={{
-          x: [window.innerWidth + 40, window.innerWidth * 0.5 + 40, -60],
-          y: [window.innerHeight * 0.7 + 35, window.innerHeight * 0.4 + 35, -65],
+          x: [viewport.width + 40, viewport.width * 0.5 + 40, -60],
+          y: [viewport.height * 0.7 + 35, viewport.height * 0.4 + 35, -65],
         }}
         transition={{
           duration: 12,
@@ -178,7 +200,7 @@ export default function CardFalling() {
               height: 8 + i * 3,
               left: -i * 15,
               top: -i * 5,
-              background: i < 2 ? '#ff4500' : i < 4 ? '#ff8c00' : '#ffd700',
+              background: i < 2 ? "#ff4500" : i < 4 ? "#ff8c00" : "#ffd700",
             }}
             animate={{
               opacity: [1 - i * 0.15, 0.6 - i * 0.1, 0],
@@ -198,8 +220,12 @@ export default function CardFalling() {
         className="absolute z-5"
         initial={{ x: "100vw", y: "60vh" }}
         animate={{
-          x: [window.innerWidth + 60, window.innerWidth * 0.5 + 60, -40],
-          y: [window.innerHeight * 0.7 + 10, window.innerHeight * 0.4 + 10, -90],
+          x: [viewport.innerWidth + 60, viewport.innerWidth * 0.5 + 60, -40],
+          y: [
+            viewport.innerHeight * 0.7 + 10,
+            viewport.innerHeight * 0.4 + 10,
+            -90,
+          ],
         }}
         transition={{
           duration: 12,
