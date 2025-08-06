@@ -283,7 +283,7 @@ const Testimonials = () => {
 
         @media (max-width: 640px) {
           .line-clamp-6 {
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 5;
           }
         }
 
@@ -351,22 +351,34 @@ const Testimonials = () => {
           </div>
 
           {/* Enhanced Testimonials Grid with alternating directions */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-6 lg:gap-8 overflow-hidden mt-12 sm:mt-20 max-h-[750px] sm:max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
-            <TestimonialsColumn
-              testimonials={firstColumn}
-              duration={25}
-              direction="up"
-            />
-            <TestimonialsColumn
-              testimonials={secondColumn}
-              duration={30}
-              direction="down"
-            />
-            <TestimonialsColumn
-              testimonials={[...thirdColumn, ...firstColumn.slice(0, 1)]}
-              duration={28}
-              direction="up"
-            />
+          <div className="overflow-hidden mt-12 sm:mt-20 max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+            {/* Mobile: Single column */}
+            <div className="block sm:hidden">
+              <TestimonialsColumn
+                testimonials={[...firstColumn, ...secondColumn, ...thirdColumn]}
+                duration={28}
+                direction="up"
+              />
+            </div>
+
+            {/* Desktop: Three columns */}
+            <div className="hidden sm:flex justify-center gap-6 lg:gap-8">
+              <TestimonialsColumn
+                testimonials={firstColumn}
+                duration={25}
+                direction="up"
+              />
+              <TestimonialsColumn
+                testimonials={secondColumn}
+                duration={30}
+                direction="down"
+              />
+              <TestimonialsColumn
+                testimonials={[...thirdColumn, ...firstColumn.slice(0, 1)]}
+                duration={28}
+                direction="up"
+              />
+            </div>
           </div>
         </div>
       </section>
