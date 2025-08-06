@@ -5,26 +5,22 @@ import BrandMarquee from "./components/BrandMarquee";
 const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), {
   ssr: false,
 });
-
 import CardTest from "./components/cardTest";
-
 import Testimonials from "./components/testimonials";
 const ContainerTextFlip = dynamic(
   () => import("../components/ui/container-text-flip"),
   { ssr: false }
 );
-
 import CompanyPartner from "./components/CompanyPartner";
-
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
-import GetInTouchForm from "./getinTouchForm/page";
+
 const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), {
   ssr: false,
 });
 import ComparisonTable from "./components/ComparisionTable";
 import { motion } from "framer-motion";
-import CardFalling from "./services/components/CardFalling.jsx";
-
+import CardFalling from "./services/components/CardFalling.jsx"
+import GetInTouchForm from "./components/GetInTouchForm.jsx";
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
 
