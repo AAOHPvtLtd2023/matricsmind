@@ -1,78 +1,78 @@
 "use client";
 
-import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
+import { motion, useMotionValue, useAnimationFrame,useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const cards = [
   {
     id: 1,
     title: "UAE",
     href: "https://en.wikipedia.org/wiki/United_Arab_Emirates",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_UAE",
+    image: "/images/Country/uae.jpg",
   },
   {
     id: 2,
     title: "Saudi Arabia",
     href: "https://en.wikipedia.org/wiki/Saudi_Arabia",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_SAUDI",
+    image: "/images/Country/saudi_arabia.jpg",
   },
   {
     id: 3,
     title: "Qatar",
     href: "https://en.wikipedia.org/wiki/Qatar",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_QATAR",
+    image: "/images/Country/qatar.jpg",
   },
   {
     id: 4,
     title: "Bahrain",
     href: "https://en.wikipedia.org/wiki/Bahrain",
-    image: "https://drive.google.com/file/d/1ewCowC_vz7lLgBIXs4GSnMgL2IqQo9_2",
+    image: "/images/Country/bahrain.jpg",
   },
   {
     id: 5,
     title: "Kuwait",
     href: "https://en.wikipedia.org/wiki/Kuwait",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_KUWAIT",
+    image: "/images/Country/kuwait.jpg",
   },
   {
     id: 6,
     title: "Oman",
     href: "https://en.wikipedia.org/wiki/Oman",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_OMAN",
+    image: "/images/Country/oman.jpg",
   },
   {
     id: 7,
     title: "Canada",
     href: "https://en.wikipedia.org/wiki/Canada",
-    image: "https://drive.google.com/file/d/15dM7u7py_IxSUM6LDPGuUvDg8yNF1uGk/view?usp=drive_link",
+    image: "/images/Country/canada.jpg",
   },
   {
     id: 8,
     title: "India",
     href: "https://en.wikipedia.org/wiki/India",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_INDIA",
+    image: "/images/Country/india.jpg",
   },
   {
     id: 9,
     title: "Australia",
     href: "https://en.wikipedia.org/wiki/Australia",
-    image: "https://drive.google.com/file/d/1tbIqtDb1a9wVzGKjrtrAjNl2S7_Ni4C3/view?usp=drive_link",
+    image: "/images/Country/australia.jpg",
   },
   {
     id: 10,
     title: "UK",
     href: "https://en.wikipedia.org/wiki/United_Kingdom",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_UK",
+    image: "/images/Country/uk.jpg",
   },
   {
     id: 11,
     title: "USA",
     href: "https://en.wikipedia.org/wiki/United_States",
-    image: "https://drive.google.com/uc?export=view&id=YOUR_IMAGE_ID_USA",
+    image: "/images/Country/usa.jpg",
   },
 ];
-
 
 export default function CountryCard() {
   const baseX = useMotionValue(0);
@@ -82,7 +82,7 @@ export default function CountryCard() {
   // Auto-scrolling logic
   useAnimationFrame((t, delta) => {
     if (!isDragging) {
-      baseX.set(baseX.get() - 0.05 * delta);
+      baseX.set(baseX.get() - 0.10 * delta);
       if (scrollRef.current) {
         const width = scrollRef.current.scrollWidth / 2;
         if (Math.abs(baseX.get()) >= width) {
@@ -140,11 +140,17 @@ export default function CountryCard() {
               href={card.href}
               className="block w-[200px] sm:w-[240px] md:w-[260px] h-[300px] sm:h-[320px] rounded-xl overflow-hidden shadow-md "
             >
-              <motion.img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-48 object-cover"
-              />
+              <motion.div className="w-full h-48 relative">
+  <Image
+    src={card.image}
+    alt={card.title}
+    fill
+    className="object-cover rounded-t-xl"
+    sizes="(max-width: 768px) 50vw, 20vw"
+  />
+</motion.div>
+
+
               <div className="p-4">
                 <h3 className="text-base sm:text-lg font-semibold text-center text-white">
                   {card.title}
