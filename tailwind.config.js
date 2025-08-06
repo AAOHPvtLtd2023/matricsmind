@@ -43,6 +43,10 @@ module.exports = {
         boxShadow: {
           "glow-orange": "0 0 30px rgba(255, 145, 0, 0.3)",
         },
+        fadeInUp: {
+          "0%": { opacity: 0, transform: "translateY(40px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -53,6 +57,7 @@ module.exports = {
         slideUp: "slideUp 1s ease-out 0.1s both",
         fadeindelay: "fadeIn 1s ease-out 0.3s both",
         "float-slow": "float-slow 12s ease-in-out infinite",
+        fadeInUp: "fadeInUp 0.5s ease-out forwards",
       },
       colors: {
         primary: "#ff9100",

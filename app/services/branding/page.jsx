@@ -2,7 +2,7 @@
 
 import { AuroraBackground } from "../../../components/ui/aurora-background";
 import { UnderlineHighlight } from "../../components/underline";
-import { motion } from "framer-motion";
+// Removed: import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "../../../components/ui/infinite-moving-cards";
 import Gallery from "../../components/Gallery";
 import CompanyPartner from "../../components/CompanyPartner";
@@ -11,34 +11,26 @@ import FeaturesSection from "../../components/FeaturesSection";
 import MasonryGallery from "../../../components/mvpblocks/masonry-grid-1";
 import FancyQuoteButton from "../website/components/FancyQuoteButton";
 
-export default function brandingPage() {
+export default function BrandingPage() {
   return (
     <section>
       <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center">
-        <motion.div
-          initial={{ opacity: 0.0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4 w-full h-full"
-        >
+        <div className="relative flex flex-col gap-4 items-center justify-center px-4 w-full h-full animate-fade-in-down transition-opacity duration-700 ease-in-out">
           <div className="w-full flex flex-col items-center justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
-               Your Brand, Clearly Defined
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
+              Your Brand, Clearly Defined
               <br />
               and Powerfully Delivered
             </h2>
           </div>
-        </motion.div>
+        </div>
       </AuroraBackground>
+
       <InfiniteMovingCards
         className="mt-8 cursor-pointer flex self-center justify-self-center"
         items={[
           {
-            image: "/team/alex.jpg", // path to image in public folder
+            image: "/team/alex.jpg",
             quote: "This platform changed how we work!",
             name: "Alex Johnson",
             title: "CEO, FutureCorp",
@@ -52,9 +44,13 @@ export default function brandingPage() {
         ]}
         itemClassName="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
       />
+
       <FancyQuoteButton link="https://docs.google.com/forms/d/1HsjudHf81IZC8VaC-eptpGOyFdYkjM7GQAkZjyvf7gU/edit" />
-      <MasonryGallery/>
-      <FeaturesSection/>
+
+      <MasonryGallery />
+
+      <FeaturesSection />
+
       {/* <Testimonials/> */}
       <CompanyPartner />
     </section>
