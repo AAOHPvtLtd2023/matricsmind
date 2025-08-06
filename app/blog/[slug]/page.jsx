@@ -36,115 +36,150 @@ import {
 // Mock blog data - replace with your actual data fetching
 const getBlogData = (slug) => {
   const blogPosts = {
-    "how-to-build-a-magnetic-brand-identity": {
-      title: "How to Build a Magnetic Brand Identity",
-      description:
-        "A complete guide to designing a brand that emotionally connects with your audience.",
-      content: {
-        intro:
-          "Building a magnetic brand identity goes beyond just creating a logo or choosing colors. It's about crafting an emotional connection that resonates with your audience on a deeper level.",
-        sections: [
-          {
-            heading: "Understanding Brand Psychology",
-            content:
-              "Your brand identity is the visual and emotional representation of your company's values, personality, and promise. It's what makes people choose you over your competitors, even when the products are similar.",
-          },
-          {
-            heading: "The Foundation Elements",
-            content:
-              "Every strong brand identity starts with understanding your core values, target audience, and unique value proposition. These elements form the foundation upon which all visual and messaging decisions are made.",
-          },
-          {
-            heading: "Visual Consistency Matters",
-            content:
-              "Consistency across all touchpoints is crucial. From your website to business cards, every element should reinforce your brand's personality and values.",
-          },
-        ],
-      },
-      image: "/blog/brand.jpg",
-      author: {
-        name: "Sarah Johnson",
-        avatar: "SJ",
-        bio: "Brand strategist with 10+ years of experience helping companies build memorable identities.",
-      },
-      publishedAt: "2024-03-15",
-      readTime: "12 min read",
-      views: "3.2k",
-      tags: ["Branding", "Design", "Strategy", "Marketing"],
+  "why-metrics-mind-best-advertising-company-abu-dhabi": {
+    title: "Why Metrics Mind is Your Best Choice for Advertising Company in Abu Dhabi",
+    description: "Discover what makes Metrics Mind stand out as the premier advertising company in Abu Dhabi, focusing on unique storytelling and results-driven campaigns.",
+    content: {
+      intro: "Let's be honest—choosing an advertising company in Abu Dhabi isn't easy. With so many agencies promising to skyrocket your brand, it's easy to feel overwhelmed. So, what makes Metrics Mind stand out? Simple: we believe every business has a unique story—and it's our mission to tell yours in a way that connects, inspires, and drives results.",
+      sections: [
+        {
+          heading: "It's About You, Not Us",
+          content: "At Metrics Mind, we don't believe in pushing cookie-cutter campaigns or flashy ideas that don't align with your goals. Instead, we start with a simple question: What does your brand need to succeed? Whether you're a local startup or a well-established business, choosing the right advertising company in Abu Dhabi is crucial. We take the time to understand your brand and audience deeply. Think of us not as a vendor—but as an extension of your team."
+        },
+        {
+          heading: "We Know Abu Dhabi",
+          content: "Abu Dhabi isn't just another market—it's a vibrant intersection of culture, innovation, and ambition. That's why generic strategies simply don't work here. As a leading advertising company in Abu Dhabi, our team blends local insights with global perspective to design campaigns that are authentic, relevant, and effective. Whether it's reaching the right demographic or leveraging cultural moments, we understand what makes this city move—and how to make your brand move with it."
+        },
+        {
+          heading: "Creativity with a Purpose",
+          content: "Let's be honest: great visuals alone don't cut it. If your campaign doesn't drive results, it's not working hard enough. At Metrics Mind, we combine creative brilliance with strategic thinking. Every design, word, and concept is built to captivate your audience—and motivate them to act. As your trusted advertising partner in Abu Dhabi, we make sure every piece of work delivers purpose-driven impact."
+        },
+        {
+          heading: "A One-Stop Solution",
+          content: "Need a stunning website? We've got it covered. Looking to improve your SEO or launch targeted digital ads? Say no more. Need branding advice or campaign strategy? We're right here. Metrics Mind offers end-to-end marketing and advertising solutions—ensuring your brand is consistently powerful across every channel."
+        }
+      ]
     },
-    "mastering-ui-animation-framer-motion": {
-      title: "Mastering UI Animation with Framer Motion",
-      description:
-        "Learn how to animate your interfaces with smooth transitions and gestures.",
-      content: {
-        intro:
-          "Framer Motion has revolutionized how we approach animations in React applications. This comprehensive guide will take you from basic animations to complex gesture-driven interactions.",
-        sections: [
-          {
-            heading: "Getting Started with Framer Motion",
-            content:
-              "Framer Motion provides a simple yet powerful API for creating smooth animations. Let's start with the basics and build up to more complex interactions.",
-          },
-          {
-            heading: "Advanced Animation Patterns",
-            content:
-              "Learn about variants, orchestration, and how to create animations that feel natural and enhance user experience rather than distract from it.",
-          },
-          {
-            heading: "Performance Considerations",
-            content:
-              "Understanding how to optimize animations for performance is crucial. We'll cover best practices for smooth 60fps animations.",
-          },
-        ],
-      },
-      image: "/blog/animation.jpg",
-      author: {
-        name: "Alex Chen",
-        avatar: "AC",
-        bio: "Frontend developer and animation enthusiast. Creator of award-winning web experiences.",
-      },
-      publishedAt: "2024-03-10",
-      readTime: "8 min read",
-      views: "2.8k",
-      tags: ["Animation", "React", "Framer Motion", "UI/UX"],
+    image: "/blog/advertising-abu-dhabi.jpg",
+    author: {
+      name: "Metrics Mind Team",
+      avatar: "MM",
+      bio: "Creative advertising professionals specializing in Abu Dhabi market insights and brand storytelling."
     },
-    "nextjs-15-new-features": {
-      title: "Next.js 15: What's New and What Matters",
-      description:
-        "Explore the new features, layouts, and improvements in the latest Next.js release.",
-      content: {
-        intro:
-          "Next.js 15 brings significant improvements to performance, developer experience, and new capabilities that will change how we build React applications.",
-        sections: [
-          {
-            heading: "Revolutionary App Router Enhancements",
-            content:
-              "The App Router gets major performance improvements and new features that make building complex applications even more straightforward.",
-          },
-          {
-            heading: "Server Components Evolution",
-            content:
-              "Server Components now offer better streaming, improved error handling, and more efficient data fetching patterns.",
-          },
-          {
-            heading: "Developer Experience Improvements",
-            content:
-              "From better TypeScript support to enhanced debugging tools, Next.js 15 focuses heavily on developer productivity.",
-          },
-        ],
-      },
-      image: "/blog/nextjs15.jpg",
-      author: {
-        name: "Mike Rodriguez",
-        avatar: "MR",
-        bio: "Full-stack developer and Next.js core contributor. Passionate about web performance.",
-      },
-      publishedAt: "2024-03-20",
-      readTime: "10 min read",
-      views: "4.1k",
-      tags: ["Next.js", "React", "Web Development", "Performance"],
+    publishedAt: "2024-03-25",
+    readTime: "8 min read",
+    views: "2.1k",
+    tags: ["Advertising", "Abu Dhabi", "Brand Strategy", "Creative Marketing"]
+  },
+
+  "metrics-mind-best-seo-company-abu-dhabi": {
+    title: "From Startups to Enterprises: Why Metrics Mind is the Best SEO Company in Abu Dhabi",
+    description: "Learn how Metrics Mind helps businesses of all sizes dominate search rankings in Abu Dhabi's competitive digital landscape.",
+    content: {
+      intro: "In Abu Dhabi's fast-moving digital world, standing out is everything. In a city buzzing with innovation and ambition, businesses—whether they're emerging startups or established giants—are all competing for visibility. And in this digital battleground, the secret to standing out is clear: Search Engine Optimization (SEO).",
+      sections: [
+        {
+          heading: "Why SEO is a Game-Changer for Abu Dhabi Businesses",
+          content: "Abu Dhabi is a diverse and competitive market—home to industries like hospitality, retail, real estate, technology, and beyond. In this landscape, being on the first page of Google isn't optional; it's essential. More visibility equals more customers, and SEO provides cost-effective marketing that drives ongoing organic traffic without continuous spend while building trust and credibility."
+        },
+        {
+          heading: "Strategies Built Around You",
+          content: "Every business is different—so why settle for a one-size-fits-all approach? At Metrics Mind, we take time to understand your goals, audience, and competition to develop a strategy that truly fits. For startups, we target quick wins like local SEO and high-value keywords to help you gain traction fast. For enterprises, we conduct in-depth audits, competitor analysis, and enterprise-level optimization to keep you ahead of the curve."
+        },
+        {
+          heading: "Complete, End-to-End SEO",
+          content: "We cover every aspect of SEO: On-Page SEO for optimizing content, images, and site structure for visibility; Off-Page SEO for building high-quality backlinks and digital authority; and Technical SEO for enhancing load speeds, mobile optimization, and indexing issues. We also create SEO-optimized content that informs, engages, and converts."
+        },
+        {
+          heading: "Real Results, Real Impact",
+          content: "We don't just promise—we deliver. Businesses across Abu Dhabi trust Metrics Mind because we help them rank higher in search engines, drive consistent organic traffic, and increase leads, conversions, and overall revenue. From visibility to credibility to measurable growth, we're committed to your long-term success."
+        }
+      ]
     },
-  };
+    image: "/blog/seo-abu-dhabi.jpg",
+    author: {
+      name: "SEO Team at Metrics Mind",
+      avatar: "SM",
+      bio: "Expert SEO specialists with deep understanding of Abu Dhabi market dynamics and search optimization."
+    },
+    publishedAt: "2024-03-20",
+    readTime: "12 min read",
+    views: "3.4k",
+    tags: ["SEO", "Abu Dhabi", "Digital Marketing", "Search Optimization"]
+  },
+
+  "top-10-digital-marketing-strategies-jewellery-business": {
+    title: "Top 10 Digital Marketing Strategies for Jewellery Business",
+    description: "Comprehensive guide to digital marketing strategies that help jewellery businesses showcase craftsmanship and drive sales online and offline.",
+    content: {
+      intro: "In today's fast-paced digital world, having a solid online presence is no longer optional — it's essential. For jewellery businesses, digital marketing opens up exciting opportunities to connect with a broader audience, showcase exquisite craftsmanship, and drive online and offline sales.",
+      sections: [
+        {
+          heading: "Build an Aesthetic, SEO-Friendly, Shopper-Centric Website",
+          content: "Your website is your digital showroom. A beautiful and functional website helps convert visitors into loyal customers. Use high-resolution images and 360-degree views, optimize for mobile devices, offer a virtual try-on experience, provide a smooth checkout process, add trust signals like reviews and secure payment icons, and use clear CTAs and product descriptions."
+        },
+        {
+          heading: "Optimize Your Website for SEO",
+          content: "Search Engine Optimization (SEO) is crucial for driving organic traffic. Conduct keyword research using Google Keyword Planner, SEMrush, or Ahrefs. Optimize meta titles, descriptions, and URLs, implement structured headings, use image ALT tags and compress images, build backlinks from jewellery blogs and influencers, and optimize for local SEO with Google My Business."
+        },
+        {
+          heading: "Strategic Social Media and Email Marketing",
+          content: "Leverage platforms like Instagram, Facebook, and Pinterest to promote your jewellery with visually compelling ads. Use retargeting ads to recover cart abandoners and collaborate with influencers. Build a segmented email list, send personalized campaigns, highlight new collections and limited-time deals, and include high-quality visuals with clear CTAs."
+        },
+        {
+          heading: "Content Creation and PPC Advertising",
+          content: "Create engaging content including blog posts, behind-the-scenes craftsmanship stories, styling tips, customer testimonials, and infographics. Use Pay-Per-Click advertising with long-tail keywords, attention-grabbing ad copy, optimized landing pages, and conversion tracking through Google Analytics."
+        }
+      ]
+    },
+    image: "/blog/jewellery-digital-marketing.jpg",
+    author: {
+      name: "Digital Marketing Team",
+      avatar: "DM",
+      bio: "Specialists in e-commerce and luxury retail digital marketing with focus on visual storytelling."
+    },
+    publishedAt: "2024-03-15",
+    readTime: "15 min read",
+    views: "2.8k",
+    tags: ["Jewellery Marketing", "E-commerce", "Digital Strategy", "Social Media"]
+  },
+
+  "pharmaceutical-digital-marketing-agency-metrics-mind": {
+    title: "Pharmaceutical Digital Marketing Agency: Metrics Mind – Your Growth Engine in the Digital Era",
+    description: "Discover how Metrics Mind helps pharmaceutical companies unlock growth through compliant, data-driven digital marketing strategies.",
+    content: {
+      intro: "In an industry as competitive and regulated as pharmaceuticals, digital marketing isn't just an option — it's a strategic necessity. With doctors, patients, and healthcare professionals increasingly turning to digital channels for information, your brand's digital presence must be credible, compliant, and compelling.",
+      sections: [
+        {
+          heading: "Why Digital Marketing is Crucial for Pharmaceutical Companies",
+          content: "80% of physicians use the internet to research medical products. Patients often self-educate online before consulting a doctor. Digital platforms allow direct engagement with doctors, pharmacists, and patients. Personalized and data-driven marketing is proven to increase prescription adoption."
+        },
+        {
+          heading: "SEO and Paid Advertising for Pharma",
+          content: "Rank higher on Google for medical queries, product names, and symptoms through medical keyword research, competitor analysis, on-page SEO, scientific content optimization, and local SEO for clinics & distributors. Drive targeted traffic through Google Ads & Display Network, LinkedIn Ads for B2B pharma outreach, and compliant Facebook/Instagram campaigns for patient engagement."
+        },
+        {
+          heading: "Content Marketing and HCP Outreach",
+          content: "We produce medically accurate, engaging content tailored to healthcare professionals and patients, including blog posts & health articles, whitepapers & research summaries, animated videos & explainer content, and compliance-checked copywriting. Reach the right doctors with email marketing, medical webinar marketing, educational video campaigns, and LinkedIn outreach."
+        },
+        {
+          heading: "Compliance and Analytics",
+          content: "We understand pharma compliance (FDA, DCGI, GDPR), medical product lifecycle marketing, OTC vs prescription marketing strategies, and ethical digital engagement for life sciences. Track patient engagement rates, conversion metrics, channel performance, and ROI measurement with comprehensive reporting."
+        }
+      ]
+    },
+    image: "/blog/pharmaceutical-digital-marketing.jpg",
+    author: {
+      name: "Healthcare Marketing Team",
+      avatar: "HM",
+      bio: "Specialized team combining healthcare knowledge with digital marketing expertise for pharmaceutical industry."
+    },
+    publishedAt: "2024-03-10",
+    readTime: "10 min read",
+    views: "1.9k",
+    tags: ["Pharmaceutical", "Healthcare Marketing", "Digital Strategy", "Compliance"]
+  }
+};
 
   return blogPosts[slug] || null;
 };
@@ -525,7 +560,7 @@ radial-gradient(circle at 40% 80%, rgba(255, 145, 0, 0.1) 0%, transparent 50%)
             className="space-y-8"
           >
             {/* Table of Contents */}
-            {/* <div className="bg-white rounded-2xl shadow-lg shadow-blue-100/50 p-6 sticky top-32">
+            <div className="bg-white rounded-2xl shadow-lg shadow-blue-100/50 p-6 sticky top-32">
               <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                 <TrendingUp size={20} className="mr-2 text-blue-600" />
                 Table of Contents
@@ -542,7 +577,7 @@ radial-gradient(circle at 40% 80%, rgba(255, 145, 0, 0.1) 0%, transparent 50%)
                   </motion.a>
                 ))}
               </nav>
-            </div> */}
+            </div>
 
             {/* Tags */}
             <div className="bg-white rounded-2xl shadow-lg shadow-blue-100/50 p-6">

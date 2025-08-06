@@ -8,29 +8,32 @@ import { Spinner } from "../../components/spiner"; // <- Import the spinner abov
 export function MinimalCardDemo() {
   const [loading, setLoading] = useState(true);
 
-  const cards = [
-    {
-      title: "How to Build a Magnetic Brand Identity",
-      description:
-        "A complete guide to designing a brand that emotionally connects with your audience.",
-      slug: "how-to-build-a-magnetic-brand-identity",
-      src: "/blog/brand.jpg",
-    },
-    {
-      title: "Mastering UI Animation with Framer Motion",
-      description:
-        "Learn how to animate your interfaces with smooth transitions and gestures.",
-      slug: "mastering-ui-animation-framer-motion",
-      src: "/blog/animation.jpg",
-    },
-    {
-      title: "Next.js 15: What’s New and What Matters",
-      description:
-        "Explore the new features, layouts, and improvements in the latest Next.js release.",
-      slug: "nextjs-15-new-features",
-      src: "/blog/nextjs15.jpg",
-    },
-  ];
+ const cards = [
+  {
+    title: "Why Metrics Mind is Your Best Choice for Advertising Company in Abu Dhabi",
+    description: "Discover what makes Metrics Mind stand out as the premier advertising company in Abu Dhabi, focusing on unique storytelling and results-driven campaigns.",
+    slug: "why-metrics-mind-best-advertising-company-abu-dhabi",
+    src: "/blog/advertising-abu-dhabi.jpg",
+  },
+  {
+    title: "From Startups to Enterprises: Why Metrics Mind is the Best SEO Company in Abu Dhabi",
+    description: "Learn how Metrics Mind helps businesses of all sizes dominate search rankings in Abu Dhabi's competitive digital landscape.",
+    slug: "metrics-mind-best-seo-company-abu-dhabi",
+    src: "/blog/seo-abu-dhabi.jpg",
+  },
+  {
+    title: "Top 10 Digital Marketing Strategies for Jewellery Business",
+    description: "Comprehensive guide to digital marketing strategies that help jewellery businesses showcase craftsmanship and drive sales online and offline.",
+    slug: "top-10-digital-marketing-strategies-jewellery-business",
+    src: "/blog/jewellery-digital-marketing.jpg",
+  },
+  {
+    title: "Pharmaceutical Digital Marketing Agency: Metrics Mind – Your Growth Engine in the Digital Era",
+    description: "Discover how Metrics Mind helps pharmaceutical companies unlock growth through compliant, data-driven digital marketing strategies.",
+    slug: "pharmaceutical-digital-marketing-agency-metrics-mind",
+    src: "/blog/pharmaceutical-digital-marketing.jpg",
+  },
+];
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000); // simulate loading
