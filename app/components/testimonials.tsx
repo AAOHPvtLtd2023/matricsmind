@@ -5,31 +5,31 @@ const testimonials = [
   {
     name: "Kaustubh Singh Baghal",
     username: "@kaustubh",
-    imageSrc: "/assets/avatars/avatar-1.webp",
+    imageSrc: "/images/Testimonials/kaustubh-singh-baghal.jpg",
     text: "The team delivered high-quality, visually stunning motion graphics that really elevated our brand's storytelling. The animations were not only professional but also perfectly aligned with our vision. Their SEO work on our YouTube channel significantly improved our video rankings and visibility. We've seen noticeable growth in both traffic and subscribers thanks to their strategic approach. They handled our social media campaigns end-to-end, and the results were outstanding. Engagement rates went up, our audience grew steadily, and the brand presence across platforms became much stronger. Highly recommend Matrics Mind to anyone looking for creative and data-driven digital marketing support!",
   },
   {
     name: "Engineer Reveals",
     username: "@engineerreveals",
-    imageSrc: "/assets/avatars/avatar-2.webp",
+    imageSrc: "/images/Testimonials/engineer-reveals.jpg",
     text: "They delivered end-to-end website design, impactful YouTube SEO, and high-quality video editing with motion graphics—all of which significantly boosted our online presence, audience engagement, and content performance. Truly a data-driven and creative team! We highly recommend Metrics Mind to anyone seeking creative and results-driven digital marketing solutions!",
   },
   {
     name: "Saffron Patriot",
     username: "@saffronpatriot",
-    imageSrc: "/assets/avatars/avatar-3.webp",
+    imageSrc: "/images/Testimonials/saffron-patriot.jpg",
     text: "They create high-quality and engaging YouTube videos that truly reflect our brand and keep our audience interested. The visuals and editing are always on point! Highly recommend Metrics Mind for creative and results-driven digital marketing!",
   },
   {
     name: "Vichaarone",
     username: "@vichaarone",
-    imageSrc: "/assets/avatars/avatar-4.webp",
+    imageSrc: "/images/Testimonials/vichaarone.jpg",
     text: "We're impressed with Metrics Mind's content creation, motion graphics, video editing, and YouTube SEO – professional work with great outcomes!",
   },
   {
     name: "Gourav Kumar Singh",
     username: "@gouravkumar",
-    imageSrc: "/assets/avatars/avatar-5.webp",
+    imageSrc: "/images/Testimonials/gourav-singh.jpg",
     text: "Metrics Mind did a great job with our website creation and SEO audit. The site looks clean and professional, and the SEO insights helped us improve our visibility and performance.",
   },
 ];

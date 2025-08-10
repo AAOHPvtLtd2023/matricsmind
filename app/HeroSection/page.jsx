@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "../../@/components/ui/button";
 import { Linkedin } from "lucide-react";
 import FlipLink from "../../components/ui/text-effect-flipper";
+import Link from "next/link";
 
 export default function HeroSectionWithGirl() {
   return (
@@ -34,8 +35,8 @@ export default function HeroSectionWithGirl() {
             </h1>
 
             <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-              <Button className="rounded-full px-6 py-3 text-base font-semibold bg-[#ff9100] text-white hover:bg-[#e28000] w-full sm:w-auto">
-                About Us
+              <Button className="rounded-full px-6 py-3 text-base font-semibold bg-[#ff9100] text-white hover:bg-[#e28000] w-full sm:w-auto" asChild>
+                <Link href="/about">About Us</Link>
               </Button>
 
               <a
