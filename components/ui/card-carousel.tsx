@@ -34,27 +34,26 @@ const CardCarousel: React.FC<CarouselProps> = ({
 
   return (
     <section className="w-full">
-      <div className="mx-auto w-full max-w-[90rem] px-4">
-        <div className="relative flex flex-col rounded-[24px] border border-white/10 bg-neutral-800/10 backdrop-blur-md p-4 shadow-lg">
+      <div className="mx-auto w-full max-w-[90rem] px-2 sm:px-4">
+        <div className="relative flex flex-col rounded-[16px] sm:rounded-[24px] border border-white/10 bg-neutral-800/10 backdrop-blur-md p-3 sm:p-4 shadow-lg">
           <Badge
             variant="outline"
-            className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
+            className="absolute left-3 top-4 sm:left-6 sm:top-6 rounded-[12px] border text-sm sm:text-base"
           >
             <SparklesIcon className="w-4 h-4 mr-1" />
-            
           </Badge>
 
-          <div className="mt-16 mb-4 text-center">
-            <h2 className="text-6xl font-bold tracking-tight text-[#ff9100]">
+          <div className="mt-12 sm:mt-16 mb-3 sm:mb-4 text-center px-2">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#ff9100] leading-none">
               A Journey of Possibilities
             </h2>
-            <p className="text-white/70 text-lg mt-1">
-             Multi-Industry Marketing Excellence
+            <p className="text-white/70 text-sm sm:text-base md:text-lg ">
+              Multi-Industry Marketing Excellence
             </p>
           </div>
 
           <Swiper
-            spaceBetween={40}
+            spaceBetween={20}
             autoplay={{
               delay: autoplayDelay,
               disableOnInteraction: false,
@@ -71,14 +70,17 @@ const CardCarousel: React.FC<CarouselProps> = ({
               modifier: 2.5,
             }}
             pagination={showPagination}
-            navigation={showNavigation}
+            navigation={showNavigation && typeof window !== "undefined" && window.innerWidth >= 640}
             modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
             className="w-full"
           >
             {images.map((image, index) => (
-              <SwiperSlide key={index} className="!w-[300px]">
+              <SwiperSlide
+                key={index}
+                className="!w-[220px] sm:!w-[260px] md:!w-[300px]"
+              >
                 <div
-                  className="relative group rounded-2xl overflow-hidden cursor-pointer"
+                  className="relative group rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer"
                   onClick={() =>
                     router.push(
                       `/projects/${image.slug}?title=${encodeURIComponent(
@@ -92,10 +94,10 @@ const CardCarousel: React.FC<CarouselProps> = ({
                     alt={image.alt}
                     width={500}
                     height={300}
-                    className="rounded-xl object-cover w-full h-[300px]"
+                    className="rounded-xl object-cover w-full h-[220px] sm:h-[260px] md:h-[300px]"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
-                    <p className="text-white text-lg font-semibold px-4 text-center">
+                    <p className="text-white text-sm sm:text-lg font-semibold px-4 text-center">
                       {image.title}
                     </p>
                   </div>

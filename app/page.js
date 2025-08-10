@@ -2,110 +2,76 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import BrandMarquee from "./components/BrandMarquee";
-const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), {
-  ssr: false,
-});
+const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), { ssr: false });
 import CardTest from "./components/cardTest";
 import Testimonials from "./components/testimonials";
 import ContainerTextFlip from "../components/ui/container-text-flip";
-
 import CompanyPartner from "./components/CompanyPartner";
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
-
-const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), {
-  ssr: false,
-});
+const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), { ssr: false });
 import ComparisonTable from "./components/ComparisionTable";
-import { motion } from "framer-motion";
 import CardFalling from "./services/components/CardFalling.jsx";
 import GetInTouchForm from "./components/GetInTouchForm.jsx";
 import FloatingBeamBackground from "./FloatingBeamBackground.jsx";
+import LazySection from "./LazySection.jsx";
+
+
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger animation after component mounts
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
+    const timer = setTimeout(() => setIsVisible(true), 150);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      <FloatingBeamBackground>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-8 md:space-y-12 lg:space-y-16"
-        >
-          <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-            <h1 className="text-white font-bold max-w-5xl leading-tight tracking-tight">
-              <span
-                className={`block text-3xl sm:text-4xl md:text-5xl lg:text-6xl transition-all duration-700 ease-out ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-              >
-                Across Boundaries. Beyond Limits.
-              </span>
-              <span
-                className={`block text-4xl sm:text-5xl md:text-6xl lg:text-7xl transition-all duration-700 ease-out ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-              >
-                Built with Matrics Mind
-              </span>
-              <ContainerTextFlip isVisible={isVisible} />
+    <FloatingBeamBackground>
+      <div className="space-y-6 sm:space-y-8 md:space-y-10">
+        
+        {/* Hero Section (always rendered) */}
+        <section className="flex flex-col items-center justify-center min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] text-center px-4">
+          <h1 className="text-white font-bold max-w-3xl sm:max-w-4xl lg:max-w-5xl leading-snug sm:leading-tight tracking-tight">
+            <span
+              className={`block text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl transform transition-all duration-700 ease-out ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              Across Boundaries. Beyond Limits.
+            </span>
 
-              <span
-                className={`block mt-6 text-base sm:text-lg md:text-xl text-[#ff9100] transition-all duration-700 ease-out delay-300 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-              >
-                We served over 50+ clients all over the world.
-              </span>
-            </h1>
-          </section>
-          <section className="py-6 md:py-8">
-            <ElasticCarousel />
-          </section>
-          <section className="py-4 md:py-6">
-            <BrandMarquee />
-          </section>
-          <section className="py-6 md:py-8">
-            <CardTest />
-          </section>
-          <section className="py-6 md:py-8">
-            <CardFalling />
-          </section>
-          <section className="py-8 md:py-10">
-            <HeroSectionWithGirl />
-          </section>
-          <section className="py-6 md:py-8">
-            <ComparisonTable />
-          </section>
-          <section className="py-8 md:py-10">
-            <SectionHighlightScroll />
-          </section>
-          <section className="py-6 md:py-3">
-            <Testimonials />
-          </section>
-          <section className="py-6 md:py-3">
-            <CompanyPartner />
-          </section>
-          <section className="py-8 md:py-3">
-            <GetInTouchForm />
-          </section>
-        </motion.div>
-      </FloatingBeamBackground>
-    </>
+            <span
+              className={`block mt-2 text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl transform transition-all duration-700 ease-out delay-100 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              Built with <span className="text-[#ff9100]">Matrics Mind</span>
+            </span>
+
+            <ContainerTextFlip isVisible={isVisible} />
+
+            <span
+              className={`block mt-4 text-base sm:text-lg md:text-xl text-[#ff9100]/90 transform transition-all duration-700 ease-out delay-200 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              We’ve served <span className="font-bold text-white">50+ clients</span> worldwide.
+            </span>
+          </h1>
+        </section>
+
+        {/* Lazy-loaded sections */}
+        <LazySection><section className="py-4"><ElasticCarousel /></section></LazySection>
+        <LazySection><section className="py-4"><BrandMarquee /></section></LazySection>
+        <LazySection><section className="py-4"><CardTest /></section></LazySection>
+        <LazySection><section className="py-4"><CardFalling /></section></LazySection>
+        <LazySection><section className="py-4"><HeroSectionWithGirl /></section></LazySection>
+        <LazySection><section className="py-4"><ComparisonTable /></section></LazySection>
+        <LazySection><section className="py-4"><SectionHighlightScroll /></section></LazySection>
+        <LazySection><section className="py-4"><Testimonials /></section></LazySection>
+        <LazySection><section className="py-4"><CompanyPartner /></section></LazySection>
+        <LazySection><section className="py-4"><GetInTouchForm /></section></LazySection>
+
+      </div>
+    </FloatingBeamBackground>
   );
 }

@@ -96,9 +96,7 @@ export default function Header1() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-             
               <Image src={logo} height={120} width={120} />
-             
             </Link>
           </motion.div>
 
@@ -114,7 +112,7 @@ export default function Header1() {
               >
                 <Link
                   href={item.href}
-                  className="text-[#fff] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                  className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && (
@@ -124,31 +122,63 @@ export default function Header1() {
 
                 {item.hasDropdown && (
                   <AnimatePresence>
-                    {activeDropdown === item.name && (
+                    {isMobileMenuOpen && (
                       <motion.div
-                        className="border-border bg-background/95 absolute top-full left-0 mt-2 w-64 overflow-hidden rounded-xl border shadow-xl backdrop-blur-lg"
-                        variants={dropdownVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                        transition={{ duration: 0.2 }}
+                        className={`overflow-hidden lg:hidden ${
+                          theme === "dark"
+                            ? "bg-gray-900/80 backdrop-blur-lg"
+                            : "bg-white/80 backdrop-blur-lg"
+                        }`}
+                        variants={mobileMenuVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
-                        {item.dropdownItems?.map((dropdownItem) => (
-                          <Link
-                            key={dropdownItem.name}
-                            href={dropdownItem.href}
-                            className="hover:bg-muted block px-4 py-3 transition-colors duration-200"
-                          >
-                            <div className="text-foreground font-medium">
-                              {dropdownItem.name}
-                            </div>
-                            {dropdownItem.description && (
-                              <div className="text-muted-foreground text-sm text-gray-400">
-                                {dropdownItem.description}
-                              </div>
-                            )}
-                          </Link>
-                        ))}
+                        <div
+                          className={`mt-4 space-y-2 rounded-xl border shadow-xl ${
+                            theme === "dark"
+                              ? "border-gray-700"
+                              : "border-gray-200"
+                          } py-4`}
+                        >
+                          {navItems.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className={`block px-4 py-3 font-medium transition-colors duration-200 rounded-lg ${
+                                theme === "dark"
+                                  ? "text-white hover:bg-gray-800"
+                                  : "text-gray-900 hover:bg-gray-100"
+                              }`}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                          <div className="space-y-2 px-4 py-2">
+                            <Link
+                              href="/login"
+                              className={`block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200 ${
+                                theme === "dark"
+                                  ? "text-white hover:bg-gray-800"
+                                  : "text-gray-900 hover:bg-gray-100"
+                              }`}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              Sign In
+                            </Link>
+                            <Link
+                              href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              Get A Free Quote
+                            </Link>
+                          </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -184,19 +214,31 @@ export default function Header1() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="overflow-hidden lg:hidden"
+              className={`overflow-hidden lg:hidden pb-5 ${
+                theme === "dark"
+                  ? "bg-gray-900/80 backdrop-blur-lg"
+                  : "bg-white/900 backdrop-blur-lg"
+              }`}
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="border-border bg-background/95 mt-4 space-y-2 rounded-xl border py-4 shadow-xl backdrop-blur-lg">
+              <div
+                className={`mt-4 space-y-2 rounded-xl border shadow-xl ${
+                  theme === "dark" ? "border-gray-700" : "border-gray-200"
+                } py-4`}
+              >
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-foreground hover:bg-muted block px-4 py-3 font-medium transition-colors duration-200"
+                    className={`block px-4 py-3 font-medium transition-colors duration-200 rounded-lg ${
+                      theme === "dark"
+                        ? "text-white hover:bg-gray-800"
+                        : "text-gray-900 hover:bg-gray-100"
+                    }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -205,7 +247,11 @@ export default function Header1() {
                 <div className="space-y-2 px-4 py-2">
                   <Link
                     href="/login"
-                    className="text-foreground hover:bg-muted block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200"
+                    className={`block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200 ${
+                      theme === "dark"
+                        ? "text-white hover:bg-gray-800"
+                        : "text-gray-900 hover:bg-gray-100"
+                    }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
@@ -214,7 +260,7 @@ export default function Header1() {
                     href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full rounded-lg bg-gradient-to-r from-bg-[#ff9100] to-bg-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
+                    className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Get A Free Quote

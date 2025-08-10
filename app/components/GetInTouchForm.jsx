@@ -10,16 +10,44 @@ import { toast } from "sonner"; // You must have sonner installed
 export default function GetInTouchForm() {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Your message has been sent!");
-    }, 1500);
-  };
+  const form = e.target;
+  const firstName = form.firstName.value.trim();
+  const lastName = form.lastName.value.trim();
+  const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const company = form.company.value.trim();
+  const message = form.message.value.trim();
+
+  const fullMessage = `
+*New Contact Request* 📩
+
+👤 Name: ${firstName} ${lastName}
+📧 Email: ${email}
+📞 Phone: ${phone}
+🏢 Company: ${company}
+📝 Message: ${message}
+  `.trim();
+
+  // Encode message
+  const encodedMessage = encodeURIComponent(fullMessage);
+
+  // Replace with your WhatsApp number (with country code, no +)
+  const phoneNumber = "917367024433"; // example: India number
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  // Simulate delay and then redirect to WhatsApp
+  setTimeout(() => {
+    setLoading(false);
+    window.open(whatsappURL, "_blank"); // Open WhatsApp link in new tab
+    toast.success("Redirecting to WhatsApp...");
+  }, 1000);
+};
+
 
   return (
     <section className="w-[90vw] px-4 py-16 md:px-16 bg-gradient-to-br from-[#1C3784] to-[#0e183a] text-white flex justify-self-center rounded-b-xl shadow-lg relative overflow-hidden">
@@ -43,8 +71,8 @@ export default function GetInTouchForm() {
           className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-6 rounded-xl backdrop-blur-md shadow-lg border border-white/10"
         >
           {/* First & Last Name */}
-          <AnimatedField id="firstName" label="First name*" required />
-          <AnimatedField id="lastName" label="Last name*" required />
+          <AnimatedField id="firstName" label="First name*"  name="firstName" required />
+          <AnimatedField id="lastName" label="Last name*" name="lastName" required />
           <AnimatedField
             id="email"
             label="Email*"
@@ -62,6 +90,7 @@ export default function GetInTouchForm() {
           <AnimatedField
             id="company"
             label="Company / Organization Name*"
+            name="company"
             required
             full
           />
@@ -73,6 +102,7 @@ export default function GetInTouchForm() {
             </Label>
             <Textarea
               id="message"
+              name="message"
               rows={6}
               placeholder="Write your message here..."
               className="bg-white/5 text-white border border-white/20 mt-1 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#FF9100] transition-all duration-300 outline-none focus:outline-none"
