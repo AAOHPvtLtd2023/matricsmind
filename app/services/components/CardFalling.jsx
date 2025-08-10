@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { ThumbsUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const roles = [
@@ -37,33 +36,49 @@ const shineVariants = {
     },
   },
 };
+
 export default function CardFalling() {
   const [particles, setParticles] = useState([]);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const isMobile = viewport.width < 640;
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setViewport({
         width: window.innerWidth,
         height: window.innerHeight,
       });
+      window.addEventListener("resize", () =>
+        setViewport({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      );
     }
   }, []);
+
   useEffect(() => {
     const newParticles = [];
-    for (let i = 0; i < 15; i++) {
+    const count = isMobile ? 8 : 15; // fewer particles on mobile
+    for (let i = 0; i < count; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 4 + 2,
+        size: Math.random() * (isMobile ? 3 : 4) + 2,
         delay: Math.random() * 3,
         duration: Math.random() * 4 + 6,
       });
     }
     setParticles(newParticles);
-  }, []);
+  }, [isMobile]);
+
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[30vh] overflow-hidden">
+    <div
+      className={`relative flex flex-col items-center justify-center ${
+        isMobile ? "min-h-[20vh]" : "min-h-[30vh]"
+      } overflow-hidden px-2`}
+    >
       {/* Animated Background Stars */}
       {particles.map((particle) => (
         <motion.div
@@ -86,6 +101,7 @@ export default function CardFalling() {
           }}
         />
       ))}
+
       {/* Rocket SVG */}
       <motion.div
         className="absolute z-10"
@@ -93,7 +109,6 @@ export default function CardFalling() {
         animate={{
           x: [viewport.width, viewport.width * 0.5, -100],
           y: [viewport.height * 0.7, viewport.height * 0.4, -100],
-
           rotate: [-45, -80, -120],
         }}
         transition={{
@@ -102,26 +117,25 @@ export default function CardFalling() {
           repeat: Infinity,
           repeatDelay: 5,
         }}
+        style={{
+          scale: isMobile ? 0.6 : 1, // smaller rocket on mobile
+        }}
       >
         <svg
-          width="60"
-          height="60"
+          width={isMobile ? "40" : "60"}
+          height={isMobile ? "40" : "60"}
           viewBox="0 0 100 100"
           className="drop-shadow-lg"
         >
-          {/* Rocket Body */}
           <path
             d="M50 10 L35 70 L50 60 L65 70 Z"
             fill="#ff9100"
             stroke="#ff7700"
             strokeWidth="2"
           />
-          {/* Rocket Tip */}
           <circle cx="50" cy="15" r="8" fill="#ffb347" />
-          {/* Rocket Wings */}
           <path d="M35 50 L25 65 L35 70 Z" fill="#1c3784" />
           <path d="M65 50 L75 65 L65 70 Z" fill="#1c3784" />
-          {/* Window */}
           <circle
             cx="50"
             cy="35"
@@ -132,145 +146,40 @@ export default function CardFalling() {
           />
         </svg>
       </motion.div>
-      {/* Dynamic Smoke Trail */}
-      <motion.div
-        className="absolute z-5"
-        initial={{ x: "100vw", y: "60vh" }}
-        animate={{
-          x: [viewport.width + 50, viewport.width * 0.5 + 50, -50],
-          y: [viewport.height * 0.7 + 20, viewport.height * 0.4 + 20, -80],
-        }}
-        transition={{
-          duration: 12,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatDelay: 5,
-        }}
-      >
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-gradient-to-r from-gray-400 via-gray-300 to-transparent"
-            style={{
-              width: 15 + i * 8,
-              height: 15 + i * 8,
-              left: -i * 25,
-              top: -i * 10,
-            }}
-            animate={{
-              opacity: [0.8 - i * 0.1, 0.4 - i * 0.05, 0],
-              scale: [0.5 + i * 0.1, 1.2 + i * 0.1, 0.8 + i * 0.1],
-            }}
-            transition={{
-              duration: 2 + i * 0.3,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
-      </motion.div>
-      {/* Fire/Exhaust Effect */}
-      <motion.div
-        className="absolute z-5"
-        initial={{ x: "100vw", y: "60vh" }}
-        animate={{
-          x: [viewport.width + 40, viewport.width * 0.5 + 40, -60],
-          y: [viewport.height * 0.7 + 35, viewport.height * 0.4 + 35, -65],
-        }}
-        transition={{
-          duration: 12,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatDelay: 5,
-        }}
-      >
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: 8 + i * 3,
-              height: 8 + i * 3,
-              left: -i * 15,
-              top: -i * 5,
-              background: i < 2 ? "#ff4500" : i < 4 ? "#ff8c00" : "#ffd700",
-            }}
-            animate={{
-              opacity: [1 - i * 0.15, 0.6 - i * 0.1, 0],
-              scale: [0.8, 1.5, 0.5],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              delay: i * 0.1,
-            }}
-          />
-        ))}
-      </motion.div>
-      {/* Scattered Ash Particles */}
-      <motion.div
-        className="absolute z-5"
-        initial={{ x: "100vw", y: "60vh" }}
-        animate={{
-          x: [viewport.innerWidth + 60, viewport.innerWidth * 0.5 + 60, -40],
-          y: [
-            viewport.innerHeight * 0.7 + 10,
-            viewport.innerHeight * 0.4 + 10,
-            -90,
-          ],
-        }}
-        transition={{
-          duration: 12,
-          ease: "easeInOut",
-          repeat: Infinity,
-          repeatDelay: 5,
-        }}
-      >
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-orange-400"
-            style={{
-              width: 2 + Math.random() * 3,
-              height: 2 + Math.random() * 3,
-              left: -i * 20 + Math.random() * 40,
-              top: -i * 8 + Math.random() * 20,
-            }}
-            animate={{
-              opacity: [0.9, 0.3, 0],
-              x: [0, Math.random() * 30 - 15],
-              y: [0, Math.random() * 20 - 10],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: i * 0.15,
-            }}
-          />
-        ))}
-      </motion.div>
-      {/* Main Content */}
+
+      {/* Main Heading */}
       <motion.h2
-        className="relative z-20 text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-none pb-2 mb-3"
+        className={`relative z-20 font-bold text-center bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-snug pb-2 mb-3 ${
+          isMobile ? "text-xl" : "text-4xl sm:text-5xl"
+        }`}
         variants={shineVariants}
         animate="animate"
       >
         Delivering Digital Solutions That Drive Growth
       </motion.h2>
-      <div className="relative z-20 flex flex-wrap gap-1 justify-center max-w-5xl">
-        {roles.map((role, index) => (
-          <motion.div
-            key={index}
-            className={`px-5 py-2 rounded-full text-sm sm:text-base font-medium shadow-md ${role.bg} text-white hover:scale-105 transition-transform duration-300`}
-            custom={role.delay}
-            initial="hidden"
-            animate="visible"
-            variants={fallVariants}
-          >
-            {role.title}
-          </motion.div>
-        ))}
-      </div>
+
+      {/* Tags */}
+      <div
+  className={`relative z-20 flex flex-wrap gap-2 justify-center ${
+    isMobile ? "max-w-xs" : "max-w-5xl"
+  }`}
+>
+  {roles.map((role, index) => (
+    <motion.div
+      key={index}
+      className={`rounded-full font-medium shadow-md ${role.bg} text-white hover:scale-105 transition-transform duration-300 ${
+        isMobile ? "px-4 py-2 text-sm" : "px-5 py-2 text-base sm:text-lg"
+      }`}
+      custom={role.delay}
+      initial="hidden"
+      animate="visible"
+      variants={fallVariants}
+    >
+      {role.title}
+    </motion.div>
+  ))}
+</div>
+
     </div>
   );
 }
