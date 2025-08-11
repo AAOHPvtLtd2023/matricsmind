@@ -100,92 +100,95 @@ export default function Header1() {
             </Link>
           </motion.div>
 
-          <nav className="hidden items-center space-x-8 lg:flex">
-            {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative"
-                onMouseEnter={() =>
-                  item.hasDropdown && setActiveDropdown(item.name)
-                }
-                onMouseLeave={() => setActiveDropdown(null)}
+          <div className="flex flex-row gap-5">
+            <nav className="hidden items-center space-x-8 lg:flex">
+              {navItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() =>
+                    item.hasDropdown && setActiveDropdown(item.name)
+                  }
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                  >
+                    <span>{item.name}</span>
+                    {item.hasDropdown && (
+                      <ChevronDown className="h-4 w-4 transition-transform duration-200" />
+                    )}
+                  </Link>
+
+                  {item.hasDropdown && (
+                    <AnimatePresence>
+                      {isMobileMenuOpen && (
+                        <motion.div
+                          className={`overflow-hidden lg:hidden ${
+                            theme === "dark"
+                              ? "bg-gray-900/80 backdrop-blur-lg"
+                              : "bg-white/80 backdrop-blur-lg"
+                          }`}
+                          variants={mobileMenuVariants}
+                          initial="closed"
+                          animate="open"
+                          exit="closed"
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div
+                            className={`mt-4 space-y-2 rounded-xl border shadow-xl ${
+                              theme === "dark"
+                                ? "border-gray-700"
+                                : "border-gray-200"
+                            } py-4`}
+                          >
+                            {navItems.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                className={`block px-4 py-3 font-medium transition-colors duration-200 rounded-lg ${
+                                  theme === "dark"
+                                    ? "text-white hover:bg-gray-800"
+                                    : "text-gray-900 hover:bg-gray-100"
+                                }`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                            <div className="space-y-2 px-4 py-2">
+                              <Link
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                Get A Free Quote
+                              </Link>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              ))}
+            </nav>
+            <div className="hidden items-center space-x-4 lg:flex">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href={item.href}
-                  className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                  href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
+                  className="inline-flex items-center space-x-2 rounded-full bg-[#ff9100] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
                 >
-                  <span>{item.name}</span>
-                  {item.hasDropdown && (
-                    <ChevronDown className="h-4 w-4 transition-transform duration-200" />
-                  )}
+                  <span>Get A Free Qoute</span>
                 </Link>
-
-                {item.hasDropdown && (
-                  <AnimatePresence>
-                    {isMobileMenuOpen && (
-                      <motion.div
-                        className={`overflow-hidden lg:hidden ${
-                          theme === "dark"
-                            ? "bg-gray-900/80 backdrop-blur-lg"
-                            : "bg-white/80 backdrop-blur-lg"
-                        }`}
-                        variants={mobileMenuVariants}
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      >
-                        <div
-                          className={`mt-4 space-y-2 rounded-xl border shadow-xl ${
-                            theme === "dark"
-                              ? "border-gray-700"
-                              : "border-gray-200"
-                          } py-4`}
-                        >
-                          {navItems.map((item) => (
-                            <Link
-                              key={item.name}
-                              href={item.href}
-                              className={`block px-4 py-3 font-medium transition-colors duration-200 rounded-lg ${
-                                theme === "dark"
-                                  ? "text-white hover:bg-gray-800"
-                                  : "text-gray-900 hover:bg-gray-100"
-                              }`}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                          <div className="space-y-2 px-4 py-2">
-                           
-                            <Link
-                              href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              Get A Free Quote
-                            </Link>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          <div className="hidden items-center space-x-4 lg:flex">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
-                className="inline-flex items-center space-x-2 rounded-full bg-[#ff9100] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
-              >
-                <span>Get A Free Qoute</span>
-              </Link>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           <motion.button
@@ -235,9 +238,8 @@ export default function Header1() {
                   </Link>
                 ))}
                 <div className="space-y-2 px-4 py-2">
-                 
                   <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
+                    href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
