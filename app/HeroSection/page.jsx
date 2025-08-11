@@ -10,19 +10,7 @@ export default function HeroSectionWithGirl() {
     <div className="relative z-0 min-h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 " />
-      
-      {/* Multiple Floating Beams */}
-      {/* <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#ff9100] via-[#1c3784] to-transparent rounded-full blur-3xl opacity-40 animate-pulse" />
-        <div className="absolute top-16 left-16 w-48 h-48 bg-gradient-to-r from-blue-400/30 to-purple-500/30 rounded-full blur-2xl opacity-60 animate-float-slow" />
-        <div className="absolute top-32 left-40 w-32 h-32 bg-[#ff9100]/20 rounded-full blur-2xl opacity-70 animate-float" />
-      </div> */}
-
-      {/* Right side floating elements */}
-      {/* <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 z-0">
-        <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/20 via-blue-500/20 to-transparent rounded-full blur-3xl opacity-50 animate-pulse delay-1000" />
-        <div className="absolute top-12 right-12 w-36 h-36 bg-gradient-to-l from-[#ff9100]/25 to-transparent rounded-full blur-xl opacity-60 animate-float delay-500" />
-      </div> */}
+    
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -39,7 +27,7 @@ export default function HeroSectionWithGirl() {
         ))}
       </div>
 
-      <section className="relative w-[95vw] max-w-7xl bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-16 sm:py-20 md:px-12 lg:px-24 rounded-3xl shadow-2xl">
+      <section className="relative w-[95vw] max-w-7xl bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-16 sm:py-10 md:px-12 lg:px-12 rounded-3xl shadow-2xl">
         <div className="mx-auto flex flex-col lg:grid lg:grid-cols-2 items-center gap-16 lg:gap-20">
           {/* Left Content */}
           <div className="text-center lg:text-left space-y-8">
@@ -50,7 +38,7 @@ export default function HeroSectionWithGirl() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-bold leading-none">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-none">
               <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
                 Smart solutions,
               </span>{" "}
