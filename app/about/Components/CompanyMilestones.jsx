@@ -11,22 +11,22 @@ export default function CompanyMilestones() {
     {
       number: 1000,
       suffix: '+',
-      description: 'We have completed over 1000+ creative projects for brands and companies, each one unique and tailored to the client\'s needs.'
+      description: 'We have successfully delivered 1000+ creative projects for brands and companies, each thoughtfully designed and tailored to bring our clients’ visions to life.'
     },
     {
       number: 300,
       suffix: '+',
-      description: 'Businesses Served: Partnering globally, we deliver tailored branding, web & marketing solutions to meet diverse needs and goals.'
+      description: 'Businesses Served: Partnering with brands worldwide, Matrics Mind delivers customized branding, web, and marketing solutions designed to meet diverse goals and drive lasting success.'
     },
     {
       number: 13,
       suffix: '+',
-      description: 'Our team, consisting of 13+ talented individuals with varied backgrounds, is dedicated to elevating your brand and web experience.'
+      description: '+) Our team of 15+ talented professionals from diverse backgrounds is committed to elevating your brand and delivering exceptional web experiences.'
     },
     {
       number: 6,
       suffix: '',
-      description: 'We are proud to have delivered our branding and web development services across 6 different countries, with a focus on the GCC region.'
+      description: 'We are proud to have provided our branding and web development services in 10+ countries, with a strong focus on the GCC region.'
     }
   ];
 
