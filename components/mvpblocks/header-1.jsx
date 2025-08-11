@@ -84,7 +84,7 @@ export default function Header1() {
           ? theme === "dark"
             ? "rgba(0, 0, 0, 0.8)"
             : "rgba(255, 255, 255, 0.8)"
-          : "rgba(255, 255, 255, 0.8)",
+          : "rgba(255, 255, 255, 1)",
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
@@ -157,17 +157,7 @@ export default function Header1() {
                             </Link>
                           ))}
                           <div className="space-y-2 px-4 py-2">
-                            <Link
-                              href="/login"
-                              className={`block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200 ${
-                                theme === "dark"
-                                  ? "text-white hover:bg-gray-800"
-                                  : "text-gray-900 hover:bg-gray-100"
-                              }`}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              Sign In
-                            </Link>
+                           
                             <Link
                               href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
                               target="_blank"
@@ -245,17 +235,7 @@ export default function Header1() {
                   </Link>
                 ))}
                 <div className="space-y-2 px-4 py-2">
-                  <Link
-                    href="/login"
-                    className={`block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-gray-800"
-                        : "text-gray-900 hover:bg-gray-100"
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Sign In
-                  </Link>
+                 
                   <Link
                     href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
                     target="_blank"

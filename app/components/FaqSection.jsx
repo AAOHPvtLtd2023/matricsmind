@@ -1,13 +1,186 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../../@/components/ui/accordion";
+import React from "react";
 import { motion } from "framer-motion";
-import Typewriter from "../../components/ui/typewriter";
+import { useState } from "react";
+
+// Custom Accordion Components
+const Accordion = ({ children, type = "single", collapsible = false, className = "" }) => {
+  return <div className={className}>{children}</div>;
+};
+
+const AccordionItem = ({ children, value, className = "" }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  
+  return (
+    <div className={className} data-value={value}>
+      {React.Children.map(children, child => 
+        React.cloneElement(child, { isOpen, setIsOpen })
+      )}
+    </div>
+  );
+};
+
+const AccordionTrigger = ({ children, className = "", isOpen, setIsOpen }) => {
+  return (
+    <button
+      className={`w-full text-left flex items-center justify-between ${className}`}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      {children}
+      <svg
+        className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  );
+};
+
+const AccordionContent = ({ children, className = "", isOpen }) => {
+  return (
+    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={className}>
+        {children}
+      </div>
+    </div>
+  );
+};
+const Typewriter = ({ text, speed = 10 }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  React.useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, speed]);
+
+  return <span>{displayText}</span>;
+};
+
+// SEO links mapping
+const seoLinks = {
+  "services": "/services",
+  "branding": "/services/branding",
+  "web development": "/services/web-development",
+  "CGI": "/services/cgi-vfx",
+  "VFX": "/services/cgi-vfx",
+  "performance marketing": "/services/marketing",
+  "graphic design": "/services/graphic-design",
+  "motion videos": "/services/motion-graphics",
+  "2D": "/services/motion-graphics",
+  "3D": "/services/motion-graphics",
+  "clients": "/portfolio",
+  "projects": "/portfolio",
+  "GCC region": "/regions/gcc",
+  "web design": "/services/web-design",
+  "design": "/services/design",
+  "marketing": "/services/marketing"
+};
+
+// Component to add hover links to text
+const TextWithHoverLinks = ({ text }) => {
+  const [hoveredWord, setHoveredWord] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
+  const processText = (text) => {
+    const matches = [];
+
+    // Find all matches and their positions
+    Object.entries(seoLinks).forEach(([keyword, link]) => {
+      const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        matches.push({
+          keyword: match[0],
+          start: match.index,
+          end: match.index + match[0].length,
+          link: link
+        });
+      }
+    });
+
+    // Sort matches by start position
+    matches.sort((a, b) => a.start - b.start);
+
+    // If no matches, return original text
+    if (matches.length === 0) {
+      return text;
+    }
+
+    // Build result array with text and linked elements
+    const result = [];
+    let lastIndex = 0;
+
+    matches.forEach((match, index) => {
+      // Add text before the match
+      if (match.start > lastIndex) {
+        result.push(text.substring(lastIndex, match.start));
+      }
+
+      // Add the linked element
+      result.push(
+        <span
+          key={`${match.keyword}-${index}`}
+          className="relative cursor-pointer text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-2 transition-colors"
+          onMouseEnter={(e) => {
+            setHoveredWord(match.link);
+            handleMouseMove(e);
+          }}
+          onMouseLeave={() => setHoveredWord(null)}
+          onMouseMove={handleMouseMove}
+        >
+          {match.keyword}
+        </span>
+      );
+
+      lastIndex = match.end;
+    });
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      result.push(text.substring(lastIndex));
+    }
+
+    return result;
+  };
+
+  return (
+    <div className="relative">
+      <div>{processText(text)}</div>
+      
+      {/* Hover tooltip */}
+      {hoveredWord && (
+        <div
+          className="fixed z-50 px-3 py-2 text-xs bg-black/90 text-white rounded-lg border border-white/20 backdrop-blur-sm pointer-events-none"
+          style={{
+            left: mousePosition.x + 10,
+            top: mousePosition.y - 40,
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <span>View: {hoveredWord}</span>
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const faqs = [
   {
@@ -18,7 +191,7 @@ const faqs = [
   {
     question: "How many clients have you worked with?",
     answer:
-      "We have successfully partnered with over 300 clients across the globe, delivering more than 1000 creative projects that are customized to meet each client’s unique needs.",
+      "We have successfully partnered with over 300 clients across the globe, delivering more than 1000 creative projects that are customized to meet each client's unique needs.",
   },
   {
     question: "What regions do you serve?",
@@ -37,7 +210,6 @@ const faqs = [
   },
 ];
 
-
 export default function FaqSection() {
   return (
     <motion.section
@@ -45,7 +217,7 @@ export default function FaqSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      className="max-w-3xl mx-auto px-4 py-20 text-white"
+      className="max-w-3xl mx-auto px-4 py-20 text-white relative"
     >
       <div className="text-center mb-12">
         <p className="uppercase text-sm tracking-widest text-gray-400">
@@ -64,10 +236,10 @@ export default function FaqSection() {
             className="border border-white/10 bg-white/5 backdrop-blur-md rounded-xl overflow-hidden"
           >
             <AccordionTrigger className="px-6 py-5 text-left text-base font-semibold hover:bg-white/10 transition">
-             {faq.question} 
+              {faq.question}
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-5 text-sm text-gray-300">
-               <Typewriter text={faq.answer} speed={10} />
+              <TextWithHoverLinks text={faq.answer} />
             </AccordionContent>
           </AccordionItem>
         ))}

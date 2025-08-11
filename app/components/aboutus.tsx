@@ -89,11 +89,8 @@ export default function AboutUs1() {
     <section className="relative w-full overflow-hidden pt-20">
       <Spotlight
         gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 50%, rgba(255, 145, 0, 0) 80%)"
-
-gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 80%, transparent 100%)"
-
-gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, rgba(255, 145, 0, 0.06) 80%, transparent 100%)"
-
+        gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 80%, transparent 100%)"
+        gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, rgba(255, 145, 0, 0.06) 80%, transparent 100%)"
       />
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -104,10 +101,10 @@ gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, r
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="mx-auto mb-16 max-w-2xl text-center"
         >
-          <h1 className="bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
+          <h1 className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
             {aboutData.title}
           </h1>
-          <p className="mt-6 text-xl text-muted-foreground">
+          <p className="mt-6 text-lg sm:text-xl text-white">
             {aboutData.subtitle}
           </p>
         </motion.div>
@@ -141,7 +138,7 @@ gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, r
                   Our Mission
                 </h2>
 
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-lg leading-relaxed text-white">
                   {aboutData.mission}
                 </p>
               </div>
@@ -165,14 +162,14 @@ gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, r
                 Our Vision
               </h2>
 
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="text-lg leading-relaxed text-white">
                 {aboutData.vision}
               </p>
             </motion.div>
           </motion.div>
         </div>
 
-        <CountryCard/>
+        <CountryCard />
 
         <div ref={valuesRef} className="mb-24">
           <motion.div
@@ -183,10 +180,10 @@ gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, r
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="mb-12 text-center"
           >
-            <h2 className="bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+            <h2 className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
               Our Core Values
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-white">
               The principles that guide everything we do and every decision we
               make.
             </p>
@@ -218,10 +215,10 @@ gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, r
                       index === 0
                         ? 'purple'
                         : index === 1
-                          ? 'blue'
-                          : index === 2
-                            ? 'amber'
-                            : 'rose'
+                        ? 'blue'
+                        : index === 2
+                        ? 'amber'
+                        : 'rose'
                     }
                     glowEffect={true}
                     size="lg"

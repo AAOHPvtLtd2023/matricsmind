@@ -23,62 +23,62 @@ export default function FeaturesSection() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 const features = [
   {
-    title: "01. Project Brief",
+    title: "Project Brief",
     description: "Understand the client's requirements and project objectives.",
     icon: (isMobile) => <IconClipboardText size={isMobile ? 32 : 48} />,
   },
   {
-    title: "02. 50% Advance Payment",
+    title: "50% Advance Payment",
     description: "Secure initial payment to commence work.",
     icon: (isMobile) => <IconCreditCard size={isMobile ? 32 : 48} />,
   },
   {
-    title: "03. Research Work",
+    title: "Research Work",
     description: "Conduct thorough research on industry, competitors, and audience.",
     icon: (isMobile) => <IconSearch size={isMobile ? 32 : 48} />,
   },
   {
-    title: "04. Sketching Ideas",
+    title: "Sketching Ideas",
     description: "Explore and outline rough concepts and directions.",
     icon: (isMobile) => <IconPencil size={isMobile ? 32 : 48} />,
   },
   {
-    title: "05. Design Creation",
+    title: "Design Creation",
     description: "Develop detailed design based on approved concept direction.",
     icon: (isMobile) => <IconBrush size={isMobile ? 32 : 48} />,
   },
   {
-    title: "06. Initial Presentation",
+    title: "Initial Presentation",
     description: "Present first draft of the design to the client.",
     icon: (isMobile) => <IconPresentation size={isMobile ? 32 : 48} />,
   },
   {
-    title: "07. Client Feedback",
+    title: "Client Feedback",
     description: "Gather input and suggestions for refinement.",
     icon: (isMobile) => <IconMessageCircle size={isMobile ? 32 : 48} />,
   },
   {
-    title: "08. Two Revisions",
+    title: "Two Revisions",
     description: "Incorporate up to two rounds of revisions.",
     icon: (isMobile) => <IconRepeat size={isMobile ? 32 : 48} />,
   },
   {
-    title: "09. Final Presentation",
+    title: "Final Presentation",
     description: "Showcase the final design for client approval.",
     icon: (isMobile) => <IconCheck size={isMobile ? 32 : 48} />,
   },
   {
-    title: "10. 50% Remaining Payment",
+    title: "50% Remaining Payment",
     description: "Collect final payment before delivery.",
     icon: (isMobile) => <IconCash size={isMobile ? 32 : 48} />,
   },
   {
-    title: "11. Delivery Guidelines",
+    title: "Delivery Guidelines",
     description: "Outline usage and technical specifications.",
     icon: (isMobile) => <IconFileText size={isMobile ? 32 : 48} />,
   },
   {
-    title: "12. File Delivery",
+    title: "File Delivery",
     description: "Hand over final files in agreed formats.",
     icon: (isMobile) => <IconDownload size={isMobile ? 32 : 48} />,
   },
@@ -125,13 +125,13 @@ const Feature = ({ title, description, icon, index }) => {
       {/* Title */}
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
         <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#1C3784]/40 group-hover/feature:bg-[#FF9100] transition-all duration-300 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-300 inline-block text-[#1C3784] dark:text-white">
+        <span className="group-hover/feature:translate-x-2 transition duration-300 inline-block text-[#fff] dark:text-white">
           {title}
         </span>
       </div>
 
       {/* Description */}
-      <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xs relative z-10 px-10">
+      <p className="text-sm text-gray-600 dark:text-gray-100 max-w-xs relative z-10 px-10">
         {description}
       </p>
     </motion.div>
