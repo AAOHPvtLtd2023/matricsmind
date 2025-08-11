@@ -21,7 +21,7 @@ const cards = [
       "From Startups to Enterprises: Partner with the Best SEO Company in Abu Dhabi",
     description:
       "Discover how Metrics Mind helps businesses of every size climb search rankings in Abu Dhabi’s competitive market using proven SEO strategies.",
-    slug: "metrics-mind-best-seo-company-abu-dhabi",
+    slug: "matrics-mind-best-seo-company-abu-dhabi",
     src: "/blog/seo-abu-dhabi.jpg",
   },
   {
