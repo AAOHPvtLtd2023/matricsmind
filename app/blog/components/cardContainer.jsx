@@ -14,7 +14,7 @@ const cards = [
     description:
       "Explore how Matrics Mind delivers impactful advertising solutions in Abu Dhabi through creative storytelling, strategic campaigns, and measurable results.",
     slug: "why-matrics-mind-best-advertising-company-abu-dhabi",
-    src: "/blog/advertising-abu-dhabi.jpg",
+    src: "/images/Blog/blog1.jpg",
   },
   {
     title:
@@ -22,14 +22,14 @@ const cards = [
     description:
       "Discover how Metrics Mind helps businesses of every size climb search rankings in Abu Dhabi’s competitive market using proven SEO strategies.",
     slug: "matrics-mind-best-seo-company-abu-dhabi",
-    src: "/blog/seo-abu-dhabi.jpg",
+    src: "/images/Blog/blog2.jpg",
   },
   {
     title: "10 Winning Digital Marketing Strategies for Jewellery Brands",
     description:
       "A practical guide to digital marketing techniques that boost visibility, highlight craftsmanship, and increase sales for jewellery businesses.",
     slug: "top-10-digital-marketing-strategies-jewellery-business",
-    src: "/blog/jewellery-digital-marketing.jpg",
+    src: "/images/Blog/blog3.jpg",
   },
  
 ];

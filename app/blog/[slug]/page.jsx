@@ -194,7 +194,7 @@ const getBlogData = (slug) => {
           }
         ]
       },
-      image: "/blog/advertising-abu-dhabi.jpg",
+      image: "/images/Blog/blog1.jpg",
       author: {
         name: "Matrics Mind Team",
         avatar: "MM",
@@ -234,7 +234,7 @@ const getBlogData = (slug) => {
           }
         ]
       },
-      image: "/blog/seo-abu-dhabi.jpg",
+      image: "/images/Blog/blog2.jpg",
       author: {
         name: "SEO Team at Matrics Mind",
         avatar: "SM",
@@ -266,7 +266,7 @@ const getBlogData = (slug) => {
           { heading: "10. Use Pinterest to Drive Discovery", content: "Business account, vertical images, keyword titles, product links, seasonal boards, rich pins, and promoted pins." }
         ]
       },
-      image: "/blog/jewellery-digital-marketing.jpg",
+      image: "/images/Blog/blog3.jpg",
       author: {
         name: "Digital Marketing Team at Matrics Mind",
         avatar: "DM",
@@ -362,12 +362,12 @@ const progressWidth = typeof window !== "undefined"
 
       {/* Hero Section */}
       <section 
-        className="relative pt-20 pb-16 overflow-hidden bg-gray-900"
-        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        className="relative pt-20 pb-16 bg-gray-900"
+        // style={{ transform: `translateY(${scrollY * 0.5}px)` }}
       >
         <div className="absolute inset-0 bg-black/20"></div>
         
-        <div className="relative max-w-6xl mx-auto px-6">
+        <div className="relative max-w-8xl mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               <EnhancedText>{blogData.title}</EnhancedText>
@@ -414,13 +414,13 @@ const progressWidth = typeof window !== "undefined"
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-8xl mx-auto px-6 py-16">
         <div className="grid lg:grid-cols-4 gap-12">
           {/* Article Content */}
           <article className="lg:col-span-3">
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
               {/* Featured Image */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-150 overflow-hidden">
                 <img
                   src={blogData.image}
                   alt={blogData.title}
@@ -484,7 +484,7 @@ const progressWidth = typeof window !== "undefined"
                   </div>
 
                   {/* Call to Action */}
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center my-12">
+                  {/* <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center my-12">
                     <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Brand?</h3>
                     <p className="text-lg mb-6">
                       <EnhancedText>
@@ -497,7 +497,7 @@ const progressWidth = typeof window !== "undefined"
                     >
                       Get Started Today
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -506,7 +506,7 @@ const progressWidth = typeof window !== "undefined"
           {/* Sidebar */}
           <aside className="space-y-8">
             {/* Table of Contents */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-32">
+            <div className="bg-white rounded-2xl shadow-lg p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                 <TrendingUp size={20} className="mr-2 text-blue-600" />
                 Table of Contents
