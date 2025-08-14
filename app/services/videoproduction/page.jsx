@@ -17,7 +17,7 @@ import FancyQuoteButton from "../website/components/FancyQuoteButton";
 export default function videoProductionPage() {
   return (
     <section>
-      <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center">
+      <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-15">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function videoProductionPage() {
          
         </motion.div>
       </AuroraBackground>
-      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-5" />
+      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-15" />
       {/* <TextScrollTooltip/> */}
       <ExpertLedComponent />
       <VideoPlayerComponent />

@@ -19,13 +19,13 @@ export default function CompanyMilestones() {
       description: 'Businesses Served: Partnering with brands worldwide, Matrics Mind delivers customized branding, web, and marketing solutions designed to meet diverse goals and drive lasting success.'
     },
     {
-      number: 13,
+      number: 15,
       suffix: '+',
-      description: '+) Our team of 15+ talented professionals from diverse backgrounds is committed to elevating your brand and delivering exceptional web experiences.'
+      description: 'Our team of 15+ talented professionals from diverse backgrounds is committed to elevating your brand and delivering exceptional web experiences.'
     },
     {
-      number: 6,
-      suffix: '',
+      number: 10,
+      suffix: '+',
       description: 'We are proud to have provided our branding and web development services in 10+ countries, with a strong focus on the GCC region.'
     }
   ];

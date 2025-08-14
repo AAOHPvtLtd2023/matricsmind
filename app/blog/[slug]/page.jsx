@@ -252,7 +252,7 @@ const getBlogData = (slug) => {
       content: {
         intro: "In today’s fast-paced digital world, having a solid online presence is no longer optional — it’s essential for jewellery businesses. Digital marketing opens up exciting opportunities to connect with a broader audience, showcase exquisite craftsmanship, and drive online and offline sales.",
         sections: [
-          { heading: "What is Digital Marketing?", content: "Digital marketing promotes products through online channels like search engines, social media, and websites using data-driven methods." },
+          { heading: "What is Digital Marketing?", content: "Digital marketing involves promoting products, services, or brands through digital channels like search engines, websites, social media, email, and mobile apps. It uses data-driven and customer-centric techniques to attract and engage targeted audiences efficiently and cost-effectively. Its all about reaching the right people at the right time through the right platform." },
           { heading: "Why Jewellery Businesses Need Digital Marketing", content: "Increased visibility, global reach, better engagement, showcasing aesthetics, informed decisions, cost efficiency, competitive advantage, and scalability." },
           { heading: "1. Build an Aesthetic, SEO-Friendly, Shopper-Centric Jewellery Website", content: "Use high-res images, mobile optimization, virtual try-on, smooth checkout, trust signals, and clear CTAs." },
           { heading: "2. Optimize Your Website for SEO", content: "Keyword research, meta optimization, headings, ALT tags, backlinks, and local SEO." },

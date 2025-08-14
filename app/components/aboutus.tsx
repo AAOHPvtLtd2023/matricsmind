@@ -74,7 +74,7 @@ export default function AboutUs1() {
     mission:
       "At Matrics Mind, our mission is clear — to take your business to the next level. Through innovation, collaboration, excellence, and integrity, we craft strategies and solutions that fuel growth, elevate your brand, and deliver lasting success.",
     vision:
-      "We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.",
+      "We put our clients first, working with integrity, excellence, and innovation to deliver measurable results. Through collaboration and shared goals, we turn ideas into impactful outcomes.",
     values: defaultValues,
     className: "relative overflow-hidden py-20",
   };
