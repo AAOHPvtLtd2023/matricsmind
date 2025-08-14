@@ -39,61 +39,59 @@ export function MinimalCardDemo() {
   }, []);
 
   return (
-    <div className="w-full mx-auto">
-      <div className="flex flex-col justify-center rounded-lg">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 place-items-center">
-          {cards.map((card, index) => (
-            <Link href={`/blog/${card.slug}`} key={index}>
-              <div className="group m-2 w-[420px] bg-[#1C1F2A]/80 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#ff9100]/50 hover:shadow-[0_8px_30px_rgba(255,145,0,0.3)] cursor-pointer hover:scale-105">
-                {/* Image Section */}
-                <div className="relative h-[200px] overflow-hidden">
-                  {loading ? (
-                    <div className="flex items-center justify-center h-full bg-black/10">
-                      <Spinner />
-                    </div>
-                  ) : (
-                    <div className="relative aspect-[16/9] overflow-hidden">
-                      <Image
-                        src={card.src}
-                        alt={card.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                {/* Content Section */}
-                <div className="p-6">
-                  {loading ? (
-                    <>
-                      <div className="h-5 bg-white/20 rounded w-3/4 mb-4" />
-                      <div className="h-4 bg-white/10 rounded w-full mb-2" />
-                      <div className="h-4 bg-white/10 rounded w-5/6" />
-                    </>
-                  ) : (
-                    <>
-                      <h3 className="text-white font-bold text-lg mb-3 group-hover:text-[#ff9100] transition-colors duration-300">
-                        {card.title}
-                      </h3>
-                      <p className="text-white/70 text-sm leading-relaxed mb-4">
-                        {card.description}
-                      </p>
-                      <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-white/60">
-                        <span className="group-hover:text-white">
-                          Read more
-                        </span>
-                        <span className="text-[#ff9100] font-semibold group-hover:translate-x-1 transition-transform duration-300">
-                          &rarr;
-                        </span>
-                      </div>
-                    </>
-                  )}
-                </div>
+    <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+        {cards.map((card, index) => (
+          <Link href={`/blog/${card.slug}`} key={index} className="w-full">
+            <div className="group flex flex-col h-full max-w-sm w-full bg-[#1C1F2A]/80 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#ff9100]/50 hover:shadow-[0_8px_30px_rgba(255,145,0,0.3)] cursor-pointer hover:scale-105">
+              
+              {/* Image Section */}
+              <div className="relative w-full h-56 overflow-hidden flex-shrink-0">
+                {loading ? (
+                  <div className="flex items-center justify-center h-full bg-black/10">
+                    <Spinner />
+                  </div>
+                ) : (
+                  <Image
+                    src={card.src}
+                    alt={card.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
               </div>
-            </Link>
-          ))}
-        </div>
+
+              {/* Content Section */}
+              <div className="flex flex-col flex-1 p-5 sm:p-6">
+                {loading ? (
+                  <>
+                    <div className="h-5 bg-white/20 rounded w-3/4 mb-4" />
+                    <div className="h-4 bg-white/10 rounded w-full mb-2" />
+                    <div className="h-4 bg-white/10 rounded w-5/6" />
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-white font-bold text-lg mb-3 group-hover:text-[#ff9100] transition-colors duration-300">
+                      {card.title}
+                    </h3>
+                    <p className="text-white/70 text-sm leading-relaxed mb-4 flex-grow">
+                      {card.description}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-white/60">
+                      <span className="group-hover:text-white">
+                        Read more
+                      </span>
+                      <span className="text-[#ff9100] font-semibold group-hover:translate-x-1 transition-transform duration-300">
+                        &rarr;
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

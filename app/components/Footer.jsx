@@ -22,23 +22,8 @@ export default function FooterGlow() {
       >
         <div className="flex flex-col items-center md:items-start">
           <a href="#" className="mb-4 flex items-center gap-2">
-            {/* <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ff9100] to-[#1c3784] text-2xl font-extrabold text-white shadow-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </span> */}
-            <Image src={logo} height={120} width={120} />
+           
+            <Image src={logo} height={120} width={120} alt="MatricsMind" />
             {/* <span className="bg-gradient-to-br from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-semibold tracking-tight text-transparent">
               MatricsMind
             </span> */}
