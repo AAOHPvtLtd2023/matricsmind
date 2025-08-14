@@ -12,7 +12,7 @@ export default function MasonryGallery() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="min-h-screen p-6 md:p-12 bg-black">
+    <div className="min-h-screen p-6 md:p-12">
       <div className="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3 lg:columns-4 transition-all">
         {images.map((img, index) => (
           <div
