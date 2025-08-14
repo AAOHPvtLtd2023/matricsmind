@@ -292,18 +292,18 @@ export default function BlogSlugPage({ params = {} }) {
               <Calendar size={16} />
               {blog.publishedAt || blog.date}
             </span>
-            {blog.readTime && (
+            {/* {blog.readTime && (
               <span className="inline-flex items-center gap-1">
                 <Clock size={16} />
                 {blog.readTime}
               </span>
-            )}
-            {blog.views && (
+            )} */}
+            {/* {blog.views && (
               <span className="inline-flex items-center gap-1">
                 <Eye size={16} />
                 {blog.views} views
               </span>
-            )}
+            )} */}
           </div>
         </div>
       </section>

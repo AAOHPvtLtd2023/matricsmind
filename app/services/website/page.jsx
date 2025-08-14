@@ -11,7 +11,7 @@ import FancyQuoteButton from "./components/FancyQuoteButton";
 export default function websitePage() {
   return (
     <section>
-      <AuroraBackground className="h-[82vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center">
+      <AuroraBackground className="h-[82vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function websitePage() {
         </motion.div>
       </AuroraBackground>
 
-      <InfiniteMovingCards
+      {/* <InfiniteMovingCards
   className="mt-8 mx-auto"
   items={[
     {
@@ -54,7 +54,7 @@ export default function websitePage() {
       title: "CTO, DevLoop",
     },
   ]}
-/>
+/> */}
 
       <FancyQuoteButton link="https://docs.google.com/forms/d/1b8X2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/edit" />
       <Gallery />

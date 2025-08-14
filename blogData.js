@@ -65,7 +65,7 @@ Your brand is unique—and Matrics Mind is here to help the world see it that wa
         avatar: "MM",
         bio: "Creative advertising professionals specializing in Abu Dhabi market insights and brand storytelling.",
       },
-      publishedAt: "2024-03-25",
+      publishedAt: "2025-08-14",
       readTime: "8 min read",
       views: "2.1k",
       tags: [
@@ -154,7 +154,7 @@ For Enterprises
         avatar: "MM",
         bio: "SEO specialists helping Abu Dhabi businesses dominate search rankings.",
       },
-      publishedAt: "2024-04-15",
+      publishedAt: "2025-08-14",
       readTime: "9 min read",
       views: "1.8k",
       tags: [
@@ -169,7 +169,7 @@ For Enterprises
       title: "Top 10 Digital Marketing Strategies for Jewellery Business",
       description:
         "Learn how jewellery businesses can boost sales, improve online visibility, and engage customers with these proven digital marketing strategies.",
-      date: "2024-07-10",
+      date: "2025-08-13",
       author: "Matrics Mind",
       category: "Marketing",
       image: "/images/Blog/blog3.jpg",
