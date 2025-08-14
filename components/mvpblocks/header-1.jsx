@@ -96,7 +96,7 @@ export default function Header1() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-              <Image src={logo} height={120} width={120} />
+              <Image src={logo} height={120} width={120} alt="MatricsMind" />
             </Link>
           </motion.div>
 
