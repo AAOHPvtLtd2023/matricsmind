@@ -9,7 +9,7 @@ import {
 const VideoPlayerComponent = () => {
   return (
     <div className="relative flex justify-center items-center w-full py-8">
-      {/* Floating Background Glow (Top Right) */}
+      {/* Floating Background Glow (Hidden on Mobile) */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, x: 100, y: -100 }}
         animate={{ opacity: 0.4, scale: 1.2, x: 0, y: 0 }}
@@ -19,7 +19,7 @@ const VideoPlayerComponent = () => {
           repeatType: "reverse",
           ease: "easeInOut",
         }}
-        className="absolute top-0 right-0 w-72 h-72 bg-[#ff9100] blur-3xl rounded-full z-0 pointer-events-none"
+        className="hidden sm:block absolute top-0 right-0 w-72 h-72 bg-[#ff9100] blur-3xl rounded-full z-0 pointer-events-none"
         style={{ transform: "translate(30%, -30%)" }}
       />
 
@@ -47,7 +47,7 @@ const VideoPlayerComponent = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-         Transform your vision into reality
+          Transform your vision into reality
         </motion.h2>
         <motion.p
           className="text-sm sm:text-lg max-w-2xl mb-6 drop-shadow-md"
