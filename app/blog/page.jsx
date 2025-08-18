@@ -22,9 +22,9 @@ export default function BlogPage() {
         >
           <div className="w-full">
             <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug">
-              Thoughts worth <UnderlineHighlight>sharing</UnderlineHighlight>,
+              Thoughts worth sharing,
               <br />
-              strategies worth <UnderlineHighlight>trying</UnderlineHighlight>.
+              strategies worth trying
             </h2>
           </div>
         </motion.div>
