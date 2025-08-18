@@ -8,6 +8,7 @@ export default function CompanyPartner() {
     "/images/CompanyPartner/3.png",
     "/images/CompanyPartner/4.png",
     "/images/CompanyPartner/5.png",
+    "/images/CompanyPartner/10.png",
   ];
 
   return (
@@ -15,23 +16,27 @@ export default function CompanyPartner() {
       <div className="mx-auto w-full max-w-6xl">
         {/* Heading */}
         <div className="text-center text-2xl sm:text-3xl lg:text-4xl text-white">
-          <span className="text-[#ff9100] font-extrabold">Trusted by experts</span>
+          <span className="text-[#ff9100] font-extrabold">
+            Trusted by experts
+          </span>
           <br />
           <span>Used by the leaders.</span>
         </div>
 
         {/* Partner Logos */}
-        <div className="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-4 items-center">
-          {Partners.map((logo, index) => (
-            <Image
-              key={index}
-              src={logo}
-              alt={`Brand logo ${index + 1}`}
-              width={80} // smaller width
-              height={30} // smaller height
-              className="w-full h-auto max-w-[70px] sm:max-w-[90px] lg:max-w-[100px] mx-auto"
-            />
-          ))}
+        <div className="mt-8 sm:mt-12 lg:mt-14">
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10">
+            {Partners.map((logo, index) => (
+              <Image
+                key={index}
+                src={logo}
+                alt={`Brand logo ${index + 1}`}
+                width={120}
+                height={50}
+                className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
+              />
+            ))}
+          </div>
         </div>
       </div>
 

@@ -1,20 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+
 import BrandMarquee from "./components/BrandMarquee";
-const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), { ssr: false });
 import CardTest from "./components/cardTest";
 import Testimonials from "./components/testimonials";
 import ContainerTextFlip from "../components/ui/container-text-flip";
 import CompanyPartner from "./components/CompanyPartner";
 import SectionHighlightScroll from "./components/ScrollAndHighlightHeading";
-const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), { ssr: false });
 import ComparisonTable from "./components/ComparisionTable";
 import CardFalling from "./services/components/CardFalling.jsx";
 import GetInTouchForm from "./components/GetInTouchForm.jsx";
 import FloatingBeamBackground from "./FloatingBeamBackground.jsx";
 import LazySection from "./LazySection.jsx";
 
+// Dynamic imports (for heavy components)
+const ElasticCarousel = dynamic(() => import("./components/ElasticCarousel"), { ssr: false });
+const HeroSectionWithGirl = dynamic(() => import("./HeroSection/page.jsx"), { ssr: false });
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,8 +29,8 @@ export default function HomePage() {
   return (
     <FloatingBeamBackground>
       <div className="space-y-6 sm:space-y-8 md:space-y-10">
-        
-        {/* Hero Section (always rendered) */}
+
+        {/* Hero Section */}
         <section className="flex flex-col items-center justify-center min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] text-center px-4">
           <h1 className="text-white font-bold max-w-3xl sm:max-w-4xl lg:max-w-5xl leading-snug sm:leading-tight tracking-tight">
             <span
@@ -59,17 +61,17 @@ export default function HomePage() {
           </h1>
         </section>
 
-        {/* Lazy-loaded sections */}
-        <LazySection><section className="py-4"><ElasticCarousel /></section></LazySection>
-        <LazySection><section className="py-4"><BrandMarquee /></section></LazySection>
-        <LazySection><section className="py-4"><CardTest /></section></LazySection>
-        <LazySection><section className="py-4"><CardFalling /></section></LazySection>
-        <LazySection><section className="py-4"><HeroSectionWithGirl /></section></LazySection>
-        <LazySection><section className="py-4"><ComparisonTable /></section></LazySection>
-        <LazySection><section className="py-4"><SectionHighlightScroll /></section></LazySection>
-        <LazySection><section className="py-4"><Testimonials /></section></LazySection>
-        <LazySection><section className="py-4"><CompanyPartner /></section></LazySection>
-        <LazySection><section className="py-4"><GetInTouchForm /></section></LazySection>
+        {/* All sections lazy-loaded */}
+        <LazySection><ElasticCarousel /></LazySection>
+        <LazySection><BrandMarquee /></LazySection>
+        <LazySection><CardTest /></LazySection>
+        <LazySection><CardFalling /></LazySection>
+        <LazySection><HeroSectionWithGirl /></LazySection>
+        <LazySection><ComparisonTable /></LazySection>
+        <LazySection><SectionHighlightScroll /></LazySection>
+        <LazySection><Testimonials /></LazySection>
+        <LazySection><CompanyPartner /></LazySection>
+        <LazySection><GetInTouchForm /></LazySection>
 
       </div>
     </FloatingBeamBackground>

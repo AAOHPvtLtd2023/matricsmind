@@ -73,7 +73,7 @@ export default function Header1() {
 
   return (
     <motion.header
-      className="fixed top-0 right-0 left-0 z-50 transition-all duration-300"
+      className="fixed top-0 right-0 left-0 z-50 transition-all duration-300 max-w-[100vw]"
       variants={headerVariants}
       initial="initial"
       animate={isScrolled ? "scrolled" : "animate"}
@@ -88,7 +88,8 @@ export default function Header1() {
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+
         <div className="flex h-16 items-center justify-between lg:h-20">
           <motion.div
             className="flex items-center space-x-2"
@@ -121,58 +122,34 @@ export default function Header1() {
                     )}
                   </Link>
 
-                  {item.hasDropdown && (
-                    <AnimatePresence>
-                      {isMobileMenuOpen && (
-                        <motion.div
-                          className={`overflow-hidden lg:hidden ${
-                            theme === "dark"
-                              ? "bg-gray-900/80 backdrop-blur-lg"
-                              : "bg-white/80 backdrop-blur-lg"
-                          }`}
-                          variants={mobileMenuVariants}
-                          initial="closed"
-                          animate="open"
-                          exit="closed"
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div
-                            className={`mt-4 space-y-2 rounded-xl border shadow-xl ${
-                              theme === "dark"
-                                ? "border-gray-700"
-                                : "border-gray-200"
-                            } py-4`}
-                          >
-                            {navItems.map((item) => (
-                              <Link
-                                key={item.name}
-                                href={item.href}
-                                className={`block px-4 py-3 font-medium transition-colors duration-200 rounded-lg ${
-                                  theme === "dark"
-                                    ? "text-white hover:bg-gray-800"
-                                    : "text-gray-900 hover:bg-gray-100"
-                                }`}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {item.name}
-                              </Link>
-                            ))}
-                            <div className="space-y-2 px-4 py-2">
-                              <Link
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSf9dX2U9V437vletbTzQagIQSn4gu8cWP4AhsoaAvEVWg/viewform"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full rounded-lg bg-gradient-to-r from-[#ff9100] to-[#ff910055] py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                Get A Free Quote
-                              </Link>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  )}
+                  {item.hasDropdown && activeDropdown === item.name && (
+  <motion.div
+    className={`absolute left-0 mt-2 w-56 rounded-lg shadow-lg z-50 ${
+      theme === "dark"
+        ? "bg-gray-900 text-white"
+        : "bg-white text-gray-900"
+    }`}
+    variants={dropdownVariants}
+    initial="hidden"
+    animate="visible"
+    exit="hidden"
+    transition={{ duration: 0.2 }}
+  >
+    <div className="py-2">
+      {item.dropdownItems.map((subItem) => (
+        <Link
+          key={subItem.name}
+          href={subItem.href}
+          className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+        >
+          <span className="font-medium">{subItem.name}</span>
+          <p className="text-xs text-gray-500">{subItem.description}</p>
+        </Link>
+      ))}
+    </div>
+  </motion.div>
+)}
+
                 </div>
               ))}
             </nav>

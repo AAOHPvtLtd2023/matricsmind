@@ -64,6 +64,9 @@ module.exports = {
         secondary: "#1c3784",
         main: "#000",
       },
+      screens: {
+        'max-xs': { max: '360px' }, // Custom breakpoint for max-width 480px
+      },
     },
   },
   plugins: [],
