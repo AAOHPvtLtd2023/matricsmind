@@ -81,13 +81,13 @@ const CardCarousel: React.FC<CarouselProps> = ({
               >
                 <div
                   className="relative group rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer"
-                  onClick={() =>
-                    router.push(
-                      `/projects/${image.slug}?title=${encodeURIComponent(
-                        image.title
-                      )}`
-                    )
-                  }
+                  // onClick={() =>
+                  //   router.push(
+                  //     `/projects/${image.slug}?title=${encodeURIComponent(
+                  //       image.title
+                  //     )}`
+                  //   )
+                  // }
                 >
                   <Image
                     src={image.src}

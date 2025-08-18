@@ -31,6 +31,14 @@ const seoLinks = {
   "visual solution": "/services/videoproduction",
   "brand solution": "/services/branding",
   "tech solution": "/services/website",
+
+  // ✅ Newly added from your list
+  // "Digital Marketing Strategy": "/services/branding",
+  "Google ads": "/services/branding",
+  "Web solution": "/services/website",
+  // "Influencer Marketing": "/services/branding",
+  // "Content marketing": "/services/branding",
+  // "UX/UI Design": "/services/website",
 };
 
 const TextWithLinks = ({ text }) => {
@@ -68,7 +76,7 @@ const TextWithLinks = ({ text }) => {
           key={`${match.keyword}-${index}`}
           href={match.link}
           title={`Learn more about ${match.keyword}`}
-          className="text-blue-600 underline hover:text-blue-800"
+          className="font-extrabold text-[#ff9100] hover:underline"
           {...(isExternal
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}

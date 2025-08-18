@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
+import TextWithLinks from "../../components/TextWithLinks";
 const roles = [
   { title: "Digital Marketing Strategy", bg: "bg-[#ff910020]", delay: 0 },
   { title: "CGI", bg: "bg-[#1c378420]", delay: 0.1 },
@@ -175,7 +175,7 @@ export default function CardFalling() {
       animate="visible"
       variants={fallVariants}
     >
-      {role.title}
+      <TextWithLinks text={role.title} className="text-center" />
     </motion.div>
   ))}
 </div>
