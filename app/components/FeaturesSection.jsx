@@ -16,6 +16,7 @@ import {
   IconFileText,
   IconDownload,
 } from "@tabler/icons-react";
+import TextWithLinks from "../components/TextWithLinks"; // adjust path if needed
 
 import { motion } from "framer-motion";
 
@@ -126,13 +127,13 @@ const Feature = ({ title, description, icon, index }) => {
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
         <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-[#1C3784]/40 group-hover/feature:bg-[#FF9100] transition-all duration-300 origin-center" />
         <span className="group-hover/feature:translate-x-2 transition duration-300 inline-block text-[#fff] dark:text-white">
-          {title}
+        <TextWithLinks text={title} />
         </span>
       </div>
 
       {/* Description */}
       <p className="text-sm text-gray-600 dark:text-gray-100 max-w-xs relative z-10 px-10">
-        {description}
+        <TextWithLinks text={description} />
       </p>
     </motion.div>
   );

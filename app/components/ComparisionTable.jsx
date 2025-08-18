@@ -12,8 +12,82 @@ import {
   Check,
   X,
 } from "lucide-react";
+import Link from "next/link";
 
+// 🔗 SEO Links
+const seoLinks = {
+  services: "/services",
+  branding: "/services/branding",
+  "web development": "/services/website",
+  CGI: "/services/videoproduction",
+  VFX: "/services/videoproduction",
+  "performance marketing": "/services/branding",
+  "graphic design": "/services/videoproduction",
+  "motion videos": "/services/videoproduction",
+  "2D": "/services/videoproduction",
+  "3D": "/services/videoproduction",
+  clients: "/about",
+  projects: "/home",
+  "GCC region": "/about",
+  "web design": "/services/website",
+  design: "/services/branding",
+  marketing: "/services/branding",
+};
 
+// 📝 Component to replace keywords with links
+const TextWithLinks = ({ text }) => {
+  const processText = (text) => {
+    const matches = [];
+    Object.entries(seoLinks).forEach(([keyword, link]) => {
+      const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        matches.push({
+          keyword: match[0],
+          start: match.index,
+          end: match.index + match[0].length,
+          link: link,
+        });
+      }
+    });
+
+    matches.sort((a, b) => a.start - b.start);
+    if (matches.length === 0) return text;
+
+    const result = [];
+    let lastIndex = 0;
+
+    matches.forEach((match, index) => {
+      if (match.start > lastIndex) {
+        result.push(text.substring(lastIndex, match.start));
+      }
+
+      // 🔑 Add title attribute here
+      result.push(
+        <Link
+          key={`${match.keyword}-${index}`}
+          href={match.link}
+          title={`Learn more about ${match.keyword}`}
+          // className="text-blue-600 underline hover:text-blue-800"
+        >
+          {match.keyword}
+        </Link>
+      );
+
+      lastIndex = match.end;
+    });
+
+    if (lastIndex < text.length) {
+      result.push(text.substring(lastIndex));
+    }
+
+    return result;
+  };
+
+  return <>{processText(text)}</>;
+};
+
+// 🔹 Data
 const data = [
   {
     feature: "Target / Support Services",
@@ -53,7 +127,6 @@ const data = [
   },
 ];
 
-
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
@@ -70,11 +143,7 @@ const cardVariants = {
 const shimmerTitle = {
   animate: {
     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-    transition: {
-      duration: 6,
-      ease: "linear",
-      repeat: Infinity,
-    },
+    transition: { duration: 6, ease: "linear", repeat: Infinity },
   },
 };
 
@@ -82,9 +151,7 @@ export default function ComparisonSection() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
@@ -108,11 +175,12 @@ export default function ComparisonSection() {
           Why Clients Choose MatricsMind
         </motion.h2>
         <p className="text-lg text-[#ff9100] max-w-2xl mx-auto">
-          Over 50 clients across the globe trust our vision and execution.
+          Over 50 <TextWithLinks text="clients" /> across the globe trust our{" "}
+          <TextWithLinks text="branding and marketing services" />.
         </p>
       </motion.div>
 
-      {/* Responsive Layout Switch */}
+      {/* Responsive Layout */}
       <AnimatePresence mode="wait">
         {isMobile ? (
           <motion.div
@@ -148,7 +216,7 @@ export default function ComparisonSection() {
                     Others
                   </div>
                   <p className="text-center text-[#1c3784] text-sm mt-1">
-                    {item.others}
+                    <TextWithLinks text={item.others} />
                   </p>
                 </div>
 
@@ -158,7 +226,7 @@ export default function ComparisonSection() {
                     We Deliver
                   </div>
                   <p className="text-center text-sm font-medium mt-1">
-                    {item.we}
+                    <TextWithLinks text={item.we} />
                   </p>
                 </div>
               </motion.div>
@@ -195,10 +263,10 @@ export default function ComparisonSection() {
                       {item.feature}
                     </td>
                     <td className="p-4 text-center text-[#1c3784] bg-[#f9fafb]">
-                      {item.others}
+                      <TextWithLinks text={item.others} />
                     </td>
                     <td className="p-4 text-center font-semibold text-white bg-[#ff9100]">
-                      {item.we}
+                      <TextWithLinks text={item.we} />
                     </td>
                   </motion.tr>
                 ))}

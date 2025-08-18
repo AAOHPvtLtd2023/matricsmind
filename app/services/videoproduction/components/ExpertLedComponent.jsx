@@ -9,6 +9,7 @@ import {
   Clock,
   Globe,
 } from "lucide-react";
+import TextWithLinks from "../../../components/TextWithLinks"; // adjust path if needed
 
 const features = [
   {
@@ -112,10 +113,10 @@ const ExpertLedComponent = () => {
       <IconComponent className="h-12 w-12" />
     </div>
     <h3 className="mt-4 text-md font-semibold text-white group-hover:text-orange-200 transition-colors duration-300">
-      {feature.title}
+      <TextWithLinks text={feature.title} />
     </h3>
     <p className="mt-2 text-sm text-blue-100 group-hover:text-blue-200 transition-colors duration-300">
-      {feature.description}
+      <TextWithLinks text={feature.description} />
     </p>
   </div>
 </motion.div>

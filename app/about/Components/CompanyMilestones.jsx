@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import TextWithLinks from "../../components/TextWithLinks";
 
 export default function CompanyMilestones() {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,24 +11,28 @@ export default function CompanyMilestones() {
   const stats = [
     {
       number: 1000,
-      suffix: '+',
-      description: 'We have successfully delivered 1000+ creative projects for brands and companies, each thoughtfully designed and tailored to bring our clients’ visions to life.'
+      suffix: "+",
+      description:
+        "We have successfully delivered 1000+ creative projects for brands and companies, each thoughtfully designed and tailored to bring our clients’ visions to life.",
     },
     {
       number: 300,
-      suffix: '+',
-      description: 'Businesses Served: Partnering with brands worldwide, Matrics Mind delivers customized branding, web, and marketing solutions designed to meet diverse goals and drive lasting success.'
+      suffix: "+",
+      description:
+        "Businesses Served: Partnering with brands worldwide, Matrics Mind delivers customized branding, web development, and marketing solutions designed to meet diverse goals and drive lasting success.",
     },
     {
       number: 15,
-      suffix: '+',
-      description: 'Our team of 15+ talented professionals from diverse backgrounds is committed to elevating your brand and delivering exceptional web experiences.'
+      suffix: "+",
+      description:
+        "Our team of 15+ talented professionals from diverse backgrounds is committed to elevating your brand and delivering exceptional web experiences.",
     },
     {
       number: 10,
-      suffix: '+',
-      description: 'We are proud to have provided our branding and web development services in 10+ countries, with a strong focus on the GCC region.'
-    }
+      suffix: "+",
+      description:
+        "We are proud to have provided our branding and web development services in 10+ countries, with a strong focus on the GCC region.",
+    },
   ];
 
   useEffect(() => {
@@ -62,7 +67,7 @@ export default function CompanyMilestones() {
             clearInterval(timer);
           }
 
-          setCounters(prev => {
+          setCounters((prev) => {
             const updated = [...prev];
             updated[index] = Math.floor(current);
             return updated;
@@ -91,7 +96,9 @@ export default function CompanyMilestones() {
 
           <div className="lg:w-1/2 lg:pl-12 text-left lg:text-right">
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-900">Collaborating with Visionaries Across</span>
+              <span className="font-semibold text-gray-900">
+                Collaborating with Visionaries Across
+              </span>
               <br className="hidden sm:block" />
               Industries for Innovative Solutions.
             </p>
@@ -104,20 +111,23 @@ export default function CompanyMilestones() {
             <div
               key={index}
               className={`bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 hover:shadow-lg transition-all duration-500 transform ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Stat Number */}
               <div className="mb-6 sm:mb-8">
                 <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1c3784] block leading-none">
-                  {counters[index].toLocaleString()}{stat.suffix}
+                  {counters[index].toLocaleString()}
+                  {stat.suffix}
                 </span>
               </div>
 
-              {/* Description */}
+              {/* Description with auto-links */}
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                {stat.description}
+                <TextWithLinks text={stat.description} />
               </p>
             </div>
           ))}

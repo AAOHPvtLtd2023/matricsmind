@@ -3,8 +3,12 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import TextWithLinks from "../../components/TextWithLinks"; // adjust path if needed
 
-const AdvertisementSectionComponent = ({ title = "Default",description="" }) => {
+const AdvertisementSectionComponent = ({
+  title = "Default",
+  description = "",
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -13,35 +17,36 @@ const AdvertisementSectionComponent = ({ title = "Default",description="" }) => 
 
   const normalizedTitle = title.trim().toLowerCase().replace(/\s+/g, "");
 
-const configMap = {
-  techsolution: {
-    route: "/services/website",
-    backgroundImage: "/images/Services/website.jpg",
-  },
-  brandsolution: {
-    route: "/services/branding",
-    backgroundImage: "/images/Services/branding.jpg",
-  },
-  visualsolution: {
-    route: "/services/videoproduction",
-    backgroundImage: "/images/Services/videoproduction.jpg",
-  },
-};
+  const configMap = {
+    techsolution: {
+      route: "/services/website",
+      backgroundImage: "/images/Services/website.jpg",
+    },
+    brandsolution: {
+      route: "/services/branding",
+      backgroundImage: "/images/Services/branding.jpg",
+    },
+    visualsolution: {
+      route: "/services/videoproduction",
+      backgroundImage: "/images/Services/videoproduction.jpg",
+    },
+  };
 
-
-   const { route, backgroundImage } =
-    configMap[normalizedTitle] || {
-      route: "/",
-      backgroundImage: "/images/default-bg.jpg",
-    };
+  const { route, backgroundImage } = configMap[normalizedTitle] || {
+    route: "/",
+    backgroundImage: "/images/default-bg.jpg",
+  };
 
   return (
     <motion.div
       initial={{ opacity: 1, scale: 0.98 }}
-      whileHover={{ scale: 1.01, boxShadow: "0 0 30px rgba(255, 145, 0, 0.25)" }}
+      whileHover={{
+        scale: 1.01,
+        boxShadow: "0 0 30px rgba(255, 145, 0, 0.25)",
+      }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] w-[90vw] mx-auto mb-8 overflow-hidden bg-cover bg-center rounded-2xl shadow-xl"
-      style={{ backgroundImage: `url(${backgroundImage})` ,opacity: 0.5, }}
+      style={{ backgroundImage: `url(${backgroundImage})`, opacity: 0.5 }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/85 z-10" />
@@ -78,11 +83,14 @@ const configMap = {
           }`}
         >
           <p className="text-white/90 text-lg sm:text-xl">
-           
-            {description}
+            <TextWithLinks text={description} />
           </p>
           <p className="text-white/80 text-base sm:text-lg">
-            From <span className="text-[#FF9100] font-medium">{title.toLowerCase()}</span> essence to visual identity.
+            From{" "}
+            <span className="text-[#FF9100] font-medium">
+              {title.toLowerCase()}
+            </span>{" "}
+            essence to visual identity.
           </p>
         </div>
 

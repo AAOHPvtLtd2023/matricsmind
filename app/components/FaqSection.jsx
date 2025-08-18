@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link"; 
 
 // Custom Accordion Components
 const Accordion = ({ children, type = "single", collapsible = false, className = "" }) => {
@@ -70,20 +71,20 @@ const Typewriter = ({ text, speed = 10 }) => {
 const seoLinks = {
   "services": "/services",
   "branding": "/services/branding",
-  "web development": "/services/web-development",
-  "CGI": "/services/cgi-vfx",
-  "VFX": "/services/cgi-vfx",
-  "performance marketing": "/services/marketing",
-  "graphic design": "/services/graphic-design",
-  "motion videos": "/services/motion-graphics",
-  "2D": "/services/motion-graphics",
-  "3D": "/services/motion-graphics",
-  "clients": "/portfolio",
-  "projects": "/portfolio",
-  "GCC region": "/regions/gcc",
-  "web design": "/services/web-design",
-  "design": "/services/design",
-  "marketing": "/services/marketing"
+  "web development": "/services/website",
+  "CGI": "/services/videoproduction",
+  "VFX": "/services/videoproduction",
+  "performance marketing": "/services/branding",
+  "graphic design": "/services/videoproduction",
+  "motion videos": "/services/videoproduction",
+  "2D": "/services/videoproduction",
+  "3D": "/services/videoproduction",
+  "clients": "/about",
+  "projects": "/home",
+  "GCC region": "/about",
+  "web design": "/services/website",
+  "design": "/services/branding",
+  "marketing": "/services/branding"
 };
 
 // Component to add hover links to text
@@ -131,20 +132,21 @@ const TextWithHoverLinks = ({ text }) => {
       }
 
       // Add the linked element
-      result.push(
-        <span
-          key={`${match.keyword}-${index}`}
-          className="relative cursor-pointer text-blue-400 hover:text-blue-300 underline decoration-dotted underline-offset-2 transition-colors"
-          onMouseEnter={(e) => {
-            setHoveredWord(match.link);
-            handleMouseMove(e);
-          }}
-          onMouseLeave={() => setHoveredWord(null)}
-          onMouseMove={handleMouseMove}
-        >
-          {match.keyword}
-        </span>
-      );
+     result.push(
+  <Link
+    key={`${match.keyword}-${index}`}
+    href={match.link}
+    className="relative cursor-pointer text-[#ff9100] decoration-dotted underline-offset-2 transition-colors"
+    onMouseEnter={(e) => {
+      setHoveredWord(match.link);
+      handleMouseMove(e);
+    }}
+    onMouseLeave={() => setHoveredWord(null)}
+    onMouseMove={handleMouseMove}
+  >
+    {match.keyword}
+  </Link>
+);
 
       lastIndex = match.end;
     });

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import TextWithLinks from "../components/TextWithLinks"; // Adjust the import path as necessary
 
 const testimonials = [
   {
@@ -113,7 +114,7 @@ const TestimonialsColumn = ({
                     className="text-xs sm:text-sm leading-relaxed mb-6 line-clamp-6"
                     style={{ color: "#1c3784" }}
                   >
-                    {text}
+                    <TextWithLinks text={text} />
                   </div>
 
                   {/* Profile section with enhanced styling */}

@@ -2,6 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Head from "next/head"; // ✅ for SEO meta
+import Link from "next/link";
 import { Spotlight } from "../../components/ui/spotlight";
 import { BorderBeam } from "../../components/ui/border-beam";
 import { CardHoverEffect } from "../../components/ui/pulse-card";
@@ -15,35 +17,23 @@ import {
   Target,
 } from "lucide-react";
 import CountryCard from "../about/Components/CountryScroll";
-
-interface AboutUsProps {
-  title?: string;
-  subtitle?: string;
-  mission?: string;
-  vision?: string;
-  values?: Array<{
-    title: string;
-    description: string;
-    icon: keyof typeof iconComponents;
-  }>;
-  className?: string;
-}
+import TextWithLinks from "./TextWithLinks"; 
 
 const iconComponents = {
-  Users: Users,
-  Heart: Heart,
-  Lightbulb: Lightbulb,
-  Globe: Globe,
-  Sparkles: Sparkles,
-  Rocket: Rocket,
-  Target: Target,
+  Users,
+  Heart,
+  Lightbulb,
+  Globe,
+  Sparkles,
+  Rocket,
+  Target,
 };
 
-const defaultValues: AboutUsProps["values"] = [
+const defaultValues = [
   {
     title: "Innovation",
     description:
-      "We, as Matrics Mind, believe innovation is our heartbeat. We constantly explore fresh ideas, embrace emerging technologies, and design forward-thinking strategies that keep our clients ahead in a rapidly evolving digital world.",
+      "We, at Matrics Mind, believe innovation is our heartbeat. We constantly explore fresh ideas, embrace emerging technologies, and design forward-thinking strategies that keep our clients ahead in a rapidly evolving digital world.",
     icon: "Lightbulb",
   },
   {
@@ -76,7 +66,6 @@ export default function AboutUs1() {
     vision:
       "We put our clients first, working with integrity, excellence, and innovation to deliver measurable results. Through collaboration and shared goals, we turn ideas into impactful outcomes.",
     values: defaultValues,
-    className: "relative overflow-hidden py-20",
   };
 
   const missionRef = useRef(null);
@@ -86,151 +75,186 @@ export default function AboutUs1() {
   const valuesInView = useInView(valuesRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="relative w-full overflow-hidden pt-20">
-      <Spotlight
-        gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 50%, rgba(255, 145, 0, 0) 80%)"
-        gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 80%, transparent 100%)"
-        gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, rgba(255, 145, 0, 0.06) 80%, transparent 100%)"
-      />
+    <>
+      {/* ✅ SEO Meta */}
+      <Head>
+        <title>About Us | Matrics Mind</title>
+        <meta
+          name="description"
+          content="Learn about Matrics Mind, our mission, vision, and values. We craft innovative digital solutions to help businesses grow and make a lasting impact."
+        />
+        <meta
+          name="keywords"
+          content="About Matrics Mind, Digital Agency, Web Development, Mission, Vision, Innovation, Collaboration"
+        />
+        <link rel="canonical" href="https://yourdomain.com/about" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Matrics Mind",
+              url: "https://yourdomain.com",
+              logo: "https://yourdomain.com/logo.png",
+              description:
+                "Matrics Mind is a digital solutions company specializing in innovation, collaboration, and excellence.",
+              sameAs: [
+                "https://www.facebook.com/yourpage",
+                "https://www.linkedin.com/company/yourcompany",
+              ],
+            }),
+          }}
+        />
+      </Head>
 
-      <div className="container relative z-10 mx-auto px-4 md:px-6">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mx-auto mb-16 max-w-2xl text-center"
-        >
-          <h1 className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
-            {aboutData.title}
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white">
-            {aboutData.subtitle}
-          </p>
-        </motion.div>
+      <section className="relative w-full overflow-hidden pt-20">
+        <Spotlight
+          gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 50%, rgba(255, 145, 0, 0) 80%)"
+          gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 80%, transparent 100%)"
+          gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.06) 0%, rgba(255, 145, 0, 0.06) 80%, transparent 100%)"
+        />
 
-        {/* Mission & Vision Section */}
-        <div ref={missionRef} className="relative mx-auto mb-24 max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={
-              missionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
-            }
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative z-10 grid gap-12 md:grid-cols-2"
+        <div className="container relative z-10 mx-auto px-4 md:px-6">
+          {/* Header */}
+          <header className="mx-auto mb-16 max-w-2xl text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl"
+            >
+              {aboutData.title}
+            </motion.h1>
+            <p className="mt-6 text-lg sm:text-xl text-white">
+              {aboutData.subtitle}
+            </p>
+          </header>
+
+          {/* Mission & Vision */}
+          <section
+            ref={missionRef}
+            className="relative mx-auto mb-24 max-w-7xl"
           >
             <motion.div
-              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
+              initial={{ opacity: 0, y: 40 }}
+              animate={missionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid gap-12 md:grid-cols-2"
             >
-              <BorderBeam
-                duration={8}
-                size={300}
-                className="from-transparent via-primary/40 to-transparent"
-              />
-
-              <div className="mb-6 inline-flex aspect-square h-16 w-16 flex-1 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 backdrop-blur-sm">
-                <Rocket className="h-8 w-8 text-[#ff9100]" />
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="mb-4 bg-gradient-to-r from-primary/90 to-primary/70 bg-clip-text text-3xl font-bold text-transparent">
+              <article
+                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
+                aria-labelledby="mission-title"
+              >
+                <BorderBeam
+                  duration={8}
+                  size={300}
+                  className="from-transparent via-primary/40 to-transparent"
+                />
+                <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
+                  <Rocket
+                    className="h-8 w-8 text-[#ff9100]"
+                    aria-hidden="true"
+                  />
+                </div>
+                <h2
+                  id="mission-title"
+                  className="text-3xl font-bold text-transparent bg-gradient-to-r from-primary/90 to-primary/70 bg-clip-text"
+                >
                   Our Mission
                 </h2>
-
-                <p className="text-lg leading-relaxed text-white">
-                  {aboutData.mission}
+                <p className="mt-4 text-lg text-white">
+                  <TextWithLinks text={aboutData.mission} />
                 </p>
-              </div>
+              </article>
+
+              <article
+                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
+                aria-labelledby="vision-title"
+              >
+                <BorderBeam
+                  duration={8}
+                  size={300}
+                  className="from-transparent via-blue-500/40 to-transparent"
+                  reverse
+                />
+                <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
+                  <Target
+                    className="h-8 w-8 text-blue-500"
+                    aria-hidden="true"
+                  />
+                </div>
+                <h2
+                  id="vision-title"
+                  className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-500/90 to-blue-500/70 bg-clip-text"
+                >
+                  Our Vision
+                </h2>
+                <p className="mt-4 text-lg text-white">
+                  <TextWithLinks text={aboutData.vision} />
+                </p>
+              </article>
             </motion.div>
+          </section>
 
+          {/* Countries Section */}
+          <CountryCard />
+
+          {/* Core Values */}
+          <section ref={valuesRef} className="mb-24">
             <motion.div
-              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="mb-12 text-center"
             >
-              <BorderBeam
-                duration={8}
-                size={300}
-                className="from-transparent via-blue-500/40 to-transparent"
-                reverse
-              />
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 backdrop-blur-sm">
-                <Target className="h-8 w-8 text-blue-500" />
-              </div>
-
-              <h2 className="mb-4 bg-gradient-to-r from-blue-500/90 to-blue-500/70 bg-clip-text text-3xl font-bold text-transparent">
-                Our Vision
+              <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-white via-white to-white bg-clip-text sm:text-4xl">
+                Our Core Values
               </h2>
-
-              <p className="text-lg leading-relaxed text-white">
-                {aboutData.vision}
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-white">
+                The principles that guide everything we do and every decision we
+                make.
               </p>
             </motion.div>
-          </motion.div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {aboutData.values.map((value, index) => {
+                const IconComponent = iconComponents[value.icon];
+                return (
+                  <motion.article
+                    key={value.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="h-full flex flex-col"
+                  >
+                    <CardHoverEffect
+                      className="h-full flex flex-col"
+                      icon={
+                        <IconComponent className="h-6 w-6" aria-hidden="true" />
+                      }
+                      title={value.title}
+                      description={value.description}
+                      variant={
+                        index === 0
+                          ? "purple"
+                          : index === 1
+                          ? "blue"
+                          : index === 2
+                          ? "amber"
+                          : "rose"
+                      }
+                      glowEffect
+                      size="lg"
+                    />
+                  </motion.article>
+                );
+              })}
+            </div>
+          </section>
         </div>
-
-        <CountryCard />
-
-        <div ref={valuesRef} className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={
-              valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-            }
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mb-12 text-center"
-          >
-            <h2 className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
-              Our Core Values
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white">
-              The principles that guide everything we do and every decision we
-              make.
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {aboutData.values?.map((value, index) => {
-              const IconComponent = iconComponents[value.icon];
-
-              return (
-                <motion.div
-                  key={value.title}
-                  className="h-full" // ✅ Makes the wrapper fill available height
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={
-                    valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                  }
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1 + 0.2,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
-                  <CardHoverEffect
-                    className="h-full flex flex-col" // ✅ Ensures the card itself stretches
-                    icon={<IconComponent className="h-6 w-6" />}
-                    title={value.title}
-                    description={value.description}
-                    variant={
-                      index === 0
-                        ? "purple"
-                        : index === 1
-                        ? "blue"
-                        : index === 2
-                        ? "amber"
-                        : "rose"
-                    }
-                    glowEffect={true}
-                    size="lg"
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

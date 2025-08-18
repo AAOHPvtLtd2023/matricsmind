@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import TextWithLinks from "../../../components/TextWithLinks"; // adjust path if needed
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -85,9 +86,12 @@ export default function WebsiteServiceCards() {
           <ul className="list-none space-y-3 mb-8">
             {card.features.map((feature, i) => (
               <li key={i} className="flex items-start gap-2 text-base leading-relaxed">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-1" />
-                <span>{feature}</span>
-              </li>
+  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-1" />
+  <span>
+    <TextWithLinks text={feature} />
+  </span>
+</li>
+
             ))}
           </ul>
 
