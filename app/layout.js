@@ -1,13 +1,37 @@
-"use client";
-import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from 'sonner';
+import ClientLayout from "./ClientLayout"; // new wrapper
 
-import Header1 from "../components/mvpblocks/header-1";
-import FooterGlow from "./components/Footer";
-import FloatingBackground from "./FloatingBackground";
-import FloatingSocialButtons from "./FloatingSocialButtons";
+export const metadata = {
+  title: "Matrics Mind - Digital Marketing Experts",
+  description: "Matrics Mind delivers impactful digital marketing solutions in Abu Dhabi.",
+  icons: {
+    icon:  [
+      { url: "/MarticMind.png", type: "image/png", sizes: "32x32" },
+      { url: "/MarticMind.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/MarticMind.png",
+    apple: "/MarticMind.png",
+  },
+  openGraph: {
+    title: "Matrics Mind - Digital Marketing Experts",
+    description: "We provide top-class digital marketing strategies to grow your business.",
+    url: "https://matricsmind.com",
+    siteName: "Matrics Mind",
+    images: [
+      {
+        url: "/MarticMind.png",
+        width: 1200,
+        height: 630,
+        alt: "Matrics Mind",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,25 +44,12 @@ const geistMono = Geist_Mono({
 });
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  
-  // Hide header on blog detail pages and project detail pages
-  const hideHeader = (pathname?.startsWith('/blog/') && pathname !== '/blog') ||
-                    (pathname?.startsWith('/projects/') && pathname !== '/projects');
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        {/* <FloatingBackground /> */}
-        {!hideHeader && <Header1 />}
-        <main className={hideHeader ? "px-4" : "pt-24 px-4"}>
-          {children}
-          <Toaster richColors position="top-right" />
-        </main>
-        <FooterGlow />
-        <FloatingSocialButtons />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
