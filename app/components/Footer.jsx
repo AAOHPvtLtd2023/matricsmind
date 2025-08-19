@@ -61,7 +61,7 @@ export default function FooterGlow() {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/company/matricsmind/"
               aria-label="LinkedIn"
               className="transition hover:text-white"
             >

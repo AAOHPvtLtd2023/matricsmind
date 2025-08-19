@@ -13,6 +13,7 @@ import { SparklesCore } from "../../../components/ui/sparkles";
 import { Rocket, Sparkles } from "lucide-react";
 import TextScrollTooltip from "./components/TextScrollTooltip";
 import FancyQuoteButton from "../website/components/FancyQuoteButton";
+import VideoGallery from "./components/VideoGallery";
 
 export default function videoProductionPage() {
   return (
@@ -42,6 +43,7 @@ export default function videoProductionPage() {
       </AuroraBackground>
       <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-15" />
       {/* <TextScrollTooltip/> */}
+      <VideoGallery />
       <ExpertLedComponent />
       <VideoPlayerComponent />
       <Testimonials />
