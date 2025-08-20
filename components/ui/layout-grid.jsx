@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
-import { X } from "lucide-react";
+import { X, Play } from "lucide-react";
 
 export const LayoutGrid = ({ cards }) => {
   const [selected, setSelected] = useState(null);
@@ -15,25 +15,32 @@ export const LayoutGrid = ({ cards }) => {
   }, []);
 
   return (
-    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-4 relative">
+    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-6 relative">
       {cards.map((card, i) => (
-        <div key={card.id ?? i} className="relative">
+        <div key={card.id ?? i} className="relative flex flex-col items-center transition-all duration-200 hover:text-[#ff9100]">
+          {/* Card (thumbnail with hover play button) */}
           <motion.div
             onClick={() => setSelected(card)}
             className={cn(
-              "relative overflow-hidden rounded-xl cursor-pointer bg-white h-60 w-full shadow flex flex-col"
+              "group relative overflow-hidden rounded-xl cursor-pointer bg-white h-60 w-full shadow transition-all duration-300 hover:scale-105",
             )}
             layoutId={`card-${card.id}`}
           >
+            {/* Thumbnail */}
             <ImageComponent card={card} />
 
-            {/* Title in normal grid view */}
-            {card.title && (
-              <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-sm font-medium px-2 py-1 rounded">
-                {card.title}
-              </div>
-            )}
+            {/* Hover Play Button */}
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+              <Play size={50} className="text-white drop-shadow-lg" />
+            </div>
           </motion.div>
+
+          {/* ✅ Title beneath the card */}
+          {card.title && (
+            <h3 className="mt-2 text-lg font-semibold text-center">
+              {card.title}
+            </h3>
+          )}
         </div>
       ))}
 
@@ -78,6 +85,6 @@ const ImageComponent = ({ card }) => (
     layoutId={`image-${card.id}-image`}
     src={card.thumbnail}
     className="object-cover h-full w-full"
-    alt="thumbnail"
+    alt={card.title ?? "thumbnail"}
   />
 );
