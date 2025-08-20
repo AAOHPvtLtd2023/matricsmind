@@ -21,7 +21,7 @@ export default function FooterGlow() {
         }}
       >
         <div className="flex flex-col items-center md:items-start">
-          <a href="#" className="mb-4 flex items-center gap-2">
+          <a href="/#" className="mb-4 flex items-center gap-2">
             <Image src={logo} height={120} width={120} alt="MatricsMind" />
             {/* <span className="bg-gradient-to-br from-[#ff9100] to-[#1c3784] bg-clip-text text-xl font-semibold tracking-tight text-transparent">
               MatricsMind
@@ -35,7 +35,7 @@ export default function FooterGlow() {
           </p>
           <div className="mt-2 flex gap-5 text-[#ff9100] flex-row items-center justify-center">
             <a
-              href="#"
+              href="https://x.com/MatricMind35477"
               aria-label="Twitter"
               className="transition hover:text-white"
             >

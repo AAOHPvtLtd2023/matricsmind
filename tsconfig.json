@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/ui/container-text-flip.tsx"  ],
   "exclude": [
     "node_modules"
   ]

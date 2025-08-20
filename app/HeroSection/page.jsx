@@ -69,7 +69,9 @@ export default function HeroSectionWithGirl() {
             <div className="flex flex-col items-center gap-4 mt-6 md:flex-row">
               {/* Primary CTA */}
               <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg shadow-md hover:from-orange-600 hover:to-orange-700 transition-all duration-300">
-                About Us →
+                <Link href="/about" className="flex items-center gap-2">
+                About Us →</Link>
+                
               </button>
 
               {/* Secondary CTA */}
@@ -92,7 +94,7 @@ export default function HeroSectionWithGirl() {
                 <p className="text-sm text-gray-300">Projects</p>
               </div>
               <div className="flex-1 min-w-[100px]">
-                <p className="text-2xl font-bold text-yellow-400">5★</p>
+                <p className="text-2xl font-bold text-yellow-400">4.3★</p>
                 <p className="text-sm text-gray-300">Rating</p>
               </div>
               <div className="flex-1 min-w-[100px]">

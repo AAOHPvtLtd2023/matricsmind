@@ -1,20 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef, ReactNode, JSX } from "react";
-import { motion, Variants } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import React, { useId } from "react";
 
 // Utility function to join classNames
-function cn(...classes: (string | undefined | false | null)[]) {
+function cn(...classes) {
   return classes.filter(Boolean).join(" ");
-}
-
-interface ContainerTextFlipProps {
-  words?: string[];
-  interval?: number;
-  className?: string;
-  textClassName?: string;
-  animationDuration?: number;
 }
 
 export default function ContainerTextFlip({
@@ -35,25 +27,24 @@ export default function ContainerTextFlip({
   className,
   textClassName = "",
   animationDuration = 700,
-}: ContainerTextFlipProps) {
+}) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [width, setWidth] = useState(100);
-  const textRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef(null);
 
-const updateWidthForWord = () => {
-  if (typeof window !== "undefined" && textRef.current) {
-    const textWidth = textRef.current.scrollWidth + 30;
-    setWidth(textWidth);
-  }
-};
+  const updateWidthForWord = () => {
+    if (typeof window !== "undefined" && textRef.current) {
+      const textWidth = textRef.current.scrollWidth + 30;
+      setWidth(textWidth);
+    }
+  };
 
-
- useEffect(() => {
-  if (typeof window !== "undefined") {
-    updateWidthForWord();
-  }
-}, [currentWordIndex]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      updateWidthForWord();
+    }
+  }, [currentWordIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -109,100 +100,3 @@ const updateWidthForWord = () => {
     </motion.p>
   );
 }
-
-// export default function ResponsiveHeroSection(): JSX.Element {
-//   const [isVisible, setIsVisible] = useState(false);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => setIsVisible(true), 100);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const containerVariants: Variants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.3,
-//         delayChildren: 0.2,
-//       },
-//     },
-//   };
-
-//   const itemVariants: Variants = {
-//     hidden: {
-//       opacity: 0,
-//       y: 30,
-//       filter: "blur(10px)",
-//     },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       filter: "blur(0px)",
-//       transition: {
-//         duration: 0.8,
-//         ease: [0.42, 0, 1, 1], // Cubic bezier format
-//       },
-//     },
-//   };
-
-//   const flipComponentVariants: Variants = {
-//     hidden: {
-//       opacity: 0,
-//       y: 20,
-//       scale: 0.9,
-//     },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       scale: 1,
-//       transition: {
-//         duration: 1,
-//         delay: 0.8,
-//         ease: [0.42, 0, 1, 1],
-//       },
-//     },
-//   };
-
-//   return (
-//     <section className="flex flex-col items-center justify-center text-center">
-//       <motion.div
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isVisible ? "visible" : "hidden"}
-//         className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl font-bold text-white leading-[1.1] sm:leading-tight max-w-4xl lg:max-w-6xl"
-//       >
-//         <motion.span variants={itemVariants} className="inline-block">
-//           Make your websites look
-//         </motion.span>
-
-//         <motion.div
-//           variants={flipComponentVariants}
-//           className="inline-block mx-2 sm:mx-4"
-//         >
-//           <ContainerTextFlip
-//             words={[
-//               "stunning",
-//               "modern",
-//               "beautiful",
-//               "amazing",
-//               "professional",
-//             ]}
-//             interval={2500}
-//             className="mx-2 sm:mx-4"
-//             animationDuration={600}
-//           />
-//         </motion.div>
-
-//         <br className="hidden sm:block" />
-
-//         <motion.span
-//           variants={itemVariants}
-//           className="block sm:inline mt-2 sm:mt-0"
-//         >
-//           and captivating
-//         </motion.span>
-//       </motion.div>
-//     </section>
-//   );
-// }

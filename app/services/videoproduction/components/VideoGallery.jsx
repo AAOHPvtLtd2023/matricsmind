@@ -13,37 +13,27 @@ export default function VideoGallery() {
     {
       id: 1,
       title: "My Drive Video 1",
-      link: "https://drive.google.com/file/d/1mIDBb4gAGzTnc-n3z8ZLqMBOQbjAW3nT/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1kd2MMQWXyUXfaDDEAs6wmb5SK8k-Ln4L/view?usp=sharing",
     },
     {
       id: 2,
       title: "My Drive Video 2",
-      link: "https://drive.google.com/file/d/1BiIiyFHWBHgJmWH5q7CrOdhLPdQVb00A/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1icSsc3PmC7cRbI1OrvxgPmmEomUHxDck/view?usp=sharing",
     },
     {
       id: 3,
       title: "My Drive Video 1",
-      link: "https://drive.google.com/file/d/1TJibrpiJZSyBmQ9rDgafzKdkGJ2xalZ7/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1kq4_DXF5XxWB0xjh2Xjm4Uz2U0IvGw7b/view?usp=sharing",
     },
     {
       id: 4,
       title: "My Drive Video 2",
-      link: "https://drive.google.com/file/d/1EbMcmyT3sswtNhxU8_J6j3P0ZYnce22c/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1MH5r9o_gjstdFRaPR_exJof__pOATbbi/view?usp=sharing",
     },
     {
       id: 5,
       title: "My Drive Video 2",
-      link: "https://drive.google.com/file/d/1U4fGV-R6d0545NYMC68HMNsoJHHKvP9G/view?usp=sharing",
-    },
-    {
-      id: 6,
-      title: "My Drive Video 1",
-      link: "https://drive.google.com/file/d/1n9kHGS-oDHC7pw6zZRWuOeQpn_oDh8Ds/view?usp=sharing",
-    },
-    {
-      id: 7,
-      title: "My Drive Video 2",
-      link: "https://drive.google.com/file/d/1FfYcIkHXZEdMcRM928fvo9YT15FVlsXI/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1HYUZDQc9n-3J2jHFe2UeM5feCLZbViQO/view?usp=sharing",
     },
   ];
 
@@ -51,7 +41,7 @@ export default function VideoGallery() {
     const fileId = getFileId(video.link);
     return {
       id: video.id,
-      thumbnail: `https://drive.google.com/thumbnail?id=${fileId}`,
+      thumbnail: `https://drive.google.com/uc?id=${fileId}&export=download`,
       // Content shown when the card expands
       content: (
         <div className="flex flex-col w-full h-full">

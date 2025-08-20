@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
+import TextWithLinks from '../../app/components/TextWithLinks';
 
 interface CardProps {
   icon: React.ReactNode;
@@ -191,7 +192,7 @@ export function CardHoverEffect({
             sizeConfig.descSize,
           )}
         >
-          {description}
+        <TextWithLinks text={description} />
         </p>
       </div>
 
