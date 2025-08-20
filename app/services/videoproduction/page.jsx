@@ -41,9 +41,9 @@ export default function videoProductionPage() {
          
         </motion.div>
       </AuroraBackground>
-      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-15" />
       {/* <TextScrollTooltip/> */}
       <VideoGallery />
+      <FancyQuoteButton link="https://docs.google.com/forms/d/1Zp_1DX8cEyYZCj5BGn1hnQU82ByXAN0K4MpQoI9-LZo/edit" className="mt-15" />
       <ExpertLedComponent />
       <VideoPlayerComponent />
       <Testimonials />
