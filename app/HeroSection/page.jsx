@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Button } from "../../@/components/ui/button";
-import { Linkedin, ArrowRight, Sparkles } from "lucide-react";
+import { Linkedin, Sparkles } from "lucide-react";
 import FlipLink from "../../components/ui/text-effect-flipper";
 import Link from "next/link";
 
@@ -33,13 +32,13 @@ export default function HeroSectionWithGirl() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#ff9100]/20 to-blue-500/20 border border-[#ff9100]/30 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-[#ff9100]" />
-              <span className="text-sm font-medium text-white/90">
+              <span className="text-sm font-body font-medium text-white/90">
                 Professional Solutions
               </span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug space-y-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading leading-none space-y-0">
               <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
                 Smart solutions,
               </span>
@@ -50,56 +49,55 @@ export default function HeroSectionWithGirl() {
               <FlipLink
                 href="https://x.com/guri_who"
                 className="block text-center 
-             text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold
-             bg-gradient-to-r from-[#ff9100] to-orange-400 
-             bg-clip-text text-transparent
-             hover:from-orange-400 hover:to-[#ff9100]
-             transition-all duration-300"
+                  text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading
+                  bg-gradient-to-r from-[#ff9100] to-orange-400 
+                  bg-clip-text text-transparent
+                  hover:from-orange-400 hover:to-[#ff9100]
+                  transition-all duration-300"
               >
                 Ready to grow?
               </FlipLink>
 
-              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
+              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent font-heading">
                 We've got your back!
               </span>
             </h1>
 
             {/* CTA Buttons */}
-            {/* Buttons */}
             <div className="flex flex-col items-center gap-4 mt-6 md:flex-row">
               {/* Primary CTA */}
-              <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg shadow-md hover:from-orange-600 hover:to-orange-700 transition-all duration-300">
-                <Link href="/about" className="flex items-center gap-2">
-                About Us →</Link>
-                
-              </button>
+              <Link
+                href="/about"
+                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-heading font-semibold rounded-lg shadow-md hover:from-orange-600 hover:to-orange-700 transition-all duration-300 flex items-center gap-2"
+              >
+                About Us →
+              </Link>
 
               {/* Secondary CTA */}
               <a
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2 border border-gray-400 text-gray-200 rounded-full hover:border-white hover:text-white transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2 border border-gray-400 text-gray-200 rounded-full hover:border-white hover:text-white transition-all duration-300 font-body"
               >
-               <Linkedin />
+                <Linkedin />
                 Connect on LinkedIn
               </a>
             </div>
 
             {/* Stats Section */}
-            {/* Stats Section */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-0 text-center">
               <div className="flex-1 min-w-[100px]">
-                <p className="text-2xl font-bold text-orange-500">100+</p>
-                <p className="text-sm text-gray-300">Projects</p>
+                <p className="text-2xl font-heading font-bold text-orange-500">100+</p>
+                <p className="text-sm font-body text-gray-300">Projects</p>
               </div>
               <div className="flex-1 min-w-[100px]">
-                <p className="text-2xl font-bold text-yellow-400">4.3★</p>
-                <p className="text-sm text-gray-300">Rating</p>
+                <p className="text-2xl font-heading font-bold text-yellow-400">4.3★</p>
+                <p className="text-sm font-body text-gray-300">Rating</p>
               </div>
               <div className="flex-1 min-w-[100px]">
-                <p className="text-2xl font-bold text-green-400">24/7</p>
-                <p className="text-sm text-gray-300">Support</p>
+                <p className="text-2xl font-heading font-bold text-green-400">24/7</p>
+                <p className="text-sm font-body text-gray-300">Support</p>
               </div>
             </div>
           </div>
@@ -120,13 +118,12 @@ export default function HeroSectionWithGirl() {
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                   priority
                 />
-
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1c3784]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Floating badge */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-[#ff9100] to-orange-500 text-white px-4 py-2 rounded-full shadow-lg animate-bounce-slow">
-                <span className="text-sm font-semibold">Expert</span>
+                <span className="text-sm font-heading font-semibold">Expert</span>
               </div>
             </div>
           </div>
@@ -136,63 +133,28 @@ export default function HeroSectionWithGirl() {
       {/* Animations */}
       <style jsx>{`
         @keyframes float-random-1 {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          33% {
-            transform: translate(30px, -30px);
-          }
-          66% {
-            transform: translate(-20px, 20px);
-          }
+          0%, 100% { transform: translate(0, 0); }
+          33% { transform: translate(30px, -30px); }
+          66% { transform: translate(-20px, 20px); }
         }
         @keyframes float-random-2 {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          33% {
-            transform: translate(-25px, -20px);
-          }
-          66% {
-            transform: translate(15px, 25px);
-          }
+          0%, 100% { transform: translate(0, 0); }
+          33% { transform: translate(-25px, -20px); }
+          66% { transform: translate(15px, 25px); }
         }
         @keyframes float-random-3 {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          33% {
-            transform: translate(20px, 30px);
-          }
-          66% {
-            transform: translate(-30px, -15px);
-          }
+          0%, 100% { transform: translate(0, 0); }
+          33% { transform: translate(20px, 30px); }
+          66% { transform: translate(-30px, -15px); }
         }
         @keyframes bounce-slow {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
-
-        .animate-float-random-1 {
-          animation: float-random-1 8s ease-in-out infinite;
-        }
-        .animate-float-random-2 {
-          animation: float-random-2 10s ease-in-out infinite;
-        }
-        .animate-float-random-3 {
-          animation: float-random-3 12s ease-in-out infinite;
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s ease-in-out infinite;
-        }
+        .animate-float-random-1 { animation: float-random-1 8s ease-in-out infinite; }
+        .animate-float-random-2 { animation: float-random-2 10s ease-in-out infinite; }
+        .animate-float-random-3 { animation: float-random-3 12s ease-in-out infinite; }
+        .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
       `}</style>
     </div>
   );
