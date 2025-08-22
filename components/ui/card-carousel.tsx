@@ -16,6 +16,19 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { SparklesIcon } from "lucide-react";
 import { Badge } from "./badge";
+import { Archivo_Black, Noto_Sans } from "next/font/google";
+
+const archivoBlack = Archivo_Black({
+  weight: "400", // Archivo Black has only one weight
+  subsets: ["latin"],
+  variable: "--font-archivo-black",
+});
+
+const notoSans = Noto_Sans({
+  weight: ["400", "500", "700"], // regular + medium + bold
+  subsets: ["latin"],
+  variable: "--font-noto-sans",
+});
 
 interface CarouselProps {
   images: { src: string; alt: string; slug: string; title: string }[];
@@ -44,10 +57,14 @@ const CardCarousel: React.FC<CarouselProps> = ({
           </Badge>
 
           <div className="mt-12 sm:mt-16 mb-3 sm:mb-4 text-center px-2">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#ff9100] leading-none">
+            <h2
+              className={`${archivoBlack.variable} font-sans text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[#ff9100] leading-none`}
+            >
               A Journey of Possibilities
             </h2>
-            <p className="text-white/70 text-sm sm:text-base md:text-lg ">
+            <p
+              className={`${notoSans.variable} font-sans text-white/70 text-sm sm:text-base md:text-lg`}
+            >
               Multi-Industry Marketing Excellence
             </p>
           </div>
@@ -70,7 +87,9 @@ const CardCarousel: React.FC<CarouselProps> = ({
               modifier: 2.5,
             }}
             pagination={showPagination}
-            navigation={showNavigation && typeof window !== "undefined" && window.innerWidth >= 640}
+            navigation={
+              showNavigation && typeof window !== "undefined" && window.innerWidth >= 640
+            }
             modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
             className="w-full"
           >
@@ -97,7 +116,9 @@ const CardCarousel: React.FC<CarouselProps> = ({
                     className="rounded-xl object-cover w-full h-[220px] sm:h-[260px] md:h-[300px]"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
-                    <p className="text-white text-sm sm:text-lg font-semibold px-4 text-center">
+                    <p
+                      className={`${notoSans.variable} font-sans text-white text-sm sm:text-lg font-semibold px-4 text-center`}
+                    >
                       {image.title}
                     </p>
                   </div>

@@ -1,6 +1,21 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout"; // new wrapper
+import { Archivo_Black, Noto_Sans } from "next/font/google";
+
+
+const archivoBlack = Archivo_Black({
+  weight: "400", // Archivo Black has only 400 but is bold in design
+  subsets: ["latin"],
+  variable: "--font-archivo-black",
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // you can choose weights
+  variable: "--font-noto-sans",
+});
+
 
 export const metadata = {
   title: "Matrics Mind - Digital Marketing Experts",
@@ -33,21 +48,21 @@ export const metadata = {
 
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${archivoBlack.variable} ${notoSans.variable} antialiased bg-black text-white`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>

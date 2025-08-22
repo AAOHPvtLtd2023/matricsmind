@@ -20,11 +20,11 @@ export default function BrandMarquee() {
     <section className="relative w-full overflow-hidden py-6 sm:py-10">
       {/* Heading */}
       <div className="text-center mb-6 sm:mb-8 px-4">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#fff] to-[#fff8] tracking-tight leading-tight sm:leading-none pb-1 sm:pb-2">
+        <h1 className="font-[var(--font-heading)] text-2xl sm:text-4xl md:text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-b from-[#fff] to-[#fff8] tracking-tight leading-tight sm:leading-none pb-1 sm:pb-2">
           Your Industry, Our Innovation
         </h1>
 
-        <p className="text-sm sm:text-base md:text-lg" style={{ color: "#ff9100" }}>
+        <p className="font-[var(--font-body)] text-sm sm:text-base md:text-lg text-[#ff9100]">
           Empowering Every Industry Through Smart Innovation
         </p>
       </div>

@@ -114,7 +114,7 @@ export default function Header1() {
                 >
                   <Link
                     href={item.href}
-                    className="text-[#1c3784] flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-[#ff9100]"
+                    className="text-[#1c3784] flex items-center space-x-1 transition-colors duration-200 hover:text-[#ff9100] font-[var(--font-heading)]"
                   >
                     <span>{item.name}</span>
                     {item.hasDropdown && (

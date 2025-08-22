@@ -9,6 +9,20 @@ import FooterGlow from "./components/Footer";
 import FloatingBackground from "./FloatingBackground";
 import FloatingSocialButtons from "./FloatingSocialButtons";
 
+import { Archivo_Black, Noto_Sans } from "next/font/google";
+
+
+const archivoBlack = Archivo_Black({
+  weight: "400", // Archivo Black has only 400 but is bold in design
+  subsets: ["latin"],
+  variable: "--font-archivo-black",
+});
+
+const notoSans = Noto_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // you can choose weights
+  variable: "--font-noto-sans",
+});
 
 
 const geistSans = Geist({
@@ -31,7 +45,7 @@ export default function ClientLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${archivoBlack.variable} ${notoSans.variable} antialiased bg-black text-white`}
       >
         {/* <FloatingBackground /> */}
         {!hideHeader && <Header1 />}

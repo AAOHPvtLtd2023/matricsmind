@@ -67,6 +67,10 @@ module.exports = {
       screens: {
         'max-xs': { max: '360px' }, // Custom breakpoint for max-width 480px
       },
+      fontFamily: {
+      heading: "var(--font-heading)",
+      body: "var(--font-body)",
+    },
     },
   },
   plugins: [],

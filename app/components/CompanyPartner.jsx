@@ -15,12 +15,13 @@ export default function CompanyPartner() {
     <div className="w-full overflow-hidden">
       <div className="mx-auto w-full max-w-6xl">
         {/* Heading */}
-        <div className="text-center text-2xl sm:text-3xl lg:text-4xl text-white">
-          <span className="text-[#ff9100] font-extrabold">
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#ff9100] font-extrabold">
             Trusted by experts
-          </span>
-          <br />
-          <span>Used by the leaders.</span>
+          </h2>
+          <p className="mt-2 text-lg sm:text-xl lg:text-2xl text-white">
+            Used by the leaders.
+          </p>
         </div>
 
         {/* Partner Logos */}
