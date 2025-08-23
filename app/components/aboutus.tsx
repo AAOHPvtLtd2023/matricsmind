@@ -17,7 +17,7 @@ import {
   Target,
 } from "lucide-react";
 import CountryCard from "../about/Components/CountryScroll";
-import TextWithLinks from "./TextWithLinks"; 
+import TextWithLinks from "./TextWithLinks";
 
 const iconComponents = {
   Users,
@@ -108,7 +108,7 @@ export default function AboutUs1() {
         />
       </Head>
 
-      <section className="relative w-full overflow-hidden pt-20">
+      <section className="relative w-full overflow-hidden pt-0">
         <Spotlight
           gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 50%, rgba(255, 145, 0, 0) 80%)"
           gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(255, 145, 0, 0.08) 0%, rgba(255, 145, 0, 0.04) 80%, transparent 100%)"
@@ -117,16 +117,16 @@ export default function AboutUs1() {
 
         <div className="container relative z-10 mx-auto px-4 md:px-6">
           {/* Header */}
-          <header className="mx-auto mb-16 max-w-2xl text-center">
+          <header className="mx-auto mb-16 max-w-3xl text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl"
+              className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-5xl"
             >
               {aboutData.title}
             </motion.h1>
-            <p className="mt-6 text-lg sm:text-xl text-white">
+            <p className="mt-3 text-lg sm:text-lg text-white leading-relaxed">
               {aboutData.subtitle}
             </p>
           </header>
@@ -134,18 +134,15 @@ export default function AboutUs1() {
           {/* Mission & Vision */}
           <section
             ref={missionRef}
-            className="relative mx-auto mb-24 max-w-7xl"
+            className="relative mx-auto mb-24 max-w-6xl px-4 sm:px-6 lg:px-8"
           >
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={missionInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid gap-12 md:grid-cols-2"
+              className="grid gap-10 md:grid-cols-2"
             >
-              <article
-                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
-                aria-labelledby="mission-title"
-              >
+              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-8 md:p-10 backdrop-blur-3xl text-center md:text-left">
                 <BorderBeam
                   duration={8}
                   size={300}
@@ -159,19 +156,17 @@ export default function AboutUs1() {
                 </div>
                 <h2
                   id="mission-title"
-                  className="text-3xl font-bold text-transparent bg-gradient-to-r from-primary/90 to-primary/70 bg-clip-text"
+                  className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500/90 to-blue-500/70"
                 >
                   Our Mission
                 </h2>
+
                 <p className="mt-4 text-lg text-white">
                   <TextWithLinks text={aboutData.mission} />
                 </p>
               </article>
 
-              <article
-                className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
-                aria-labelledby="vision-title"
-              >
+              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-8 md:p-10 backdrop-blur-3xl text-center md:text-left">
                 <BorderBeam
                   duration={8}
                   size={300}
@@ -208,50 +203,41 @@ export default function AboutUs1() {
               transition={{ duration: 0.6 }}
               className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-white via-white to-white bg-clip-text sm:text-4xl">
+              <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-white via-white to-white bg-clip-text sm:text-5xl">
                 Our Core Values
               </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-white">
+              <p className="mt-2 max-w-2xl mx-auto text-lg text-white">
                 The principles that guide everything we do and every decision we
                 make.
               </p>
             </motion.div>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {aboutData.values.map((value, index) => {
-                const IconComponent = iconComponents[value.icon];
-                return (
-                  <motion.article
-                    key={value.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
-                    whileHover={{ y: -5, scale: 1.02 }}
-                    className="h-full flex flex-col"
-                  >
-                    <CardHoverEffect
-                      className="h-full flex flex-col"
-                      icon={
-                        <IconComponent className="h-6 w-6" aria-hidden="true" />
-                      }
-                      title={value.title}
-                      description={value.description}
-                      variant={
-                        index === 0
-                          ? "purple"
-                          : index === 1
-                          ? "blue"
-                          : index === 2
-                          ? "amber"
-                          : "rose"
-                      }
-                      glowEffect
-                      size="lg"
-                    />
-                  </motion.article>
-                );
-              })}
-            </div>
+  {aboutData.values.map((value, index) => {
+    const IconComponent = iconComponents[value.icon];
+    return (
+      <motion.article
+        key={value.title}
+        initial={{ opacity: 0, y: 30 }}
+        animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+        whileHover={{ y: -5, scale: 1.02 }}
+        className="h-full flex flex-col group"
+      >
+        <CardHoverEffect
+          className="h-full flex flex-col border border-transparent group-hover:border-[#ff9100] transition-colors duration-300"
+          icon={<IconComponent className="h-6 w-6" aria-hidden="true" />}
+          title={value.title}
+          titleClassName="transition-colors duration-300 group-hover:text-[#ff9100]"
+          description={value.description}
+          glowEffect
+          size="lg"
+        />
+      </motion.article>
+    );
+  })}
+</div>
+
           </section>
         </div>
       </section>

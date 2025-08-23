@@ -221,11 +221,11 @@ export default function FaqSection() {
       viewport={{ once: true, amount: 0.3 }}
       className="max-w-3xl mx-auto px-4 py-20 text-white relative"
     >
-      <div className="text-center mb-12">
-        <p className="uppercase text-sm tracking-widest text-gray-400">
+      <div className="text-center mb-10">
+        <p className="uppercase text-md tracking-widest text-gray-400">
           F.A.Q. SECTION
         </p>
-        <h2 className="text-3xl md:text-4xl font-bold mt-2">
+        <h2 className="text-3xl md:text-5xl font-bold">
           Frequently asked questions
         </h2>
       </div>
