@@ -89,7 +89,6 @@ export default function Header1() {
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-
         <div className="flex h-16 items-center justify-between lg:h-20">
           <motion.div
             className="flex items-center space-x-2"
@@ -122,34 +121,51 @@ export default function Header1() {
                     )}
                   </Link>
 
-                  {item.hasDropdown && activeDropdown === item.name && (
-  <motion.div
-    className={`absolute left-0 mt-2 w-56 rounded-lg shadow-lg z-50 ${
-      theme === "dark"
-        ? "bg-gray-900 text-white"
-        : "bg-white text-gray-900"
-    }`}
-    variants={dropdownVariants}
-    initial="hidden"
-    animate="visible"
-    exit="hidden"
-    transition={{ duration: 0.2 }}
-  >
-    <div className="py-2">
-      {item.dropdownItems.map((subItem) => (
-        <Link
-          key={subItem.name}
-          href={subItem.href}
-          className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
-        >
-          <span className="font-medium">{subItem.name}</span>
-          <p className="text-xs text-gray-500">{subItem.description}</p>
-        </Link>
-      ))}
-    </div>
-  </motion.div>
-)}
-
+                  {item.hasDropdown && (
+                    <AnimatePresence>
+                      {activeDropdown === item.name && (
+                        <motion.div
+                          className={`absolute left-0 mt-2 w-56 rounded-lg shadow-lg z-50 border ${
+                            theme === "dark"
+                              ? "bg-[#0f172a] text-white border-gray-700"
+                              : "bg-white text-[#1c3784] border-gray-200"
+                          }`}
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className="py-2">
+                            {item.dropdownItems.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                className={`block px-4 py-2 rounded-md transition-colors duration-150 ${
+                                  theme === "dark"
+                                    ? "hover:bg-[#1c3784]/60"
+                                    : "hover:bg-gray-100"
+                                }`}
+                              >
+                                <span className="font-medium">
+                                  {subItem.name}
+                                </span>
+                                <p
+                                  className={`text-xs mt-0.5 ${
+                                    theme === "dark"
+                                      ? "text-gray-300"
+                                      : "text-gray-500"
+                                  }`}
+                                >
+                                  {subItem.description}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
                 </div>
               ))}
             </nav>
