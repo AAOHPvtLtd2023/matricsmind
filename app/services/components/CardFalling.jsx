@@ -114,7 +114,7 @@ export default function CardFalling() {
 
       {/* Main Heading */}
       <motion.h2
-        className={`relative z-20 font-bold text-center bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-tight tracking-tight ${
+        className={`relative z-20 font-extrabold text-center bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent bg-[length:300%_300%] leading-tight tracking-tight ${
           isMobile ? "text-2xl" : "text-4xl sm:text-5xl"
         }`}
         variants={shineVariants}

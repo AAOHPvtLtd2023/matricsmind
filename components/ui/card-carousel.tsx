@@ -58,7 +58,7 @@ const CardCarousel: React.FC<CarouselProps> = ({
 
           <div className="mt-12 sm:mt-16 mb-3 sm:mb-4 text-center px-2">
             <h2
-              className={`${archivoBlack.variable} font-sans text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-[#ff9100] leading-none`}
+              className={`text-2xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight text-[#ff9100] leading-none font-extrabold text-transform: uppercase`}
             >
               A Journey of Possibilities
             </h2>

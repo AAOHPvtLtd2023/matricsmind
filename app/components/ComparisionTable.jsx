@@ -97,11 +97,11 @@ export default function ComparisonSection() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6">
       {/* Header */}
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-10">
-        <motion.h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent pb-2 leading-tight" variants={shimmerTitle} animate="animate">
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-6">
+        <motion.h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent pb-0 leading-none" variants={shimmerTitle} animate="animate">
           Why Clients Choose MatricsMind
         </motion.h2>
-        <p className="text-base sm:text-lg md:text-xl text-[#ff9100] font-body max-w-2xl mx-auto mt-2">
+        <p className="text-base sm:text-lg md:text-lg text-[#ff9100] font-body max-w-2xl mx-auto mt-1">
           Over 50 <TextWithLinks text="clients" /> across the globe trust our <TextWithLinks text="branding and marketing services" />.
         </p>
       </motion.div>

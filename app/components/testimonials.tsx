@@ -331,10 +331,10 @@ const Testimonials = () => {
           >
             {/* Enhanced Header */}
             <div className="relative inline-block px-0 py-2 mx-auto mt-6">
-              <h2 className="relative bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-center text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-transparent leading-none">
+              <h2 className="relative bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-center text-2xl sm:text-4xl lg:text-5xl xl:text-5xl font-extrabold tracking-tight text-transparent leading-none">
                 Words From Our Partners
                 {/* Glowing text effect */}
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-[#ff910090] bg-clip-text text-transparent opacity-30 blur-sm">
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-[#ff910090] bg-clip-text text-transparent opacity-30 blur-sm font-extrabold">
                   Words From Our Partners
                 </span>
               </h2>
@@ -343,16 +343,16 @@ const Testimonials = () => {
               <div className="absolute inset-0 mx-auto w-full max-w-md h-[60px] blur-3xl rounded-full bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 -z-10 animate-pulse"></div>
             </div>
 
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Client Experiences That{" "}
-              <span className="font-semibold" style={{ color: "#ff9100" }}>
+              <span className="font-bold" style={{ color: "#ff9100" }}>
                 Speak Volumes
               </span>
             </p>
           </div>
 
           {/* Enhanced Testimonials Grid with alternating directions */}
-          <div className="overflow-hidden mt-12 sm:mt-20 max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          <div className="overflow-hidden mt-4 sm:mt-5 max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
             {/* Mobile: Single column */}
             <div className="block sm:hidden">
               <TestimonialsColumn
