@@ -70,7 +70,7 @@ const AdvertisementSectionComponent = ({
       {/* Content */}
       <div className="relative z-30 flex flex-col justify-center items-center text-center h-full px-4 sm:px-8">
         <h1
-          className={`text-transparent bg-clip-text bg-gradient-to-r from-[#FF9100] to-[#1C3784] text-4xl sm:text-5xl md:text-6xl font-extrabold mb-3 tracking-wide transition-all duration-1000 ${
+          className={`text-transparent bg-clip-text bg-gradient-to-r from-[#FF9100] to-[#1C3784] text-4xl sm:text-5xl md:text-5xl font-extrabold mb-3 tracking-wide transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
@@ -78,16 +78,16 @@ const AdvertisementSectionComponent = ({
         </h1>
 
         <div
-          className={`space-y-2 sm:space-y-3 mb-6 transition-all duration-1000 delay-200 ${
+          className={`space-y-1 sm:space-y-1 mb-2 transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <p className="text-white/90 text-lg sm:text-xl">
+          <p className="text-white/90 text-lg sm:text-lg">
             <TextWithLinks text={description} />
           </p>
           <p className="text-white/80 text-base sm:text-lg">
             From{" "}
-            <span className="text-[#FF9100] font-medium">
+            <span className="text-[#FF9100] font-bold">
               {title.toLowerCase()}
             </span>{" "}
             essence to visual identity.
@@ -99,10 +99,10 @@ const AdvertisementSectionComponent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-          className="backdrop-blur-md bg-white/10 border border-white/20 px-6 py-3 rounded-xl shadow-2xl hover:shadow-orange-500/20 transition-all duration-300"
+          className="backdrop-blur-lg bg-white/10 border border-white/20 px-6 py-3 rounded-xl shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 cursor-pointer"
         >
           <Link href={route} passHref>
-            <button className="group inline-flex items-center gap-2 text-white text-sm sm:text-base font-semibold">
+            <button className="group inline-flex items-center gap-2 text-white text-sm sm:text-base font-semibold cursor-pointer">
               View More
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
