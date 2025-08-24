@@ -38,7 +38,7 @@ export default function HomePage() {
   <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
     {/* Heading Line 1 */}
     <h1
-      className={`block text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
+      className={`block text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
@@ -47,7 +47,7 @@ export default function HomePage() {
 
     {/* Heading Line 2 */}
     <h2
-      className={`block mt-1 mb-4 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-snug sm:leading-tight transform transition-all duration-700 ease-out delay-100 ${
+      className={`block mt-1 mb-2 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-snug sm:leading-tight transform transition-all duration-700 ease-out delay-100 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >

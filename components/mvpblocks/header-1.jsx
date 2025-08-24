@@ -190,9 +190,9 @@ export default function Header1() {
             whileTap={{ scale: 0.95 }}
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6 text-[#1c3784]" /> // <-- add a color here
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 text-[#1c3784]" /> // <-- add a color here
             )}
           </motion.button>
         </div>
