@@ -72,24 +72,24 @@ export default function FooterGlow() {
           </div>
         </div>
 
-        <nav className="flex w-full flex-col gap-9 text-center md:w-auto md:flex-row md:justify-end md:text-left">
+        <nav className="flex w-full flex-col gap-2 text-center md:w-auto md:flex-row md:justify-end md:text-left sm:gap-6">
           <div>
             <a href="/about" className="flex flex-col items-center">
-              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100]">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100] hover:text-[#fff]">
                 About
               </div>
             </a>
           </div>
           <div>
             <a href="/services" className="flex flex-col items-center">
-              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100]">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100] hover:text-[#fff]">
                 Services
               </div>
             </a>
           </div>
           <div>
             <a href="/blog" className="flex flex-col items-center">
-              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100]">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100] hover:text-[#fff]">
                 Blog
               </div>
             </a>

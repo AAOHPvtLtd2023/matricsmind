@@ -25,7 +25,7 @@ export default function HeroSectionWithGirl() {
       </div>
 
       {/* Main Section */}
-      <section className="relative w-full max-w-7xl bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-12 sm:py-16 md:py-20 lg:px-12 rounded-3xl shadow-2xl">
+      <section className="relative w-full max-w-7xl bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-12 sm:py-16 md:py-20 lg:px-10 rounded-3xl shadow-2xl">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 lg:gap-20">
           {/* Left Content */}
           <div className="text-center lg:text-left space-y-8">
@@ -38,11 +38,12 @@ export default function HeroSectionWithGirl() {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading leading-none space-y-0">
-              <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading leading-none space-y-0">
+              <span className="text-center">
                 Smart solutions,
               </span>
-              <span className="block bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+              <br />
+              <span className="">
                 expert support 💼
               </span>
 
@@ -58,7 +59,7 @@ export default function HeroSectionWithGirl() {
                 Ready to grow?
               </FlipLink>
 
-              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent font-heading">
+              <span className="block text-xl sm:text-2xl md:text-3xl lg:text-5xl font-heading">
                 We've got your back!
               </span>
             </h1>
