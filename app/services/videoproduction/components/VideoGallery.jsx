@@ -71,16 +71,16 @@ const driveVideos = [
   });
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-6 px-4">
+    <div className="min-h-screen flex flex-col items-center py-4 px-0">
       {/* Section Text */}
-      <div className="max-w-3xl text-center mb-3">
+      <div className="max-w-4xl text-center mb-0">
         <h1 className="text-3xl md:text-4xl font-bold text-[#ff9100]">
           Tailored To Your World
         </h1>
-        <h2 className="text-xl md:text-2xl text-gray-300">
+        <h2 className="text-lg md:text-xl text-gray-300">
           Designs That Define Tomorrow
         </h2>
-        <p className="mt-3 text-gray-400 leading-relaxed">
+        <p className="mt-1 text-gray-400 leading-tight">
           From transforming city skylines to shaping healthcare innovations,
           our creative visuals are built to reflect your vision, elevate your
           story, and empower your strategy.

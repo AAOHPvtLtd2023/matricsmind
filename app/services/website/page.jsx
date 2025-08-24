@@ -11,7 +11,7 @@ import FancyQuoteButton from "./components/FancyQuoteButton";
 export default function websitePage() {
   return (
     <section>
-      <AuroraBackground className="h-[82vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3">
+      <AuroraBackground className="h-[40vh] w-[90vw] sm:h-[82vh] sm:w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,13 +20,11 @@ export default function websitePage() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4 w-full h-full"
+          className="relative flex flex-col gap-0 items-center justify-center px-0 w-full h-full"
         >
           <div className="w-full flex flex-col items-center justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
-             Designs That Capture Eyes — 
-              <br />
-              and Minds
+            <h2 className="text-[3vh] md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
+             Designs That Capture Eyes and Minds
             </h2>
           </div>
         </motion.div>

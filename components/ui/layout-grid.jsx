@@ -15,7 +15,7 @@ export const LayoutGrid = ({ cards }) => {
   }, []);
 
   return (
-    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-6 relative">
+    <div className="w-full h-full p-3 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-6 relative">
       {cards.map((card, i) => (
         <div key={card.id ?? i} className="relative flex flex-col items-center transition-all duration-200 hover:text-[#ff9100]">
           {/* Card (thumbnail with hover play button) */}
@@ -37,7 +37,7 @@ export const LayoutGrid = ({ cards }) => {
 
           {/* ✅ Title beneath the card */}
           {card.title && (
-            <h3 className="mt-2 text-lg font-semibold text-center">
+            <h3 className="mt-1 text-lg font-semibold text-center">
               {card.title}
             </h3>
           )}

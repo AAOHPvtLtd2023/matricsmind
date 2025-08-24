@@ -79,10 +79,10 @@ const ExpertLedComponent = () => {
           <h2 className="text-base font-semibold text-[#FF9100] uppercase tracking-wide">
             Why Choose Us?
           </h2>
-          <p className="mt-2 text-4xl font-extrabold text-[#1C3784] dark:text-white">
+          <p className="mt-2 text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#fff] dark:text-white">
             Your Standard is High — So Is Ours.
           </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 mx-auto">
+          <p className="mt-2 max-w-2xl text-lg text-gray-200 dark:text-gray-300 mx-auto">
             We deliver customized solutions with smooth execution, making sure
             every detail works in your favor.
           </p>

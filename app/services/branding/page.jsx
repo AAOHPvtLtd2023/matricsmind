@@ -17,7 +17,7 @@ export default function BrandingPage() {
       <AuroraBackground className="h-[50vh] w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3">
         <div className="relative flex flex-col gap-4 items-center justify-center px-4 w-full h-full animate-fade-in-down transition-opacity duration-700 ease-in-out">
           <div className="w-full flex flex-col items-center justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
+            <h2 className="text-[4vh] md:text-5xl font-bold text-black dark:text-white leading-snug text-center">
               Your Brand, Clearly Defined
               <br />
               and Powerfully Delivered

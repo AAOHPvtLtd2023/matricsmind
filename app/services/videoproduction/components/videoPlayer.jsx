@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import {
   VideoPlayer,
   VideoPlayerContent,
-} from '../../../../components/ui/kibo-ui/video-player';
+} from "../../../../components/ui/kibo-ui/video-player";
 
 const VideoPlayerComponent = () => {
   return (
@@ -38,11 +38,11 @@ const VideoPlayerComponent = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeInOut' }}
-        className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 pointer-events-none z-20"
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 sm:px-6 z-20"
       >
         <motion.h2
-          className="text-3xl sm:text-5xl font-bold mb-3 drop-shadow-lg"
+          className="text-2xl sm:text-5xl font-bold mb-3 drop-shadow-lg leading-snug sm:leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
@@ -50,7 +50,7 @@ const VideoPlayerComponent = () => {
           Transform your vision into reality
         </motion.h2>
         <motion.p
-          className="text-sm sm:text-lg max-w-2xl mb-6 drop-shadow-md"
+          className="text-sm sm:text-lg max-w-md sm:max-w-2xl mb-6 drop-shadow-md"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -60,7 +60,7 @@ const VideoPlayerComponent = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#ff9100] text-black font-semibold px-6 py-3 rounded-full shadow-lg pointer-events-auto"
+          className="bg-[#ff9100] text-black font-semibold px-5 py-3 rounded-full shadow-lg pointer-events-auto text-sm sm:text-base"
         >
           Get a Free Quote
         </motion.button>

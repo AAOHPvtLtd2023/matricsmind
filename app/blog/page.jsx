@@ -8,8 +8,8 @@ import {MinimalCardDemo} from "./components/cardContainer";
 
 export default function BlogPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
-      <AuroraBackground className="h-[50vh] w-full border rounded-lg shadow-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen px-0 text-center">
+      <AuroraBackground className="h-[50vh] w-full border rounded-lg shadow-lg mb-5">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
