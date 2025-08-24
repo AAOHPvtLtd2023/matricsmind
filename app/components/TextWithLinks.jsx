@@ -76,7 +76,7 @@ const TextWithLinks = ({ text }) => {
           key={`${match.keyword}-${index}`}
           href={match.link}
           title={`Learn more about ${match.keyword}`}
-          className="font-extrabold text-[#ff9100] hover:text-xl transition-all duration-700"
+          className="transition-all duration-700"
           {...(isExternal
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}

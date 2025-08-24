@@ -53,7 +53,7 @@ const TextWithLinks = ({ text }) => {
           key={`${match.keyword}-${index}`}
           href={match.link}
           title={`Learn more about ${match.keyword}`}
-          className="text-[#ff9100] hover:underline"
+          className=""
         >
           {match.keyword}
         </Link>
@@ -68,12 +68,12 @@ const TextWithLinks = ({ text }) => {
 
 // Data
 const data = [
-  { feature: "Target / Support Services", icon: <Zap className="w-6 h-6 text-[#fff]" />, others: "Delivering Exceptional Branding and Tech Solutions", we: "Delivering Exceptional Branding and Tech Solutions" },
-  { feature: "Client Engagement Strategy", icon: <Users className="w-6 h-6 text-[#fff]" />, others: "Standardized Solution", we: "Strategically personalized to match modern industry practices" },
-  { feature: "Design Approach", icon: <Palette className="w-6 h-6 text-[#fff]" />, others: "Employs standard templates", we: "Creative, on-brand, and made just for you" },
-  { feature: "Behind the Build", icon: <Cog className="w-6 h-6 text-[#fff]" />, others: "Baseline Service", we: "Deep-dive, co-creative, and built for lasting partnerships" },
-  { feature: "Project Strategy", icon: <MapPin className="w-6 h-6 text-[#fff]" />, others: "Unclear objectives", we: "Step-by-step roadmap aligned with key milestones" },
-  { feature: "Project Implementation", icon: <Rocket className="w-6 h-6 text-[#fff]" />, others: "Last-minute and messy", we: "Effective, punctual, and responsive project delivery" },
+  { feature: "Target / Support Services", icon: <Zap className="w-6 h-6 text-[#000]" />, others: "Delivering Exceptional Branding and Tech Solutions", we: "Delivering Exceptional Branding and Tech Solutions" },
+  { feature: "Client Engagement Strategy", icon: <Users className="w-6 h-6 text-[#000]" />, others: "Standardized Solution", we: "Strategically personalized to match modern industry practices" },
+  { feature: "Design Approach", icon: <Palette className="w-6 h-6 text-[#000]" />, others: "Employs standard templates", we: "Creative, on-brand, and made just for you" },
+  { feature: "Behind the Build", icon: <Cog className="w-6 h-6 text-[#000]" />, others: "Baseline Service", we: "Deep-dive, co-creative, and built for lasting partnerships" },
+  { feature: "Project Strategy", icon: <MapPin className="w-6 h-6 text-[#000]" />, others: "Unclear objectives", we: "Step-by-step roadmap aligned with key milestones" },
+  { feature: "Project Implementation", icon: <Rocket className="w-6 h-6 text-[#000]" />, others: "Last-minute and messy", we: "Effective, punctual, and responsive project delivery" },
 ];
 
 const cardVariants = {

@@ -13,13 +13,13 @@ export default function HighlightHeading() {
   }, [isInView]);
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-12 sm:py-0">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="font-light text-white leading-none relative inline-block">
           <span className="block text-white leading-none text-3xl sm:text-3xl md:text-4xl lg:text-4xl ">From Strategy to Screens</span>
-          <span className="relative inline-block text-[#ff9100] font-extrabold leading-none mt-2 text-xl sm:text-4xl md:text-5xl lg:text-5xl sm:mt-3 md:mt-4">
+          <span className="relative inline-block text-[#ff9100] font-extrabold leading-none mt-2 text-xl sm:text-4xl md:text-5xl lg:text-5xl sm:mt-1 md:mt-0">
             We Create What Brands Need
-            <svg
+            {/* <svg
               ref={pathRef}
               viewBox="0 0 260 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +28,13 @@ export default function HighlightHeading() {
             >
               <path
                 d="M0 15 C50 25, 200 5, 260 15"
-                stroke="#1c378499"
+                stroke="#fff"
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
                 className={`${animate ? "path-visible" : "path-hidden"}`}
               />
-            </svg>
+            </svg> */}
           </span>
         </h2>
       </div>

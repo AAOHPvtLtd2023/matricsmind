@@ -31,7 +31,7 @@ export const TextScrollBox = ({
   return (
     <div
       className={clsx(
-        "relative overflow-hidden w-full bg-[#0b0b0b]",
+        "relative overflow-hidden w-full",
         containerClassName
       )}
       onMouseEnter={() => setIsHovered(true)}

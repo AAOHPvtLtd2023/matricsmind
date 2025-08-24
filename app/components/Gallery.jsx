@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const galleryItems = [
   {
     src: "/images/Tech_solution/1.jpg",
-    span: "col-span-2 row-span-2",
+    span: "col-span-2 row-span-3",
     alt: "Big tile",
   },
   {
@@ -21,12 +21,12 @@ const galleryItems = [
   },
   {
     src: "/images/Tech_solution/4.jpg",
-    span: "col-span-2 row-span-1",
+    span: "col-span-2 row-span-2",
     alt: "Wide tile",
   },
   {
     src: "/images/Tech_solution/5.jpg",
-    span: "col-span-3 row-span-1",
+    span: "col-span-3 row-span-3",
     alt: "Tall tile",
   },
   {
@@ -38,7 +38,7 @@ const galleryItems = [
 
 export default function Gallery() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-16">
+    <section className="max-w-[90vw] mx-auto px-0 py-10 sm:py-10">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
         {galleryItems.map((item, idx) => (
           <motion.div

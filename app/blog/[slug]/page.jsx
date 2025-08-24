@@ -264,13 +264,13 @@ export default function BlogSlugPage({ params = {} }) {
       {/* Header */}
       <header
         className={`fixed top-0 w-full z-40 transition-all ${
-          isScrolled ? "bg-white/90 backdrop-blur shadow" : "bg-transparent"
+          isScrolled ? "bg-white/10 backdrop-blur shadow" : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 py-3">
+        <nav className="max-w-7xl mx-auto px-0 py-3">
           <a
             href="/blog"
-            className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-600"
+            className="inline-flex items-center gap-2 text-[#fff] hover:text-[#ff9100]"
           >
             <ArrowLeft size={20} />
             <span className="font-medium">Back to Blog</span>
@@ -280,7 +280,7 @@ export default function BlogSlugPage({ params = {} }) {
 
       {/* Hero */}
       <section className="pt-24 pb-10 relative overflow-hidden">
-        <div className="relative max-w-5xl mx-auto px-4 text-white">
+        <div className="relative max-w-7xl mx-auto px-4 text-white">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-md">
             <EnhancedText>{blog.title}</EnhancedText>
           </h1>

@@ -87,78 +87,89 @@ const ExpertLedComponent = () => {
             every detail works in your favor.
           </p>
         </div>
-
-        {/* Scrollable Cards */}
-        {/* Scrollable Cards (desktop & tablet only) */}
-<motion.div
-  className="mt-10 overflow-x-auto scrollbar-hide hidden sm:block"
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true, amount: 0.3 }}
-  variants={containerVariants}
->
-  <div className="flex gap-6 min-w-max px-4 sm:px-0">
-    {features.map((feature, index) => {
-      const IconComponent = feature.icon;
-      return (
         <motion.div
-          key={index}
-          variants={cardVariants}
-          className="relative bg-[#1C3784] p-6 rounded-xl text-left flex-shrink-0 w-64 sm:w-72 hover:shadow-2xl group cursor-pointer transition-all duration-300 hover:scale-105 overflow-hidden"
+          className="mt-10 overflow-x-auto scrollbar-hide hidden sm:block"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
         >
-          <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF9100] opacity-10 blur-2xl rounded-full z-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+          <div className="flex gap-6 min-w-max px-4 sm:px-0">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={cardVariants}
+                  className="relative bg-[#1C3784] p-6 rounded-xl text-left flex-shrink-0 w-64 sm:w-72 hover:shadow-2xl group cursor-pointer transition-all duration-300 hover:scale-105 overflow-hidden"
+                >
+                  <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF9100] opacity-10 blur-2xl rounded-full z-0 group-hover:opacity-20 transition-opacity duration-300"></div>
 
-          <div className="relative z-10">
-            <div className="text-white group-hover:scale-110 transition-transform duration-300">
-              <IconComponent className="h-12 w-12" />
-            </div>
-            <h3 className="mt-4 text-md font-semibold text-white group-hover:text-orange-200 transition-colors duration-300">
-              <TextWithLinks text={feature.title} />
-            </h3>
-            <p className="mt-2 text-sm text-blue-100 group-hover:text-blue-200 transition-colors duration-300">
-              <TextWithLinks text={feature.description} />
-            </p>
+                  <div className="relative z-10">
+                    <div className="text-white group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="h-12 w-12" />
+                    </div>
+                    <h3 className="mt-4 text-md font-semibold text-white group-hover:text-orange-200 transition-colors duration-300">
+                      <TextWithLinks text={feature.title} />
+                    </h3>
+                    <p className="mt-2 text-sm text-blue-100 group-hover:text-blue-200 transition-colors duration-300">
+                      <TextWithLinks text={feature.description} />
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
-      );
-    })}
-  </div>
-</motion.div>
 
-{/* Grid for Mobile only */}
-<motion.div
-  className="mt-10 grid grid-cols-1 gap-6 sm:hidden"
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true, amount: 0.3 }}
-  variants={containerVariants}
->
-  {features.map((feature, index) => {
-    const IconComponent = feature.icon;
-    return (
-      <motion.div
-        key={index}
-        variants={cardVariants}
-        className="relative bg-[#1C3784] p-6 rounded-xl text-center group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden"
-      >
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF9100] opacity-10 blur-2xl rounded-full z-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        {/* Grid for Mobile only */}
+        <motion.div
+          className="mt-10 grid grid-cols-1 gap-6 sm:hidden"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <motion.div
+                className="mt-10 overflow-x-auto scrollbar-hide hidden sm:block snap-x snap-mandatory"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={containerVariants}
+              >
+                <div className="flex">
+                  {features.map((feature, index) => {
+                    const IconComponent = feature.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        variants={cardVariants}
+                        className="snap-center flex-shrink-0 w-full sm:w-[90vw] md:w-[80vw] lg:w-[70vw] mx-auto relative bg-[#1C3784] p-6 rounded-xl text-left hover:shadow-2xl group cursor-pointer transition-all duration-300 overflow-hidden"
+                      >
+                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FF9100] opacity-10 blur-2xl rounded-full z-0 group-hover:opacity-20 transition-opacity duration-300"></div>
 
-        <div className="relative z-10">
-          <div className="mx-auto text-white group-hover:scale-110 transition-transform duration-300">
-            <IconComponent className="h-12 w-12" />
-          </div>
-          <h3 className="mt-4 text-lg font-semibold text-white group-hover:text-orange-200 transition-colors duration-300">
-            {feature.title}
-          </h3>
-          <p className="mt-2 text-sm text-blue-100 group-hover:text-blue-200 transition-colors duration-300">
-            {feature.description}
-          </p>
-        </div>
-      </motion.div>
-    );
-  })}
-</motion.div>
-
+                        <div className="relative z-10">
+                          <div className="text-white group-hover:scale-110 transition-transform duration-300">
+                            <IconComponent className="h-12 w-12" />
+                          </div>
+                          <h3 className="mt-4 text-lg font-semibold text-white group-hover:text-orange-200 transition-colors duration-300">
+                            <TextWithLinks text={feature.title} />
+                          </h3>
+                          <p className="mt-2 text-sm text-blue-100 group-hover:text-blue-200 transition-colors duration-300">
+                            <TextWithLinks text={feature.description} />
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </div>
   );

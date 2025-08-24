@@ -11,7 +11,7 @@ import FancyQuoteButton from "./components/FancyQuoteButton";
 export default function websitePage() {
   return (
     <section>
-      <AuroraBackground className="h-[40vh] w-[90vw] sm:h-[82vh] sm:w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3">
+      <AuroraBackground className="h-[40vh] w-[90vw] sm:h-[52vh] sm:w-[90vw] border rounded-lg shadow-lg self-center justify-self-center mb-3 sm:mb-10">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
