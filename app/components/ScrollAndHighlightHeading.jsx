@@ -27,7 +27,7 @@ Video Marketing & YouTube Ads
 Video Production
 CGI`}
         default_velocity={3}
-        containerClassName="mt-3"
+        containerClassName="mt-0 sm:mt-2 "
         itemClassName="text-base"
       />
     </>

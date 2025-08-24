@@ -320,7 +320,7 @@ const Testimonials = () => {
           ></div>
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div
             ref={sectionRef}
             className={`mx-auto max-w-4xl text-center transition-all duration-1000 ${
@@ -343,7 +343,7 @@ const Testimonials = () => {
               <div className="absolute inset-0 mx-auto w-full max-w-md h-[60px] blur-3xl rounded-full bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 -z-10 animate-pulse"></div>
             </div>
 
-            <p className="text-base sm:text-lg md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-lg md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Client Experiences That{" "}
               <span className="font-bold" style={{ color: "#ff9100" }}>
                 Speak Volumes
@@ -352,7 +352,7 @@ const Testimonials = () => {
           </div>
 
           {/* Enhanced Testimonials Grid with alternating directions */}
-          <div className="overflow-hidden mt-4 sm:mt-5 max-h-[700px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          <div className="overflow-hidden mt-4 sm:mt-5 max-h-[750px] lg:max-h-[800px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
             {/* Mobile: Single column */}
             <div className="block sm:hidden">
               <TestimonialsColumn

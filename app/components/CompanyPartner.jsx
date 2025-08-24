@@ -19,7 +19,7 @@ export default function CompanyPartner() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#ff9100] font-extrabold">
             Trusted by experts
           </h2>
-          <p className="mt-3 text-base sm:text-lg md:text-lg text-white">
+          <p className="mt-0 sm:mt-3 text-base sm:text-lg md:text-lg text-white">
             Used by the leaders
           </p>
         </div>

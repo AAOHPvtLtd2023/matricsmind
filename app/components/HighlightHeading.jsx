@@ -17,7 +17,7 @@ export default function HighlightHeading() {
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="font-light text-white leading-none relative inline-block">
           <span className="block text-white leading-none text-3xl sm:text-3xl md:text-4xl lg:text-4xl ">From Strategy to Screens</span>
-          <span className="relative inline-block text-[#ff9100] font-extrabold leading-none mt-2text-3xl sm:text-4xl md:text-5xl lg:text-5xl ">
+          <span className="relative inline-block text-[#ff9100] font-extrabold leading-none mt-2 text-xl sm:text-4xl md:text-5xl lg:text-5xl sm:mt-3 md:mt-4">
             We Create What Brands Need
             <svg
               ref={pathRef}

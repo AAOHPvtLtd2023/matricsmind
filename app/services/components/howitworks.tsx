@@ -67,7 +67,7 @@ export default function HowItWorks() {
         <p className="text-[#FF9100] text-xs sm:text-lg font-semibold uppercase tracking-widest">
           Start Your Journey
         </p>
-        <h1 className="text-2xl sm:text-5xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent mb-1">
+        <h1 className="text-3xl sm:text-5xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent mb-1">
           How We Work?
         </h1>
         <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-tight px-0">

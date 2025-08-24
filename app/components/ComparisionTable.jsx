@@ -68,12 +68,12 @@ const TextWithLinks = ({ text }) => {
 
 // Data
 const data = [
-  { feature: "Target / Support Services", icon: <Zap className="w-6 h-6 text-[#1c3784]" />, others: "Delivering Exceptional Branding and Tech Solutions", we: "Delivering Exceptional Branding and Tech Solutions" },
-  { feature: "Client Engagement Strategy", icon: <Users className="w-6 h-6 text-[#1c3784]" />, others: "Standardized Solution", we: "Strategically personalized to match modern industry practices" },
-  { feature: "Design Approach", icon: <Palette className="w-6 h-6 text-[#1c3784]" />, others: "Employs standard templates", we: "Creative, on-brand, and made just for you" },
-  { feature: "Behind the Build", icon: <Cog className="w-6 h-6 text-[#1c3784]" />, others: "Baseline Service", we: "Deep-dive, co-creative, and built for lasting partnerships" },
-  { feature: "Project Strategy", icon: <MapPin className="w-6 h-6 text-[#1c3784]" />, others: "Unclear objectives", we: "Step-by-step roadmap aligned with key milestones" },
-  { feature: "Project Implementation", icon: <Rocket className="w-6 h-6 text-[#1c3784]" />, others: "Last-minute and messy", we: "Effective, punctual, and responsive project delivery" },
+  { feature: "Target / Support Services", icon: <Zap className="w-6 h-6 text-[#fff]" />, others: "Delivering Exceptional Branding and Tech Solutions", we: "Delivering Exceptional Branding and Tech Solutions" },
+  { feature: "Client Engagement Strategy", icon: <Users className="w-6 h-6 text-[#fff]" />, others: "Standardized Solution", we: "Strategically personalized to match modern industry practices" },
+  { feature: "Design Approach", icon: <Palette className="w-6 h-6 text-[#fff]" />, others: "Employs standard templates", we: "Creative, on-brand, and made just for you" },
+  { feature: "Behind the Build", icon: <Cog className="w-6 h-6 text-[#fff]" />, others: "Baseline Service", we: "Deep-dive, co-creative, and built for lasting partnerships" },
+  { feature: "Project Strategy", icon: <MapPin className="w-6 h-6 text-[#fff]" />, others: "Unclear objectives", we: "Step-by-step roadmap aligned with key milestones" },
+  { feature: "Project Implementation", icon: <Rocket className="w-6 h-6 text-[#fff]" />, others: "Last-minute and messy", we: "Effective, punctual, and responsive project delivery" },
 ];
 
 const cardVariants = {
@@ -99,7 +99,7 @@ export default function ComparisonSection() {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-6">
         <motion.h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent pb-0 leading-none" variants={shimmerTitle} animate="animate">
-          Why Clients Choose MatricsMind
+          Why Clients Choose Matrics Mind
         </motion.h2>
         <p className="text-base sm:text-lg md:text-lg text-[#ff9100] font-body max-w-2xl mx-auto mt-1">
           Over 50 <TextWithLinks text="clients" /> across the globe trust our <TextWithLinks text="branding and marketing services" />.
