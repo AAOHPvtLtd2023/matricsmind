@@ -228,7 +228,7 @@ export default function AboutUs1() {
           className="h-full flex flex-col border border-transparent group-hover:border-[#ff9100] transition-colors duration-300"
           icon={<IconComponent className="h-6 w-6" aria-hidden="true" />}
           title={value.title}
-          titleClassName="transition-colors duration-300 group-hover:text-[#ff9100]"
+          // titleClassName="transition-colors duration-300 group-hover:text-[#ff9100]"
           description={value.description}
           glowEffect
           size="lg"
