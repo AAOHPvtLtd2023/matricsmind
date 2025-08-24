@@ -18,7 +18,7 @@ p, span, li, a, button, input, textarea {
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  /* color: var(--foreground); */
   font-family: var(--font-body), sans-serif; /* ✅ use your body font, not Arial */
 }
 html {
