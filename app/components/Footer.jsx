@@ -94,6 +94,13 @@ export default function FooterGlow() {
               </div>
             </a>
           </div>
+          <div>
+            <a href="/admin/visits" className="flex flex-col items-center">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#ff9100] hover:text-[#fff]">
+                Admin
+              </div>
+            </a>
+          </div>
         </nav>
       </div>
 
