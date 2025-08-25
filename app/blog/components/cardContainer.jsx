@@ -31,6 +31,30 @@ export function MinimalCardDemo() {
       slug: "top-10-digital-marketing-strategies-jewellery-business",
       src: "/images/Blog/blog3.jpg",
     },
+
+    {
+      title:
+        "Pharmaceutical Digital Marketing Agency: Matrics Mind – Your Growth Engine in the Digital Era",
+      description:
+        "Discover how Matrics Mind helps pharmaceutical companies unlock growth through compliant, data-driven, and high-converting digital marketing strategies.",
+      slug: "pharmaceutical-digital-marketing-agency",
+      src: "/images/Blog/blog4.jpg",
+    },
+    {
+      title: "From AI to AR: The Future-Proof Digital Marketing Trends of 2025",
+      description:
+        "Explore the top digital marketing trends of 2025 including AI, AR, voice search, and sustainability to future-proof your marketing strategy.",
+      slug: "future-proof-digital-marketing-trends-2025",
+      src: "/images/Blog/blog5.jpg",
+    },
+    {
+      title:
+        "Smart, Social & Searchable: How Digital Marketing Will Evolve in 2025",
+      description:
+        "Discover how digital marketing will evolve in 2025 with AI-powered strategies, social-first engagement, and enhanced searchability for better ROI.",
+      slug: "smart-social-searchable-digital-marketing-2025",
+      src: "/images/Blog/blog6.jpg",
+    },
   ];
 
   useEffect(() => {
@@ -44,7 +68,6 @@ export function MinimalCardDemo() {
         {cards.map((card, index) => (
           <Link href={`/blog/${card.slug}`} key={index} className="w-full">
             <div className="group flex flex-col h-full max-w-sm w-full bg-[#1C1F2A]/80 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#ff9100]/50 hover:shadow-[0_8px_30px_rgba(255,145,0,0.3)] cursor-pointer hover:scale-105">
-              
               {/* Image Section */}
               <div className="relative w-full h-56 overflow-hidden flex-shrink-0">
                 {loading ? (
@@ -78,9 +101,7 @@ export function MinimalCardDemo() {
                       {card.description}
                     </p>
                     <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-white/60">
-                      <span className="group-hover:text-white">
-                        Read more
-                      </span>
+                      <span className="group-hover:text-white">Read more</span>
                       <span className="text-[#ff9100] font-semibold group-hover:translate-x-1 transition-transform duration-300">
                         &rarr;
                       </span>
@@ -88,7 +109,6 @@ export function MinimalCardDemo() {
                   </>
                 )}
               </div>
-
             </div>
           </Link>
         ))}
