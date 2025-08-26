@@ -15,7 +15,7 @@ import {
   BarChart,
   Bar,
 } from "recharts";
-import { Globe, Users, MapPin, TrendingUp, Clock, Activity } from "lucide-react";
+import { Globe, Users, MapPin, TrendingUp, Clock, Activity,LogOut  } from "lucide-react";
 
 export default function AdminVisits() {
   const [visits, setVisits] = useState([]);
@@ -23,6 +23,36 @@ export default function AdminVisits() {
   const [totalVisitors, setTotalVisitors] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
+
+    // 🔑 Auth state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const correctUser = "admin";
+  const correctPass = "password123";
+
+  // Check if logged in already
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("adminLoggedIn");
+    if (loggedIn === "true") setIsAuthenticated(true);
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (username === correctUser && password === correctPass) {
+      setIsAuthenticated(true);
+      localStorage.setItem("adminLoggedIn", "true");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("adminLoggedIn");
+  };
+
 
   // Function to fetch and process visit data
   const fetchVisits = async () => {
@@ -112,6 +142,43 @@ export default function AdminVisits() {
     </div>
   );
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+        <form
+          onSubmit={handleLogin}
+          className="bg-gray-800 p-8 rounded-2xl shadow-xl w-96 space-y-6"
+        >
+          <h1 className="text-2xl font-bold text-center">Admin Login</h1>
+          <div>
+            <label className="block text-sm text-gray-400">Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full mt-1 px-3 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-400">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full mt-1 px-3 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-semibold"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen text-white">
       {/* Animated background elements */}
@@ -119,6 +186,19 @@ export default function AdminVisits() {
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div> */}
+
+       <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-gray-900/70 backdrop-blur-md">
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">
+          Admin Dashboard
+        </h1>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-semibold"
+        >
+          <LogOut className="w-4 h-4" />
+          Logout
+        </button>
+      </header>
 
       <main className="relative z-10 p-6 max-w-7xl mx-auto space-y-8">
         {/* Header */}

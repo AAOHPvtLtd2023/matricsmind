@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from 'sonner';
+import { Toaster } from "sonner";
 
 import Header1 from "../components/mvpblocks/header-1";
 import FooterGlow from "./components/Footer";
@@ -11,19 +11,17 @@ import FloatingSocialButtons from "./FloatingSocialButtons";
 
 import { Archivo_Black, Noto_Sans } from "next/font/google";
 
-
 const archivoBlack = Archivo_Black({
-  weight: "400", // Archivo Black has only 400 but is bold in design
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-archivo-black",
 });
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // you can choose weights
+  weight: ["400", "500", "700"],
   variable: "--font-noto-sans",
 });
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +35,14 @@ const geistMono = Geist_Mono({
 
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
-  
-  // Hide header on blog detail pages and project detail pages
-  const hideHeader = (pathname?.startsWith('/blog/') && pathname !== '/blog') ||
-                    (pathname?.startsWith('/projects/') && pathname !== '/projects');
+
+  // Hide header/footer on blog detail, project detail, and admin pages
+  const hideHeader =
+    (pathname?.startsWith("/blog/") && pathname !== "/blog") ||
+    (pathname?.startsWith("/projects/") && pathname !== "/projects") ||
+    pathname === "/admin/visits";
+
+  const hideFooter = pathname === "/admin/visits";
 
   return (
     <html lang="en">
@@ -53,8 +55,8 @@ export default function ClientLayout({ children }) {
           {children}
           <Toaster richColors position="top-right" />
         </main>
-        <FooterGlow />
-        <FloatingSocialButtons />
+        {!hideFooter && <FooterGlow />}
+        {!hideFooter && <FloatingSocialButtons />}
       </body>
     </html>
   );
