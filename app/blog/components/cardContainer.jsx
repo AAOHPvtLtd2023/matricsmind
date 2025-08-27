@@ -64,12 +64,16 @@ export function MinimalCardDemo() {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+      <div className="flex flex-wrap justify-center gap-6">
         {cards.map((card, index) => (
-          <Link href={`/blog/${card.slug}`} key={index} className="w-full">
-            <div className="group flex flex-col h-full max-w-sm w-full bg-[#1C1F2A]/80 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#ff9100]/50 hover:shadow-[0_8px_30px_rgba(255,145,0,0.3)] cursor-pointer hover:scale-105">
+          <Link
+            href={`/blog/${card.slug}`}
+            key={index}
+            className="w-full sm:w-[48%] lg:w-[23%] flex"
+          >
+            <div className="group flex flex-col h-full w-full bg-[#1C1F2A]/80 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#ff9100]/50 hover:shadow-[0_8px_30px_rgba(255,145,0,0.3)] cursor-pointer hover:scale-105">
               {/* Image Section */}
-              <div className="relative w-full h-56 overflow-hidden flex-shrink-0">
+              <div className="relative w-full aspect-[6/3] overflow-hidden flex-shrink-0">
                 {loading ? (
                   <div className="flex items-center justify-center h-full bg-black/10">
                     <Spinner />
@@ -79,7 +83,7 @@ export function MinimalCardDemo() {
                     src={card.src}
                     alt={card.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover rounded-t-2xl transition-transform duration-500 group-hover:scale-110"
                   />
                 )}
               </div>
