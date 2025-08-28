@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   PieChart,
   Pie,
@@ -12,25 +12,46 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  BarChart,
-  Bar,
 } from "recharts";
-import { Globe, Users, MapPin, TrendingUp, Clock, Activity,LogOut  } from "lucide-react";
+import {
+  Globe,
+  Users,
+  MapPin,
+  TrendingUp,
+  Clock,
+  Activity,
+  LogOut,
+  Download,
+} from "lucide-react";
 
 export default function AdminVisits() {
   const [visits, setVisits] = useState([]);
-  const [countryData, setCountryData] = useState([]);
-  const [totalVisitors, setTotalVisitors] = useState(0);
+  // const [countryData, setCountryData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
 
-    // 🔑 Auth state
+  // 🔑 Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const correctUser = "admin";
   const correctPass = "password123";
+
+  // 🔎 Filters
+  const [countryFilter, setCountryFilter] = useState("");
+  const [cityFilter, setCityFilter] = useState("");
+  const [timeRange, setTimeRange] = useState("all");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const resetFilters = () => {
+    setCountryFilter("");
+    setCityFilter("");
+    setTimeRange("all");
+    setStartDate(null);
+    setEndDate(null);
+  };
 
   // Check if logged in already
   useEffect(() => {
@@ -53,31 +74,15 @@ export default function AdminVisits() {
     localStorage.removeItem("adminLoggedIn");
   };
 
-
-  // Function to fetch and process visit data
+  // Fetch visit data
   const fetchVisits = async () => {
     try {
       setIsLoading(true);
-      
       const res = await fetch("/api/admin/visits");
       const data = await res.json();
-      
+
       setVisits(data);
-      setTotalVisitors(data.length);
       setLastUpdate(new Date());
-
-      // Count visits per country
-      const counts = {};
-      data.forEach((v) => {
-        counts[v.country] = (counts[v.country] || 0) + 1;
-      });
-
-      const formatted = Object.entries(counts)
-        .map(([country, visits]) => ({ country, visits }))
-        .sort((a, b) => b.visits - a.visits)
-        .slice(0, 6);
-
-      setCountryData(formatted);
       setIsLoading(false);
     } catch (err) {
       console.error("Error fetching visits:", err);
@@ -87,23 +92,56 @@ export default function AdminVisits() {
 
   useEffect(() => {
     fetchVisits();
-    const interval = setInterval(fetchVisits, 5000); // Update every 5 seconds as in original
+    const interval = setInterval(fetchVisits, 60000); // refresh every 1 min
     return () => clearInterval(interval);
   }, []);
 
-  // Generate hourly data from actual visits
+  // Apply filters
+  const filteredVisits = visits.filter((v) => {
+    const visitTime = new Date(v.visitedAt);
+    const now = new Date();
+    let withinTime = true;
+
+    if (timeRange === "1h")
+      withinTime = visitTime >= new Date(now - 60 * 60 * 1000);
+    if (timeRange === "12h")
+      withinTime = visitTime >= new Date(now - 12 * 60 * 60 * 1000);
+    if (timeRange === "1d")
+      withinTime = visitTime >= new Date(now - 24 * 60 * 60 * 1000);
+    if (timeRange === "1w")
+      withinTime = visitTime >= new Date(now - 7 * 24 * 60 * 60 * 1000);
+    if (timeRange === "custom" && startDate && endDate) {
+      withinTime =
+        visitTime >= new Date(startDate) && visitTime <= new Date(endDate);
+    }
+
+    const matchesCountry = !countryFilter || v.country === countryFilter;
+    const matchesCity = !cityFilter || v.city === cityFilter;
+
+    return withinTime && matchesCountry && matchesCity;
+  });
+
+  // Update country data for charts
+  const countryData = useMemo(() => {
+    const counts = {};
+    filteredVisits.forEach((v) => {
+      counts[v.country] = (counts[v.country] || 0) + 1;
+    });
+    return Object.entries(counts)
+      .map(([country, visits]) => ({ country, visits }))
+      .sort((a, b) => b.visits - a.visits)
+      .slice(0, 6);
+  }, [filteredVisits]);
+
+  // Generate hourly data
   const getHourlyData = () => {
     const hours = {};
     const now = new Date();
-    
-    // Initialize last 24 hours with 0 visits
     for (let i = 23; i >= 0; i--) {
       const hour = new Date(now.getTime() - i * 60 * 60 * 1000).getHours();
       hours[`${hour}:00`] = 0;
     }
-    
-    // Count actual visits per hour
-    visits.forEach(visit => {
+    filteredVisits.forEach((visit) => {
       const visitDate = new Date(visit.visitedAt);
       const visitHour = visitDate.getHours();
       const key = `${visitHour}:00`;
@@ -111,19 +149,68 @@ export default function AdminVisits() {
         hours[key]++;
       }
     });
-    
-    return Object.entries(hours).map(([hour, visitors]) => ({ hour, visitors }));
+    return Object.entries(hours).map(([hour, visitors]) => ({
+      hour,
+      visitors,
+    }));
+  };
+  const hourlyData = getHourlyData();
+
+  const COLORS = [
+    "#6366f1",
+    "#8b5cf6",
+    "#06b6d4",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+  ];
+
+  // Export Handlers
+  const downloadJSON = () => {
+    const blob = new Blob([JSON.stringify(filteredVisits, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "visitors.json";
+    link.click();
   };
 
-  const hourlyData = getHourlyData();
-  const COLORS = ["#6366f1", "#8b5cf6", "#06b6d4", "#10b981", "#f59e0b", "#ef4444"];
+  const downloadCSV = () => {
+    const headers = ["IP", "Country", "City", "Code", "Visited At"];
+    const rows = filteredVisits.map((v) => [
+      v.ip,
+      v.country,
+      v.city || "-",
+      v.countryCode,
+      new Date(v.visitedAt).toLocaleString(),
+    ]);
+    const csvContent = [headers, ...rows]
+      .map((r) => r.map((x) => `"${x}"`).join(","))
+      .join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "visitors.csv";
+    link.click();
+  };
 
-  const StatCard = ({ icon: Icon, title, value, subtitle, color = "indigo" }) => (
-    <div className={`bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-105 group`}>
+  const StatCard = ({
+    icon: Icon,
+    title,
+    value,
+    subtitle,
+    color = "indigo",
+  }) => (
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
-            <div className={`p-3 rounded-xl bg-gradient-to-r from-${color}-500/20 to-${color}-600/20 border border-${color}-500/30`}>
+            <div
+              className={`p-3 rounded-xl bg-gradient-to-r from-${color}-500/20 to-${color}-600/20 border border-${color}-500/30`}
+            >
               <Icon className={`w-6 h-6 text-${color}-400`} />
             </div>
             <span className="text-gray-400 text-sm font-medium">{title}</span>
@@ -137,7 +224,6 @@ export default function AdminVisits() {
             )}
           </div>
         </div>
-        <div className="w-2 h-16 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full opacity-60"></div>
       </div>
     </div>
   );
@@ -181,23 +267,30 @@ export default function AdminVisits() {
 
   return (
     <div className="min-h-screen text-white">
-      {/* Animated background elements */}
-      {/* <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div> */}
-
-       <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-gray-900/70 backdrop-blur-md">
+      <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-gray-900/70 backdrop-blur-md">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">
           Admin Dashboard
         </h1>
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-semibold"
-        >
-          <LogOut className="w-4 h-4" />
-          Logout
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={downloadJSON}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-semibold"
+          >
+            <Download className="w-4 h-4" /> JSON
+          </button>
+          <button
+            onClick={downloadCSV}
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 rounded-lg text-sm font-semibold"
+          >
+            <Download className="w-4 h-4" /> CSV
+          </button>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-semibold"
+          >
+            <LogOut className="w-4 h-4" /> Logout
+          </button>
+        </div>
       </header>
 
       <main className="relative z-10 p-6 max-w-7xl mx-auto space-y-8">
@@ -208,20 +301,87 @@ export default function AdminVisits() {
               Visitor Analytics
             </h1>
             <p className="text-gray-400 flex items-center gap-2">
-              <Activity className="w-4 h-4" />
-              Real-time visitor tracking and insights
+              <Activity className="w-4 h-4" /> Real-time visitor tracking and
+              insights
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-full border border-gray-700/50">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-300">Live</span>
+          <div className="flex items-center gap-3 text-sm text-gray-500">
+            <div className="flex items-center gap-1">
+              <Clock className="w-4 h-4" /> Last updated:{" "}
+              {lastUpdate.toLocaleTimeString()}
             </div>
-            <div className="text-sm text-gray-500 flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              Last updated: {lastUpdate.toLocaleTimeString()}
-            </div>
+            <button
+              onClick={fetchVisits}
+              className="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg text-white text-xs font-medium"
+            >
+              Refresh Now
+            </button>
           </div>
+        </div>
+
+        {/* Filters */}
+        <div className="flex flex-wrap gap-4 mb-6">
+          <select
+            value={countryFilter}
+            onChange={(e) => setCountryFilter(e.target.value)}
+            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+          >
+            <option value="">All Countries</option>
+            {[...new Set(visits.map((v) => v.country))].map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={cityFilter}
+            onChange={(e) => setCityFilter(e.target.value)}
+            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+          >
+            <option value="">All Cities</option>
+            {[...new Set(visits.map((v) => v.city))].map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={timeRange}
+            onChange={(e) => setTimeRange(e.target.value)}
+            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+          >
+            <option value="all">All Time</option>
+            <option value="1h">Last 1 Hour</option>
+            <option value="12h">Last 12 Hours</option>
+            <option value="1d">Last 1 Day</option>
+            <option value="1w">Last 1 Week</option>
+            <option value="custom">Custom</option>
+          </select>
+
+          {timeRange === "custom" && (
+            <div className="flex gap-2">
+              <input
+                type="date"
+                onChange={(e) => setStartDate(e.target.value)}
+                className="px-2 py-1 bg-gray-800 border border-gray-600 rounded"
+              />
+              <input
+                type="date"
+                onChange={(e) => setEndDate(e.target.value)}
+                className="px-2 py-1 bg-gray-800 border border-gray-600 rounded"
+              />
+            </div>
+          )}
+
+          {/* Reset Filters Button */}
+          <button
+            onClick={resetFilters}
+            className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-sm font-semibold text-white"
+          >
+            Reset Filters
+          </button>
         </div>
 
         {/* Stats Cards */}
@@ -229,7 +389,7 @@ export default function AdminVisits() {
           <StatCard
             icon={Users}
             title="Total Visitors"
-            value={totalVisitors.toLocaleString()}
+            value={filteredVisits.length.toLocaleString()}
             color="indigo"
           />
           <StatCard
@@ -249,23 +409,26 @@ export default function AdminVisits() {
           <StatCard
             icon={TrendingUp}
             title="Recent Activity"
-            value={visits.filter(v => {
-              const visitTime = new Date(v.visitedAt);
-              const hourAgo = new Date(Date.now() - 60 * 60 * 1000);
-              return visitTime > hourAgo;
-            }).length}
+            value={
+              filteredVisits.filter((v) => {
+                const visitTime = new Date(v.visitedAt);
+                return visitTime >= new Date(Date.now() - 60 * 60 * 1000);
+              }).length
+            }
             subtitle="Last hour"
             color="green"
           />
         </div>
 
-        {/* Charts Section */}
+        {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Pie Chart */}
           <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-6">
               <Globe className="w-6 h-6 text-indigo-400" />
-              <h2 className="text-xl font-semibold text-white">Top Countries</h2>
+              <h2 className="text-xl font-semibold text-white">
+                Top Countries
+              </h2>
             </div>
             <div className="h-80">
               {isLoading ? (
@@ -287,7 +450,10 @@ export default function AdminVisits() {
                       label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                     >
                       {countryData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
                       ))}
                     </Pie>
                     <Tooltip
@@ -295,10 +461,10 @@ export default function AdminVisits() {
                         backgroundColor: "#1f2937",
                         border: "1px solid #374151",
                         borderRadius: "12px",
-                        color: "white"
+                        color: "white",
                       }}
                     />
-                    <Legend 
+                    <Legend
                       wrapperStyle={{ color: "white", paddingTop: "20px" }}
                       iconType="circle"
                     />
@@ -312,30 +478,34 @@ export default function AdminVisits() {
           <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-green-400" />
-              <h2 className="text-xl font-semibold text-white">24h Visitor Trend</h2>
+              <h2 className="text-xl font-semibold text-white">
+                24h Visitor Trend
+              </h2>
             </div>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={hourlyData}>
                   <defs>
-                    <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
+                    <linearGradient
+                      id="colorVisitors"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="hour" 
-                    stroke="#9ca3af"
-                    fontSize={12}
-                  />
+                  <XAxis dataKey="hour" stroke="#9ca3af" fontSize={12} />
                   <YAxis stroke="#9ca3af" fontSize={12} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#1f2937",
                       border: "1px solid #374151",
                       borderRadius: "12px",
-                      color: "white"
+                      color: "white",
                     }}
                   />
                   <Area
@@ -357,9 +527,11 @@ export default function AdminVisits() {
           <div className="p-6 border-b border-gray-700/50">
             <div className="flex items-center gap-3">
               <Activity className="w-6 h-6 text-blue-400" />
-              <h2 className="text-xl font-semibold text-white">Recent Visitors</h2>
+              <h2 className="text-xl font-semibold text-white">
+                Recent Visitors
+              </h2>
               <span className="px-3 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30">
-                {visits.length} total
+                {filteredVisits.length} total
               </span>
             </div>
           </div>
@@ -367,11 +539,21 @@ export default function AdminVisits() {
             <table className="w-full">
               <thead className="bg-gray-800/50">
                 <tr>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">IP Address</th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">Country</th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">City</th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">Code</th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">Visited At</th>
+                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
+                    IP Address
+                  </th>
+                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
+                    Country
+                  </th>
+                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
+                    City
+                  </th>
+                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
+                    Code
+                  </th>
+                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
+                    Visited At
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -380,22 +562,23 @@ export default function AdminVisits() {
                     <td colSpan={5} className="text-center py-12">
                       <div className="flex items-center justify-center gap-2">
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-400"></div>
-                        <span className="text-gray-400">Loading visitors...</span>
+                        <span className="text-gray-400">
+                          Loading visitors...
+                        </span>
                       </div>
                     </td>
                   </tr>
-                ) : visits.length === 0 ? (
+                ) : filteredVisits.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="text-center py-12">
                       <div className="text-gray-500">
                         <Globe className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                        <p className="text-lg font-medium">No visitors yet</p>
-                        <p className="text-sm">Waiting for the first visitor to arrive...</p>
+                        <p className="text-lg font-medium">No visitors found</p>
                       </div>
                     </td>
                   </tr>
                 ) : (
-                  visits.map((visitor, index) => (
+                  filteredVisits.map((visitor, index) => (
                     <tr
                       key={visitor.id || index}
                       className="border-b border-gray-700/30 hover:bg-gray-800/30 transition-colors group"
@@ -415,7 +598,9 @@ export default function AdminVisits() {
                           </span>
                         </div>
                       </td>
-                      <td className="py-4 px-6 text-gray-300">{visitor.city || "-"}</td>
+                      <td className="py-4 px-6 text-gray-300">
+                        {visitor.city || "-"}
+                      </td>
                       <td className="py-4 px-6">
                         <span className="px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded text-sm font-medium">
                           {visitor.countryCode}
