@@ -430,7 +430,7 @@ export default function AdminVisits() {
                 Top Countries
               </h2>
             </div>
-            <div className="h-80">
+            <div className="h-100">
               {isLoading ? (
                 <div className="flex items-center justify-center h-full">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400"></div>

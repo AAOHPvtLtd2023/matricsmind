@@ -1,74 +1,83 @@
 "use client";
+
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 export default function ElasticCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const timer = useRef(null);
 
- const [sliderRef, slider] = useKeenSlider({
-  loop: true,
-  slideChanged(slider) {
-    setCurrentSlide(slider.track.details.rel);
-  },
-  created() {
-    setLoaded(true);
-  },
-  animation: {
-    duration: 1200, // longer = smoother
-    easing: (t) =>
-      t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2, // easeInOutCubic
-  },
-  slides: {
-    origin: "center",
-    perView: 1,
-    spacing: 15,
-  },
-});
+  const images = ["/images/web1.jpg", "/images/web2.jpg", "/images/web3.jpg"];
 
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    slideChanged(s) {
+      setCurrentSlide(s.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+    breakpoints: {
+      "(min-width: 768px)": {
+        slides: { perView: 1, spacing: 15 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 1, spacing: 1 },
+      },
+    },
+    slides: { perView: 1, spacing: 10 },
+  });
 
-  // Autoplay every 4s
   useEffect(() => {
-    if (!slider) return;
+    if (!slider.current) return;
 
     const autoplay = () => {
       timer.current = setInterval(() => {
         slider.current?.next();
-      }, 4000);
+      }, 5000);
     };
 
     autoplay();
-    return () => clearInterval(timer.current);
+
+    const container = sliderRef.current;
+    const stop = () => timer.current && clearInterval(timer.current);
+    const start = () => autoplay();
+
+    container?.addEventListener("mouseenter", stop);
+    container?.addEventListener("mouseleave", start);
+
+    return () => {
+      stop();
+      container?.removeEventListener("mouseenter", stop);
+      container?.removeEventListener("mouseleave", start);
+    };
   }, [slider]);
 
-  const images = ["/image1.jpg", "/image2.jpg", "/image3.jpg", "/image4.jpg"];
-
   return (
-    <div className="relative max-w-3xl rounded-lg overflow-hidden shadow-lg">
+    <div className="relative max-w-6xl mx-auto rounded-lg overflow-hidden shadow-lg">
       {/* Carousel */}
       <div ref={sliderRef} className="keen-slider rounded-lg">
-        {images.map((src, index) => (
-          <div
-            className="keen-slider__slide flex justify-center items-center"
-            key={index}
-          >
-            <img
-              src={src}
-              alt={`Slide ${index}`}
-              className="object-cover w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px]"
-            />
+        {images.map((src, idx) => (
+          <div key={idx} className="keen-slider__slide flex items-center justify-center">
+            <div className="relative w-full h-[300px] sm:h-[350px] md:h-[650px]">
+              <Image
+                src={src}
+                alt={`Slide ${idx}`}
+                fill
+                className="object-cover p-0"
+              />
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Arrows: bottom right */}
-      {loaded && (
-        <div className="absolute bottom-4 right-4 flex space-x-4 z-10">
+      {/* Arrows */}
+      {loaded && slider.current && (
+        <div className="absolute inset-0 flex items-center justify-between px-4 z-10">
           <button
             onClick={() => slider.current?.prev()}
             className="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition"
@@ -84,9 +93,9 @@ export default function ElasticCarousel() {
         </div>
       )}
 
-      {/* Slide Indicators: bottom left */}
-      {loaded && (
-        <div className="absolute bottom-4 left-4 flex gap-2 z-10">
+      {/* Indicators */}
+      {loaded && slider.current && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {images.map((_, idx) => (
             <button
               key={idx}

@@ -35,44 +35,49 @@ export default function HomePage() {
       <div className="space-y-6 sm:space-y-8 md:space-y-10">
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] text-center px-4">
-  <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
-    {/* Heading Line 1 */}
-    <h1
-      className={`block text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      Across Boundaries. Beyond Limits.
-    </h1>
+          <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
+            {/* Heading Line 1 */}
+            <h1
+              className={`block text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              Across Boundaries. Beyond Limits.
+            </h1>
 
-    {/* Heading Line 2 */}
-    <h2
-      className={`block mt-1 mb-2 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-snug sm:leading-tight transform transition-all duration-700 ease-out delay-100 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      Built with{" "}
-      <span className="text-[#ff9100] text-[1.15em] tracking-wide drop-shadow-[0_2px_6px_rgba(255,145,0,0.8)]">
-        Matrics Mind
-      </span>
-    </h2>
+            {/* Heading Line 2 */}
+            <h2
+              className={`block mt-1 mb-2 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading leading-snug sm:leading-tight transform transition-all duration-700 ease-out delay-100 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              Built with{" "}
+              <span className="text-[#ff9100] text-[1.15em] tracking-wide drop-shadow-[0_2px_6px_rgba(255,145,0,0.8)]">
+                Matrics Mind
+              </span>
+            </h2>
 
-    {/* Text Flip */}
-    <ContainerTextFlip isVisible={isVisible} />
+            {/* Text Flip */}
+            <ContainerTextFlip isVisible={isVisible} />
 
-    {/* Sub Text */}
-    <p
-      className={`block mt-3 text-sm sm:text-base md:text-lg text-[#ff9100]/90 font-body transform transition-all duration-700 ease-out delay-200 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      We’ve served{" "}
-      <span className="font-heading text-white">50+ clients</span>{" "}
-      worldwide.
-    </p>
-  </div>
-</section>
-
+            {/* Sub Text */}
+            <p
+              className={`block mt-3 text-sm sm:text-base md:text-lg text-[#ff9100]/90 font-body transform transition-all duration-700 ease-out delay-200 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              We’ve served{" "}
+              <span className="font-heading text-white">50+ clients</span>{" "}
+              worldwide.
+            </p>
+          </div>
+        </section>
 
         {/* All sections lazy-loaded */}
         <LazySection>
