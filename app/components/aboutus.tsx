@@ -142,15 +142,15 @@ export default function AboutUs1() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="grid gap-10 md:grid-cols-2"
             >
-              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-8 md:p-10 backdrop-blur-3xl text-center md:text-left">
+              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-5 md:p-10 backdrop-blur-3xl text-left md:text-left">
                 <BorderBeam
                   duration={8}
                   size={300}
                   className="from-transparent via-primary/40 to-transparent"
                 />
-                <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
+                <div className="mb-6 h-10 w-10 md:h-16 md:w-16 flex items-center justify-center rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
                   <Rocket
-                    className="h-8 w-8 text-[#ff9100]"
+                    className="h-5 w-5 text-[#ff9100] md:h-8 md:w-8"
                     aria-hidden="true"
                   />
                 </div>
@@ -166,16 +166,16 @@ export default function AboutUs1() {
                 </p>
               </article>
 
-              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-8 md:p-10 backdrop-blur-3xl text-center md:text-left">
+              <article className="group relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-5 md:p-10 backdrop-blur-3xl text-left md:text-left">
                 <BorderBeam
                   duration={8}
                   size={300}
                   className="from-transparent via-blue-500/40 to-transparent"
                   reverse
                 />
-                <div className="mb-6 h-16 w-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
+                <div className="mb-6 h-10 w-10 md:h-16 md:w-16 flex items-center justify-center rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5">
                   <Target
-                    className="h-8 w-8 text-blue-500"
+                    className="h-5 w-5 text-[#ff9100] md:h-8 md:w-8"
                     aria-hidden="true"
                   />
                 </div>

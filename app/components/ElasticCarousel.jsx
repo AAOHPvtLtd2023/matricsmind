@@ -68,7 +68,7 @@ export default function ElasticCarousel() {
                 src={src}
                 alt={`Slide ${idx}`}
                 fill
-                className="object-cover p-0"
+                className="object-contain p-0 md:object-cover rounded-lg md:rounded-none"
               />
             </div>
           </div>

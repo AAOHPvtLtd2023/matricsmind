@@ -31,7 +31,7 @@ export default function videoProductionPage() {
         >
           {/* Heading */}
           <div className="w-full flex flex-col items-center justify-center text-center">
-            <h2 className="text-[4vh] md:text-5xl font-bold text-black dark:text-white leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-snug">
               We Build Tech That Connects People —
               <br />
               and Powers Growth

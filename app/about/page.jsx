@@ -60,12 +60,12 @@ export default function AboutPage() {
   <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-[90vw] flex justify-self-center">
     <div className="md:flex">
       {/* Content Section */}
-      <div className="md:w-2/3 p-8 md:p-12">
+      <div className="md:w-2/3 p-5 md:p-12">
         <div className="mb-6">
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-2">
             Priyanka Mohanty
           </h2>
-          <p className="text-lg text-blue-600 font-semibold mb-0">
+          <p className="text-sm md:text-lg text-blue-600 font-semibold mb-0">
             Consulting Technology Officer & Marketing Head
           </p>
         </div>
