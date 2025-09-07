@@ -40,7 +40,7 @@ export default function ServicePage() {
       </AuroraBackground>
 
       {/* Advertisement Sections */}
-      <div className="space-y-16 sm:space-y-20 lg:space-y-24 px-4 sm:px-6 lg:px-12">
+      <div className="">
         <AdvertisementSectionComponent title="Tech Solution" description="We Build Tech That Connects People and Powers Growth" />
         <AdvertisementSectionComponent title="Brand Solution" description="Your Brand, Clearly Defined and Powerfully Delivered" />
         <AdvertisementSectionComponent title="Visual Solution" description=" Designs That Capture Eyes  — & Minds" />

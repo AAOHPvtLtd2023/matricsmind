@@ -12,7 +12,7 @@ export default function CompanyPartner() {
   ];
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden my-5 sm:my-5">
       <div className="mx-auto w-full max-w-6xl">
         {/* Heading */}
         <div className="text-center">

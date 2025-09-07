@@ -67,7 +67,7 @@ export default function CardFalling() {
   return (
     <div
       className={`relative flex flex-col items-center justify-center ${
-        isMobile ? "min-h-[25vh]" : "min-h-[35vh]"
+        isMobile ? "min-h-[35vh]" : "min-h-[35vh]"
       } overflow-hidden px-3`}
     >
       {/* Background Stars */}

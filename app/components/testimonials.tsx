@@ -320,7 +320,7 @@ const Testimonials = () => {
           ></div>
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="relative my-5 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div
             ref={sectionRef}
             className={`mx-auto max-w-4xl text-center transition-all duration-1000 ${

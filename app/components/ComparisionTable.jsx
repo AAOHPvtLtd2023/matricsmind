@@ -95,7 +95,7 @@ export default function ComparisonSection() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section className="max-w-7xl sm:max-w-full flex justify-center items-center flex-col my-5 sm:my-10">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-6">
         <motion.h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading font-extrabold bg-gradient-to-r from-[#ff9100] via-white to-[#1c3784] bg-clip-text text-transparent pb-0 leading-none" variants={shimmerTitle} animate="animate">

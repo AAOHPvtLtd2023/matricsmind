@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-export default function LazySection({ children, rootMargin = "200px" }) {
+export default function LazySection({ children, rootMargin = "" }) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
