@@ -55,6 +55,48 @@ export function MinimalCardDemo() {
       slug: "smart-social-searchable-digital-marketing-2025",
       src: "/images/Blog/blog6.jpg",
     },
+    {
+      title: "Google Ads vs Meta Ads: Which Delivers Better ROI?",
+      description:
+        "Discover which ad platform delivers better ROI in 2025 — Google Ads or Meta Ads. Learn differences, strengths, and how to combine both for maximum impact.",
+      slug: "google-vs-meta-ads-roi-2025",
+      src: "/images/Blog/blog7.jpg",
+    },
+    {
+      title: "SEO in 2025: Strategies That Actually Work for Businesses",
+      description:
+        "Explore future-proof SEO strategies for 2025, from AI-powered search engines to voice, video, and local SEO tactics that drive real business growth.",
+      slug: "seo-strategies-2025",
+      src: "/images/Blog/blog8.jpg",
+    },
+    {
+      title: "Top Google Ranking Factors You Can’t Ignore This Year",
+      description:
+        "Discover the most important Google ranking factors for 2025, including E-E-A-T, Core Web Vitals, backlinks, and content quality that boost visibility.",
+      slug: "google-ranking-factors-2025",
+      src: "/images/Blog/blog9.jpg",
+    },
+    // {
+    //   title: "Why Your Website Design Is Hurting Your Conversions",
+    //   description:
+    //     "Is your website killing conversions? Discover the top design mistakes that drive customers away and learn fixes that boost sales in 2025.",
+    //   slug: "website-design-conversions-2025",
+    //   src: "/images/Blog/blog10.jpg",
+    // },
+    // {
+    //   title: "Local SEO Secrets: How Small Businesses Can Beat Big Brands",
+    //   description:
+    //     "Discover proven local SEO strategies for 2025 that help small businesses outrank big brands in search and capture nearby customers.",
+    //   slug: "local-seo-secrets-2025",
+    //   src: "/images/Blog/blog11.jpg",
+    // },
+    // {
+    //   title: "5 Paid Advertising Mistakes That Drain Your Budget",
+    //   description:
+    //     "Avoid these common ad mistakes in 2025 that waste your budget. Learn fixes for targeting, tracking, and strategy to maximize ROI.",
+    //   slug: "paid-ads-mistakes-2025",
+    //   src: "/images/Blog/blog12.jpg",
+    // },
   ];
 
   useEffect(() => {
