@@ -23,12 +23,19 @@ import {
   LogOut,
   Download,
 } from "lucide-react";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "../.././../@/components/ui/tabs";
 
 export default function AdminVisits() {
   const [visits, setVisits] = useState([]);
   // const [countryData, setCountryData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
+  const [formResponses, setFormResponses] = useState([]);
 
   // 🔑 Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -89,9 +96,16 @@ export default function AdminVisits() {
       setIsLoading(false);
     }
   };
+  // Fetch Form Responses
+  const fetchForms = async () => {
+    const res = await fetch("/api/admin/form/list");
+    const data = await res.json();
+    setFormResponses(data);
+  };
 
   useEffect(() => {
     fetchVisits();
+    fetchForms();
     const interval = setInterval(fetchVisits, 60000); // refresh every 1 min
     return () => clearInterval(interval);
   }, []);
@@ -204,23 +218,21 @@ export default function AdminVisits() {
     subtitle,
     color = "indigo",
   }) => (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+    <div className="bg-[#f9fafb] p-6 rounded-2xl shadow-xl border border-[#f9fafb] backdrop-blur-sm hover:shadow-2xl transition-all duration-300">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
             <div
-              className={`p-3 rounded-xl bg-gradient-to-r from-${color}-500/20 to-${color}-600/20 border border-${color}-500/30`}
+              className={`p-3 rounded-xl bg-[#b5b5b6] border border-${color}-500/30`}
             >
-              <Icon className={`w-6 h-6 text-${color}-400`} />
+              <Icon className={`w-6 h-6 text-[#000000]`} />
             </div>
-            <span className="text-gray-400 text-sm font-medium">{title}</span>
+            <span className="text-[#111827] text-sm font-medium">{title}</span>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors">
-              {value}
-            </div>
+            <div className="text-3xl font-bold text-[#111827]">{value}</div>
             {subtitle && (
-              <div className="text-gray-500 text-sm">{subtitle}</div>
+              <div className="text-[#22c55e] text-xs font-bold">{subtitle}</div>
             )}
           </div>
         </div>
@@ -228,9 +240,16 @@ export default function AdminVisits() {
     </div>
   );
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 20; // how many rows per page
+
+  const totalPages = Math.ceil(filteredVisits.length / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const currentData = filteredVisits.slice(startIndex, startIndex + pageSize);
+
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <div className="min-h-screen flex items-center justify-center bg-white text-black">
         <form
           onSubmit={handleLogin}
           className="bg-gray-800 p-8 rounded-2xl shadow-xl w-96 space-y-6"
@@ -266,10 +285,10 @@ export default function AdminVisits() {
   }
 
   return (
-    <div className="min-h-screen text-white">
-      <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-gray-900/70 backdrop-blur-md">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">
-          Admin Dashboard
+    <div className="min-h-screen text-white bg-[#F6F6ED]">
+      <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-[#F6F6ED] backdrop-blur-md">
+        <h1 className="text-2xl font-bold bg-[#111827] bg-clip-text text-transparent">
+          Dashboard
         </h1>
         <div className="flex items-center gap-4">
           <button
@@ -297,10 +316,10 @@ export default function AdminVisits() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-indigo-300 bg-clip-text text-transparent mb-2">
+            <h1 className="text-4xl font-bold bg-[#111827] bg-clip-text text-transparent mb-0">
               Visitor Analytics
             </h1>
-            <p className="text-gray-400 flex items-center gap-2">
+            <p className="text-gray-600 flex items-center gap-2">
               <Activity className="w-4 h-4" /> Real-time visitor tracking and
               insights
             </p>
@@ -324,7 +343,7 @@ export default function AdminVisits() {
           <select
             value={countryFilter}
             onChange={(e) => setCountryFilter(e.target.value)}
-            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+            className="px-3 py-2 bg-[#e5e7eb] rounded-sm text-black font-bold"
           >
             <option value="">All Countries</option>
             {[...new Set(visits.map((v) => v.country))].map((c) => (
@@ -337,7 +356,7 @@ export default function AdminVisits() {
           <select
             value={cityFilter}
             onChange={(e) => setCityFilter(e.target.value)}
-            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+            className="px-3 py-2 bg-[#e5e7eb] rounded-sm text-black font-bold"
           >
             <option value="">All Cities</option>
             {[...new Set(visits.map((v) => v.city))].map((c) => (
@@ -350,7 +369,7 @@ export default function AdminVisits() {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className="px-3 py-2 bg-gray-800 rounded-lg border border-gray-600"
+            className="px-3 py-2 bg-[#e5e7eb] rounded-sm text-black font-bold"
           >
             <option value="all">All Time</option>
             <option value="1h">Last 1 Hour</option>
@@ -423,10 +442,10 @@ export default function AdminVisits() {
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Pie Chart */}
-          <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm">
+          <div className="bg-[#f9fafb] p-6 rounded-2xl shadow-xl backdrop-blur-md">
             <div className="flex items-center gap-3 mb-6">
               <Globe className="w-6 h-6 text-indigo-400" />
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-[#111827]">
                 Top Countries
               </h2>
             </div>
@@ -458,8 +477,8 @@ export default function AdminVisits() {
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: "#1f2937",
-                        border: "1px solid #374151",
+                        backgroundColor: "#f9fafb",
+                        border: "1px solid #f9fafb",
                         borderRadius: "12px",
                         color: "white",
                       }}
@@ -475,10 +494,10 @@ export default function AdminVisits() {
           </div>
 
           {/* Hourly Trend */}
-          <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 p-6 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm">
+          <div className="bg-[#f9fafb] p-6 rounded-2xl shadow-xl backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-green-400" />
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-[#111827]">
                 24h Visitor Trend
               </h2>
             </div>
@@ -522,100 +541,209 @@ export default function AdminVisits() {
           </div>
         </div>
 
-        {/* Visitors Table */}
-        <div className="bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 rounded-2xl shadow-xl border border-gray-700/50 backdrop-blur-sm overflow-hidden">
-          <div className="p-6 border-b border-gray-700/50">
-            <div className="flex items-center gap-3">
-              <Activity className="w-6 h-6 text-blue-400" />
-              <h2 className="text-xl font-semibold text-white">
-                Recent Visitors
-              </h2>
-              <span className="px-3 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30">
-                {filteredVisits.length} total
-              </span>
-            </div>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-800/50">
-                <tr>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
-                    IP Address
-                  </th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
-                    Country
-                  </th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
-                    City
-                  </th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
-                    Code
-                  </th>
-                  <th className="text-left py-4 px-6 text-gray-300 font-medium">
-                    Visited At
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {isLoading ? (
-                  <tr>
-                    <td colSpan={5} className="text-center py-12">
-                      <div className="flex items-center justify-center gap-2">
-                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-400"></div>
-                        <span className="text-gray-400">
-                          Loading visitors...
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                ) : filteredVisits.length === 0 ? (
-                  <tr>
-                    <td colSpan={5} className="text-center py-12">
-                      <div className="text-gray-500">
-                        <Globe className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                        <p className="text-lg font-medium">No visitors found</p>
-                      </div>
-                    </td>
-                  </tr>
-                ) : (
-                  filteredVisits.map((visitor, index) => (
-                    <tr
-                      key={visitor.id || index}
-                      className="border-b border-gray-700/30 hover:bg-gray-800/30 transition-colors group"
-                    >
-                      <td className="py-4 px-6">
-                        <code className="px-2 py-1 bg-gray-800 rounded text-sm text-blue-300 font-mono">
-                          {visitor.ip}
-                        </code>
-                      </td>
-                      <td className="py-4 px-6">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-sm flex items-center justify-center text-xs font-bold">
-                            {visitor.countryCode}
+        <Tabs defaultValue="visitors" className="w-full">
+          <TabsList className="bg-[#2563eb] p-2 rounded-xl">
+            <TabsTrigger value="visitors">Visitors</TabsTrigger>
+            {/* <TabsTrigger value="forms">Form Submissions</TabsTrigger> */}
+          </TabsList>
+
+          {/* Visitors Table */}
+          <TabsContent value="visitors" className="mt-6">
+            <div className="bg-[#f9fafb] rounded-2xl shadow-xl overflow-hidden">
+              {/* Header */}
+              <div className="p-6 border-b border-gray-200">
+                <div className="flex items-center gap-3">
+                  <Activity className="w-6 h-6 text-blue-500" />
+                  <h2 className="text-xl font-semibold text-[#111827]">
+                    Recent Visitors
+                  </h2>
+                  <span className="px-3 py-1 text-xs bg-gray-200 rounded-full text-[#111827]">
+                    {filteredVisits.length} total
+                  </span>
+                </div>
+              </div>
+
+              {/* Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                        IP Address
+                      </th>
+                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                        Country
+                      </th>
+                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                        City
+                      </th>
+                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                        Code
+                      </th>
+                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                        Visited At
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {isLoading ? (
+                      <tr>
+                        <td colSpan={5} className="text-center py-12">
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-400"></div>
+                            <span className="text-gray-500">
+                              Loading visitors...
+                            </span>
                           </div>
-                          <span className="text-white group-hover:text-indigo-300 transition-colors">
-                            {visitor.country}
-                          </span>
-                        </div>
+                        </td>
+                      </tr>
+                    ) : currentData.length === 0 ? (
+                      <tr>
+                        <td colSpan={5} className="text-center py-12">
+                          <div className="text-gray-500">
+                            <Globe className="w-12 h-12 mx-auto mb-3 opacity-50" />
+                            <p className="text-lg font-medium">
+                              No visitors found
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      currentData.map((visitor, index) => (
+                        <tr
+                          key={visitor.id || index}
+                          className="border-t hover:bg-gray-50 transition-colors"
+                        >
+                          <td className="py-4 px-6">
+                            <code className="px-2 py-1 rounded text-sm text-[#111827] font-mono">
+                              {visitor.ip}
+                            </code>
+                          </td>
+                          <td className="py-4 px-6">
+                            <span className="text-[#111827]">
+                              {visitor.country}
+                            </span>
+                          </td>
+                          <td className="py-4 px-6 text-[#2563eb]">
+                            {visitor.city || "-"}
+                          </td>
+                          <td className="py-4 px-6">
+                            <span className="px-2 py-1 bg-[#22c55e]/20 text-[#22c55e] rounded text-sm font-medium">
+                              {visitor.countryCode}
+                            </span>
+                          </td>
+                          <td className="py-4 px-6 text-[#111827] font-mono text-sm">
+                            {new Date(visitor.visitedAt).toLocaleString()}
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              {!isLoading && filteredVisits.length > 0 && (
+                <div className="flex items-center justify-between p-4 border-t bg-white">
+                  <button
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage((p) => p - 1)}
+                    className="px-3 py-1 text-sm rounded bg-gray-200 text-gray-700 disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+
+                  <div className="flex items-center gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        className={`px-3 py-1 text-sm rounded ${
+                          currentPage === i + 1
+                            ? "bg-blue-500 text-white"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage((p) => p + 1)}
+                    className="px-3 py-1 text-sm rounded bg-gray-200 text-gray-700 disabled:opacity-50"
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
+          </TabsContent>
+          {/* <TabsContent value="forms" className="mt-6">
+            <div className="bg-white rounded-lg p-4 overflow-x-auto">
+              <h2 className="text-xl text-[#111827] mb-4">Form Submissions</h2>
+              <table className="w-full border text-sm">
+                <thead>
+                  <tr className="bg-gray-800 text-gray-300">
+                    <th className="p-2">Interest</th>
+                    <th className="p-2">Business Name</th>
+                    <th className="p-2">Contact Person</th>
+                    <th className="p-2">Designation</th>
+                    <th className="p-2">Phone</th>
+                    <th className="p-2">Email</th>
+                    <th className="p-2">Website</th>
+                    <th className="p-2">Address</th>
+                    <th className="p-2">Industry</th>
+                    <th className="p-2">Years</th>
+                    <th className="p-2">Audience</th>
+                    <th className="p-2">Competitors</th>
+                    <th className="p-2">Online Website</th>
+                    <th className="p-2">Social Handles</th>
+                    <th className="p-2">Running Ads</th>
+                    <th className="p-2">Ad Platforms</th>
+                    <th className="p-2">Goals</th>
+                    <th className="p-2">Budget</th>
+                    <th className="p-2">Timeline</th>
+                    <th className="p-2">Notes</th>
+                    <th className="p-2">Submitted At</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {formResponses.map((r, i) => (
+                    <tr key={i} className="border-b border-gray-700">
+                      <td className="p-2 text-white">{r.interest}</td>
+                      <td className="p-2 text-gray-300">{r.businessName}</td>
+                      <td className="p-2 text-gray-300">{r.contactPerson}</td>
+                      <td className="p-2 text-gray-300">{r.designation}</td>
+                      <td className="p-2 text-gray-300">{r.phone}</td>
+                      <td className="p-2 text-gray-300">{r.email}</td>
+                      <td className="p-2 text-gray-300">{r.website}</td>
+                      <td className="p-2 text-gray-300">{r.address}</td>
+                      <td className="p-2 text-gray-300">{r.industry}</td>
+                      <td className="p-2 text-gray-300">{r.years}</td>
+                      <td className="p-2 text-gray-300">{r.audience}</td>
+                      <td className="p-2 text-gray-300">{r.competitors}</td>
+                      <td className="p-2 text-gray-300">{r.onlineWebsite}</td>
+                      <td className="p-2 text-gray-300">{r.socialHandles}</td>
+                      <td className="p-2 text-gray-300">{r.runningAds}</td>
+                      <td className="p-2 text-gray-300">{r.adPlatforms}</td>
+                      <td className="p-2 text-gray-300">
+                        {Array.isArray(r.goals) ? r.goals.join(", ") : r.goals}
                       </td>
-                      <td className="py-4 px-6 text-gray-300">
-                        {visitor.city || "-"}
-                      </td>
-                      <td className="py-4 px-6">
-                        <span className="px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded text-sm font-medium">
-                          {visitor.countryCode}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 text-gray-400 font-mono text-sm">
-                        {new Date(visitor.visitedAt).toLocaleString()}
+                      <td className="p-2 text-gray-300">{r.budget}</td>
+                      <td className="p-2 text-gray-300">{r.timeline}</td>
+                      <td className="p-2 text-gray-300">{r.notes}</td>
+                      <td className="p-2 text-gray-400">
+                        {new Date(r.createdAt).toLocaleString()}
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </TabsContent> */}
+        </Tabs>
       </main>
     </div>
   );

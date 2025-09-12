@@ -127,7 +127,7 @@ export default function AboutPage() {
         <CompanyMilestones />
       </motion.div>
 
-      {/* <motion.div
+      <motion.div
         className="snap-start pt-24"
         initial="hidden"
         whileInView="visible"
@@ -135,7 +135,7 @@ export default function AboutPage() {
         variants={fadeUp}
       >
         <Team2 />
-      </motion.div> */}
+      </motion.div>
 
       <motion.div
         className="snap-start pt-20"
