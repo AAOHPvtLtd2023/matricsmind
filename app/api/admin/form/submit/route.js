@@ -153,6 +153,12 @@ export async function POST(req) {
               data.additionalNotes || "-"
             }</td>
           </tr>
+          <tr>
+            <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Promo Code</td>
+            <td style="padding: 6px; border: 1px solid #ddd;">${
+              data.promoCode || "-"
+            }</td>
+          </tr>
         </tbody>
       </table>
     </div>

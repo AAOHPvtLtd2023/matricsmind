@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import Image from "next/image";
+
+import poster from "../../public/images/web1.jpg";
 
 export default function EmailForm() {
   const [step, setStep] = useState(1);
@@ -24,6 +27,7 @@ export default function EmailForm() {
     budget: "",
     timeline: "",
     additionalNotes: "",
+    promoCode:"",
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -190,9 +194,9 @@ export default function EmailForm() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                     step > s.number
-                      ? "bg-pink-500 text-white"
+                      ? "bg-[#1c3784] text-white"
                       : step === s.number
-                      ? "bg-purple-500 text-white"
+                      ? "bg-[#1c378480] text-white"
                       : "bg-gray-700 text-gray-400"
                   }`}
                 >
@@ -204,7 +208,7 @@ export default function EmailForm() {
           </div>
           <div className="w-full bg-gray-700 rounded-full h-1">
             <div
-              className="bg-gradient-to-r from-pink-500 to-purple-500 h-1 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-[#ff9100] to-[#1c378480] h-1 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -221,7 +225,7 @@ export default function EmailForm() {
               <div className="space-y-3">
                 <button
                   type="button"
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-[#ff9100] to-[#ff910080] text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                   onClick={() => {
                     updateFormData("interest", "Interested");
                     setStep(2);
@@ -240,6 +244,7 @@ export default function EmailForm() {
                   Not Right Now
                 </button>
               </div>
+              <Image src={poster} className="w-fit mt-3 rounded-sm" />
             </div>
           )}
 
@@ -387,6 +392,11 @@ export default function EmailForm() {
                 value={formData.additionalNotes}
                 onChange={updateFormData.bind(null, "additionalNotes")}
                 rows={4}
+              />
+              <InputField
+                placeholder="Promo Code"
+                value={formData.promoCode}
+                onChange={updateFormData.bind(null, "promocode")}
               />
 
               <button
