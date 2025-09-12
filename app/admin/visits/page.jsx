@@ -586,7 +586,7 @@ export default function AdminVisits() {
         </div>
 
         <Tabs defaultValue="visitors" className="w-full">
-          <TabsList className="bg-[#2563eb] p-5 rounded-xl space-x-2 space-y-2">
+          <TabsList className="bg-[#2563eb] p-2 rounded-xl space-x-2">
             <TabsTrigger
               value="visitors"
               className="data-[state=active]:bg-white data-[state=active]:text-[#2563eb] 
@@ -596,15 +596,14 @@ export default function AdminVisits() {
             </TabsTrigger>
 
             {/* Uncomment if needed */}
-            {/*   
-  <TabsTrigger
-    value="forms"
-    className="data-[state=active]:bg-white data-[state=active]:text-[#2563eb] 
+
+            <TabsTrigger
+              value="forms"
+              className="data-[state=active]:bg-white data-[state=active]:text-[#2563eb] 
                text-white rounded-lg px-4 py-2 transition-colors"
-  >
-    Form Submissions
-  </TabsTrigger> 
-  */}
+            >
+              Form Submissions
+            </TabsTrigger>
           </TabsList>
 
           {/* Visitors Table */}
@@ -743,12 +742,12 @@ export default function AdminVisits() {
               )}
             </div>
           </TabsContent>
-          {/* <TabsContent value="forms" className="mt-6">
+          <TabsContent value="forms" className="mt-6">
             <div className="bg-white rounded-lg p-4 overflow-x-auto">
               <h2 className="text-xl text-[#111827] mb-4">Form Submissions</h2>
               <table className="w-full border text-sm">
                 <thead>
-                  <tr className="bg-gray-800 text-gray-300">
+                  <tr className="bg-gray-300 text-gray-800">
                     <th className="p-2">Interest</th>
                     <th className="p-2">Business Name</th>
                     <th className="p-2">Contact Person</th>
@@ -775,29 +774,35 @@ export default function AdminVisits() {
                 <tbody>
                   {formResponses.map((r, i) => (
                     <tr key={i} className="border-b border-gray-700">
-                      <td className="p-2 text-white">{r.interest}</td>
-                      <td className="p-2 text-gray-300">{r.businessName}</td>
-                      <td className="p-2 text-gray-300">{r.contactPerson}</td>
-                      <td className="p-2 text-gray-300">{r.designation}</td>
-                      <td className="p-2 text-gray-300">{r.phone}</td>
-                      <td className="p-2 text-gray-300">{r.email}</td>
-                      <td className="p-2 text-gray-300">{r.website}</td>
-                      <td className="p-2 text-gray-300">{r.address}</td>
-                      <td className="p-2 text-gray-300">{r.industry}</td>
-                      <td className="p-2 text-gray-300">{r.years}</td>
-                      <td className="p-2 text-gray-300">{r.audience}</td>
-                      <td className="p-2 text-gray-300">{r.competitors}</td>
-                      <td className="p-2 text-gray-300">{r.onlineWebsite}</td>
-                      <td className="p-2 text-gray-300">{r.socialHandles}</td>
-                      <td className="p-2 text-gray-300">{r.runningAds}</td>
-                      <td className="p-2 text-gray-300">{r.adPlatforms}</td>
-                      <td className="p-2 text-gray-300">
+                      <td className="p-2 text-green-500">{r.interest}</td>
+                      <td className="p-2 text-black font-bold">
+                        {r.businessName}
+                      </td>
+                      <td className="p-2 text-black font-bold">
+                        {r.contactPerson}
+                      </td>
+                      <td className="p-2 text-black">{r.designation}</td>
+                      <td className="p-2 text-red-500">{r.phone}</td>
+                      <td className="p-2 text-blue-500">{r.email}</td>
+                      <td className="p-2 text-black">
+                        <p>{r.website}</p>
+                      </td>
+                      <td className="p-2 text-black">{r.address}</td>
+                      <td className="p-2 text-black">{r.industry}</td>
+                      <td className="p-2 text-black">{r.years}</td>
+                      <td className="p-2 text-black">{r.audience}</td>
+                      <td className="p-2 text-black">{r.competitors}</td>
+                      <td className="p-2 text-black">{r.onlineWebsite}</td>
+                      <td className="p-2 text-black">{r.socialHandles}</td>
+                      <td className="p-2 text-black">{r.runningAds}</td>
+                      <td className="p-2 text-black">{r.adPlatforms}</td>
+                      <td className="p-2 text-black">
                         {Array.isArray(r.goals) ? r.goals.join(", ") : r.goals}
                       </td>
-                      <td className="p-2 text-gray-300">{r.budget}</td>
-                      <td className="p-2 text-gray-300">{r.timeline}</td>
-                      <td className="p-2 text-gray-300">{r.notes}</td>
-                      <td className="p-2 text-gray-400">
+                      <td className="p-2 text-black">{r.budget}</td>
+                      <td className="p-2 text-black">{r.timeline}</td>
+                      <td className="p-2 text-black">{r.notes}</td>
+                      <td className="p-2 text-black">
                         {new Date(r.createdAt).toLocaleString()}
                       </td>
                     </tr>
@@ -805,7 +810,7 @@ export default function AdminVisits() {
                 </tbody>
               </table>
             </div>
-          </TabsContent> */}
+          </TabsContent>
         </Tabs>
       </main>
     </div>

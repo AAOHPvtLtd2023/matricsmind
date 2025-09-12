@@ -40,9 +40,9 @@ export default function ClientLayout({ children }) {
   const hideHeader =
     (pathname?.startsWith("/blog/") && pathname !== "/blog") ||
     (pathname?.startsWith("/projects/") && pathname !== "/projects") ||
-    pathname === "/admin/visits" || pathname ==="/admin/form";
+    pathname === "/admin/visits" || pathname ==="/form";
 
-  const hideFooter = pathname === "/admin/visits" || pathname ==="/admin/form";
+  const hideFooter = pathname === "/admin/visits" || pathname ==="/form";
 
   return (
     <html lang="en">

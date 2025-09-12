@@ -57,12 +57,12 @@ export default function EmailForm() {
 
   if (submitted) {
     return (
-      <div className="p-8 max-w-md mx-auto text-center bg-white rounded-2xl shadow-xl">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-8 h-8 text-green-600" />
+      <div className="p-8 max-w-md mx-auto text-center bg-gray-900 rounded-2xl shadow-xl">
+        <div className="w-16 h-16 bg-purple-800 rounded-full flex items-center justify-center mx-auto mb-6">
+          <CheckCircle className="w-8 h-8 text-pink-500" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Thank you!</h1>
-        <p className="text-gray-600">We’ve received your details and will connect with you shortly.</p>
+        <h1 className="text-2xl font-bold text-white mb-4">Thank you!</h1>
+        <p className="text-gray-300">We’ve received your details and will connect with you shortly.</p>
       </div>
     );
   }
@@ -80,19 +80,18 @@ export default function EmailForm() {
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: "" }));
   };
 
-  const InputField = ({ type = "text", placeholder, value, onChange, error, required = false }) => (
+  const InputField = ({ type = "text", placeholder, value, onChange, error }) => (
     <div className="mb-4">
       <input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
-          error ? "border-red-300 focus:border-red-500" : "border-gray-200 focus:border-blue-500"
+        className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all bg-gray-800 text-white ${
+          error ? "border-red-500" : "border-gray-700"
         }`}
-        required={required}
       />
-      {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+      {error && <p className="text-sm text-red-400 mt-1">{error}</p>}
     </div>
   );
 
@@ -101,7 +100,7 @@ export default function EmailForm() {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all bg-gray-800 text-white"
       >
         <option value="">{placeholder}</option>
         {options.map((opt) => (
@@ -113,26 +112,25 @@ export default function EmailForm() {
     </div>
   );
 
-  const TextareaField = ({ placeholder, value, onChange, rows = 3, className = "" }) => (
+  const TextareaField = ({ placeholder, value, onChange, rows = 3 }) => (
     <div className="mb-4">
       <textarea
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
-        className={`w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none ${className}`}
+        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all resize-none bg-gray-800 text-white"
       />
     </div>
   );
 
-  // Options
   const industries = ["Technology", "Retail", "Education", "Healthcare", "Hospitality", "Finance", "Real Estate", "Other"];
   const years = ["<1 Year", "1-3 Years", "3-5 Years", "5-10 Years", "10+ Years"];
   const goals = ["Brand Awareness", "Lead Generation", "Website Traffic", "Online Sales", "Social Media Growth", "Other"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
-      <div className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-lg">
+    <div className="min-h-screen bg-gray-900 py-8">
+      <div className="max-w-md mx-auto p-6 bg-gray-800 rounded-2xl shadow-2xl">
         {/* Stepper */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
@@ -141,21 +139,21 @@ export default function EmailForm() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                     step > s.number
-                      ? "bg-green-500 text-white"
+                      ? "bg-pink-500 text-white"
                       : step === s.number
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-gray-500"
+                      ? "bg-purple-500 text-white"
+                      : "bg-gray-700 text-gray-400"
                   }`}
                 >
                   {step > s.number ? "✓" : s.number}
                 </div>
-                <span className="text-xs text-gray-500 mt-1">{s.title}</span>
+                <span className="text-xs text-gray-400 mt-1">{s.title}</span>
               </div>
             ))}
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1">
+          <div className="w-full bg-gray-700 rounded-full h-1">
             <div
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-1 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pink-500 to-purple-500 h-1 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -166,11 +164,11 @@ export default function EmailForm() {
           {step === 1 && (
             <div className="text-center">
               <div className="text-4xl mb-4">{steps[0].icon}</div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-6">Are you interested?</h1>
+              <h1 className="text-2xl font-bold text-white mb-6">Are you interested?</h1>
               <div className="space-y-3">
                 <button
                   type="button"
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                   onClick={() => {
                     updateFormData("interest", "Interested");
                     setStep(2);
@@ -180,7 +178,7 @@ export default function EmailForm() {
                 </button>
                 <button
                   type="button"
-                  className="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-full bg-gray-700 text-gray-300 py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                   onClick={() => {
                     updateFormData("interest", "Not Interested");
                     setSubmitted(true);
@@ -192,10 +190,10 @@ export default function EmailForm() {
             </div>
           )}
 
-          {/* STEP 2: Basic Info */}
+          {/* STEP 2 and 3: same structure, just dark theme for inputs/buttons */}
           {step === 2 && (
             <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center">
                 {steps[1].icon} {steps[1].title}
               </h2>
               <InputField
@@ -203,15 +201,12 @@ export default function EmailForm() {
                 value={formData.businessName}
                 onChange={updateFormData.bind(null, "businessName")}
                 error={errors.businessName}
-                required
-                className="text-red-500"
               />
               <InputField
                 placeholder="Contact Person"
                 value={formData.contactPerson}
                 onChange={updateFormData.bind(null, "contactPerson")}
                 error={errors.contactPerson}
-                required
               />
               <InputField
                 type="email"
@@ -219,7 +214,6 @@ export default function EmailForm() {
                 value={formData.email}
                 onChange={updateFormData.bind(null, "email")}
                 error={errors.email}
-                required
               />
               <InputField
                 type="tel"
@@ -230,7 +224,7 @@ export default function EmailForm() {
               <div className="flex space-x-3 pt-2">
                 <button
                   type="button"
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-300 transition-colors flex items-center justify-center"
+                  className="flex-1 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors flex items-center justify-center"
                   onClick={() => setStep(1)}
                 >
                   <ArrowLeft className="w-5 h-5 mr-2" />
@@ -238,7 +232,7 @@ export default function EmailForm() {
                 </button>
                 <button
                   type="button"
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center"
+                  className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center"
                   onClick={() => {
                     if (validateStep(2)) setStep(3);
                   }}
@@ -250,10 +244,9 @@ export default function EmailForm() {
             </div>
           )}
 
-          {/* STEP 3: Business & Marketing */}
           {step === 3 && (
             <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center">
                 {steps[2].icon} {steps[2].title}
               </h2>
               <SelectField
@@ -292,12 +285,11 @@ export default function EmailForm() {
                 />
               )}
 
-              {/* Marketing Goals (multi-checkbox) */}
               <div className="mb-4">
-                <p className="text-sm font-semibold mb-2 text-gray-700">Marketing Goals</p>
+                <p className="text-sm font-semibold mb-2 text-gray-300">Marketing Goals</p>
                 <div className="grid grid-cols-1 gap-2">
                   {goals.map((goal) => (
-                    <label key={goal} className="flex items-center space-x-2">
+                    <label key={goal} className="flex items-center space-x-2 text-white">
                       <input
                         type="checkbox"
                         checked={formData.marketingGoals.includes(goal)}
@@ -311,6 +303,7 @@ export default function EmailForm() {
                             );
                           }
                         }}
+                        className="accent-pink-500"
                       />
                       <span>{goal}</span>
                     </label>
@@ -333,18 +326,17 @@ export default function EmailForm() {
                 value={formData.additionalNotes}
                 onChange={updateFormData.bind(null, "additionalNotes")}
                 rows={4}
-                className="text-black"
               />
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 Submit Form
               </button>
               <button
                 type="button"
-                className="w-full mt-3 bg-gray-200 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-300 transition-colors"
+                className="w-full mt-3 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors"
                 onClick={() => setStep(2)}
               >
                 <ArrowLeft className="w-5 h-5 inline mr-2" />
