@@ -1,173 +1,183 @@
+
+
 const WORD_LINKS = {
   "matrics mind": {
     url: "https://matricsmind.com",
     tooltip: "Visit Matrics Mind - Your Digital Solutions Partner",
-    // className: "text-[#ff9100] font-semibold hover:border-blue-400 ",
   },
   "visual production": {
     url: "https://www.matricsmind.com/services/videoproduction",
     tooltip: "Professional Visual Production Services",
-    // className: "text-[#ff9100] font-semibold hover:border-purple-400",
   },
   "tech production": {
     url: "https://www.matricsmind.com/services/website",
     tooltip: "Advanced Tech Production Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-green-400",
   },
   advertising: {
     url: "https://matricsmind.com/advertising",
     tooltip: "Creative Advertising Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-orange-400",
   },
   seo: {
     url: "https://matricsmind.com/seo",
     tooltip: "Search Engine Optimization Services",
-    // className: "text-[#ff9100] font-semibold hover:border-red-400",
   },
   "digital marketing": {
     url: "https://matricsmind.com/digital-marketing",
     tooltip: "Complete Digital Marketing Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-indigo-400",
   },
   "web development": {
     url: "https://matricsmind.com/web-development",
     tooltip: "Custom Web Development Services",
-    // className: "text-[#ff9100] font-semibold hover:border-teal-400",
   },
   "brand strategy": {
     url: "https://matricsmind.com/brand-strategy",
     tooltip: "Strategic Brand Development",
-    // className: "text-[#ff9100] font-semibold hover:border-pink-400",
   },
-  "Abu Dhabi": {
+  "abu dhabi": {
     url: "https://en.wikipedia.org/wiki/Abu_Dhabi",
     tooltip: "Abu Dhabi - The Capital of the UAE",
-    // className: "text-[#ff9100] font-semibold hover:border-blue-400",
   },
-  UAE: {
+  uae: {
     url: "https://en.wikipedia.org/wiki/United_Arab_Emirates",
     tooltip: "United Arab Emirates",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  "Saudi Arabia": {
+  "saudi arabia": {
     url: "https://en.wikipedia.org/wiki/Saudi_Arabia",
     tooltip: "Saudi Arabia",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Qatar: {
+  qatar: {
     url: "https://en.wikipedia.org/wiki/Qatar",
     tooltip: "Qatar",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Bahrain: {
+  bahrain: {
     url: "https://en.wikipedia.org/wiki/Bahrain",
     tooltip: "Bahrain",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Kuwait: {
+  kuwait: {
     url: "https://en.wikipedia.org/wiki/Kuwait",
     tooltip: "Kuwait",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Oman: {
+  oman: {
     url: "https://en.wikipedia.org/wiki/Oman",
     tooltip: "Oman",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Canada: {
+  canada: {
     url: "https://en.wikipedia.org/wiki/Canada",
     tooltip: "Canada",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  India: {
+  india: {
     url: "https://en.wikipedia.org/wiki/India",
     tooltip: "India",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Australia: {
+  australia: {
     url: "https://en.wikipedia.org/wiki/Australia",
     tooltip: "Australia",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  UK: {
+  uk: {
     url: "https://en.wikipedia.org/wiki/United_Kingdom",
     tooltip: "United Kingdom",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  USA: {
+  usa: {
     url: "https://en.wikipedia.org/wiki/United_States",
     tooltip: "United States",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  Pharmaceutical:{
+  pharmaceutical: {
     url: "https://en.wikipedia.org/wiki/Medicine",
     tooltip: "Pharmaceutical Industry Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400", 
   },
-  healthcare:{
+  healthcare: {
     url: "https://en.wikipedia.org/wiki/Health",
     tooltip: "Healthcare Industry Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  physicians:{
+  physicians: {
     url: "https://en.wikipedia.org/wiki/Physician",
     tooltip: "Physician Services",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  clinics:{
+  clinics: {
     url: "https://en.wikipedia.org/wiki/Clinic",
     tooltip: "Clinic Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  hospitals:{
+  hospitals: {
     url: "https://en.wikipedia.org/wiki/Hospital",
     tooltip: "Hospital Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  medicalcenters:{
+  medicalcenters: {
     url: "https://en.wikipedia.org/wiki/Medical_center",
     tooltip: "Medical Center Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  doctors:{
+  doctors: {
     url: "https://simple.wikipedia.org/wiki/Doctor_(title)",
     tooltip: "Doctor Services",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  B2B:{
+  b2b: {
     url: "https://en.wikipedia.org/wiki/Business-to-business",
     tooltip: "B2B Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  B2C:{
+  b2c: {
     url: "https://en.wikipedia.org/wiki/Business-to-consumer",
     tooltip: "B2C Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  ecommerce:{
+  ecommerce: {
     url: "https://en.wikipedia.org/wiki/E-commerce",
     tooltip: "E-commerce Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  health:{
+  health: {
     url: "https://www.who.int/",
     tooltip: "Health Industry Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  wellness:{
+  wellness: {
     url: "https://en.wikipedia.org/wiki/Wellness",
     tooltip: "Wellness Industry Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  AI:{
+  ai: {
     url: "https://en.wikipedia.org/wiki/Artificial_intelligence",
     tooltip: "AI Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
   },
-  AR:{
+  ar: {
     url: "https://en.wikipedia.org/wiki/Augmented_reality",
     tooltip: "AR Solutions",
-    // className: "text-[#ff9100] font-semibold hover:border-yellow-400",
+  },
+
+  // 🔥 New terms detected from blog content
+  "google ads": {
+    url: "https://ads.google.com/",
+    tooltip: "Google Ads Platform",
+  },
+  "meta ads": {
+    url: "https://www.facebook.com/business/ads",
+    tooltip: "Meta Ads (Facebook & Instagram Advertising)",
+  },
+  "google analytics": {
+    url: "https://analytics.google.com/",
+    tooltip: "Google Analytics Tool",
+  },
+  "semrush": {
+    url: "https://www.semrush.com/",
+    tooltip: "SEMrush SEO Tool",
+  },
+  "ahrefs": {
+    url: "https://ahrefs.com/",
+    tooltip: "Ahrefs SEO Tool",
+  },
+  "google my business": {
+    url: "https://www.google.com/business/",
+    tooltip: "Google My Business Listing",
+  },
+  "ppc": {
+    url: "https://en.wikipedia.org/wiki/Pay-per-click",
+    tooltip: "Pay-Per-Click Advertising",
+  },
+  "voice search": {
+    url: "https://en.wikipedia.org/wiki/Voice_search",
+    tooltip: "Voice Search Optimization",
+  },
+  "youtube": {
+    url: "https://www.youtube.com/",
+    tooltip: "YouTube Video Marketing",
+  },
+  google:{
+    url:"https://google.com/",
+    tooltip:"Google"
   }
 };
 

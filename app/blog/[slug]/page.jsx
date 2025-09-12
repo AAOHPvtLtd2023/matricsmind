@@ -402,7 +402,7 @@ export default function BlogSlugPage({ params = {} }) {
                   key={i}
                   href={cfg.url}
                   tooltip={cfg.tooltip}
-                  className={`block ${cfg.className} hover:bg-gray-50 p-2 rounded-lg capitalize text-sm`}
+                  className={`block ${cfg.className} text-gray-900 hover:bg-gray-50 p-2 rounded-lg capitalize text-sm`}
                   onClick={(e) => {
                     e.preventDefault();
                     window.open(cfg.url, "_blank", "noopener,noreferrer");
