@@ -22,6 +22,8 @@ import {
   Activity,
   LogOut,
   Download,
+  Menu,
+  X,
 } from "lucide-react";
 import {
   Tabs,
@@ -36,6 +38,7 @@ export default function AdminVisits() {
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [formResponses, setFormResponses] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // 🔑 Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -286,11 +289,14 @@ export default function AdminVisits() {
 
   return (
     <div className="min-h-screen text-white bg-[#F6F6ED]">
-      <header className="flex items-center justify-between p-6 border-b border-gray-700/50 bg-[#F6F6ED] backdrop-blur-md">
-        <h1 className="text-2xl font-bold bg-[#111827] bg-clip-text text-transparent">
+      <header className="relative flex items-center justify-between p-4 md:p-6 border-b border-gray-700/50 bg-[#F6F6ED] backdrop-blur-md z-50">
+        {/* Title */}
+        <h1 className="text-xl md:text-2xl font-bold bg-[#111827] bg-clip-text text-transparent">
           Dashboard
         </h1>
-        <div className="flex items-center gap-4">
+
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-4">
           <button
             onClick={downloadJSON}
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-semibold"
@@ -309,6 +315,44 @@ export default function AdminVisits() {
           >
             <LogOut className="w-4 h-4" /> Logout
           </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="relative md:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 rounded-lg hover:bg-gray-200 transition"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6 text-black" />
+            ) : (
+              <Menu className="w-6 h-6 text-black" />
+            )}
+          </button>
+
+          {/* Mobile Dropdown */}
+          {isMenuOpen && (
+            <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-200 p-2 z-50 animate-fadeIn">
+              <button
+                onClick={downloadJSON}
+                className="flex items-center gap-3 w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg text-sm font-medium transition-colors"
+              >
+                <Download className="w-4 h-4 text-blue-500" /> JSON
+              </button>
+              <button
+                onClick={downloadCSV}
+                className="flex items-center gap-3 w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg text-sm font-medium transition-colors"
+              >
+                <Download className="w-4 h-4 text-green-500" /> CSV
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-3 w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg text-sm font-medium transition-colors"
+              >
+                <LogOut className="w-4 h-4 text-red-500" /> Logout
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -542,22 +586,38 @@ export default function AdminVisits() {
         </div>
 
         <Tabs defaultValue="visitors" className="w-full">
-          <TabsList className="bg-[#2563eb] p-2 rounded-xl">
-            <TabsTrigger value="visitors">Visitors</TabsTrigger>
-            {/* <TabsTrigger value="forms">Form Submissions</TabsTrigger> */}
+          <TabsList className="bg-[#2563eb] p-5 rounded-xl space-x-2 space-y-2">
+            <TabsTrigger
+              value="visitors"
+              className="data-[state=active]:bg-white data-[state=active]:text-[#2563eb] 
+               text-white rounded-lg px-4 py-2 transition-colors"
+            >
+              Visitors
+            </TabsTrigger>
+
+            {/* Uncomment if needed */}
+            {/*   
+  <TabsTrigger
+    value="forms"
+    className="data-[state=active]:bg-white data-[state=active]:text-[#2563eb] 
+               text-white rounded-lg px-4 py-2 transition-colors"
+  >
+    Form Submissions
+  </TabsTrigger> 
+  */}
           </TabsList>
 
           {/* Visitors Table */}
           <TabsContent value="visitors" className="mt-6">
             <div className="bg-[#f9fafb] rounded-2xl shadow-xl overflow-hidden">
               {/* Header */}
-              <div className="p-6 border-b border-gray-200">
+              <div className="p-4 md:p-6 border-b border-gray-200">
                 <div className="flex items-center gap-3">
-                  <Activity className="w-6 h-6 text-blue-500" />
-                  <h2 className="text-xl font-semibold text-[#111827]">
+                  <Activity className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />
+                  <h2 className="text-lg md:text-xl font-semibold text-[#111827]">
                     Recent Visitors
                   </h2>
-                  <span className="px-3 py-1 text-xs bg-gray-200 rounded-full text-[#111827]">
+                  <span className="px-2 md:px-3 py-1 text-xs bg-gray-200 rounded-full text-[#111827]">
                     {filteredVisits.length} total
                   </span>
                 </div>
@@ -565,22 +625,22 @@ export default function AdminVisits() {
 
               {/* Table */}
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full text-sm md:text-base">
                   <thead className="bg-gray-100">
                     <tr>
-                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
-                        IP Address
+                      <th className="text-left py-3 px-4 md:px-6 text-gray-600 font-medium">
+                        IP
                       </th>
-                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                      <th className="text-left py-3 px-4 md:px-6 text-gray-600 font-medium">
                         Country
                       </th>
-                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                      <th className="table-cell text-left py-3 px-6 text-gray-600 font-medium">
                         City
                       </th>
-                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                      <th className="text-left py-3 px-4 md:px-6 text-gray-600 font-medium">
                         Code
                       </th>
-                      <th className="text-left py-3 px-6 text-gray-600 font-medium">
+                      <th className="table-cell text-left py-3 px-6 text-gray-600 font-medium">
                         Visited At
                       </th>
                     </tr>
@@ -601,8 +661,8 @@ export default function AdminVisits() {
                       <tr>
                         <td colSpan={5} className="text-center py-12">
                           <div className="text-gray-500">
-                            <Globe className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                            <p className="text-lg font-medium">
+                            <Globe className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-3 opacity-50" />
+                            <p className="text-base md:text-lg font-medium">
                               No visitors found
                             </p>
                           </div>
@@ -614,25 +674,25 @@ export default function AdminVisits() {
                           key={visitor.id || index}
                           className="border-t hover:bg-gray-50 transition-colors"
                         >
-                          <td className="py-4 px-6">
-                            <code className="px-2 py-1 rounded text-sm text-[#111827] font-mono">
+                          <td className="py-3 px-4 md:px-6">
+                            <code className="px-2 py-1 rounded text-xs md:text-sm text-[#111827] font-mono">
                               {visitor.ip}
                             </code>
                           </td>
-                          <td className="py-4 px-6">
+                          <td className="py-3 px-4 md:px-6">
                             <span className="text-[#111827]">
                               {visitor.country}
                             </span>
                           </td>
-                          <td className="py-4 px-6 text-[#2563eb]">
+                          <td className="table-cell py-3 px-6 text-[#2563eb]">
                             {visitor.city || "-"}
                           </td>
-                          <td className="py-4 px-6">
-                            <span className="px-2 py-1 bg-[#22c55e]/20 text-[#22c55e] rounded text-sm font-medium">
+                          <td className="py-3 px-4 md:px-6">
+                            <span className="px-2 py-1 bg-[#22c55e]/20 text-[#22c55e] rounded text-xs md:text-sm font-medium">
                               {visitor.countryCode}
                             </span>
                           </td>
-                          <td className="py-4 px-6 text-[#111827] font-mono text-sm">
+                          <td className="table-cell py-3 px-6 text-[#111827] font-mono text-xs md:text-sm">
                             {new Date(visitor.visitedAt).toLocaleString()}
                           </td>
                         </tr>
@@ -644,16 +704,18 @@ export default function AdminVisits() {
 
               {/* Pagination */}
               {!isLoading && filteredVisits.length > 0 && (
-                <div className="flex items-center justify-between p-4 border-t bg-white">
+                <div className="flex items-center justify-between flex-wrap gap-2 p-3 md:p-4 border-t bg-white">
+                  {/* Previous */}
                   <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => p - 1)}
                     className="px-3 py-1 text-sm rounded bg-gray-200 text-gray-700 disabled:opacity-50"
                   >
-                    Previous
+                    Prev
                   </button>
 
-                  <div className="flex items-center gap-2">
+                  {/* Page numbers (hidden on small screens) */}
+                  <div className="hidden md:flex items-center gap-2">
                     {Array.from({ length: totalPages }, (_, i) => (
                       <button
                         key={i}
@@ -669,6 +731,7 @@ export default function AdminVisits() {
                     ))}
                   </div>
 
+                  {/* Next */}
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage((p) => p + 1)}
