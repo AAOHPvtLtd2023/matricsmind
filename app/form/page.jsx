@@ -31,27 +31,48 @@ export default function EmailForm() {
   const validateStep = (currentStep) => {
     const newErrors = {};
     if (currentStep === 2) {
-      if (!formData.businessName.trim()) newErrors.businessName = "Business name is required";
-      if (!formData.contactPerson.trim()) newErrors.contactPerson = "Contact person is required";
+      if (!formData.businessName.trim())
+        newErrors.businessName = "Business name is required";
+      if (!formData.contactPerson.trim())
+        newErrors.contactPerson = "Contact person is required";
       if (!formData.email.trim()) newErrors.email = "Email is required";
-      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email is invalid";
+      else if (!/\S+@\S+\.\S+/.test(formData.email))
+        newErrors.email = "Email is invalid";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!validateStep(3)) return;
+
     try {
-      await fetch("/api/admin/form/submit", {
+      setLoading(true); // start loading
+
+      const res = await fetch("/api/admin/form/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      setSubmitted(true);
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setSubmitted(true);
+        console.log("Form submitted and email sent successfully!");
+      } else {
+        console.error("Submission failed:", result.error);
+        alert("Submission failed. Please try again.");
+      }
     } catch (error) {
       console.error("Submission error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false); // stop loading
     }
   };
 
@@ -62,7 +83,9 @@ export default function EmailForm() {
           <CheckCircle className="w-8 h-8 text-pink-500" />
         </div>
         <h1 className="text-2xl font-bold text-white mb-4">Thank you!</h1>
-        <p className="text-gray-300">We’ve received your details and will connect with you shortly.</p>
+        <p className="text-gray-300">
+          We’ve received your details and will connect with you shortly.
+        </p>
       </div>
     );
   }
@@ -80,7 +103,13 @@ export default function EmailForm() {
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: "" }));
   };
 
-  const InputField = ({ type = "text", placeholder, value, onChange, error }) => (
+  const InputField = ({
+    type = "text",
+    placeholder,
+    value,
+    onChange,
+    error,
+  }) => (
     <div className="mb-4">
       <input
         type={type}
@@ -124,9 +153,31 @@ export default function EmailForm() {
     </div>
   );
 
-  const industries = ["Technology", "Retail", "Education", "Healthcare", "Hospitality", "Finance", "Real Estate", "Other"];
-  const years = ["<1 Year", "1-3 Years", "3-5 Years", "5-10 Years", "10+ Years"];
-  const goals = ["Brand Awareness", "Lead Generation", "Website Traffic", "Online Sales", "Social Media Growth", "Other"];
+  const industries = [
+    "Technology",
+    "Retail",
+    "Education",
+    "Healthcare",
+    "Hospitality",
+    "Finance",
+    "Real Estate",
+    "Other",
+  ];
+  const years = [
+    "<1 Year",
+    "1-3 Years",
+    "3-5 Years",
+    "5-10 Years",
+    "10+ Years",
+  ];
+  const goals = [
+    "Brand Awareness",
+    "Lead Generation",
+    "Website Traffic",
+    "Online Sales",
+    "Social Media Growth",
+    "Other",
+  ];
 
   return (
     <div className="min-h-screen bg-gray-900 py-8">
@@ -164,7 +215,9 @@ export default function EmailForm() {
           {step === 1 && (
             <div className="text-center">
               <div className="text-4xl mb-4">{steps[0].icon}</div>
-              <h1 className="text-2xl font-bold text-white mb-6">Are you interested?</h1>
+              <h1 className="text-2xl font-bold text-white mb-6">
+                Are you interested?
+              </h1>
               <div className="space-y-3">
                 <button
                   type="button"
@@ -286,16 +339,24 @@ export default function EmailForm() {
               )}
 
               <div className="mb-4">
-                <p className="text-sm font-semibold mb-2 text-gray-300">Marketing Goals</p>
+                <p className="text-sm font-semibold mb-2 text-gray-300">
+                  Marketing Goals
+                </p>
                 <div className="grid grid-cols-1 gap-2">
                   {goals.map((goal) => (
-                    <label key={goal} className="flex items-center space-x-2 text-white">
+                    <label
+                      key={goal}
+                      className="flex items-center space-x-2 text-white"
+                    >
                       <input
                         type="checkbox"
                         checked={formData.marketingGoals.includes(goal)}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            updateFormData("marketingGoals", [...formData.marketingGoals, goal]);
+                            updateFormData("marketingGoals", [
+                              ...formData.marketingGoals,
+                              goal,
+                            ]);
                           } else {
                             updateFormData(
                               "marketingGoals",
@@ -330,10 +391,16 @@ export default function EmailForm() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                disabled={loading}
+                className={`w-full py-4 px-6 rounded-xl font-semibold shadow-lg transform hover:scale-105 transition-all duration-200 ${
+                  loading
+                    ? "bg-gray-400 text-gray-200 cursor-not-allowed"
+                    : "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:shadow-xl"
+                }`}
               >
-                Submit Form
+                {loading ? "Submitting..." : "Submit Form"}
               </button>
+
               <button
                 type="button"
                 className="w-full mt-3 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors"
