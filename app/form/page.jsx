@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import Image from "next/image";
-
 import poster from "../../public/images/web1.jpg";
 
 // -------------------
@@ -10,28 +9,36 @@ import poster from "../../public/images/web1.jpg";
 // -------------------
 function InputField({ type = "text", placeholder, value, onChange, error }) {
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all bg-gray-800 text-white ${
-          error ? "border-red-500" : "border-gray-700"
-        }`}
+        className={`w-full px-4 py-3 rounded-xl focus:outline-none transition-all bg-gray-800 text-white border-2 
+          ${
+            error
+              ? "border-[#ff910090] focus:ring-2 focus:ring-[#ff910090] "
+              : "border-gray-700 focus:ring-2 focus:ring-[#ff910090] "
+          }`}
       />
       {error && <p className="text-sm text-red-400 mt-1">{error}</p>}
     </div>
   );
 }
 
-function SelectField({ placeholder, value, onChange, options }) {
+function SelectField({ placeholder, value, onChange, options, error }) {
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all bg-gray-800 text-white"
+        className={`w-full px-4 py-3 rounded-xl focus:outline-none transition-all bg-gray-800 text-white border-2 
+          ${
+            error
+              ? "border-[#ff910090]  focus:ring-2 focus:ring-[#ff910090] "
+              : "border-gray-700 focus:ring-2 focus:ring-[#ff910090] "
+          }`}
       >
         <option value="">{placeholder}</option>
         {options.map((opt) => (
@@ -40,19 +47,20 @@ function SelectField({ placeholder, value, onChange, options }) {
           </option>
         ))}
       </select>
+      {error && <p className="text-sm text-red-400 mt-1">{error}</p>}
     </div>
   );
 }
 
 function TextareaField({ placeholder, value, onChange, rows = 3 }) {
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <textarea
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
-        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all resize-none bg-gray-800 text-white"
+        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all resize-none bg-gray-800 text-white"
       />
     </div>
   );
@@ -89,35 +97,50 @@ export default function EmailForm() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  // -------------------
+  // VALIDATION
+  // -------------------
   const validateStep = (currentStep) => {
     const newErrors = {};
+
+    // Step 2 validation
     if (currentStep === 2) {
-      if (!formData.businessName)
-        newErrors.businessName = "Business name is required";
-      if (!formData.contactPerson)
-        newErrors.contactPerson = "Contact person is required";
+      if (!formData.businessName) newErrors.businessName = "Business name is required";
+      if (!formData.contactPerson) newErrors.contactPerson = "Contact person is required";
       if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
         newErrors.email = "Valid email is required";
       }
+      if (!formData.phone) newErrors.phone = "Phone number is required";
     }
 
+    // Step 3 validation
     if (currentStep === 3) {
       if (!formData.industry) newErrors.industry = "Industry is required";
-      if (!formData.budget) newErrors.budget = "Budget is required";
-      // Optional extra rules
-      if (formData.runningAds && !formData.adPlatforms) {
+      if (!formData.yearsInBusiness) newErrors.yearsInBusiness = "Please select years in business";
+      if (!formData.targetAudience) newErrors.targetAudience = "Target audience is required";
+      // if (!formData.competitors) newErrors.competitors = "Competitors info is required";
+      if (!formData.runningAds) newErrors.runningAds = "Please select an option";
+      if (formData.runningAds === "Yes" && !formData.adPlatforms) {
         newErrors.adPlatforms = "Please specify ad platforms";
       }
+      if (!formData.marketingGoals.length) {
+        newErrors.marketingGoals = "Select at least one marketing goal";
+      }
+      if (!formData.budget) newErrors.budget = "Budget is required";
+      if (!formData.timeline) newErrors.timeline = "Timeline is required";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // -------------------
+  // SUBMIT HANDLER
+  // -------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateStep(3)) return; // ✅ now actually validates Step 3
+    if (!validateStep(3)) return; // Validate final step
 
     setLoading(true);
     try {
@@ -129,18 +152,7 @@ export default function EmailForm() {
 
       if (res.ok) {
         setSubmitted(true);
-        // Reset form & step (optional)
-        setFormData({
-          businessName: "",
-          contactPerson: "",
-          email: "",
-          phone: "",
-          industry: "",
-          budget: "",
-          runningAds: "",
-          adPlatforms: "",
-          objectives: "",
-        });
+        setFormData({});
         setStep(1);
       } else {
         alert("Something went wrong. Please try again.");
@@ -153,45 +165,27 @@ export default function EmailForm() {
     }
   };
 
+  // -------------------
+  // META
+  // -------------------
   const steps = [
     { number: 1, title: "Interest", icon: "💡" },
     { number: 2, title: "Basic Info", icon: "👤" },
     { number: 3, title: "Business & Marketing", icon: "🏢" },
   ];
-
   const progress = (step / steps.length) * 100;
-
   const updateFormData = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: "" }));
   };
 
-  const industries = [
-    "Technology",
-    "Retail",
-    "Education",
-    "Healthcare",
-    "Hospitality",
-    "Finance",
-    "Real Estate",
-    "Other",
-  ];
-  const years = [
-    "<1 Year",
-    "1-3 Years",
-    "3-5 Years",
-    "5-10 Years",
-    "10+ Years",
-  ];
-  const goals = [
-    "Brand Awareness",
-    "Lead Generation",
-    "Website Traffic",
-    "Online Sales",
-    "Social Media Growth",
-    "Other",
-  ];
+  const industries = ["Technology", "Retail", "Education", "Healthcare", "Hospitality", "Finance", "Real Estate", "Other"];
+  const years = ["<1 Year", "1-3 Years", "3-5 Years", "5-10 Years", "10+ Years"];
+  const goals = ["Brand Awareness", "Lead Generation", "Website Traffic", "Online Sales", "Social Media Growth", "Other"];
 
+  // -------------------
+  // THANK YOU SCREEN
+  // -------------------
   if (submitted) {
     return (
       <div className="p-8 max-w-md mx-auto text-center bg-gray-900 rounded-2xl shadow-xl">
@@ -199,13 +193,14 @@ export default function EmailForm() {
           <CheckCircle className="w-8 h-8 text-pink-500" />
         </div>
         <h1 className="text-2xl font-bold text-white mb-4">Thank you!</h1>
-        <p className="text-gray-300">
-          We’ve received your details and will connect with you shortly.
-        </p>
+        <p className="text-gray-300">We’ve received your details and will connect with you shortly.</p>
       </div>
     );
   }
 
+  // -------------------
+  // MAIN FORM
+  // -------------------
   return (
     <div className="min-h-screen bg-gray-900 py-8">
       <div className="max-w-md mx-auto p-6 bg-gray-800 rounded-2xl shadow-2xl">
@@ -215,13 +210,14 @@ export default function EmailForm() {
             {steps.map((s) => (
               <div key={s.number} className="flex flex-col items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                    step > s.number
-                      ? "bg-[#1c3784] text-white"
-                      : step === s.number
-                      ? "bg-[#1c378480] text-white"
-                      : "bg-gray-700 text-gray-400"
-                  }`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all 
+                    ${
+                      step > s.number
+                        ? "bg-green-600 text-white"
+                        : step === s.number
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-700 text-gray-400"
+                    }`}
                 >
                   {step > s.number ? "✓" : s.number}
                 </div>
@@ -230,10 +226,7 @@ export default function EmailForm() {
             ))}
           </div>
           <div className="w-full bg-gray-700 rounded-full h-1">
-            <div
-              className="bg-gradient-to-r from-[#ff9100] to-[#1c378480] h-1 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
+            <div className="bg-gradient-to-r from-pink-500 to-purple-500 h-1 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
         </div>
 
@@ -243,13 +236,11 @@ export default function EmailForm() {
           {step === 1 && (
             <div className="text-center">
               <div className="text-4xl mb-4">{steps[0].icon}</div>
-              <h1 className="text-2xl font-bold text-white mb-6">
-                Are you interested?
-              </h1>
+              <h1 className="text-2xl font-bold text-white mb-6">Are you interested?</h1>
               <div className="space-y-3">
                 <button
                   type="button"
-                  className="w-full bg-gradient-to-r from-[#ff9100] to-[#ff910080] text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-[#ff9100] to-[#ff910089] text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                   onClick={() => {
                     updateFormData("interest", "Interested");
                     setStep(2);
@@ -268,11 +259,7 @@ export default function EmailForm() {
                   Not Right Now
                 </button>
               </div>
-              <Image
-                src={poster}
-                className="w-fit mt-3 rounded-sm"
-                alt="Poster"
-              />
+              <Image src={poster} className="w-fit mt-3 rounded-sm" alt="Poster" />
             </div>
           )}
 
@@ -282,49 +269,16 @@ export default function EmailForm() {
               <h2 className="text-xl font-bold text-white mb-6 flex items-center">
                 {steps[1].icon} {steps[1].title}
               </h2>
-              <InputField
-                placeholder="Business Name"
-                value={formData.businessName}
-                onChange={(val) => updateFormData("businessName", val)}
-                error={errors.businessName}
-              />
-              <InputField
-                placeholder="Contact Person"
-                value={formData.contactPerson}
-                onChange={(val) => updateFormData("contactPerson", val)}
-                error={errors.contactPerson}
-              />
-              <InputField
-                type="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={(val) => updateFormData("email", val)}
-                error={errors.email}
-              />
-              <InputField
-                type="tel"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={(val) => updateFormData("phone", val)}
-              />
+              <InputField placeholder="Business Name" value={formData.businessName} onChange={(val) => updateFormData("businessName", val)} error={errors.businessName} />
+              <InputField placeholder="Contact Person" value={formData.contactPerson} onChange={(val) => updateFormData("contactPerson", val)} error={errors.contactPerson} />
+              <InputField type="email" placeholder="Email Address" value={formData.email} onChange={(val) => updateFormData("email", val)} error={errors.email} />
+              <InputField type="tel" placeholder="Phone Number" value={formData.phone} onChange={(val) => updateFormData("phone", val)} error={errors.phone} />
               <div className="flex space-x-3 pt-2">
-                <button
-                  type="button"
-                  className="flex-1 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors flex items-center justify-center"
-                  onClick={() => setStep(1)}
-                >
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Back
+                <button type="button" className="flex-1 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors flex items-center justify-center" onClick={() => setStep(1)}>
+                  <ArrowLeft className="w-5 h-5 mr-2" /> Back
                 </button>
-                <button
-                  type="button"
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center"
-                  onClick={() => {
-                    if (validateStep(2)) setStep(3);
-                  }}
-                >
-                  Next
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                <button type="button" className="flex-1 bg-gradient-to-r from-[#ff9100] to-[#ff910089] text-white py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center" onClick={() => validateStep(2) && setStep(3)}>
+                  Next <ArrowRight className="w-5 h-5 ml-2" />
                 </button>
               </div>
             </div>
@@ -332,69 +286,60 @@ export default function EmailForm() {
 
           {/* STEP 3 */}
           {step === 3 && (
-            <motion.div
-              key="step3"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-4"
-            >
-              <h2 className="text-xl font-semibold text-gray-800">
-                Business Information
+            <div>
+              <h2 className="text-xl font-bold text-white mb-6 flex items-center">
+                {steps[2].icon} {steps[2].title}
               </h2>
+              <SelectField placeholder="Industry / Category" value={formData.industry} onChange={(val) => updateFormData("industry", val)} options={industries} error={errors.industry} />
+              <SelectField placeholder="Years in Business" value={formData.yearsInBusiness} onChange={(val) => updateFormData("yearsInBusiness", val)} options={years} error={errors.yearsInBusiness} />
+              <InputField placeholder="Target Audience" value={formData.targetAudience} onChange={(val) => updateFormData("targetAudience", val)} error={errors.targetAudience} />
+              <InputField placeholder="Competitors (if any)" value={formData.competitors} onChange={(val) => updateFormData("competitors", val)} />
+              <SelectField placeholder="Running Ads?" value={formData.runningAds} onChange={(val) => updateFormData("runningAds", val)} options={["Yes", "No"]} error={errors.runningAds} />
+              {formData.runningAds === "Yes" && <InputField placeholder="Ad Platforms (FB, Google, etc.)" value={formData.adPlatforms} onChange={(val) => updateFormData("adPlatforms", val)} error={errors.adPlatforms} />}
 
-              {/* Industry */}
-              <div>
-                <SelectField
-                  placeholder="Select Industry"
-                  options={["IT", "Healthcare", "Retail", "Education"]}
-                  value={formData.industry}
-                  onChange={updateFormData.bind(null, "industry")}
-                />
-                {errors.industry && (
-                  <p className="text-red-500 text-sm mt-1">{errors.industry}</p>
-                )}
-              </div>
-
-              {/* Budget */}
-              <div>
-                <InputField
-                  placeholder="Budget"
-                  value={formData.budget}
-                  onChange={updateFormData.bind(null, "budget")}
-                />
-                {errors.budget && (
-                  <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
-                )}
-              </div>
-
-              {/* Running Ads */}
-              <div>
-                <SelectField
-                  placeholder="Running Ads?"
-                  options={["Yes", "No"]}
-                  value={formData.runningAds}
-                  onChange={updateFormData.bind(null, "runningAds")}
-                />
-              </div>
-
-              {/* Ad Platforms (only if Running Ads = Yes) */}
-              {formData.runningAds === "Yes" && (
-                <div>
-                  <InputField
-                    placeholder="Ad Platforms"
-                    value={formData.adPlatforms}
-                    onChange={updateFormData.bind(null, "adPlatforms")}
-                  />
-                  {errors.adPlatforms && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.adPlatforms}
-                    </p>
-                  )}
+              <div className="mb-5">
+                <p className="text-sm font-semibold mb-2 text-gray-300">Marketing Goals</p>
+                <div className="grid grid-cols-1 gap-2">
+                  {goals.map((goal) => (
+                    <label key={goal} className="flex items-center space-x-2 text-white">
+                      <input
+                        type="checkbox"
+                        checked={formData.marketingGoals.includes(goal)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            updateFormData("marketingGoals", [...formData.marketingGoals, goal]);
+                          } else {
+                            updateFormData("marketingGoals", formData.marketingGoals.filter((g) => g !== goal));
+                          }
+                        }}
+                        className="accent-pink-500"
+                      />
+                      <span>{goal}</span>
+                    </label>
+                  ))}
                 </div>
-              )}
-            </motion.div>
+                {errors.marketingGoals && <p className="text-sm text-red-400 mt-1">{errors.marketingGoals}</p>}
+              </div>
+
+              <InputField placeholder="Budget (per month)" value={formData.budget} onChange={(val) => updateFormData("budget", val)} error={errors.budget} />
+              <InputField placeholder="Timeline / Duration" value={formData.timeline} onChange={(val) => updateFormData("timeline", val)} error={errors.timeline} />
+              <TextareaField placeholder="Additional Notes" value={formData.additionalNotes} onChange={(val) => updateFormData("additionalNotes", val)} rows={4} />
+              <InputField placeholder="Promo Code" value={formData.promoCode} onChange={(val) => updateFormData("promoCode", val)} />
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`w-full py-4 px-6 rounded-xl font-semibold shadow-lg transform hover:scale-105 transition-all duration-200 ${
+                  loading ? "bg-gray-400 text-gray-200 cursor-not-allowed" : "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:shadow-xl"
+                }`}
+              >
+                {loading ? "Submitting..." : "Submit Form"}
+              </button>
+
+              <button type="button" className="w-full mt-3 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors" onClick={() => setStep(2)}>
+                <ArrowLeft className="w-5 h-5 inline mr-2" /> Back to Basic Info
+              </button>
+            </div>
           )}
         </form>
       </div>
