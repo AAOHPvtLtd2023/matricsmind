@@ -31,7 +31,7 @@ export async function POST(req) {
 
     // 3️⃣ Send email to user
     const userMailInfo = await transporter.sendMail({
-      from: `"MatricsMind" <${process.env.EMAIL_USER}>`,
+      from: `"MatricsMind" <matricsmind01@gmail.com>`,
       to: data.email,
       subject: "Thank you for submitting your details!",
       html: `
