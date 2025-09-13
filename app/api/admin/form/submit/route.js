@@ -51,7 +51,7 @@ export async function POST(req) {
     // 4️⃣ Send admin notification email
     const adminMailInfo = await transporter.sendMail({
       from: `"Website Form" <matricsmind01@gmail.com>`,
-      to: process.env.EMAIL_USER,
+      to: "matricsmind01@gmail.com",
       subject: `New Form Submission: ${data.businessName}`,
       html: `
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.5;">
