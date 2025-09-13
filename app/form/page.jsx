@@ -92,36 +92,62 @@ export default function EmailForm() {
   const validateStep = (currentStep) => {
     const newErrors = {};
     if (currentStep === 2) {
-      if (!formData.businessName.trim())
+      if (!formData.businessName)
         newErrors.businessName = "Business name is required";
-      if (!formData.contactPerson.trim())
+      if (!formData.contactPerson)
         newErrors.contactPerson = "Contact person is required";
-      if (!formData.email.trim()) newErrors.email = "Email is required";
-      else if (!/\S+@\S+\.\S+/.test(formData.email))
-        newErrors.email = "Email is invalid";
+      if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Valid email is required";
+      }
     }
+
+    if (currentStep === 3) {
+      if (!formData.industry) newErrors.industry = "Industry is required";
+      if (!formData.budget) newErrors.budget = "Budget is required";
+      // Optional extra rules
+      if (formData.runningAds && !formData.adPlatforms) {
+        newErrors.adPlatforms = "Please specify ad platforms";
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateStep(3)) return;
+
+    if (!validateStep(3)) return; // ✅ now actually validates Step 3
+
+    setLoading(true);
     try {
-      setLoading(true);
       const res = await fetch("/api/admin/form/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const result = await res.json();
+
       if (res.ok) {
         setSubmitted(true);
+        // Reset form & step (optional)
+        setFormData({
+          businessName: "",
+          contactPerson: "",
+          email: "",
+          phone: "",
+          industry: "",
+          budget: "",
+          runningAds: "",
+          adPlatforms: "",
+          objectives: "",
+        });
+        setStep(1);
       } else {
-        alert("Submission failed. Please try again.");
+        alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      console.error("Submission error:", error);
+      alert("Error submitting form. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -150,7 +176,13 @@ export default function EmailForm() {
     "Real Estate",
     "Other",
   ];
-  const years = ["<1 Year", "1-3 Years", "3-5 Years", "5-10 Years", "10+ Years"];
+  const years = [
+    "<1 Year",
+    "1-3 Years",
+    "3-5 Years",
+    "5-10 Years",
+    "10+ Years",
+  ];
   const goals = [
     "Brand Awareness",
     "Lead Generation",
@@ -236,7 +268,11 @@ export default function EmailForm() {
                   Not Right Now
                 </button>
               </div>
-              <Image src={poster} className="w-fit mt-3 rounded-sm" alt="Poster" />
+              <Image
+                src={poster}
+                className="w-fit mt-3 rounded-sm"
+                alt="Poster"
+              />
             </div>
           )}
 
@@ -296,123 +332,69 @@ export default function EmailForm() {
 
           {/* STEP 3 */}
           {step === 3 && (
-            <div>
-              <h2 className="text-xl font-bold text-white mb-6 flex items-center">
-                {steps[2].icon} {steps[2].title}
+            <motion.div
+              key="step3"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-4"
+            >
+              <h2 className="text-xl font-semibold text-gray-800">
+                Business Information
               </h2>
-              <SelectField
-                placeholder="Industry / Category"
-                value={formData.industry}
-                onChange={(val) => updateFormData("industry", val)}
-                options={industries}
-              />
-              <SelectField
-                placeholder="Years in Business"
-                value={formData.yearsInBusiness}
-                onChange={(val) => updateFormData("yearsInBusiness", val)}
-                options={years}
-              />
-              <InputField
-                placeholder="Target Audience"
-                value={formData.targetAudience}
-                onChange={(val) => updateFormData("targetAudience", val)}
-              />
-              <InputField
-                placeholder="Competitors (if any)"
-                value={formData.competitors}
-                onChange={(val) => updateFormData("competitors", val)}
-              />
-              <SelectField
-                placeholder="Running Ads?"
-                value={formData.runningAds}
-                onChange={(val) => updateFormData("runningAds", val)}
-                options={["Yes", "No"]}
-              />
-              {formData.runningAds === "Yes" && (
-                <InputField
-                  placeholder="Ad Platforms (FB, Google, etc.)"
-                  value={formData.adPlatforms}
-                  onChange={(val) => updateFormData("adPlatforms", val)}
-                />
-              )}
 
-              <div className="mb-4">
-                <p className="text-sm font-semibold mb-2 text-gray-300">
-                  Marketing Goals
-                </p>
-                <div className="grid grid-cols-1 gap-2">
-                  {goals.map((goal) => (
-                    <label
-                      key={goal}
-                      className="flex items-center space-x-2 text-white"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={formData.marketingGoals.includes(goal)}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            updateFormData("marketingGoals", [
-                              ...formData.marketingGoals,
-                              goal,
-                            ]);
-                          } else {
-                            updateFormData(
-                              "marketingGoals",
-                              formData.marketingGoals.filter((g) => g !== goal)
-                            );
-                          }
-                        }}
-                        className="accent-pink-500"
-                      />
-                      <span>{goal}</span>
-                    </label>
-                  ))}
-                </div>
+              {/* Industry */}
+              <div>
+                <SelectField
+                  placeholder="Select Industry"
+                  options={["IT", "Healthcare", "Retail", "Education"]}
+                  value={formData.industry}
+                  onChange={updateFormData.bind(null, "industry")}
+                />
+                {errors.industry && (
+                  <p className="text-red-500 text-sm mt-1">{errors.industry}</p>
+                )}
               </div>
 
-              <InputField
-                placeholder="Budget (per month)"
-                value={formData.budget}
-                onChange={(val) => updateFormData("budget", val)}
-              />
-              <InputField
-                placeholder="Timeline / Duration"
-                value={formData.timeline}
-                onChange={(val) => updateFormData("timeline", val)}
-              />
-              <TextareaField
-                placeholder="Additional Notes"
-                value={formData.additionalNotes}
-                onChange={(val) => updateFormData("additionalNotes", val)}
-                rows={4}
-              />
-              <InputField
-                placeholder="Promo Code"
-                value={formData.promoCode}
-                onChange={(val) => updateFormData("promoCode", val)}
-              />
+              {/* Budget */}
+              <div>
+                <InputField
+                  placeholder="Budget"
+                  value={formData.budget}
+                  onChange={updateFormData.bind(null, "budget")}
+                />
+                {errors.budget && (
+                  <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
+                )}
+              </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full py-4 px-6 rounded-xl font-semibold shadow-lg transform hover:scale-105 transition-all duration-200 ${
-                  loading
-                    ? "bg-gray-400 text-gray-200 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:shadow-xl"
-                }`}
-              >
-                {loading ? "Submitting..." : "Submit Form"}
-              </button>
+              {/* Running Ads */}
+              <div>
+                <SelectField
+                  placeholder="Running Ads?"
+                  options={["Yes", "No"]}
+                  value={formData.runningAds}
+                  onChange={updateFormData.bind(null, "runningAds")}
+                />
+              </div>
 
-              <button
-                type="button"
-                className="w-full mt-3 bg-gray-700 text-gray-300 py-3 px-4 rounded-xl font-medium hover:bg-gray-600 transition-colors"
-                onClick={() => setStep(2)}
-              >
-                <ArrowLeft className="w-5 h-5 inline mr-2" />
-                Back to Basic Info
-              </button>
-            </div>
+              {/* Ad Platforms (only if Running Ads = Yes) */}
+              {formData.runningAds === "Yes" && (
+                <div>
+                  <InputField
+                    placeholder="Ad Platforms"
+                    value={formData.adPlatforms}
+                    onChange={updateFormData.bind(null, "adPlatforms")}
+                  />
+                  {errors.adPlatforms && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.adPlatforms}
+                    </p>
+                  )}
+                </div>
+              )}
+            </motion.div>
           )}
         </form>
       </div>
