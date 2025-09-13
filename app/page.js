@@ -33,9 +33,53 @@ export default function HomePage() {
   return (
     <FloatingBeamBackground>
       <head>
-  <title>Matrics Mind | Web Development & Digital Solutions Company in India</title>
-  <meta name="description" content="Matrics Mind is a leading web development and digital solutions company in India. We provide website design, SEO, and IT services to help businesses grow online."/>
-</head>
+        <title>
+          Matrics Mind | Web Development & Digital Solutions Company in India
+        </title>
+        <meta
+          name="description"
+          content="Matrics Mind is a leading web development and digital solutions company in India. We provide website design, SEO, and IT services to help businesses grow online."
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Matrics Mind",
+              "url": "https://matricsmind.com",
+              "logo": "https://matricsmind.com/og-image.jpg",
+              "sameAs": [
+                "https://www.facebook.com/matricsmind",
+                "https://www.linkedin.com/company/matricsmind",
+                "https://twitter.com/matricsmind"
+              ],
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7903471133",
+                  "contactType": "customer support",
+                  "areaServed": "IN",
+                  "availableLanguage": ["English", "Hindi"]
+                }
+              ]
+            }),
+          }}/>
+        <link rel="canonical" href="https://www.matricsmind.com/" />
+        
+        {/* Open Graph (Facebook, LinkedIn, etc.) */}
+        <meta property="og:title" content="Matrics Mind | Web Development & Digital Solutions Company" />
+        <meta property="og:description" content="Grow your business with Matrics Mind. We provide web development, SEO, and digital marketing solutions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://matricsmind.com/" />
+        <meta property="og:image" content="https://matricsmind.com/og-image.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Matrics Mind | Web Development & Digital Solutions" />
+        <meta name="twitter:description" content="Grow your business with Matrics Mind’s web development, SEO, and branding solutions." />
+        <meta name="twitter:image" content="https://matricsmind.com/og-image.jpg" />
+      </head>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-[40vh] sm:min-h-[65vh] md:min-h-[60vh] text-center">

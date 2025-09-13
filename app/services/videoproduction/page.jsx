@@ -26,6 +26,28 @@ export default function videoProductionPage() {
           name="description"
           content="Matrics Mind provides professional video production services, including corporate films, product videos, and brand storytelling to engage your audience."
         />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Video Production Services",
+      "provider": {
+        "@type": "Organization",
+        "name": "Matrics Mind",
+        "url": "https://matricsmind.com"
+      },
+      "description": "Professional video production services including corporate films, product videos, and brand storytelling.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      }
+    }),
+  }}
+/>
+
+        <link rel="canonical" href="https://www.matricsmind.com/services/videoproduction" />
       </head>
 
       <section>

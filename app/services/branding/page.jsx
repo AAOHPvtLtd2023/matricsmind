@@ -22,6 +22,28 @@ export default function BrandingPage() {
           name="description"
           content="Enhance your brand with Matrics Mind’s branding services. We help businesses with logo design, brand strategy, and visual identity to stand out in the market."
         />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Branding & Identity Design",
+      "provider": {
+        "@type": "Organization",
+        "name": "Matrics Mind",
+        "url": "https://matricsmind.com"
+      },
+      "description": "Branding services including logo design, brand strategy, and visual identity.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      }
+    }),
+  }}
+/>
+
+        <link rel="canonical" href="https://www.matricsmind.com/services/branding" />
       </head>
 
       <section>

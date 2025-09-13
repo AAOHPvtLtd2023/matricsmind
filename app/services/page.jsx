@@ -20,6 +20,26 @@ export default function ServicePage() {
           name="description"
           content="Explore Matrics Mind’s services including web development, SEO, digital marketing, branding, and video production. Tailored solutions to help your business succeed online."
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "serviceType": "Web Development, SEO, Branding, Video Production",
+              "provider": {
+                "@type": "Organization",
+                "name": "Matrics Mind",
+                "url": "https://matricsmind.com"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "India"
+              }
+            }),
+          }}
+        />
+        <link rel="canonical" href="https://matricsmind.com/services" />
       </head>
 
       <section className="w-full">

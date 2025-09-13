@@ -35,6 +35,20 @@ export default function AboutPage() {
           name="description"
           content="Learn about Matrics Mind, a trusted web development and digital solutions company helping startups and enterprises grow online with technology-driven solutions."
         />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "url": "https://matricsmind.com/about",
+      "name": "About Matrics Mind",
+      "description": "About Matrics Mind, a trusted web development and digital solutions company helping startups and enterprises grow online."
+    }),
+  }}
+/>
+
+        <link rel="canonical" href="https://matricsmind.com/about" />
       </head>
 
       <section className="animate-fadeIn min-h-screenoverflow-y-scroll scroll-smooth snap-y snap-mandatory hide-scrollbar">

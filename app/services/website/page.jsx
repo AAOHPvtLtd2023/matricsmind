@@ -19,6 +19,24 @@ export default function websitePage() {
           name="description"
           content="Get professional web development services with Matrics Mind. We build fast, responsive, and SEO-friendly websites tailored to your business needs."
         />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Matrics Mind",
+      "url": "https://matricsmind.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://matricsmind.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }),
+  }}
+/>
+
+        <link rel="canonical" href="https://www.matricsmind.com/services/website" />
       </head>
 
       <section>
