@@ -32,12 +32,17 @@ export default function HomePage() {
 
   return (
     <FloatingBeamBackground>
+      <head>
+  <title>Matrics Mind | Web Development & Digital Solutions Company in India</title>
+  <meta name="description" content="Matrics Mind is a leading web development and digital solutions company in India. We provide website design, SEO, and IT services to help businesses grow online."/>
+</head>
+
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-[40vh] sm:min-h-[65vh] md:min-h-[60vh] text-center">
         <div className="max-w-3xl sm:max-w-4xl lg:max-w-6xl">
           {/* Heading Line 1 */}
           <h1
-            className={`block text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
+            className={`block text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-snug sm:leading-tight tracking-tight transform transition-all duration-700 ease-out ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -55,7 +60,7 @@ export default function HomePage() {
             }`}
           >
             Built with{" "}
-            <span className="text-[#ff9100] text-[1.15em] tracking-wide drop-shadow-[0_2px_6px_rgba(255,145,0,0.8)]">
+            <span className="text-[#ff9100] text-[1.15em] tracking-wide">
               Matrics Mind
             </span>
           </h2>

@@ -300,12 +300,12 @@ const Testimonials = () => {
         <div className="absolute inset-0">
           <div
             className="absolute top-20 left-10 w-32 h-32 rounded-full blur-xl animate-pulse"
-            style={{ backgroundColor: "#1c3784", opacity: 0.1 }}
+            style={{ backgroundColor: "#1c378490", opacity: 0.1 }}
           ></div>
           <div
             className="absolute bottom-20 right-10 w-40 h-40 rounded-full blur-xl animate-pulse"
             style={{
-              backgroundColor: "#ff9100",
+              backgroundColor: "#ff910090",
               opacity: 0.1,
               animationDelay: "1s",
             }}
@@ -313,7 +313,7 @@ const Testimonials = () => {
           <div
             className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full blur-xl animate-pulse"
             style={{
-              backgroundColor: "#1c3784",
+              backgroundColor: "#1c378490",
               opacity: 0.08,
               animationDelay: "2s",
             }}

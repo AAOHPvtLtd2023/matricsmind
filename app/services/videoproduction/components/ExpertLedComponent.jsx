@@ -76,7 +76,7 @@ const ExpertLedComponent = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <div className="text-center">
-          <h2 className="text-base font-semibold text-[#FF9100] uppercase tracking-wide">
+          <h2 className="text-base font-semibold text-[#FF9100] uppercase tracking-wide md:text-xl">
             Why Choose Us?
           </h2>
           <p className="mt-2 text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#fff] dark:text-white">

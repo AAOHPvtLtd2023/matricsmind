@@ -56,7 +56,7 @@ const CardCarousel: React.FC<CarouselProps> = ({
           </Badge>
 
           {/* Heading */}
-          <div className="mt-10 sm:mt-14 mb-4 sm:mb-6 text-center px-2">
+          <div className="mt-0 sm:mt-0 mb-4 sm:mb-0 text-center px-2">
             <h2
               className={`text-xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-[#ff9100] leading-snug sm:leading-tight font-extrabold uppercase`}
             >

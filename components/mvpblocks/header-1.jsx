@@ -175,7 +175,8 @@ export default function Header1() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
+                  // href="https://wa.me/917903471133?text=Hi%2C%20I%20would%20like%20a%20free%20quote%20for%20your%20services."
+                  href="https://www.matricsmind.com/form"
                   className="inline-flex items-center space-x-2 rounded-full bg-[#ff9100] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
                 >
                   <span>Get A Free Qoute</span>
