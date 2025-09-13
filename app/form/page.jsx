@@ -5,6 +5,62 @@ import Image from "next/image";
 
 import poster from "../../public/images/web1.jpg";
 
+// -------------------
+// Reusable Components
+// -------------------
+function InputField({ type = "text", placeholder, value, onChange, error }) {
+  return (
+    <div className="mb-4">
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all bg-gray-800 text-white ${
+          error ? "border-red-500" : "border-gray-700"
+        }`}
+      />
+      {error && <p className="text-sm text-red-400 mt-1">{error}</p>}
+    </div>
+  );
+}
+
+function SelectField({ placeholder, value, onChange, options }) {
+  return (
+    <div className="mb-4">
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all bg-gray-800 text-white"
+      >
+        <option value="">{placeholder}</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function TextareaField({ placeholder, value, onChange, rows = 3 }) {
+  return (
+    <div className="mb-4">
+      <textarea
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        rows={rows}
+        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all resize-none bg-gray-800 text-white"
+      />
+    </div>
+  );
+}
+
+// -------------------
+// Main Form Component
+// -------------------
 export default function EmailForm() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -27,10 +83,11 @@ export default function EmailForm() {
     budget: "",
     timeline: "",
     additionalNotes: "",
-    promoCode:"",
+    promoCode: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const validateStep = (currentStep) => {
     const newErrors = {};
@@ -47,52 +104,28 @@ export default function EmailForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const [loading, setLoading] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateStep(3)) return;
-
     try {
-      setLoading(true); // start loading
-
+      setLoading(true);
       const res = await fetch("/api/admin/form/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const result = await res.json();
-
       if (res.ok) {
         setSubmitted(true);
-        console.log("Form submitted and email sent successfully!");
       } else {
-        console.error("Submission failed:", result.error);
         alert("Submission failed. Please try again.");
       }
     } catch (error) {
-      console.error("Submission error:", error);
       alert("Something went wrong. Please try again.");
     } finally {
-      setLoading(false); // stop loading
+      setLoading(false);
     }
   };
-
-  if (submitted) {
-    return (
-      <div className="p-8 max-w-md mx-auto text-center bg-gray-900 rounded-2xl shadow-xl">
-        <div className="w-16 h-16 bg-purple-800 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-8 h-8 text-pink-500" />
-        </div>
-        <h1 className="text-2xl font-bold text-white mb-4">Thank you!</h1>
-        <p className="text-gray-300">
-          We’ve received your details and will connect with you shortly.
-        </p>
-      </div>
-    );
-  }
 
   const steps = [
     { number: 1, title: "Interest", icon: "💡" },
@@ -107,56 +140,6 @@ export default function EmailForm() {
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: "" }));
   };
 
-  const InputField = ({
-    type = "text",
-    placeholder,
-    value,
-    onChange,
-    error,
-  }) => (
-    <div className="mb-4">
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all bg-gray-800 text-white ${
-          error ? "border-red-500" : "border-gray-700"
-        }`}
-      />
-      {error && <p className="text-sm text-red-400 mt-1">{error}</p>}
-    </div>
-  );
-
-  const SelectField = ({ placeholder, value, onChange, options }) => (
-    <div className="mb-4">
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all bg-gray-800 text-white"
-      >
-        <option value="">{placeholder}</option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-
-  const TextareaField = ({ placeholder, value, onChange, rows = 3 }) => (
-    <div className="mb-4">
-      <textarea
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        rows={rows}
-        className="w-full px-4 py-3 border-2 border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all resize-none bg-gray-800 text-white"
-      />
-    </div>
-  );
-
   const industries = [
     "Technology",
     "Retail",
@@ -167,13 +150,7 @@ export default function EmailForm() {
     "Real Estate",
     "Other",
   ];
-  const years = [
-    "<1 Year",
-    "1-3 Years",
-    "3-5 Years",
-    "5-10 Years",
-    "10+ Years",
-  ];
+  const years = ["<1 Year", "1-3 Years", "3-5 Years", "5-10 Years", "10+ Years"];
   const goals = [
     "Brand Awareness",
     "Lead Generation",
@@ -182,6 +159,20 @@ export default function EmailForm() {
     "Social Media Growth",
     "Other",
   ];
+
+  if (submitted) {
+    return (
+      <div className="p-8 max-w-md mx-auto text-center bg-gray-900 rounded-2xl shadow-xl">
+        <div className="w-16 h-16 bg-purple-800 rounded-full flex items-center justify-center mx-auto mb-6">
+          <CheckCircle className="w-8 h-8 text-pink-500" />
+        </div>
+        <h1 className="text-2xl font-bold text-white mb-4">Thank you!</h1>
+        <p className="text-gray-300">
+          We’ve received your details and will connect with you shortly.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 py-8">
@@ -214,8 +205,9 @@ export default function EmailForm() {
           </div>
         </div>
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* STEP 1: Interest */}
+          {/* STEP 1 */}
           {step === 1 && (
             <div className="text-center">
               <div className="text-4xl mb-4">{steps[0].icon}</div>
@@ -244,11 +236,11 @@ export default function EmailForm() {
                   Not Right Now
                 </button>
               </div>
-              <Image src={poster} className="w-fit mt-3 rounded-sm" />
+              <Image src={poster} className="w-fit mt-3 rounded-sm" alt="Poster" />
             </div>
           )}
 
-          {/* STEP 2 and 3: same structure, just dark theme for inputs/buttons */}
+          {/* STEP 2 */}
           {step === 2 && (
             <div>
               <h2 className="text-xl font-bold text-white mb-6 flex items-center">
@@ -257,27 +249,27 @@ export default function EmailForm() {
               <InputField
                 placeholder="Business Name"
                 value={formData.businessName}
-                onChange={updateFormData.bind(null, "businessName")}
+                onChange={(val) => updateFormData("businessName", val)}
                 error={errors.businessName}
               />
               <InputField
                 placeholder="Contact Person"
                 value={formData.contactPerson}
-                onChange={updateFormData.bind(null, "contactPerson")}
+                onChange={(val) => updateFormData("contactPerson", val)}
                 error={errors.contactPerson}
               />
               <InputField
                 type="email"
                 placeholder="Email Address"
                 value={formData.email}
-                onChange={updateFormData.bind(null, "email")}
+                onChange={(val) => updateFormData("email", val)}
                 error={errors.email}
               />
               <InputField
                 type="tel"
                 placeholder="Phone Number"
                 value={formData.phone}
-                onChange={updateFormData.bind(null, "phone")}
+                onChange={(val) => updateFormData("phone", val)}
               />
               <div className="flex space-x-3 pt-2">
                 <button
@@ -302,6 +294,7 @@ export default function EmailForm() {
             </div>
           )}
 
+          {/* STEP 3 */}
           {step === 3 && (
             <div>
               <h2 className="text-xl font-bold text-white mb-6 flex items-center">
@@ -310,36 +303,36 @@ export default function EmailForm() {
               <SelectField
                 placeholder="Industry / Category"
                 value={formData.industry}
-                onChange={updateFormData.bind(null, "industry")}
+                onChange={(val) => updateFormData("industry", val)}
                 options={industries}
               />
               <SelectField
                 placeholder="Years in Business"
                 value={formData.yearsInBusiness}
-                onChange={updateFormData.bind(null, "yearsInBusiness")}
+                onChange={(val) => updateFormData("yearsInBusiness", val)}
                 options={years}
               />
               <InputField
                 placeholder="Target Audience"
                 value={formData.targetAudience}
-                onChange={updateFormData.bind(null, "targetAudience")}
+                onChange={(val) => updateFormData("targetAudience", val)}
               />
               <InputField
                 placeholder="Competitors (if any)"
                 value={formData.competitors}
-                onChange={updateFormData.bind(null, "competitors")}
+                onChange={(val) => updateFormData("competitors", val)}
               />
               <SelectField
                 placeholder="Running Ads?"
                 value={formData.runningAds}
-                onChange={updateFormData.bind(null, "runningAds")}
+                onChange={(val) => updateFormData("runningAds", val)}
                 options={["Yes", "No"]}
               />
               {formData.runningAds === "Yes" && (
                 <InputField
                   placeholder="Ad Platforms (FB, Google, etc.)"
                   value={formData.adPlatforms}
-                  onChange={updateFormData.bind(null, "adPlatforms")}
+                  onChange={(val) => updateFormData("adPlatforms", val)}
                 />
               )}
 
@@ -380,23 +373,23 @@ export default function EmailForm() {
               <InputField
                 placeholder="Budget (per month)"
                 value={formData.budget}
-                onChange={updateFormData.bind(null, "budget")}
+                onChange={(val) => updateFormData("budget", val)}
               />
               <InputField
                 placeholder="Timeline / Duration"
                 value={formData.timeline}
-                onChange={updateFormData.bind(null, "timeline")}
+                onChange={(val) => updateFormData("timeline", val)}
               />
               <TextareaField
                 placeholder="Additional Notes"
                 value={formData.additionalNotes}
-                onChange={updateFormData.bind(null, "additionalNotes")}
+                onChange={(val) => updateFormData("additionalNotes", val)}
                 rows={4}
               />
               <InputField
                 placeholder="Promo Code"
                 value={formData.promoCode}
-                onChange={updateFormData.bind(null, "promocode")}
+                onChange={(val) => updateFormData("promoCode", val)}
               />
 
               <button
