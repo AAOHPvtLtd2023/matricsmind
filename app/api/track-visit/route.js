@@ -1,30 +1,40 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../lib/mongodb"; // fixed path
+import clientPromise from "../../../lib/mongodb"; // adjust path
 
-export const dynamic = "force-dynamic";
+export const POST = async (req) => {
+  try {
+    const referer = req.headers.get("referer") || "direct";
 
-export async function POST(req) {
-  const client = await clientPromise;
-  const db = client.db("mywebsite");
-  const visitsCollection = db.collection("visits");
+    // Detect platform from referer
+    const platforms = {
+      whatsapp: "whatsapp.com",
+      instagram: "instagram.com",
+      x: "x.com",
+      twitter: "twitter.com",
+      facebook: "facebook.com",
+    };
 
-  const { ip, country, city, countryCode } = await req.json();
+    let cameFrom = "direct";
 
-  const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
-  const existing = await visitsCollection.findOne({
-    ip,
-    visitedAt: { $gte: fiveMinutesAgo },
-  });
+    for (const [platform, url] of Object.entries(platforms)) {
+      if (referer.includes(url)) {
+        cameFrom = platform;
+        break;
+      }
+    }
 
-  if (!existing) {
-    await visitsCollection.insertOne({
-      ip,
-      country,
-      city,
-      countryCode,
-      visitedAt: new Date(),
+    // Optional: store in MongoDB
+    const client = await clientPromise;
+    const db = client.db("mywebsite");
+    await db.collection("visits").insertOne({
+      platform: cameFrom,
+      referer,
+      timestamp: new Date(),
     });
-  }
 
-  return NextResponse.json({ success: true });
-}
+    return NextResponse.json({ referer, platform: cameFrom });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Failed to track visit" }, { status: 500 });
+  }
+};

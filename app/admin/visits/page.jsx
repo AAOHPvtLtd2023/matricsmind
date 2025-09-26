@@ -31,6 +31,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from "../.././../@/components/ui/tabs";
+import PlatformCheck from "../platform-summary/page";
 
 export default function AdminVisits() {
   const [visits, setVisits] = useState([]);
@@ -382,6 +383,8 @@ export default function AdminVisits() {
           </div>
         </div>
 
+        {/* <PlatformCheck/> */}
+
         {/* Filters */}
         <div className="flex flex-wrap gap-4 mb-6">
           <select
@@ -642,6 +645,9 @@ export default function AdminVisits() {
                       <th className="table-cell text-left py-3 px-6 text-gray-600 font-medium">
                         Visited At
                       </th>
+                      <th className="table-cell text-left py-3 px-6 text-gray-600 font-medium">
+                        Platform
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -693,6 +699,9 @@ export default function AdminVisits() {
                           </td>
                           <td className="table-cell py-3 px-6 text-[#111827] font-mono text-xs md:text-sm">
                             {new Date(visitor.visitedAt).toLocaleString()}
+                          </td>
+                          <td className="table-cell py-3 px-6 text-[#111827]">
+                            {visitor.platform || "-"}
                           </td>
                         </tr>
                       ))
