@@ -8,17 +8,6 @@ export async function GET(req) {
       req.headers.get("x-real-ip") ||
       "8.8.8.8"; // fallback
 
-    const url = new URL(req.url);
-    let platform = url.searchParams.get("utm_source");
-
-    if (!platform) {
-      const ref = req.headers.get("referer") || "";
-      if (ref.includes("facebook")) platform = "facebook";
-      else if (ref.includes("instagram")) platform = "instagram";
-      else if (ref.includes("whatsapp")) platform = "whatsapp";
-      else platform = "direct";
-    }
-
     const res = await fetch(`https://ipapi.co/${ip}/json/`);
     const data = await res.json();
 
@@ -26,13 +15,10 @@ export async function GET(req) {
       ip,
       country: data.country_name,
       countryCode: data.country_code,
-      city: data.city || null,
-      platform,
       visitedAt: new Date(),
     };
 
-    console.log("📝 Saving visit:", visit); // Debug
-
+    // Save visit
     const client = await clientPromise;
     const db = client.db("mywebsite");
     await db.collection("visits").insertOne(visit);

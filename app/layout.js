@@ -1,4 +1,5 @@
-"use client";
+"use client"; // make sure this is client-side
+
 import { useEffect } from "react";
 import ClientLayout from "./ClientLayout";
 import { Archivo_Black, Noto_Sans } from "next/font/google";
@@ -20,25 +21,12 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     async function trackVisit() {
       try {
-        // 1️⃣ Detect UTM params from URL
-        const url = new URL(window.location.href);
-        let platform = url.searchParams.get("utm_source");
-
-        // 2️⃣ Fallback: use referrer if no UTM
-        if (!platform) {
-          const ref = document.referrer || "";
-          if (ref.includes("facebook")) platform = "facebook";
-          else if (ref.includes("instagram")) platform = "instagram";
-          else if (ref.includes("whatsapp")) platform = "whatsapp";
-          else platform = "direct";
-        }
-
-        // 3️⃣ Get geo info (from ipapi)
+        // Get visitor IP & location using free API
         const res = await fetch("https://ipapi.co/json/");
         const data = await res.json();
 
-        // 4️⃣ Send all info (including platform) to your API
-        await fetch("/api/admin/visits", {
+        // Send data to your Next.js API
+        await fetch("/api/track-visit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -46,7 +34,7 @@ export default function RootLayout({ children }) {
             country: data.country_name,
             city: data.city,
             countryCode: data.country_code,
-            platform, // ✅ now platform will be saved
+            platform: data.platform, // Let backend detect platform
           }),
         });
       } catch (err) {

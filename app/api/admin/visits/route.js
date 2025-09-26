@@ -10,5 +10,5 @@ export async function GET() {
     .sort({ visitedAt: -1 })
     .toArray();
 
-  return NextResponse.json(visits); // includes platform
+  return NextResponse.json(visits);
 }
