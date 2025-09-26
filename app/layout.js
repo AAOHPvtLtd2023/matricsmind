@@ -21,27 +21,15 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     async function trackVisit() {
       try {
-        // Get visitor IP & location using free API
-        const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-
-        // Send data to your Next.js API
         await fetch("/api/track-visit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ip: data.ip,
-            country: data.country_name,
-            city: data.city,
-            countryCode: data.country_code,
-            platform: data.platform, // Let backend detect platform
-          }),
+          body: JSON.stringify({}), // empty for now
         });
       } catch (err) {
-        console.error("Visitor tracking error:", err);
+        console.error("❌ Tracking error:", err);
       }
     }
-
     trackVisit();
   }, []);
 
